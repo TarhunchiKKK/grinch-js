@@ -1,8 +1,14 @@
+import { ZodSchema } from "../types/zod";
 import { BaseAssertion } from "./base-assertion";
 
-type Types = "string" | "number" | "boolean" | "bigint" | "object" | "function";
+type Types = "string" | "number" | "boolean" | "bigint" | "object";
 
 export class UnknownAssertion extends BaseAssertion<unknown> {
+    private checkType(type: Types): this {
+        this.conditions.push(() => typeof this.value === type);
+        return this;
+    }
+
     public toBeString(): this {
         return this.checkType("string");
     }
@@ -28,12 +34,8 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
         return this.checkType("object");
     }
 
-    public toBeFunction(): this {
-        return this.checkType("function");
-    }
-
-    private checkType(type: Types): this {
-        this.conditions.push(() => typeof this.value === type);
+    public toMatchZotoMatch(schema: ZodSchema): this {
+        this.conditions.push(() => schema.safeParse(this.value).success);
         return this;
     }
 }

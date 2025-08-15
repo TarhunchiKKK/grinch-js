@@ -1,3 +1,5 @@
+import { deepCompare } from "../../../shared";
+
 const falsyValues = ["", 0, false, null, undefined, NaN];
 
 type Condition<T> = (_: T) => boolean;
@@ -9,6 +11,11 @@ export class BaseAssertion<T> {
 
     public toBe(value: unknown): this {
         this.conditions.push(() => this.value === value);
+        return this;
+    }
+
+    public toEquals(value: unknown): this {
+        this.conditions.push(() => deepCompare(this.value, value));
         return this;
     }
 
