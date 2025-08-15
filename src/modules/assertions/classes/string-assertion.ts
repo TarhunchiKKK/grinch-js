@@ -1,9 +1,7 @@
-import { BaseAssertion } from "./base-assertion";
+import { JWT_REGEX, UUID_REGEX } from "../constants/regex";
+import { IterableAssertion } from "./iterable-assertion";
 
-const jwtRegex = /^([a-zA-Z0-9_=]+)\.([a-zA-Z0-9_=]+)\.([a-zA-Z0-9_\-+/=]*)$/;
-const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-
-export class StringAssertion extends BaseAssertion<string> {
+export class StringAssertion extends IterableAssertion<string> {
     public toBeUpperCase(): this {
         this.conditions.push(() => this.value === this.value.toUpperCase());
         return this;
@@ -38,12 +36,12 @@ export class StringAssertion extends BaseAssertion<string> {
     }
 
     public toBeJWT(): this {
-        this.conditions.push(() => jwtRegex.test(this.value));
+        this.conditions.push(() => JWT_REGEX.test(this.value));
         return this;
     }
 
     public toBeUUID(): this {
-        this.conditions.push(() => uuidRegex.test(this.value));
+        this.conditions.push(() => UUID_REGEX.test(this.value));
         return this;
     }
 }

@@ -1,10 +1,9 @@
+import { TypeofResponse } from "../types/core";
 import { ZodSchema } from "../types/zod";
 import { BaseAssertion } from "./base-assertion";
 
-type Types = "string" | "number" | "boolean" | "bigint" | "object";
-
 export class UnknownAssertion extends BaseAssertion<unknown> {
-    private checkType(type: Types): this {
+    private checkType(type: TypeofResponse): this {
         this.conditions.push(() => typeof this.value === type);
         return this;
     }
