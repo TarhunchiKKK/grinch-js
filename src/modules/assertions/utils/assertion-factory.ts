@@ -5,7 +5,7 @@ import { RecordAssertion } from "../classes/record-assertion";
 import { StringAssertion } from "../classes/string-assertion";
 import { UnknownAssertion } from "../classes/unknown-assertion";
 
-export class AssertionsFactory {
+export class AssertionFactory {
     public constructor() {}
 
     public basic<T = unknown>(value: T) {

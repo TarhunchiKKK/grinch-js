@@ -1,20 +1,8 @@
-import { AssertionsFactory } from "../../assertions";
-
-type SampleTestCallbackPayload = {
-    assert: AssertionsFactory;
-};
+import { SampleTestCallbackPayload, SerialTestCallbackPayload, ParallelTestCallbackPayload } from "./payloads";
 
 export type SampleTestCallback = (_: SampleTestCallbackPayload) => void | Promise<void>;
 
-type SerialTestCallbackPayload = {
-    test: unknown;
-};
-
 export type SerialTestCallback = (_: SerialTestCallbackPayload) => void;
-
-type ParallelTestCallbackPayload = {
-    test: unknown;
-};
 
 export type ParallelTestCallback = (_: ParallelTestCallbackPayload) => void;
 
