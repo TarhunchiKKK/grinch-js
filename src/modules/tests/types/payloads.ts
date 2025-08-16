@@ -1,15 +1,16 @@
 import { AssertionFactory } from "../../assertions";
+import { TestFactory } from "../utils/test-factory";
 
-export type SampleTestPayload = {
+export type SampleTestPayload<State> = {
     assert: AssertionFactory;
+
+    state: State;
 };
 
-export type SerialTestPayload = {
-    test: unknown;
+export type SerialTestPayload<State> = {
+    test: TestFactory<State>;
 };
 
-export type ParallelTestPayload = {
-    test: unknown;
+export type ParallelTestPayload<State> = {
+    test: TestFactory<State>;
 };
-
-export type AnyTestPayload = SampleTestPayload | SerialTestPayload | ParallelTestPayload;
