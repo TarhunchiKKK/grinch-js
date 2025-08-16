@@ -4,7 +4,7 @@
 export class TestingResults {
     public results: Record<string, any> = {};
 
-    public addResult(path: string[], value: boolean) {
+    public setTestResult(path: string[], value: boolean) {
         let pointer = this.results;
 
         for (let i = 0; i < path.length - 1; i++) {
