@@ -1,19 +1,19 @@
 import { describe } from "./modules/tests";
 
-export function grinch() {
-    console.log("grinch");
-}
+export const grinch = {
+    describe
+};
 
 const data = {
     name: "a",
     age: 2
 };
 
-describe("title", data, ({ test }) => {
-    test.parallel("test", ({ test }) => {
-        test.serial("test", ({ test }) => {
-            test.sample("title", async ({ state }) => {
-                await Promise.resolve(state.);
+grinch.describe("", data, ({ test }) => {
+    test.parallel("", ({ test }) => {
+        test.parallel("", ({ test }) => {
+            test.sample("", async ({ state }) => {
+                await Promise.resolve(state.age);
             });
         });
     });
