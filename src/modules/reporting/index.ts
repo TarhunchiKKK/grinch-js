@@ -1,3 +1,2 @@
-import { TestingResults } from "./utils/testing-results";
-
-export const TESTING_RESULTS = new TestingResults();
+export { TESTING_RESULTS } from "./utils/testing-results";
+export { report } from "./utils/report";

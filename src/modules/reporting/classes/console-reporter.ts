@@ -12,22 +12,23 @@ export class ConsoleReporter implements Reporter {
             const value = obj[key];
 
             if (typeof value === "boolean") {
-                const indent = "  ".repeat(currentPath.length - 1);
-
-                const messageToLog = `${indent}${key} ${value.toString()}`;
-
-                if (value) {
-                    Logger.success(messageToLog);
-                } else {
-                    Logger.failure(messageToLog);
-                }
+                this.processValue(value, key, currentPath.length - 1);
             } else if (typeof value === "object") {
                 console.log(`${" ".repeat(currentPath.length - 1)}${key}`);
                 this.report(value, currentPath);
             }
         }
     }
-}
 
-const reporter = new ConsoleReporter();
-reporter.report();
+    private processValue(value: boolean, key: string, indentSize: number) {
+        const indent = "  ".repeat(indentSize);
+
+        const messageToLog = `${indent}${key} ${value.toString()}`;
+
+        if (value) {
+            Logger.success(messageToLog);
+        } else {
+            Logger.failure(messageToLog);
+        }
+    }
+}

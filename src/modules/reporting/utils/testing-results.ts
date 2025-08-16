@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export class TestingResults {
+class TestingResults {
     public results: Record<string, any> = {};
 
     public setTestResult(path: string[], value: boolean) {
@@ -21,3 +21,5 @@ export class TestingResults {
         pointer[lastKey] = value;
     }
 }
+
+export const TESTING_RESULTS = new TestingResults();

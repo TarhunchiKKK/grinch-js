@@ -1,7 +1,10 @@
-import { describe } from "./modules/tests";
+import { report } from "./modules/reporting";
+import { describe, runTests } from "./modules/tests";
 
 export const grinch = {
-    describe
+    describe,
+    report,
+    run: runTests
 };
 
 const data = {
