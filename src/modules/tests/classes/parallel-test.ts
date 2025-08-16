@@ -1,8 +1,11 @@
 import { ParallelTestCallback } from "../types/callbacks";
+import { ParallelTestPayload } from "../types/payloads";
 import { TestFactory } from "../utils/test-factory";
 import { BaseTest } from "./base-test";
 
-export class ParallelTest extends BaseTest {
+export class ParallelTest extends BaseTest<ParallelTestPayload> {
+    childrentests: BaseTest[] = [];
+
     public constructor(title: string, callback: ParallelTestCallback) {
         const payload = {
             test: new TestFactory(() => {})
@@ -11,6 +14,6 @@ export class ParallelTest extends BaseTest {
     }
 
     public async run() {
-        await Promise.resolve(null);
+        await Promise.all([this.childrentests.map(test => test.run())]);
     }
 }

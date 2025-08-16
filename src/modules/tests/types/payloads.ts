@@ -1,18 +1,15 @@
 import { AssertionFactory } from "../../assertions";
 
-export type SampleTestCallbackPayload = {
+export type SampleTestPayload = {
     assert: AssertionFactory;
 };
 
-export type SerialTestCallbackPayload = {
+export type SerialTestPayload = {
     test: unknown;
 };
 
-export type ParallelTestCallbackPayload = {
+export type ParallelTestPayload = {
     test: unknown;
 };
 
-export type AnyTestCallbackPayload =
-    | SampleTestCallbackPayload
-    | SerialTestCallbackPayload
-    | ParallelTestCallbackPayload;
+export type AnyTestPayload = SampleTestPayload | SerialTestPayload | ParallelTestPayload;

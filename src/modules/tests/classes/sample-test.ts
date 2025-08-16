@@ -1,8 +1,9 @@
 import { AssertionFactory } from "../../assertions";
 import { SampleTestCallback } from "../types/callbacks";
+import { SampleTestPayload } from "../types/payloads";
 import { BaseTest } from "./base-test";
 
-export class SampleTest extends BaseTest {
+export class SampleTest extends BaseTest<SampleTestPayload> {
     public constructor(title: string, callback: SampleTestCallback) {
         const payload = {
             assert: new AssertionFactory()
@@ -12,6 +13,6 @@ export class SampleTest extends BaseTest {
     }
 
     public async run() {
-        await Promise.resolve(null);
+        await this.callback(this.payload);
     }
 }

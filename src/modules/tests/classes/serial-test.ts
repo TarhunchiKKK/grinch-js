@@ -1,9 +1,10 @@
 import { SerialTestCallback } from "../types/callbacks";
+import { SerialTestPayload } from "../types/payloads";
 import { TestFactory } from "../utils/test-factory";
 import { BaseTest } from "./base-test";
 
-export class SerialTest extends BaseTest {
-    public childrenTests: BaseTest[] = [];
+export class SerialTest extends BaseTest<SerialTestPayload> {
+    private childrenTests: BaseTest[] = [];
 
     public constructor(title: string, callback: SerialTestCallback) {
         const payload = {
@@ -14,6 +15,8 @@ export class SerialTest extends BaseTest {
     }
 
     public async run() {
-        await Promise.resolve(null);
+        for (const test of this.childrenTests) {
+            await test.run();
+        }
     }
 }

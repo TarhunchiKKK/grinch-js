@@ -1,9 +1,9 @@
-import { SampleTestCallbackPayload, SerialTestCallbackPayload, ParallelTestCallbackPayload } from "./payloads";
+import { SampleTestPayload, SerialTestPayload, ParallelTestPayload } from "./payloads";
 
-export type SampleTestCallback = (_: SampleTestCallbackPayload) => void | Promise<void>;
+export type SampleTestCallback = (_: SampleTestPayload) => Promise<void>;
 
-export type SerialTestCallback = (_: SerialTestCallbackPayload) => void;
+export type SerialTestCallback = (_: SerialTestPayload) => Promise<void>;
 
-export type ParallelTestCallback = (_: ParallelTestCallbackPayload) => void;
+export type ParallelTestCallback = (_: ParallelTestPayload) => Promise<void>;
 
 export type AnyTestCallback = SampleTestCallback | SerialTestCallback | ParallelTestCallback;

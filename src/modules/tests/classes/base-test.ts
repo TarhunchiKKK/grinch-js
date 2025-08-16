@@ -1,13 +1,12 @@
-import { AnyTestCallback } from "../types/callbacks";
-import { AnyTestCallbackPayload } from "../types/payloads";
+import { AnyTestPayload } from "../types/payloads";
 
-export abstract class BaseTest {
+export abstract class BaseTest<Payload = AnyTestPayload> {
     public constructor(
-        private title: string,
+        protected title: string,
 
-        private payload: AnyTestCallbackPayload,
+        protected payload: Payload,
 
-        private callback: AnyTestCallback
+        protected callback: (_: Payload) => Promise<void>
     ) {}
 
     abstract run(): Promise<void>;
