@@ -1,1 +1,1 @@
-export { AssertionsFactory } from "./utils/assertions-factory";
+export { AssertionFactory } from "./utils/assertion-factory";
