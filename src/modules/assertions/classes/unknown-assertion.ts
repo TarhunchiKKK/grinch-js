@@ -1,5 +1,4 @@
-import { TypeofResponse } from "../types/core";
-import { ZodSchema } from "../types/zod";
+import { ClassConstructor, TypeofResponse } from "../../../shared";
 import { BaseAssertion } from "./base-assertion";
 
 export class UnknownAssertion extends BaseAssertion<unknown> {
@@ -33,8 +32,18 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
         return this.checkType("object");
     }
 
-    public toMatchZotoMatch(schema: ZodSchema): this {
-        this.conditions.push(() => schema.safeParse(this.value).success);
+    public toBeArray(): this {
+        this.conditions.push(() => Array.isArray(this.value));
+        return this;
+    }
+
+    public toBeDate(): this {
+        this.conditions.push(() => this.value instanceof Date);
+        return this;
+    }
+
+    public toBeInstanceOf(Class: ClassConstructor): this {
+        this.conditions.push(() => this.value instanceof Class);
         return this;
     }
 }

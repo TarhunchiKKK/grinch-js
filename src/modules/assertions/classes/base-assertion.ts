@@ -1,6 +1,7 @@
 import { deepCompare } from "../../../shared";
 import { FALSY_VALUES } from "../constants/core";
 import { Condition } from "../types/conditions";
+import { ZodSchema } from "../types/zod";
 
 export class BaseAssertion<T> {
     protected conditions: Condition<T>[] = [];
@@ -21,6 +22,21 @@ export class BaseAssertion<T> {
         return this;
     }
 
+    public toBeDefined(): this {
+        this.conditions.push(() => this.value !== undefined);
+        return this;
+    }
+
+    public toBeNull(): this {
+        this.conditions.push(() => this.value === null);
+        return this;
+    }
+
+    public toBeEmpty(): this {
+        this.conditions.push(() => this.value === null || this.value === undefined);
+        return this;
+    }
+
     public toBeTruthy(): this {
         this.conditions.push(() => !FALSY_VALUES.includes(this.value as null));
         return this;
@@ -31,8 +47,13 @@ export class BaseAssertion<T> {
         return this;
     }
 
-    public toBeEmpty(): this {
-        this.conditions.push(() => this.value === null || this.value === undefined);
+    public toMatchZodSchema(schema: ZodSchema): this {
+        this.conditions.push(() => schema.safeParse(this.value).success);
+        return this;
+    }
+
+    public toSatisfy(condition: (_: T) => boolean): this {
+        this.conditions.push(() => condition(this.value));
         return this;
     }
 }

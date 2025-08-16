@@ -1,5 +1,4 @@
 import { deepCompare } from "../../../shared";
-import { ZodSchema } from "../types/zod";
 import { BaseAssertion } from "./base-assertion";
 
 export class RecordAssertion extends BaseAssertion<Record<string, unknown>> {
@@ -39,11 +38,6 @@ export class RecordAssertion extends BaseAssertion<Record<string, unknown>> {
             }
             return deepCompare(this.value[key], value);
         });
-        return this;
-    }
-
-    public toMatchZodSchema(schema: ZodSchema): this {
-        this.conditions.push(() => schema.safeParse(this.value).success);
         return this;
     }
 }
