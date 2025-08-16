@@ -3,12 +3,12 @@ import { BaseAssertion } from "./base-assertion";
 
 export class RecordAssertion extends BaseAssertion<Record<string, unknown>> {
     public toHaveKey(key: string): this {
-        this.conditions.push(() => !!this.value[key]);
+        this.addCondition(() => !!this.value[key]);
         return this;
     }
 
     public toHaveAllKeys(keys: string[]): this {
-        this.conditions.push(() => {
+        this.addCondition(() => {
             for (const key in this.value) {
                 if (!keys.includes(key)) {
                     return false;
@@ -20,7 +20,7 @@ export class RecordAssertion extends BaseAssertion<Record<string, unknown>> {
     }
 
     public toHaveAnyOfKeys(keys: string[]): this {
-        this.conditions.push(() => {
+        this.addCondition(() => {
             for (const key in this.value) {
                 if (keys.includes(key)) {
                     return true;
@@ -32,7 +32,7 @@ export class RecordAssertion extends BaseAssertion<Record<string, unknown>> {
     }
 
     public toHaveKeyWithValue(key: string, value: unknown): this {
-        this.conditions.push(() => {
+        this.addCondition(() => {
             if (!this.value[key]) {
                 return false;
             }

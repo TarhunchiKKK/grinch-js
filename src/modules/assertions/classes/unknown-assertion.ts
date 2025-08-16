@@ -3,7 +3,7 @@ import { BaseAssertion } from "./base-assertion";
 
 export class UnknownAssertion extends BaseAssertion<unknown> {
     private checkType(type: TypeofResponse): this {
-        this.conditions.push(() => typeof this.value === type);
+        this.addCondition(() => typeof this.value === type);
         return this;
     }
 
@@ -16,7 +16,7 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
     }
 
     public toBeNan(): this {
-        this.conditions.push(() => this.value !== this.value);
+        this.addCondition(() => this.value !== this.value);
         return this;
     }
 
@@ -33,17 +33,17 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
     }
 
     public toBeArray(): this {
-        this.conditions.push(() => Array.isArray(this.value));
+        this.addCondition(() => Array.isArray(this.value));
         return this;
     }
 
     public toBeDate(): this {
-        this.conditions.push(() => this.value instanceof Date);
+        this.addCondition(() => this.value instanceof Date);
         return this;
     }
 
     public toBeInstanceOf(Class: ClassConstructor): this {
-        this.conditions.push(() => this.value instanceof Class);
+        this.addCondition(() => this.value instanceof Class);
         return this;
     }
 }

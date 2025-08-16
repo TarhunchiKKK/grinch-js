@@ -3,22 +3,22 @@ import { IterableAssertion } from "./iterable-assertion";
 
 export class StringAssertion extends IterableAssertion<string> {
     public toBeUpperCase(): this {
-        this.conditions.push(() => this.value === this.value.toUpperCase());
+        this.addCondition(() => this.value === this.value.toUpperCase());
         return this;
     }
 
     public toBeLowerCase(): this {
-        this.conditions.push(() => this.value === this.value.toLowerCase());
+        this.addCondition(() => this.value === this.value.toLowerCase());
         return this;
     }
 
     public toStartsWith(value: string): this {
-        this.conditions.push(() => this.value.startsWith(value));
+        this.addCondition(() => this.value.startsWith(value));
         return this;
     }
 
     public toEndsWith(value: string): this {
-        this.conditions.push(() => this.value.endsWith(value));
+        this.addCondition(() => this.value.endsWith(value));
         return this;
     }
 
@@ -27,12 +27,12 @@ export class StringAssertion extends IterableAssertion<string> {
     }
 
     public toBeBooleanString(): this {
-        this.conditions.push(() => this.value === "true" || this.value === "false");
+        this.addCondition(() => this.value === "true" || this.value === "false");
         return this;
     }
 
     public toBeDateString(): this {
-        this.conditions.push(() => {
+        this.addCondition(() => {
             const date = new Date(this.value);
             return !isNaN(date.getTime());
         });
@@ -40,7 +40,7 @@ export class StringAssertion extends IterableAssertion<string> {
     }
 
     public toMatchRegex(regexp: RegExp): this {
-        this.conditions.push(() => regexp.test(this.value));
+        this.addCondition(() => regexp.test(this.value));
         return this;
     }
 
