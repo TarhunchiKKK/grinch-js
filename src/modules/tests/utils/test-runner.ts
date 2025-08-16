@@ -11,7 +11,7 @@ export class TestRunner<State> {
     ) {}
 
     public createTestFactory() {
-        return new TestFactory(this.childrenTests.push, this.state);
+        return new TestFactory(this.childrenTests.push, this.state, [this.title]);
     }
 
     public async run() {

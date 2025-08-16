@@ -8,21 +8,27 @@ export class TestFactory<State> {
     public constructor(
         private onCreate: (_: Test) => void,
 
-        private state: State
+        private state: State,
+
+        private testResultPath: string[]
     ) {}
 
+    private getNextTEstResultPath(step: string) {
+        return [...this.testResultPath, step];
+    }
+
     public sample(title: string, callback: SampleTestCallback<State>) {
-        const test = new SampleTest(title, callback, this.state);
+        const test = new SampleTest(this.getNextTEstResultPath(title), callback, this.state);
         this.onCreate(test);
     }
 
     public serial(title: string, callback: SerialTestCallback<State>) {
-        const test = new SerialTest(title, callback, this.state);
+        const test = new SerialTest(this.getNextTEstResultPath(title), callback, this.state);
         this.onCreate(test);
     }
 
     public parallel(title: string, callback: ParallelTestCallback<State>) {
-        const test = new ParallelTest(title, callback, this.state);
+        const test = new ParallelTest(this.getNextTEstResultPath(title), callback, this.state);
         this.onCreate(test);
     }
 }

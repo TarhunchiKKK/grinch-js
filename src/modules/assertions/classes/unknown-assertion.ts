@@ -3,7 +3,10 @@ import { BaseAssertion } from "./base-assertion";
 
 export class UnknownAssertion extends BaseAssertion<unknown> {
     private checkType(type: TypeofResponse): this {
-        this.addCondition(() => typeof this.value === type);
+        this.runCondition(
+            () => typeof this.value === type,
+            `Value is not of type ${type}. Receive: ${JSON.stringify(this.value)}`
+        );
         return this;
     }
 
@@ -16,7 +19,7 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
     }
 
     public toBeNan(): this {
-        this.addCondition(() => this.value !== this.value);
+        this.runCondition(() => this.value !== this.value, `Value is not NaN. Receive: ${JSON.stringify(this.value)}`);
         return this;
     }
 
@@ -33,17 +36,23 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
     }
 
     public toBeArray(): this {
-        this.addCondition(() => Array.isArray(this.value));
+        this.runCondition(
+            () => Array.isArray(this.value),
+            `Value is not array. Receive: ${JSON.stringify(this.value)}`
+        );
         return this;
     }
 
     public toBeDate(): this {
-        this.addCondition(() => this.value instanceof Date);
+        this.runCondition(
+            () => this.value instanceof Date,
+            `Value is not date. Receive: ${JSON.stringify(this.value)}`
+        );
         return this;
     }
 
     public toBeInstanceOf(Class: ClassConstructor): this {
-        this.addCondition(() => this.value instanceof Class);
+        this.runCondition(() => this.value instanceof Class, "Value is not instance of provided class.");
         return this;
     }
 }

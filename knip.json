@@ -1,7 +1,6 @@
 {
     "$schema": "https://unpkg.com/knip@5/schema.json",
     "project": ["src/**/*.ts"],
-    "entry": ["src/index.ts"],
     "rules": {
         "files": "error",
         "classMembers": "error",

@@ -6,14 +6,14 @@ export class ParallelTest<State> implements Test {
     private childrenTests: Test[] = [];
 
     public constructor(
-        private title: string,
+        testResultPath: string[],
 
         callback: ParallelTestCallback<State>,
 
         state: State
     ) {
         callback({
-            test: new TestFactory(this.childrenTests.push, state)
+            test: new TestFactory(this.childrenTests.push, state, testResultPath)
         });
     }
 

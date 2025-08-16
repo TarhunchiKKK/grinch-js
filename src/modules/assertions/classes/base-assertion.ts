@@ -4,8 +4,6 @@ import { Condition } from "../types/conditions";
 import { ZodSchema } from "../types/zod";
 
 export class BaseAssertion<T> {
-    protected conditions: Condition[] = [];
-
     private inverseNextCondition = false;
 
     public constructor(protected readonly value: T) {}
@@ -15,64 +13,85 @@ export class BaseAssertion<T> {
         return this;
     }
 
-    protected addCondition(condition: Condition) {
+    protected runCondition(condition: Condition, errorMessage: string) {
+        let conditionToExecute = condition;
+
         if (this.inverseNextCondition) {
-            this.conditions.push(() => !condition());
+            conditionToExecute = () => !condition();
             this.inverseNextCondition = false;
-            return;
         }
 
-        this.inverseNextCondition = false;
-        this.conditions.push(condition);
+        const result = conditionToExecute();
+        if (!result) {
+            throw new Error(errorMessage);
+        }
     }
 
     public toBe(value: unknown): this {
-        this.addCondition(() => this.value === value);
+        this.runCondition(
+            () => this.value === value,
+            `Values are not equal. Expect: ${JSON.stringify(value)}, but receive: ${JSON.stringify(this.value)}`
+        );
         return this;
     }
 
     public toEquals(value: unknown): this {
-        this.addCondition(() => deepCompare(this.value, value));
+        this.runCondition(
+            () => deepCompare(this.value, value),
+            `Values are not equal. Expect: ${JSON.stringify(value)}, but receive: ${JSON.stringify(this.value)}`
+        );
         return this;
     }
 
     public toBeDefined(): this {
-        this.addCondition(() => this.value !== undefined);
+        this.runCondition(() => this.value !== undefined, `Value is not defined. `);
         return this;
     }
 
     public toBeNull(): this {
-        this.addCondition(() => this.value === null);
+        this.runCondition(() => this.value === null, `Value is not null. Receive: ${JSON.stringify(this.value)}`);
         return this;
     }
 
     public toBeEmpty(): this {
-        this.addCondition(() => this.value === null || this.value === undefined);
+        this.runCondition(
+            () => this.value === null || this.value === undefined,
+            `Value is not empty. Receive: ${JSON.stringify(this.value)}`
+        );
         return this;
     }
 
     public toBeTruthy(): this {
-        this.addCondition(() => !FALSY_VALUES.includes(this.value as null));
+        this.runCondition(
+            () => !FALSY_VALUES.includes(this.value as null),
+            `Value is not truthy. Receive: ${JSON.stringify(this.value)}`
+        );
         return this;
     }
 
     public toBeFalsy(): this {
-        this.addCondition(() => FALSY_VALUES.includes(this.value as null));
+        this.runCondition(
+            () => FALSY_VALUES.includes(this.value as null),
+            `Value is not falsy. Receive: ${JSON.stringify(this.value)}`
+        );
         return this;
     }
 
     public toBeIn(values: T[]): this {
-        this.addCondition(() => values.includes(this.value));
+        this.runCondition(
+            () => values.includes(this.value),
+            `Value is not in array. Receive: ${JSON.stringify(this.value)} `
+        );
         return this;
     }
 
     public toMatchZodSchema(schema: ZodSchema): this {
-        this.addCondition(() => schema.safeParse(this.value).success);
+        this.runCondition(() => schema.safeParse(this.value).success, "Value don't ,atch schema");
         return this;
     }
 
     public toSatisfy(condition: (_: T) => boolean): this {
-        this.addCondition(() => condition(this.value));
+        this.runCondition(() => condition(this.value), "Value don't match condition");
         return this;
     }
 }
