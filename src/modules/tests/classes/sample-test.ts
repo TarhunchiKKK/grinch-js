@@ -9,7 +9,7 @@ export class SampleTest extends BaseTest<SampleTestPayload> {
             assert: new AssertionFactory()
         };
 
-        super(title, payload, callback);
+        super(title, callback, payload);
     }
 
     public async run() {

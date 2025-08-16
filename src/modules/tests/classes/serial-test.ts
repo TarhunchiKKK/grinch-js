@@ -1,3 +1,4 @@
+import { EMPTY_TEST_FACTORY } from "../constants/test-factory";
 import { SerialTestCallback } from "../types/callbacks";
 import { SerialTestPayload } from "../types/payloads";
 import { TestFactory } from "../utils/test-factory";
@@ -7,11 +8,15 @@ export class SerialTest extends BaseTest<SerialTestPayload> {
     private childrenTests: BaseTest[] = [];
 
     public constructor(title: string, callback: SerialTestCallback) {
-        const payload = {
-            test: new TestFactory(() => {})
-        };
+        super(title, callback, {
+            test: EMPTY_TEST_FACTORY
+        });
 
-        super(title, payload, callback);
+        this.setTestFactory();
+    }
+
+    private setTestFactory() {
+        this.payload.test = new TestFactory(this.childrenTests.push);
     }
 
     public async run() {

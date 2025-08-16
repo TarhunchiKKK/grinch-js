@@ -1,2 +1,5 @@
+export { EMPTY_FUNCTION } from "./constants/functions";
+
 export { deepCompare } from "./helpers/objects";
+
 export type { ClassConstructor, TypeofResponse } from "./types/core";

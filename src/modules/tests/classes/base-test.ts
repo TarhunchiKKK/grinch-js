@@ -4,9 +4,9 @@ export abstract class BaseTest<Payload = AnyTestPayload> {
     public constructor(
         protected title: string,
 
-        protected payload: Payload,
+        protected callback: (_: Payload) => Promise<void>,
 
-        protected callback: (_: Payload) => Promise<void>
+        protected payload: Payload
     ) {}
 
     abstract run(): Promise<void>;
