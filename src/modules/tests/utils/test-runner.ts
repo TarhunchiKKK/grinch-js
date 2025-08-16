@@ -1,13 +1,17 @@
-import { BaseTest } from "../classes/base-test";
+import { Test } from "../types/test";
 import { TestFactory } from "./test-factory";
 
-export class TestRunner {
-    private childrenTests: BaseTest[] = [];
+export class TestRunner<State> {
+    private childrenTests: Test[] = [];
 
-    public constructor(private title: string) {}
+    public constructor(
+        private title: string,
+
+        private state: State
+    ) {}
 
     public createTestFactory() {
-        return new TestFactory(this.childrenTests.push);
+        return new TestFactory(this.childrenTests.push, this.state);
     }
 
     public async run() {

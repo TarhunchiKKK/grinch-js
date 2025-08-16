@@ -1,25 +1,23 @@
-import { EMPTY_TEST_FACTORY } from "../constants/test-factory";
 import { ParallelTestCallback } from "../types/callbacks";
-import { ParallelTestPayload } from "../types/payloads";
+import { Test } from "../types/test";
 import { TestFactory } from "../utils/test-factory";
-import { BaseTest } from "./base-test";
 
-export class ParallelTest extends BaseTest<ParallelTestPayload> {
-    private childrentests: BaseTest[] = [];
+export class ParallelTest<State> implements Test {
+    private childrenTests: Test[] = [];
 
-    public constructor(title: string, callback: ParallelTestCallback) {
-        super(title, callback, {
-            test: EMPTY_TEST_FACTORY
+    public constructor(
+        private title: string,
+
+        callback: ParallelTestCallback<State>,
+
+        state: State
+    ) {
+        callback({
+            test: new TestFactory(this.childrenTests.push, state)
         });
-
-        this.setTestFactory();
-    }
-
-    private setTestFactory() {
-        this.payload.test = new TestFactory(this.childrentests.push);
     }
 
     public async run() {
-        await Promise.all([this.childrentests.map(test => test.run())]);
+        await Promise.all([this.childrenTests.map(test => test.run())]);
     }
 }

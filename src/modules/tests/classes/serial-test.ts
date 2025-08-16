@@ -1,22 +1,20 @@
-import { EMPTY_TEST_FACTORY } from "../constants/test-factory";
 import { SerialTestCallback } from "../types/callbacks";
-import { SerialTestPayload } from "../types/payloads";
+import { Test } from "../types/test";
 import { TestFactory } from "../utils/test-factory";
-import { BaseTest } from "./base-test";
 
-export class SerialTest extends BaseTest<SerialTestPayload> {
-    private childrenTests: BaseTest[] = [];
+export class SerialTest<State> implements Test {
+    private childrenTests: Test[] = [];
 
-    public constructor(title: string, callback: SerialTestCallback) {
-        super(title, callback, {
-            test: EMPTY_TEST_FACTORY
+    public constructor(
+        private title: string,
+
+        callback: SerialTestCallback<State>,
+
+        state: State
+    ) {
+        callback({
+            test: new TestFactory(this.childrenTests.push, state)
         });
-
-        this.setTestFactory();
-    }
-
-    private setTestFactory() {
-        this.payload.test = new TestFactory(this.childrenTests.push);
     }
 
     public async run() {

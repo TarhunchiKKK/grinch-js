@@ -1,15 +1,22 @@
 import { AssertionFactory } from "../../assertions";
 import { SampleTestCallback } from "../types/callbacks";
 import { SampleTestPayload } from "../types/payloads";
-import { BaseTest } from "./base-test";
+import { Test } from "../types/test";
 
-export class SampleTest extends BaseTest<SampleTestPayload> {
-    public constructor(title: string, callback: SampleTestCallback) {
-        const payload = {
-            assert: new AssertionFactory()
+export class SampleTest<State> implements Test {
+    private payload: SampleTestPayload<State>;
+
+    public constructor(
+        private title: string,
+
+        private callback: SampleTestCallback<State>,
+
+        state: State
+    ) {
+        this.payload = {
+            assert: new AssertionFactory(),
+            state: state
         };
-
-        super(title, callback, payload);
     }
 
     public async run() {
