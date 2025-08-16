@@ -47,6 +47,11 @@ export class BaseAssertion<T> {
         return this;
     }
 
+    public toBeIn(values: T[]): this {
+        this.conditions.push(() => values.includes(this.value));
+        return this;
+    }
+
     public toMatchZodSchema(schema: ZodSchema): this {
         this.conditions.push(() => schema.safeParse(this.value).success);
         return this;

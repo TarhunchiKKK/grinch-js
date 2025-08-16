@@ -1,4 +1,4 @@
-import { JWT_REGEX, UUID_REGEX } from "../constants/regex";
+import { JWT_REGEX, NUMERIC_STRING_REGEX, UUID_REGEX } from "../constants/regex";
 import { IterableAssertion } from "./iterable-assertion";
 
 export class StringAssertion extends IterableAssertion<string> {
@@ -22,8 +22,12 @@ export class StringAssertion extends IterableAssertion<string> {
         return this;
     }
 
-    public toMatch(regexp: RegExp): this {
-        this.conditions.push(() => regexp.test(this.value));
+    public toBeNumericString(): this {
+        return this.toMatchRegex(NUMERIC_STRING_REGEX);
+    }
+
+    public toBeBooleanString(): this {
+        this.conditions.push(() => this.value === "true" || this.value === "false");
         return this;
     }
 
@@ -35,13 +39,16 @@ export class StringAssertion extends IterableAssertion<string> {
         return this;
     }
 
-    public toBeJWT(): this {
-        this.conditions.push(() => JWT_REGEX.test(this.value));
+    public toMatchRegex(regexp: RegExp): this {
+        this.conditions.push(() => regexp.test(this.value));
         return this;
     }
 
+    public toBeJWT(): this {
+        return this.toMatchRegex(JWT_REGEX);
+    }
+
     public toBeUUID(): this {
-        this.conditions.push(() => UUID_REGEX.test(this.value));
-        return this;
+        return this.toMatchRegex(UUID_REGEX);
     }
 }
