@@ -1,10 +1,10 @@
-import { AssertionFactory } from "../../assertions";
+import { TestAborter } from "../../test-aborting";
 import { TestFactory } from "../utils/test-factory";
 
 export type SampleTestPayload<State> = {
-    assert: AssertionFactory;
-
     state: State;
+
+    abort: TestAborter;
 };
 
 export type SerialTestPayload<State> = {
