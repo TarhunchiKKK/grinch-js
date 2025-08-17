@@ -1,3 +1,1 @@
-import { AssertionFactory } from "./utils/assertion-factory";
-
-export const assert = new AssertionFactory();
+export { AssertionFactory } from "./utils/assertion-factory";
