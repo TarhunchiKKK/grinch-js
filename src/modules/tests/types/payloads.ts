@@ -1,9 +1,6 @@
-import { AssertionFactory } from "../../assertions";
 import { TestFactory } from "../utils/test-factory";
 
 export type SampleTestPayload<State> = {
-    assert: AssertionFactory;
-
     state: State;
 };
 

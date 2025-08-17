@@ -1,4 +1,3 @@
-import { AssertionFactory } from "../../assertions";
 import { TESTING_RESULTS } from "../../reporting";
 import { SampleTestCallback } from "../types/callbacks";
 import { SampleTestPayload } from "../types/payloads";
@@ -15,7 +14,6 @@ export class SampleTest<State> implements Test {
         state: State
     ) {
         this.payload = {
-            assert: new AssertionFactory(),
             state: state
         };
 
