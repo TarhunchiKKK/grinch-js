@@ -14,3 +14,9 @@ export type SerialTestPayload<State> = {
 export type ParallelTestPayload<State> = {
     test: TestFactory<State>;
 };
+
+export type LyfecycleHookPayload<State> = {
+    state: State;
+
+    abort: TestAborter;
+};
