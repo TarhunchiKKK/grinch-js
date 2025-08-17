@@ -1,7 +1,10 @@
+import { TestAborter } from "../../test-aborting";
 import { TestFactory } from "../utils/test-factory";
 
 export type SampleTestPayload<State> = {
     state: State;
+
+    abort: TestAborter;
 };
 
 export type SerialTestPayload<State> = {
