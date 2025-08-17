@@ -1,2 +1,2 @@
-export { describe } from "./utils/describe";
-export { runTests } from "./utils/run-tests";
+export { scenario } from "./utils/scenario";
+export { Scenario } from "./classes/scenario";

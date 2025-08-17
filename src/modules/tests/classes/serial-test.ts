@@ -1,7 +1,7 @@
 import { TestAborter } from "../../test-aborting";
 import { SerialTestCallback } from "../types/callbacks";
 import { Test } from "../types/test";
-import { TestFactory } from "../utils/test-factory";
+import { TestFactory } from "../factories/test-factory";
 import { TestsGroup } from "./tests-group";
 
 export class SerialTest<State> extends TestsGroup<State> implements Test {

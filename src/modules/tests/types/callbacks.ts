@@ -1,6 +1,6 @@
 import { SampleTestPayload, SerialTestPayload, ParallelTestPayload, LyfecycleHookPayload } from "./payloads";
 
-export type SampleTestCallback<State> = (_: SampleTestPayload<State>) => Promise<void>;
+export type SampleTestCallback<State> = (_: SampleTestPayload<State>) => void | Promise<void>;
 
 export type SerialTestCallback<State> = (_: SerialTestPayload<State>) => void;
 
