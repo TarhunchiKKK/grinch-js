@@ -1,7 +1,6 @@
 import { describe, test, expect } from "@jest/globals";
 import { faker } from "@faker-js/faker";
 import { assert } from "../../../../src";
-import { FAKER_OPTIONS } from "../../shared/constants";
 
 const VALUES_COUNT = 10;
 
