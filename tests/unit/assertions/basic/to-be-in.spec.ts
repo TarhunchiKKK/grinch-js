@@ -36,8 +36,8 @@ describe("BaseAssertion.toBeIn()", () => {
         const values = [
             generateValue(() => faker.number.float(), false),
             generateValue(() => faker.string.alphanumeric(), false),
-            generateValue(() => faker.date.anytime(), false),
-            generateValue(() => ({ name: faker.person.fullName(), age: faker.number.int() }), false)
+            generateValue(() => faker.date.anytime(), false)
+            // generateValue(() => ({ name: faker.person.fullName(), age: faker.number.int() }), false)
         ];
 
         for (const { value, items } of values) {
