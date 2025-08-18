@@ -44,13 +44,11 @@ export class StringAssertion extends IterableAssertion<string> {
     }
 
     public toMatchRegex(regexp: RegExp): this {
-        this.runCondition(
-            () => regexp.test(this.value),
-            `Value is not match regex ${JSON.stringify(regexp)}. Receive: ${this.value}`
-        );
+        this.runCondition(() => regexp.test(this.value), `Value is not match regex ${regexp}. Receive: ${this.value}`);
         return this;
     }
 
+    // ! Tests Not Works
     public toBeJWT(): this {
         return this.toMatchRegex(JWT_REGEX);
     }
