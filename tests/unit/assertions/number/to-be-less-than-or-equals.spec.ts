@@ -31,7 +31,6 @@ describe("NumberAssertion.toBeLessThanOrEquals()", () => {
         });
 
         for (const { value, argument } of values) {
-            console.log(value, argument);
             expect(() => assert.number(value).toBeLessThanOrEquals(argument)).toThrow();
         }
     });

@@ -20,7 +20,7 @@ describe("StringAssertion.toBeUpperCase()", () => {
     test("With Invalid Data", () => {
         const values = Array.from({ length: VALUES_COUNT }).map(() =>
             faker.string.alphanumeric({ casing: "mixed", length: STRING_LENGTH })
-        );
+        ).filter(value => value !== value.toUpperCase());
 
         for (const value of values) {
             expect(() => assert.string(value).toBeUpperCase()).toThrow();
