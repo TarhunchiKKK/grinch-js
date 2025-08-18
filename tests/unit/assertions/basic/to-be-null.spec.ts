@@ -2,7 +2,11 @@ import { describe, test, expect } from "@jest/globals";
 import { faker } from "@faker-js/faker";
 import { assert } from "../../../../src";
 
-describe("BaseAssertion.toBeDefined()", () => {
+describe("BaseAssertion.toBeNull()", () => {
+    test("With Valid Data", () => {
+        expect(() => assert.basic(null).toBeNull()).not.toThrow();
+    });
+
     test("With Valid Data", () => {
         const values = [
             faker.number.int(),
@@ -13,17 +17,13 @@ describe("BaseAssertion.toBeDefined()", () => {
             faker.date.anytime(),
             true,
             false,
-            null,
+            undefined,
             {},
             []
         ];
 
         for (const value of values) {
-            expect(() => assert.basic(value).toBeDefined).not.toThrow();
+            expect(() => assert.basic(value).toBeNull()).toThrow();
         }
-    });
-
-    test("With Valid Data", () => {
-        expect(() => assert.basic(undefined).toBeDefined()).toThrow();
     });
 });
