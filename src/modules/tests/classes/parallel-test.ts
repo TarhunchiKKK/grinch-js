@@ -1,7 +1,7 @@
 import { TestAborter } from "../../test-aborting";
 import { ParallelTestCallback } from "../types/callbacks";
 import { Test } from "../types/test";
-import { TestFactory } from "../utils/test-factory";
+import { TestFactory } from "../factories/test-factory";
 import { TestsGroup } from "./tests-group";
 
 export class ParallelTest<State> extends TestsGroup<State> implements Test {

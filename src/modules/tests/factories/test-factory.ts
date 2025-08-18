@@ -8,33 +8,22 @@ import {
     SerialTestCallback
 } from "../types/callbacks";
 import { TestsStore } from "../types/test";
+import { BaseTestFactory } from "./base-test-factory";
 
-export class TestFactory<State> {
-    public constructor(
-        private testsStore: TestsStore<State>,
-
-        private state: State,
-
-        private testResultPath: string[]
-    ) {}
-
-    private getNextTEstResultPath(step: string) {
-        return [...this.testResultPath, step];
-    }
-
+export class TestFactory<State> extends BaseTestFactory<State, TestsStore<State>> {
     public sample(title: string, callback: SampleTestCallback<State>) {
-        const test = new SampleTest(this.getNextTEstResultPath(title), callback, this.state);
+        const test = new SampleTest(this.getNextTestResultPath(title), callback, this.state);
 
         this.testsStore.childrenTests.push(test);
     }
 
     public serial(title: string, callback: SerialTestCallback<State>) {
-        const test = new SerialTest(this.getNextTEstResultPath(title), callback, this.state);
+        const test = new SerialTest(this.getNextTestResultPath(title), callback, this.state);
         this.testsStore.childrenTests.push(test);
     }
 
     public parallel(title: string, callback: ParallelTestCallback<State>) {
-        const test = new ParallelTest(this.getNextTEstResultPath(title), callback, this.state);
+        const test = new ParallelTest(this.getNextTestResultPath(title), callback, this.state);
         this.testsStore.childrenTests.push(test);
     }
 

@@ -1,11 +1,11 @@
 import { AssertionFactory } from "./modules/assertions";
-import { report } from "./modules/reporting";
-import { describe, runTests } from "./modules/tests";
+import { ScenariosMapper, ScenariosMapperArgument } from "./modules/cli";
+import { scenario } from "./modules/tests";
 
-export const assert = new AssertionFactory();
+const assert = new AssertionFactory();
 
-export const grinch = {
-    describe,
-    report,
-    run: runTests
-};
+function grinch(argument: ScenariosMapperArgument) {
+    return new ScenariosMapper(argument);
+}
+
+export { grinch, scenario, assert };

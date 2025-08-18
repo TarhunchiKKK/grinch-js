@@ -1,7 +1,7 @@
+import { ScenarioTestFactory } from "../factories/scenario-test-factory";
 import { Test } from "../types/test";
-import { TestFactory } from "./test-factory";
 
-export class TestRunner<State> {
+export class Scenario<State> implements Test {
     private childrenTests: Test[] = [];
 
     public constructor(
@@ -11,7 +11,7 @@ export class TestRunner<State> {
     ) {}
 
     public createTestFactory() {
-        return new TestFactory(this.childrenTests.push, this.state, [this.title]);
+        return new ScenarioTestFactory(this.childrenTests, this.state, [this.title]);
     }
 
     public async run() {
