@@ -4,7 +4,11 @@ import { assert } from "../../../../src";
 
 describe("BaseAssertion.toBeNull()", () => {
     test("With Valid Data", () => {
-        expect(() => assert.basic(null).toBeNull()).not.toThrow();
+        const values = [null];
+
+        for (const value of values) {
+            expect(() => assert.basic(value).toBeNull()).not.toThrow();
+        }
     });
 
     test("With Valid Data", () => {

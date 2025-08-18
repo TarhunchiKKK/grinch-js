@@ -19,11 +19,15 @@ describe("BaseAssertion.toBeDefined()", () => {
         ];
 
         for (const value of values) {
-            expect(() => assert.basic(value).toBeDefined).not.toThrow();
+            expect(() => assert.basic(value).toBeDefined()).not.toThrow();
         }
     });
 
     test("With Valid Data", () => {
-        expect(() => assert.basic(undefined).toBeDefined()).toThrow();
+        const values = [undefined];
+
+        for (const value of values) {
+            expect(() => assert.basic(value).toBeDefined()).toThrow();
+        }
     });
 });

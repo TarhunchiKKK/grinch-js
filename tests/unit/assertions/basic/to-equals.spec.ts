@@ -40,15 +40,23 @@ const generateShortPerson = () => ({
 
 describe("BaseAssertion.toEquals()", () => {
     test("With Valid Data", () => {
-        const person = generateFullPerson();
+        const values = [generateFullPerson()];
 
-        expect(() => assert.basic(person).toEquals(person)).not.toThrow();
+        for (const value of values) {
+            expect(() => assert.basic(value).toEquals(value)).not.toThrow();
+        }
     });
 
     test("With Valid Data", () => {
-        const fullPerson = generateFullPerson();
-        const shortPerson = generateShortPerson();
+        const values = [
+            {
+                value1: generateFullPerson(),
+                value2: generateShortPerson()
+            }
+        ];
 
-        expect(() => assert.basic(fullPerson).toEquals(shortPerson)).toThrow();
+        for (const { value1, value2 } of values) {
+            expect(() => assert.basic(value1).toEquals(value2)).toThrow();
+        }
     });
 });
