@@ -18,7 +18,7 @@ describe("BaseAssertion.toBeTruthy()", () => {
         }
     });
 
-    test("With Valid Data", () => {
+    test("With Invalid Data", () => {
         const values = ["", 0, false, NaN, null, undefined];
 
         for (const value of values) {

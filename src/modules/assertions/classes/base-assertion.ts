@@ -35,7 +35,7 @@ export class BaseAssertion<T> {
         return this;
     }
 
-    public toEquals(value: T): this {
+    public toEquals(value: Record<string, unknown>): this {
         this.runCondition(
             () => deepCompare(this.value, value),
             `Values are not equal. Expect: ${JSON.stringify(value)}, but receive: ${JSON.stringify(this.value)}`

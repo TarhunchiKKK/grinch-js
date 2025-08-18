@@ -11,7 +11,7 @@ describe("BaseAssertion.toBeFalsy()", () => {
         }
     });
 
-    test("With Valid Data", () => {
+    test("With Invalid Data", () => {
         const values = [
             faker.string.alphanumeric(),
             faker.number.float({ min: 0.1 }),

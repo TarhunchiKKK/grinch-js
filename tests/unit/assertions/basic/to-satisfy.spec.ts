@@ -31,7 +31,7 @@ describe("BaseAssertion.toSatisfy()", () => {
         }
     });
 
-    test("With Valid Data", () => {
+    test("With Invalid Data", () => {
         const values = [
             {
                 value: faker.number.int({ min: 20 }),

@@ -11,7 +11,7 @@ describe("BaseAssertion.toBeNull()", () => {
         }
     });
 
-    test("With Valid Data", () => {
+    test("With Invalid Data", () => {
         const values = [
             faker.number.int(),
             faker.number.float(),

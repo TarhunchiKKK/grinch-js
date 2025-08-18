@@ -1,11 +1,11 @@
 export const FAKER_OPTIONS = {
     INT: {
-        min: -1_000_000,
-        max: 1_000_000
+        min: Number.MIN_SAFE_INTEGER,
+        max: Number.MAX_SAFE_INTEGER
     },
     FLOAT: {
-        min: -1_000_000,
-        max: 1_000_000
+        min: Number.MIN_SAFE_INTEGER,
+        max: Number.MAX_SAFE_INTEGER
     },
     STRING: {
         length: {

@@ -31,7 +31,7 @@ describe("BaseAssertion.toMatchZodSchema()", () => {
         }
     });
 
-    test("With Valid Data", () => {
+    test("With Invalid Data", () => {
         const values = [
             {
                 value: {

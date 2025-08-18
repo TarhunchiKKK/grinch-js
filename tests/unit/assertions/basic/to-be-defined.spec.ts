@@ -23,7 +23,7 @@ describe("BaseAssertion.toBeDefined()", () => {
         }
     });
 
-    test("With Valid Data", () => {
+    test("With Invalid Data", () => {
         const values = [undefined];
 
         for (const value of values) {

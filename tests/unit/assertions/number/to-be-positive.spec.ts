@@ -13,7 +13,7 @@ describe("NumberAssertion.toBePositive()", () => {
         }
     });
 
-    test("With Valid Data", () => {
+    test("With Invalid Data", () => {
         const values = Array.from({ length: VALUES_COUNT }).map(() => -faker.number.int({ min: 1 }));
 
         console.log(values);

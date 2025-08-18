@@ -4,12 +4,12 @@ import { assert } from "../../../../src";
 
 const VALUES_COUNT = 10;
 
-describe("NumberAssertion.toBeNegative()", () => {
+describe("NumberAssertion.toBeFloat()", () => {
     test("With Valid Data", () => {
-        const values = Array.from({ length: VALUES_COUNT }).map(() => -faker.number.int({ min: 1 }));
+        const values = Array.from({ length: VALUES_COUNT }).map(() => faker.number.float());
 
         for (const value of values) {
-            expect(() => assert.number(value).toBeNegative()).not.toThrow();
+            expect(() => assert.number(value).toBeFloat()).not.toThrow();
         }
     });
 
@@ -17,7 +17,7 @@ describe("NumberAssertion.toBeNegative()", () => {
         const values = Array.from({ length: VALUES_COUNT }).map(() => faker.number.int());
 
         for (const value of values) {
-            expect(() => assert.number(value).toBeNegative()).toThrow();
+            expect(() => assert.number(value).toBeFloat()).toThrow();
         }
     });
 });

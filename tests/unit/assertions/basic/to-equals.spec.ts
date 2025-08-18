@@ -47,7 +47,7 @@ describe("BaseAssertion.toEquals()", () => {
         }
     });
 
-    test("With Valid Data", () => {
+    test("With Invalid Data", () => {
         const values = [
             {
                 value1: generateFullPerson(),

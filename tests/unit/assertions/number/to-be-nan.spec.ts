@@ -2,20 +2,20 @@ import { describe, test, expect } from "@jest/globals";
 import { faker } from "@faker-js/faker";
 import { assert } from "../../../../src";
 
-describe("BaseAssertion.toBeEmpty()", () => {
+describe("NumberAssertion.toBeNaN()", () => {
     test("With Valid Data", () => {
-        const values = [undefined, null];
+        const values = [NaN];
 
         for (const value of values) {
-            expect(() => assert.basic(value).toBeEmpty()).not.toThrow();
+            expect(() => assert.number(value).toBeNaN()).not.toThrow();
         }
     });
 
     test("With Invalid Data", () => {
-        const values = ["", 0, NaN, false, faker.number.int(), faker.string.alphanumeric(), {}, []];
+        const values = [faker.number.float(), faker.number.int(), 0];
 
         for (const value of values) {
-            expect(() => assert.basic(value).toBeEmpty()).toThrow();
+            expect(() => assert.number(value).toBeNaN()).toThrow();
         }
     });
 });

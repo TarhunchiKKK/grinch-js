@@ -32,7 +32,7 @@ describe("BaseAssertion.toBeIn()", () => {
         }
     });
 
-    test("With Valid Data", () => {
+    test("With Invalid Data", () => {
         const values = [
             generateValue(() => faker.number.float(), false),
             generateValue(() => faker.string.alphanumeric(), false),
