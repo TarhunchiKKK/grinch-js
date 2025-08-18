@@ -27,7 +27,7 @@ export class BaseAssertion<T> {
         }
     }
 
-    public toBe(value: unknown): this {
+    public toBe(value: T): this {
         this.runCondition(
             () => this.value === value,
             `Values are not equal. Expect: ${JSON.stringify(value)}, but receive: ${JSON.stringify(this.value)}`
@@ -35,7 +35,7 @@ export class BaseAssertion<T> {
         return this;
     }
 
-    public toEquals(value: unknown): this {
+    public toEquals(value: T): this {
         this.runCondition(
             () => deepCompare(this.value, value),
             `Values are not equal. Expect: ${JSON.stringify(value)}, but receive: ${JSON.stringify(this.value)}`

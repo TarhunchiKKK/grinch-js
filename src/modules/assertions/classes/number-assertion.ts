@@ -1,14 +1,6 @@
 import { BaseAssertion } from "./base-assertion";
 
 export class NumberAssertion extends BaseAssertion<number> {
-    public toBe(value: number): this {
-        this.runCondition(
-            () => this.value === value,
-            `Values are not equal. Expect: ${value}, but receive: ${this.value} `
-        );
-        return this;
-    }
-
     public toBePositive(): this {
         this.runCondition(() => this.value >= 0, `Value is not positive. Receive: ${this.value}`);
         return this;
