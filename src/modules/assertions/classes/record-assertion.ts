@@ -2,6 +2,14 @@ import { deepCompare } from "../../../shared";
 import { BaseAssertion } from "./base-assertion";
 
 export class RecordAssertion extends BaseAssertion<Record<string, unknown>> {
+    public toEquals(value: unknown): this {
+        this.runCondition(
+            () => deepCompare(this.value, value),
+            `Values are not equal. Expect: ${JSON.stringify(value)}, but receive: ${JSON.stringify(this.value)}`
+        );
+        return this;
+    }
+    
     public toHaveKey(key: string): this {
         this.runCondition(() => !!this.value[key], `Value don't have key '${key}'`);
         return this;

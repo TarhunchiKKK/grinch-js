@@ -2,14 +2,6 @@ import { JWT_REGEX, NUMERIC_STRING_REGEX, UUID_REGEX } from "../constants/regex"
 import { IterableAssertion } from "./iterable-assertion";
 
 export class StringAssertion extends IterableAssertion<string> {
-    public toBe(value: string): this {
-        this.runCondition(
-            () => this.value === value,
-            `Values are not equal. Expect: ${value}, but receive: ${this.value} `
-        );
-        return this;
-    }
-
     public toBeUpperCase(): this {
         this.runCondition(
             () => this.value === this.value.toUpperCase(),

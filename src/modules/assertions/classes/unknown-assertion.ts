@@ -1,7 +1,15 @@
-import { ClassConstructor, TypeofResponse } from "../../../shared";
+import { ClassConstructor, TypeofResponse, deepCompare } from "../../../shared";
 import { BaseAssertion } from "./base-assertion";
 
 export class UnknownAssertion extends BaseAssertion<unknown> {
+    public toEquals(value: unknown): this {
+        this.runCondition(
+            () => deepCompare(this.value, value),
+            `Values are not equal. Expect: ${JSON.stringify(value)}, but receive: ${JSON.stringify(this.value)}`
+        );
+        return this;
+    }
+
     private checkType(type: TypeofResponse): this {
         this.runCondition(
             () => typeof this.value === type,
