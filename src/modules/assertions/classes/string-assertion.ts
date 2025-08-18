@@ -43,14 +43,6 @@ export class StringAssertion extends IterableAssertion<string> {
         return this;
     }
 
-    public toBeDateString(): this {
-        this.runCondition(() => {
-            const date = new Date(this.value);
-            return !isNaN(date.getTime());
-        }, `Value is not date string. Receive: ${this.value}`);
-        return this;
-    }
-
     public toMatchRegex(regexp: RegExp): this {
         this.runCondition(
             () => regexp.test(this.value),
