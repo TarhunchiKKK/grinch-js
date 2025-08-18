@@ -1,11 +1,11 @@
 import { describe, test, expect } from "@jest/globals";
 import { faker } from "@faker-js/faker";
-import { assert } from "../../../src";
-import { FAKER_OPTIONS } from "../shared/constants";
+import { assert } from "../../../../src";
+import { FAKER_OPTIONS } from "../../shared/constants";
 
-describe("Basic Assertions", () => {
-    test("toBe", () => {
-        const validCases = [
+describe("BaseAssertion.toBe()", () => {
+    test("With Valid Data", () => {
+        const values = [
             faker.number.int(FAKER_OPTIONS.INT),
             faker.number.float(FAKER_OPTIONS.FLOAT),
             faker.string.alpha(FAKER_OPTIONS.STRING),
@@ -15,11 +15,13 @@ describe("Basic Assertions", () => {
             faker.date.anytime()
         ];
 
-        for (const value of validCases) {
+        for (const value of values) {
             expect(() => assert.basic(value).toBe(value)).not.toThrow();
         }
+    });
 
-        const invalidCases = [
+    test("With Invalid Data", () => {
+        const values = [
             {
                 value1: faker.number.int(FAKER_OPTIONS.INT),
                 value2: faker.number.int(FAKER_OPTIONS.INT)
@@ -50,7 +52,7 @@ describe("Basic Assertions", () => {
             }
         ];
 
-        for (const { value1, value2 } of invalidCases) {
+        for (const { value1, value2 } of values) {
             expect(() => assert.basic(value1).toBe(value2)).toThrow();
         }
     });
