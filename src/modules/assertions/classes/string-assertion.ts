@@ -2,14 +2,6 @@ import { JWT_REGEX, NUMERIC_STRING_REGEX, UUID_REGEX } from "../constants/regex"
 import { IterableAssertion } from "./iterable-assertion";
 
 export class StringAssertion extends IterableAssertion<string> {
-    public toBe(value: string): this {
-        this.runCondition(
-            () => this.value === value,
-            `Values are not equal. Expect: ${value}, but receive: ${this.value} `
-        );
-        return this;
-    }
-
     public toBeUpperCase(): this {
         this.runCondition(
             () => this.value === this.value.toUpperCase(),
@@ -51,22 +43,12 @@ export class StringAssertion extends IterableAssertion<string> {
         return this;
     }
 
-    public toBeDateString(): this {
-        this.runCondition(() => {
-            const date = new Date(this.value);
-            return !isNaN(date.getTime());
-        }, `Value is not date string. Receive: ${this.value}`);
-        return this;
-    }
-
     public toMatchRegex(regexp: RegExp): this {
-        this.runCondition(
-            () => regexp.test(this.value),
-            `Value is not match regex ${JSON.stringify(regexp)}. Receive: ${this.value}`
-        );
+        this.runCondition(() => regexp.test(this.value), `Value is not match regex ${regexp}. Receive: ${this.value}`);
         return this;
     }
 
+    // ! Tests Not Works
     public toBeJWT(): this {
         return this.toMatchRegex(JWT_REGEX);
     }

@@ -1,4 +1,3 @@
-import { deepCompare } from "../../../shared";
 import { FALSY_VALUES } from "../constants/core";
 import { Condition } from "../types/conditions";
 import { ZodSchema } from "../types/zod";
@@ -27,17 +26,9 @@ export class BaseAssertion<T> {
         }
     }
 
-    public toBe(value: unknown): this {
+    public toBe(value: T): this {
         this.runCondition(
             () => this.value === value,
-            `Values are not equal. Expect: ${JSON.stringify(value)}, but receive: ${JSON.stringify(this.value)}`
-        );
-        return this;
-    }
-
-    public toEquals(value: unknown): this {
-        this.runCondition(
-            () => deepCompare(this.value, value),
             `Values are not equal. Expect: ${JSON.stringify(value)}, but receive: ${JSON.stringify(this.value)}`
         );
         return this;

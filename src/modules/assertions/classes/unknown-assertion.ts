@@ -1,7 +1,15 @@
-import { ClassConstructor, TypeofResponse } from "../../../shared";
+import { ClassConstructor, TypeofResponse, deepCompare } from "../../../shared";
 import { BaseAssertion } from "./base-assertion";
 
 export class UnknownAssertion extends BaseAssertion<unknown> {
+    public toEquals(value: unknown): this {
+        this.runCondition(
+            () => deepCompare(this.value, value),
+            `Values are not equal. Expect: ${JSON.stringify(value)}, but receive: ${JSON.stringify(this.value)}`
+        );
+        return this;
+    }
+
     private checkType(type: TypeofResponse): this {
         this.runCondition(
             () => typeof this.value === type,
@@ -35,18 +43,24 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
         return this.checkType("object");
     }
 
-    public toBeArray(): this {
+    public toBeRecord(): this {
         this.runCondition(
-            () => Array.isArray(this.value),
-            `Value is not array. Receive: ${JSON.stringify(this.value)}`
+            () => {
+                if (this.value === null || Array.isArray(this.value)) {
+                    return false;
+                }
+
+                return typeof this.value === "object";
+            },
+            `Value is not record. Receive: ${JSON.stringify(this.value)}`
         );
         return this;
     }
 
-    public toBeDate(): this {
+    public toBeArray(): this {
         this.runCondition(
-            () => this.value instanceof Date,
-            `Value is not date. Receive: ${JSON.stringify(this.value)}`
+            () => Array.isArray(this.value),
+            `Value is not array. Receive: ${JSON.stringify(this.value)}`
         );
         return this;
     }

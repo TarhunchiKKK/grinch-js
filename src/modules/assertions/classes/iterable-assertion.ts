@@ -1,3 +1,4 @@
+import { ElementType } from "../../../shared";
 import { BaseAssertion } from "./base-assertion";
 
 export class IterableAssertion<T extends string | unknown[]> extends BaseAssertion<T> {
@@ -49,12 +50,12 @@ export class IterableAssertion<T extends string | unknown[]> extends BaseAsserti
         return this;
     }
 
-    public toIncludes(item: T): this {
+    public toIncludes(item: T extends string ? string : ElementType<T>): this {
         this.runCondition(() => this.value.includes(item as string), `Value don't include ${JSON.stringify(item)}`);
         return this;
     }
 
-    public toHaveValueAtIndex(index: number, item: T): this {
+    public toHaveValueAtIndex(index: number, item: T extends string ? string : ElementType<T>): this {
         this.runCondition(
             () => this.value[index] === item,
             `Value don't have such value at index ${index}. Expect: ${JSON.stringify(item)}, but receive: ${JSON.stringify(this.value[index])}`
