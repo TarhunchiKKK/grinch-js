@@ -7,7 +7,7 @@ type ScenarioCallbackArgument<State> = {
     test: ScenarioTestFactory<State>;
 };
 
-export function scenario<State extends AvailableStates>(
+export function createScenario<State extends AvailableStates>(
     title: string,
     state: State,
     callback: (arg: ScenarioCallbackArgument<State>) => void

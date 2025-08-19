@@ -1,4 +1,4 @@
-import { TestAborter } from "../../test-aborting";
+import { TestAborter } from "../../aborting";
 import { SerialTestCallback } from "../types/callbacks";
 import { Test } from "../types/test";
 import { TestFactory } from "../factories/test-factory";

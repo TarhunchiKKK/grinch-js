@@ -1,5 +1,5 @@
 import { TESTING_RESULTS } from "../../reporting";
-import { TestAborter } from "../../test-aborting";
+import { TestAborter } from "../../aborting";
 import { SampleTestCallback } from "../types/callbacks";
 import { SampleTestPayload } from "../types/payloads";
 import { Test } from "../types/test";

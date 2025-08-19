@@ -1,4 +1,4 @@
-import { TestAborter } from "../../test-aborting";
+import { TestAborter } from "../../aborting";
 import { TestFactory } from "../factories/test-factory";
 
 export type SampleTestPayload<State> = {
