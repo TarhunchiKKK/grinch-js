@@ -5,7 +5,7 @@ import { assert } from "../../../../src";
 const ARRAY_LENGTH = 20;
 
 const generateValue = <T>(initializer: () => T, valid: boolean) => {
-    const items = Array.from({ length: ARRAY_LENGTH }).fill(null).map(initializer);
+    const items = Array.from({ length: ARRAY_LENGTH }).map(initializer);
 
     let value: T;
 

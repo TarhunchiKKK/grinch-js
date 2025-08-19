@@ -2,6 +2,9 @@ import { describe, test, expect } from "@jest/globals";
 import { faker } from "@faker-js/faker";
 import { assert } from "../../../../src";
 
+type Value = unknown;
+type Condition = (_: Value) => boolean;
+
 describe("BaseAssertion.toSatisfy()", () => {
     test("With Valid Data", () => {
         const values = [
@@ -18,16 +21,13 @@ describe("BaseAssertion.toSatisfy()", () => {
                 condition: (value: boolean) => value
             },
             {
-                value: Array.from({ length: 10 })
-                    .fill(null)
-                    .map(() => faker.string.alphanumeric()),
+                value: Array.from({ length: 10 }).map(() => faker.string.alphanumeric()),
                 condition: (value: string[]) => value.every(item => typeof item === "string")
             }
         ];
 
         for (const { value, condition } of values) {
-            // @ts-ignore
-            expect(() => assert.basic(value).toSatisfy(condition)).not.toThrow();
+            expect(() => assert.basic(value as Value).toSatisfy(condition as Condition)).not.toThrow();
         }
     });
 
@@ -46,16 +46,13 @@ describe("BaseAssertion.toSatisfy()", () => {
                 condition: (value: boolean) => !value
             },
             {
-                value: Array.from({ length: 10 })
-                    .fill(null)
-                    .map(() => faker.string.alphanumeric()),
+                value: Array.from({ length: 10 }).map(() => faker.string.alphanumeric()),
                 condition: (value: string[]) => value.every(item => typeof item !== "string")
             }
         ];
 
-        for (const value of values) {
-            // @ts-ignore
-            expect(() => assert.basic(value).toSatisfy(condition)).toThrow();
+        for (const { value, condition } of values) {
+            expect(() => assert.basic(value as Value).toSatisfy(condition as Condition)).toThrow();
         }
     });
 });
