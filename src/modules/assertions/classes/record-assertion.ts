@@ -30,18 +30,6 @@ export class RecordAssertion extends BaseAssertion<Record<string, unknown>> {
         return this;
     }
 
-    public toHaveAnyOfKeys(keys: string[]): this {
-        this.runCondition(() => {
-            for (const key in this.value) {
-                if (keys.includes(key)) {
-                    return true;
-                }
-            }
-            return false;
-        }, "Value don't have any of provided keys");
-        return this;
-    }
-
     public toHaveKeyWithValue(key: string, value: unknown): this {
         this.runCondition(
             () => {
