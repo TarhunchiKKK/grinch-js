@@ -7,7 +7,7 @@ const ARRAY_LENGTH = 10;
 type Value = unknown[];
 type Condition = (_: unknown) => boolean;
 
-describe("StringAssertion.toHaveEveryMatch()", () => {
+describe("ArrayAssertion.toHaveEveryMatch()", () => {
     test("With Valid Data", () => {
         const values = [
             {

@@ -7,7 +7,7 @@ const ARRAY_LENGTH = 10;
 type Value = unknown[];
 type Condition = (_: unknown) => boolean;
 
-describe("StringAssertion.toHaveSomeMatch()", () => {
+describe("ArrayAssertion.toHaveSomeMatch()", () => {
     test("With Valid Data", () => {
         const values = [
             {
