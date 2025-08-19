@@ -19,7 +19,6 @@ describe("RecordAssertion.toHaveAllKeys()", () => {
         ];
 
         for (const { value, keys } of values) {
-            console.log(value);
             expect(() => assert.record(value).toHaveAllKeys(keys)).not.toThrow();
         }
     });

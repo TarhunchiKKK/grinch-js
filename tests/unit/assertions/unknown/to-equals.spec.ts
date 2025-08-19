@@ -1,16 +1,18 @@
-import { describe, test, expect } from "@jest/globals";
+import { describe, test, expect, beforeAll } from "@jest/globals";
 import { faker } from "@faker-js/faker";
 import { assert } from "../../../../src";
 
 const ARRAY_LENGTH = 10;
 const STRING_LENGTH = { min: 10, max: 100 };
 
-BigInt.prototype["toJSON"] = function () {
-    const int = Number.parseInt(this.toString());
-    return int ?? this.toString();
-};
-
 describe("UnknownAssertion.toEquals()", () => {
+    beforeAll(() => {
+        BigInt.prototype["toJSON"] = function () {
+            const int = Number.parseInt(this.toString());
+            return int ?? this.toString();
+        };
+    });
+
     test("With Valid Data", () => {
         const values = [
             faker.string.alphanumeric({ length: STRING_LENGTH }),
@@ -42,9 +44,6 @@ describe("UnknownAssertion.toEquals()", () => {
         ];
 
         for (const value of values) {
-            if (typeof value === "bigint") {
-                console.log(JSON.stringify(value));
-            }
             expect(() => assert.unknown(value).toEquals(value)).not.toThrow();
         }
     });

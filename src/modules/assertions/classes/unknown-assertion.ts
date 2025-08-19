@@ -43,6 +43,20 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
         return this.checkType("object");
     }
 
+    public toBeRecord(): this {
+        this.runCondition(
+            () => {
+                if (this.value === null || Array.isArray(this.value)) {
+                    return false;
+                }
+
+                return typeof this.value === "object";
+            },
+            `Value is not record. Receive: ${JSON.stringify(this.value)}`
+        );
+        return this;
+    }
+
     public toBeArray(): this {
         this.runCondition(
             () => Array.isArray(this.value),
