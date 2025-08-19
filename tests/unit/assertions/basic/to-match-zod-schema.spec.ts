@@ -11,8 +11,8 @@ describe("BaseAssertion.toMatchZodSchema()", () => {
                     name: faker.person.fullName(),
                     age: faker.number.int(),
                     address: {
-                        country: faker.address.country(),
-                        city: faker.address.city()
+                        country: faker.location.country(),
+                        city: faker.location.city()
                     }
                 },
                 schema: z.object({
@@ -38,8 +38,8 @@ describe("BaseAssertion.toMatchZodSchema()", () => {
                     name: faker.person.fullName(),
                     age: faker.number.int(),
                     address: {
-                        country: faker.address.country(),
-                        street: faker.address.street()
+                        country: faker.location.country(),
+                        street: faker.location.street()
                     }
                 },
                 schema: z.object({
