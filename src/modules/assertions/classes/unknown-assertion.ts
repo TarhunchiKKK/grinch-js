@@ -51,14 +51,6 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
         return this;
     }
 
-    public toBeDate(): this {
-        this.runCondition(
-            () => this.value instanceof Date,
-            `Value is not date. Receive: ${JSON.stringify(this.value)}`
-        );
-        return this;
-    }
-
     public toBeInstanceOf(Class: ClassConstructor): this {
         this.runCondition(() => this.value instanceof Class, "Value is not instance of provided class.");
         return this;
