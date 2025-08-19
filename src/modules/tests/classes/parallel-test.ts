@@ -10,12 +10,12 @@ export class ParallelTest<State> extends TestsGroup<State> implements Test {
 
         callback: ParallelTestCallback<State>,
 
-        state: State
+        getState: () => State
     ) {
-        super({ state: state, abort: new TestAborter() });
+        super({ getState, abort: new TestAborter() });
 
         callback({
-            test: new TestFactory(this.testsStore, state, testResultPath)
+            test: new TestFactory(this.testsStore, getState, testResultPath)
         });
     }
 

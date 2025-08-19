@@ -12,12 +12,12 @@ export class SerialTest<State> extends TestsGroup<State> implements Test {
 
         callback: SerialTestCallback<State>,
 
-        state: State
+        getState: () => State
     ) {
-        super({ state, abort: new TestAborter() });
+        super({ getState, abort: new TestAborter() });
 
         callback({
-            test: new TestFactory(this.testsStore, state, testResultPath)
+            test: new TestFactory(this.testsStore, getState, testResultPath)
         });
     }
 
