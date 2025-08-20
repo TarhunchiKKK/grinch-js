@@ -1,25 +1,29 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { DynamicObject } from "../../../shared";
 
-class TestingResults {
-    public results: Record<string, any> = {};
+export class TestingResults {
+    public results = new DynamicObject<boolean>();
 
-    public setTestResult(path: string[], value: boolean) {
-        let pointer = this.results;
+    private static instance: TestingResults | null = null;
 
-        for (let i = 0; i < path.length - 1; i++) {
-            const key = path[i];
+    private constructor() {}
 
-            if (!pointer[key]) {
-                pointer[key] = {};
-            }
+    public add(path: string[], value: boolean) {
+        this.results.addProperty(path, value);
+    }
 
-            pointer = pointer[key];
+    public static getInstance() {
+        if (!TestingResults.instance) {
+            TestingResults.instance = new TestingResults();
         }
 
-        const lastKey = path[path.length - 1];
-        pointer[lastKey] = value;
+        return TestingResults.instance;
+    }
+
+    public static getResults() {
+        if (!TestingResults.instance) {
+            TestingResults.instance = new TestingResults();
+        }
+
+        return TestingResults.instance.results.data;
     }
 }
-
-export const TESTING_RESULTS = new TestingResults();

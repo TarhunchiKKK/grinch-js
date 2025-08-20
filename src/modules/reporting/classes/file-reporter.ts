@@ -1,10 +1,9 @@
 import { existsSync, mkdirSync, writeFile } from "fs";
-import { Reporter } from "../types/reporter";
-import { TESTING_RESULTS } from "..";
 import { Logger } from "../../../shared";
 import { join } from "path";
+import { BaseReporter } from "./base-reporter";
 
-export class FileReporter implements Reporter {
+export class FileReporter extends BaseReporter {
     public report() {
         const pathToDir = this.createDirectoryIfNotExists();
 
@@ -35,7 +34,7 @@ export class FileReporter implements Reporter {
     }
 
     private writeTestingResults(pathToFile: string) {
-        const data = JSON.stringify(TESTING_RESULTS.results, null, 4);
+        const data = JSON.stringify(this.testingResults, null, 4);
 
         writeFile(pathToFile, data, err => {
             if (err) {
