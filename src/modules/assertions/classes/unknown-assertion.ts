@@ -1,7 +1,17 @@
 import { ClassConstructor, TypeofResponse, deepCompare } from "../../../shared";
 import { BaseAssertion } from "./base-assertion";
 
+/**
+ * Assertion class for values of unknown type.
+ * Provides methods for asserting basic type checks, instance checks, and deep equality.
+ */
 export class UnknownAssertion extends BaseAssertion<unknown> {
+    /**
+     * Asserts that the value is deeply equal to the expected value.
+     *
+     * @param value The expected value to compare against.
+     * @returns The current instance for chaining.
+     */
     public toEquals(value: unknown): this {
         this.runCondition(
             () => deepCompare(this.value, value),
@@ -18,31 +28,66 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
         return this;
     }
 
+    /**
+     * Asserts that the value is of type string.
+     *
+     * @returns The current instance for chaining.
+     */
     public toBeString(): this {
         return this.checkType("string");
     }
 
+    /**
+     * Asserts that the value is of type number.
+     *
+     * @returns The current instance for chaining.
+     */
     public toBeNuber(): this {
         return this.checkType("number");
     }
 
+    /**
+     * Asserts that the value is NaN (Not a Number).
+     *
+     * @returns The current instance for chaining.
+     */
     public toBeNan(): this {
         this.runCondition(() => this.value !== this.value, `Value is not NaN. Receive: ${JSON.stringify(this.value)}`);
         return this;
     }
 
+    /**
+     * Asserts that the value is of type boolean.
+     *
+     * @returns The current instance for chaining.
+     */
     public toBeBoolean(): this {
         return this.checkType("boolean");
     }
 
+    /**
+     * Asserts that the value is of type bigint.
+     *
+     * @returns The current instance for chaining.
+     */
     public toBeBigInt(): this {
         return this.checkType("bigint");
     }
 
+    /**
+     * Asserts that the value is of type object.
+     *
+     * @returns The current instance for chaining.
+     */
     public toBeObject(): this {
         return this.checkType("object");
     }
 
+    /**
+     * Asserts that the value is of type object (excluding null and arrays).
+     *
+     * @returns The current instance for chaining.
+     */
     public toBeRecord(): this {
         this.runCondition(
             () => {
@@ -57,6 +102,11 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
         return this;
     }
 
+    /**
+     * Asserts that the value is an array.
+     *
+     * @returns The current instance for chaining.
+     */
     public toBeArray(): this {
         this.runCondition(
             () => Array.isArray(this.value),
@@ -65,6 +115,12 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
         return this;
     }
 
+    /**
+     * Asserts that the value is an instance of the specified class.
+     *
+     * @param Class The class constructor to check against.
+     * @returns The current instance for chaining.
+     */
     public toBeInstanceOf(Class: ClassConstructor): this {
         this.runCondition(() => this.value instanceof Class, "Value is not instance of provided class.");
         return this;
