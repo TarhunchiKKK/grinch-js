@@ -14,28 +14,4 @@ const grinch = {
     reusable: createReusableCallback
 };
 
-const data = {
-    name: "Alice",
-    age: 2
-};
-
-const cb = grinch.reusable<{ age: number; gender: number }>(({ test }) => {
-    test.serial("", ({ test }) => {
-        test.sample("", ({ state }) => {
-            const a = state.age;
-            console.log(a);
-        });
-    });
-});
-
-grinch.scenario("", data, ({ test }) => {
-    test.sample("", ({ state }) => {
-        console.log(state);
-    });
-
-    test.serial("", ({ test }) => {
-        test.reuse("", cb);
-    });
-});
-
-export { grinch, createScenario, assert };
+export { grinch,  assert };

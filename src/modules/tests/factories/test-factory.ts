@@ -1,5 +1,3 @@
-import { ReusableTestCreator } from "../../reusable-tests";
-import { ReusableTest } from "../../reusable-tests/classes/reusable-test";
 import { ParallelTest } from "../classes/parallel-test";
 import { SampleTest } from "../classes/sample-test";
 import { SerialTest } from "../classes/serial-test";
@@ -35,16 +33,5 @@ export class TestFactory<State> extends BaseTestFactory<State, TestsStore<State>
 
     public afterEach(callback: LyfecycleHookCallback<State>) {
         this.testsStore.afterEach.push(callback);
-    }
-
-    public reuse<CreatorState, ThisState = CreatorState & State>(
-        title: string,
-        testCreator: ReusableTestCreator<CreatorState>
-    ) {
-        const test = testCreator.create(
-            this.getNextTestResultPath(title),
-            this.state as unknown as CreatorState
-        ) as unknown as ReusableTest<ThisState>;
-        this.testsStore.childrenTests.push(test);
     }
 }
