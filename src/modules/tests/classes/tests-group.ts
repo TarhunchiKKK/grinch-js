@@ -1,7 +1,7 @@
 import { LyfecycleHookPayload } from "../types/payloads";
 import { Test, TestsStore } from "../types/test";
 
-export abstract class TestsGroup<State> {
+export class TestsGroup<State> {
     protected testsStore: TestsStore<State> = {
         childrenTests: [],
         beforeEach: [],

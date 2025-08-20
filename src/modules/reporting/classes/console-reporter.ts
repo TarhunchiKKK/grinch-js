@@ -1,21 +1,20 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { TESTING_RESULTS } from "..";
-import { Logger } from "../../../shared";
-import { Reporter } from "../types/reporter";
+ 
+ 
+ 
+import { DynamicObjectData, Logger } from "../../../shared";
+import { BaseReporter } from "./base-reporter";
 
-export class ConsoleReporter implements Reporter {
-    public report(obj: any = TESTING_RESULTS.results, path: string[] = []): void {
+export class ConsoleReporter extends BaseReporter {
+    public report(obj: DynamicObjectData<boolean> = this.testingResults, path: string[] = []): void {
         for (const key in obj) {
             const currentPath = [...path, key];
             const value = obj[key];
 
-            if (typeof value === "boolean") {
-                this.processValue(value, key, currentPath.length - 1);
-            } else if (typeof value === "object") {
+            if (typeof value === "object") {
                 console.log(`${" ".repeat(currentPath.length - 1)}${key}`);
                 this.report(value, currentPath);
+            } else {
+                this.processValue(value, key, currentPath.length - 1);
             }
         }
     }

@@ -1,9 +1,13 @@
-import { ParallelTest } from "../classes/parallel-test";
-import { SampleTest } from "../classes/sample-test";
-import { SerialTest } from "../classes/serial-test";
-import { SampleTestCallback, SerialTestCallback, ParallelTestCallback } from "../types/callbacks";
-import { Test } from "../types/test";
-import { BaseTestFactory } from "./base-test-factory";
+import {
+    BaseTestFactory,
+    Test,
+    SampleTestCallback,
+    SampleTest,
+    SerialTestCallback,
+    SerialTest,
+    ParallelTestCallback,
+    ParallelTest
+} from "../../tests";
 
 export class ScenarioTestFactory<State> extends BaseTestFactory<State, Test[]> {
     public sample(title: string, callback: SampleTestCallback<State>) {

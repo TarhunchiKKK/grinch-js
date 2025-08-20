@@ -1,6 +1,6 @@
-import { AssertionFactory } from "./modules/assertions";
-import { ScenariosMapper, ScenariosMapperArgument } from "./modules/cli";
-import { scenario } from "./modules/tests";
+import { createScenario } from "./modules/scenarios";
+import { assert } from "./modules/assertions";
+import { createReusableTest, reuseTest } from "./modules/reusable-tests";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
@@ -9,10 +9,10 @@ BigInt.prototype["toJSON"] = function () {
     return int ?? this.toString();
 };
 
-const assert = new AssertionFactory();
+const grinch = {
+    scenario: createScenario,
+    reusable: createReusableTest,
+    reuse: reuseTest
+};
 
-function grinch(argument: ScenariosMapperArgument) {
-    return new ScenariosMapper(argument);
-}
-
-export { grinch, scenario, assert };
+export { grinch, assert };

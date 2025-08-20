@@ -1,4 +1,4 @@
-import { TestAborter } from "../../test-aborting";
+import { TestAborter } from "../../aborting";
 import { ParallelTestCallback } from "../types/callbacks";
 import { Test } from "../types/test";
 import { TestFactory } from "../factories/test-factory";
@@ -12,7 +12,7 @@ export class ParallelTest<State> extends TestsGroup<State> implements Test {
 
         state: State
     ) {
-        super({ state: state, abort: new TestAborter() });
+        super({ state, abort: new TestAborter() });
 
         callback({
             test: new TestFactory(this.testsStore, state, testResultPath)

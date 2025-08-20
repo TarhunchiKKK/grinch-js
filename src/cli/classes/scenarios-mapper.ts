@@ -1,4 +1,4 @@
-import { Scenario } from "../../tests";
+import { Scenario } from "../../modules/scenarios";
 
 export type ScenariosMapperArgument = Record<string, Scenario<unknown>[]>;
 

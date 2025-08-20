@@ -1,5 +1,5 @@
 import { ScenarioTestFactory } from "../factories/scenario-test-factory";
-import { Test } from "../types/test";
+import { Test } from "../../tests";
 
 export class Scenario<State> implements Test {
     private childrenTests: Test[] = [];

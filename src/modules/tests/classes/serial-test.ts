@@ -1,12 +1,10 @@
-import { TestAborter } from "../../test-aborting";
+import { abort } from "../../aborting";
 import { SerialTestCallback } from "../types/callbacks";
 import { Test } from "../types/test";
 import { TestFactory } from "../factories/test-factory";
 import { TestsGroup } from "./tests-group";
 
 export class SerialTest<State> extends TestsGroup<State> implements Test {
-    private childrenTests: Test[] = [];
-
     public constructor(
         testResultPath: string[],
 
@@ -14,7 +12,7 @@ export class SerialTest<State> extends TestsGroup<State> implements Test {
 
         state: State
     ) {
-        super({ state, abort: new TestAborter() });
+        super({ state, abort: abort });
 
         callback({
             test: new TestFactory(this.testsStore, state, testResultPath)
@@ -22,7 +20,7 @@ export class SerialTest<State> extends TestsGroup<State> implements Test {
     }
 
     public async run() {
-        for (const test of this.childrenTests) {
+        for (const test of this.testsStore.childrenTests) {
             await this.runOne(test);
         }
     }
