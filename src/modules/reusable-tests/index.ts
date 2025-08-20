@@ -1,2 +1,2 @@
-export { ReusableTestCreator } from "./classes/reusable-test-creator";
-export { createReusableCallback } from "./utils/create-reusable-callback";
+export { createReusableTest } from "./utils/create-reusable-test";
+export { reuseTest } from "./utils/reuse-test";
