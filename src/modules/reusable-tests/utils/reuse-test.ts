@@ -2,6 +2,13 @@ import { TestFactory } from "../../tests";
 import { ReusableTest } from "../classes/reusable-test";
 import { ReusableTestCreator } from "../classes/reusable-test-creator";
 
+/**
+ * Reuses a test defined by a `ReusableTestCreator` within a test factory.
+ *
+ * @param title The title of the reused test.
+ * @param factory The test factory where the test is being reused.
+ * @param creator The `ReusableTestCreator` instance that defines the test.
+ */
 export function reuseTest<State extends CreatorState, CreatorState>(
     title: string,
     factory: TestFactory<State>,
