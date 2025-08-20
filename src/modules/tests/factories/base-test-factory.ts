@@ -4,7 +4,7 @@ export abstract class BaseTestFactory<State, TestsStore> {
     public constructor(
         protected testsStore: TestsStore,
 
-        protected getState: () => State,
+        protected state: State,
 
         protected testResultPath: string[]
     ) {}

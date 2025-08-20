@@ -14,10 +14,10 @@ export class SampleTest<State> implements Test {
 
         private callback: SampleTestCallback<State>,
 
-        getState: () => State
+        state: State
     ) {
         this.payload = {
-            getState: getState,
+            state: state,
             abort: abort
         };
 

@@ -1,18 +1,18 @@
 import { Scenario } from "../classes/scenario";
 import { ScenarioTestFactory } from "../factories/scenario-test-factory";
-
-type AvailableStates = Record<string, unknown> | null;
+import { AvailableScenarioStates } from "../types/state";
 
 type ScenarioCallbackArgument<State> = {
     test: ScenarioTestFactory<State>;
 };
 
-export function createScenario<State extends AvailableStates>(
+export function createScenario<State extends AvailableScenarioStates>(
     title: string,
     state: State,
     callback: (arg: ScenarioCallbackArgument<State>) => void
 ) {
-    const scenarioInstance = new Scenario(title, state);
-    const testFactory = scenarioInstance.createTestFactory();
+    const scenario = new Scenario(title, state);
+    const testFactory = scenario.createTestFactory();
     callback({ test: testFactory });
+    return scenario;
 }

@@ -2,7 +2,7 @@ import { TestAborter } from "../../aborting";
 import { TestFactory } from "../factories/test-factory";
 
 export type SampleTestPayload<State> = {
-    getState: () => State;
+    state: State;
 
     abort: TestAborter;
 };
@@ -16,7 +16,7 @@ export type ParallelTestPayload<State> = {
 };
 
 export type LyfecycleHookPayload<State> = {
-    getState: () => State;
+    state: State;
 
     abort: TestAborter;
 };

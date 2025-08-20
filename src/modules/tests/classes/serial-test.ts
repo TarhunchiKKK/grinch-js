@@ -1,28 +1,26 @@
-import { TestAborter } from "../../aborting";
+import { abort } from "../../aborting";
 import { SerialTestCallback } from "../types/callbacks";
 import { Test } from "../types/test";
 import { TestFactory } from "../factories/test-factory";
 import { TestsGroup } from "./tests-group";
 
 export class SerialTest<State> extends TestsGroup<State> implements Test {
-    private childrenTests: Test[] = [];
-
     public constructor(
         testResultPath: string[],
 
         callback: SerialTestCallback<State>,
 
-        getState: () => State
+        state: State
     ) {
-        super({ getState, abort: new TestAborter() });
+        super({ state, abort: abort });
 
         callback({
-            test: new TestFactory(this.testsStore, getState, testResultPath)
+            test: new TestFactory(this.testsStore, state, testResultPath)
         });
     }
 
     public async run() {
-        for (const test of this.childrenTests) {
+        for (const test of this.testsStore.childrenTests) {
             await this.runOne(test);
         }
     }

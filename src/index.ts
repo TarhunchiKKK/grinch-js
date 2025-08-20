@@ -1,6 +1,6 @@
-import { createScenario } from "./compose/scenarios";
-import { ScenariosMapperArgument, ScenariosMapper } from "./compose/cli";
+import { createScenario } from "./modules/scenarios";
 import { assert } from "./modules/assertions";
+import { createReusableCallback } from "./modules/reusable-tests/utils/create-reusable-callback";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
@@ -9,8 +9,33 @@ BigInt.prototype["toJSON"] = function () {
     return int ?? this.toString();
 };
 
-function grinch(argument: ScenariosMapperArgument) {
-    return new ScenariosMapper(argument);
-}
+const grinch = {
+    scenario: createScenario,
+    reusable: createReusableCallback
+};
+
+const data = {
+    name: "Alice",
+    age: 2
+};
+
+const cb = grinch.reusable<{ age: number; gender: number }>(({ test }) => {
+    test.serial("", ({ test }) => {
+        test.sample("", ({ state }) => {
+            const a = state.age;
+            console.log(a);
+        });
+    });
+});
+
+grinch.scenario("", data, ({ test }) => {
+    test.sample("", ({ state }) => {
+        console.log(state);
+    });
+
+    test.serial("", ({ test }) => {
+        test.reuse("", cb);
+    });
+});
 
 export { grinch, createScenario, assert };
