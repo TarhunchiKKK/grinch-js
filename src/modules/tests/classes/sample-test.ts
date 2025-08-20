@@ -1,5 +1,5 @@
 import { TESTING_RESULTS } from "../../reporting";
-import { TestAborter } from "../../aborting";
+import { TestAborter, abort } from "../../aborting";
 import { SampleTestCallback } from "../types/callbacks";
 import { SampleTestPayload } from "../types/payloads";
 import { Test } from "../types/test";
@@ -16,7 +16,7 @@ export class SampleTest<State> implements Test {
     ) {
         this.payload = {
             getState: getState,
-            abort: new TestAborter()
+            abort: abort
         };
 
         TESTING_RESULTS.setTestResult(this.testResultPath, false);
