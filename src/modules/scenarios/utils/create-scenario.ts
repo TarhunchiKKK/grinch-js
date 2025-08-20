@@ -12,7 +12,10 @@ export function createScenario<State extends AvailableScenarioStates>(
     callback: (arg: ScenarioCallbackArgument<State>) => void
 ) {
     const scenario = new Scenario(title, state);
+
     const testFactory = scenario.createTestFactory();
+
     callback({ test: testFactory });
+
     return scenario;
 }
