@@ -14,3 +14,55 @@ In recent years, thanks to the development of web technologies, the Internet has
 
 Grinch aims to provide a ready-made foundation that allows you to effortlessly create user-friendly, fast, flexible and easily maintainable e2e scenarios. Grinch's coding style is largely inspired by the style of frontend frameworks, where various sections of code are grouped into a tree-like structure.
 
+## Installation
+
+### With CLI
+
+Run this command:
+
+```bash
+npx grinch init
+```
+
+After running this command you can see some new files:
+
+- <i>grinch.config.ts</i> file in root of your project - configuration file
+- <i>tests/main.grinch.ts</i> - entry file for Grinch scenarios
+
+### Manualy
+
+1. Install Grinch with your package manager:
+
+```bash
+npm i --save-dev grinch
+
+yarn add --dev grinch
+
+pnpm i --save-dev grinch
+```
+
+2. Create <i>grinch.config.ts</i> file in the root of your project:
+
+```typescript
+import { defineConfig } from "grinch";
+
+export default defineConfig({
+    // Configuration properties
+});
+```
+
+3. Create entry file for your scenarios:
+
+```typescript
+import { mapScenarios  } from "grinch
+
+export default mapScenarios({
+  "command_1": [
+    // Scenarios for "command_1"
+  ],
+  "command_2": [
+    // Scenarios for "command_2"
+  ],
+  // Other commands
+});
+```
