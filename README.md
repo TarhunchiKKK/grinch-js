@@ -13,25 +13,25 @@
 - [Table of Contents](#table-of-contents)
 - [Philosophy](#philosophy)
 - [Installation](#installation)
-    - [With CLI](#with-cli)
-    - [Manually](#manually)
+  - [With CLI](#with-cli)
+  - [Manually](#manually)
 - [Basic Usage](#basic-usage)
 - [Configuration](#configuration)
 - [Test Types](#test-types)
-    - [Scenario](#scenario)
-    - [Parallel](#parallel)
-    - [Serial](#serial)
-    - [Sample](#sample)
+  - [Scenario](#scenario)
+  - [Parallel](#parallel)
+  - [Serial](#serial)
+  - [Sample](#sample)
 - [Lifecycle Hooks](#lifecycle-hooks)
 - [Reusable Tests](#reusable-tests)
 - [Assertions](#assertions)
-    - [Basic Assertions](#basic-assertions)
-    - [Iterable Values Assertions](#iterable-values-assertions)
-    - [Number Assertions](#number-assertions)
-    - [String Assertions](#string-assertions)
-    - [Record Assertions](#record-assertions)
-    - [Array Assertions](#array-assertions)
-    - [Unknown Assertions](#unknown-assertions)
+  - [Basic Assertions](#basic-assertions)
+  - [Iterable Values Assertions](#iterable-values-assertions)
+  - [Number Assertions](#number-assertions)
+  - [String Assertions](#string-assertions)
+  - [Record Assertions](#record-assertions)
+  - [Array Assertions](#array-assertions)
+  - [Unknown Assertions](#unknown-assertions)
 
 ## Philosophy
 
@@ -211,6 +211,70 @@ test.serial("Test title", ({ test }) => {
 In the example above, the test is the first in the sequence. Therefore, the behavior of this test will be similar to the behavior of the `beforeAll` hook. The `afterAll` hook can be implemented in a similar way.
 
 ## Reusable Tests
+
+One of the key features of Grinch is reusable tests. This feature can greatly reduce the number of duplicates in the code.
+
+Let's create a simple scenario:
+
+```typescript
+import { scenario } from "./index";
+
+type ScenarioState = {
+    name: string;
+    age: number;
+    country: string;
+};
+
+scenario("Scenario title", state, ({ test }) => {
+    test.serial("Test title", ({ test }) => {
+        // Here we will use reusable test
+    });
+});
+```
+
+Now let's create reusable test:
+
+```typescript
+import { reusableTest } from "./index";
+
+type PartialState = {
+    country: string;
+};
+
+const editCountryTest = reusableTest<PartialState>(({ test }) => {
+    test.sample("Edit country", ({ state }) => {
+        state.country = "UK";
+    });
+});
+```
+
+Now let's reuse our test in scenario:
+
+```typescript
+import { reuseTest, scenario } from "./index";
+
+type ScenarioState = {
+    name: string;
+    age: number;
+    country: string;
+};
+
+scenario("Scenario title", state, ({ test }) => {
+    test.serial("Test title", ({ test }) => {
+        reuseTest("Edit country", test, editCountryTest);
+    });
+});
+```
+
+Our reusable test now can get access to scenario state.
+
+Note that the `LocalState` type is a supertype of `ScenarioState`.
+
+**Only one condition is necessary to use the reusable tests:**
+
+_The type of test being reused should be a supertype of the scenario state type._
+
+This condition is necessary for type safety.
 
 ## Assertions
 
