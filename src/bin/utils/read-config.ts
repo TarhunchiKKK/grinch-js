@@ -24,7 +24,7 @@ export async function readConfig() {
         }
 
         return { config: config.default, entryFile };
-    } catch (error: unknown) {
+    } catch (error) {
         Logger.failure("Error occured during reading configuration");
         console.error(error);
 

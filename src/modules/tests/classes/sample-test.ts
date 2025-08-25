@@ -29,7 +29,7 @@ export class SampleTest<State> implements Test {
             await this.callback(this.payload);
 
             this.testingResults.add(this.testResultPath, true);
-        } catch (error: unknown) {
+        } catch (error) {
             if (TestAborter.isFail(error)) {
                 this.testingResults.add(this.testResultPath, true);
             }
