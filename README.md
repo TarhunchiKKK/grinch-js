@@ -8,9 +8,34 @@
   A progressive <a href="https://nodejs.org" target="_blank">Node.js</a> library for writing efficient and flexible e2e test scenarios.
 </p>
 
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [Philosophy](#philosophy)
+- [Installation](#installation)
+    - [With CLI](#with-cli)
+    - [Manually](#manually)
+- [Basic Usage](#basic-usage)
+- [Configuration](#configuration)
+- [Test Types](#test-types)
+    - [Scenario](#scenario)
+    - [Parallel](#parallel)
+    - [Serial](#serial)
+    - [Sample](#sample)
+- [Lifecycle Hooks](#lifecycle-hooks)
+- [Reusable Tests](#reusable-tests)
+- [Assertions](#assertions)
+    - [Basic Assertions](#basic-assertions)
+    - [Iterable Values Assertions](#iterable-values-assertions)
+    - [Number Assertions](#number-assertions)
+    - [String Assertions](#string-assertions)
+    - [Record Assertions](#record-assertions)
+    - [Array Assertions](#array-assertions)
+    - [Unknown Assertions](#unknown-assertions)
+
 ## Philosophy
 
-In recent years, thanks to the development of web technologies, the Internet has become an information processing center, which has led to the emergence of such amazing projects, including <a href="https://nestjs.com/">NestJS</a>, <a href="https://fastapi.tiangolo.com/">FastAPI</a>, <a href="https://rubyonrails.org/">Ruby on Rails</a> and others. These tools increase developer productivity and allow you to create fast, testable, and extensible applications. These projects have many excellent libraries, helpers, and tools, but none of them effectively solves one of the most difficult and time-consuming problems of modern web testing.
+In recent years, thanks to the development of web technologies, the Internet has become the "heart of information processing", which has led to the emergence of such amazing projects, including <a href="https://nestjs.com/">NestJS</a>, <a href="https://fastapi.tiangolo.com/">FastAPI</a>, <a href="https://rubyonrails.org/">Ruby on Rails</a> and others. These tools increase developer productivity and allow you to create fast, testable, and extensible applications. These projects have many excellent libraries, helpers, and tools, but none of them effectively solves one of the most difficult and time-consuming problems of modern web testing.
 
 Grinch aims to provide a ready-made foundation that allows you to effortlessly create user-friendly, fast, flexible and easily maintainable e2e scenarios. Grinch's coding style is largely inspired by the style of frontend frameworks, where various sections of code are grouped into a tree-like structure.
 
@@ -29,7 +54,7 @@ After running this command you can see some new files:
 - `grinch.config.ts` file in root of your project - configuration file
 - `tests/main.grinch.ts` - entry file for Grinch scenarios
 
-### Manualy
+### Manually
 
 1. Install Grinch with your package manager:
 
@@ -92,7 +117,7 @@ Scenario is a specific sequence of actions, allowing you to simulate the actions
 Each scenario can have a shared state that can be accessed by all child tests of that scenario. The state can be any value of the object type or null.
 
 ```typescript
-import { scenarios } from "grinch";
+import { scenario } from "grinch";
 
 const state = {
     // Fields of your state
@@ -147,6 +172,44 @@ test.sample("Test title", async ({ state }) => {
 // ...
 ```
 
+## Lifecycle Hooks
+
+Grinch provides the ability to create `beforeEach` and `afterEach` hooks.
+
+You can use this hooks in all types of test groups (excluding sample tests) and in reusable tests.
+
+Example:
+
+```typescript
+// ...
+test.parallel("Test title", ({ test }) => {
+    test.beforeEach(async () => {
+        // Any logic here
+    });
+
+    // Children tests
+});
+// ...
+```
+
+There is no need to implement the `beforeAll` and `afterAll` hooks. These hooks can be implemented using a sequential test.
+
+Example of the `beforeAll` hook implementation:
+
+```typescript
+// ...
+test.serial("Test title", ({ test }) => {
+    test.sample("This test will run before all next tests", async () => {
+        // Any logic
+    });
+
+    // Children tests
+});
+// ...
+```
+
+In the example above, the test is the first in the sequence. Therefore, the behavior of this test will be similar to the behavior of the `beforeAll` hook. The `afterAll` hook can be implemented in a similar way.
+
 ## Reusable Tests
 
 ## Assertions
@@ -166,7 +229,7 @@ Basic assertion is a set of statements that are inherited by all other statement
 | `toBeNull`         | Asserts that the value is null                                                     |
 | `tobeEmpty`        | Asserts that the value is null or undefined                                        |
 | `toBeTruthy`       | Asserts that the value is truthy                                                   |
-| `toBeFalsy`        | Asserts that the value is falsy ("", 0, etc.)                                      |
+| `toBeFalsy`        | Asserts that the value is falsy (`""`, `0`, etc.)                                  |
 | `toBeIn`           | Asserts that the value is present in the provided array                            |
 | `toMatchZodSchema` | Asserts that the value matches the given <a href="https://zod.dev/">Zod</a> schema |
 | `toSatisfy`        | Asserts that the value satisfies the provided condition function                   |
@@ -213,7 +276,7 @@ Number assertion also inherits the statements of the basic assertion.
 | `toBeNegative`           | Asserts that the number is negative (less than 0)                      |
 | `toBeInteger`            | Asserts that the number is integer                                     |
 | `toBeFloat`              | Asserts that the number is a floating-point number (not an integer)    |
-| `toBeNaN`                | Asserts that the number is NaN (Not a Number)                          |
+| `toBeNaN`                | Asserts that the number is `NaN` (Not a Number)                        |
 | `toBeLessThan`           | Asserts that the number is less than to provided value                 |
 | `toBeLessThanOrEquals`   | Asserts that the number is less than or equal to provided value        |
 | `toBeGraterThan`         | Asserts that the number is greater than to the provided value          |
@@ -246,7 +309,7 @@ String assertion also inherits the statements of the basic assertion and iterabl
 | `toStartsWith`      | Asserts that the string starts with the specified value            |
 | `toEndsWith`        | Asserts that the string ends with the specified value              |
 | `toBeNumericString` | Asserts that the string is a numeric string (contains only digits) |
-| `toBeBooleanString` | Asserts that the string is either "true" or "false"                |
+| `toBeBooleanString` | Asserts that the string is either `"true"` or `"false"`            |
 | `toMatchRegex`      | Asserts that the string matches the given regular expression       |
 | `toBeUUID`          | Asserts that the string is a valid UUID                            |
 
@@ -269,12 +332,12 @@ Record assertion is a set of statements that were designer for object values (sa
 
 Record assertion also inherits the statements of the basic assertion.
 
-| Assertion            | Description                                                                                    |
-| -------------------- | ---------------------------------------------------------------------------------------------- |
-| `toEquals`           | Asserts that the record is deeply equal to the expected value (by using JSON.stringify method) |
-| `toHaveKey`          | Asserts that the record has the specified key                                                  |
-| `toHaveAllKeys`      | Asserts that the record has all of the specified keys                                          |
-| `toHaveKeyWithValue` | Asserts that the record has the specified key with the specified value                         |
+| Assertion            | Description                                                                                      |
+| -------------------- | ------------------------------------------------------------------------------------------------ |
+| `toEquals`           | Asserts that the record is deeply equal to the expected value (by using `JSON.stringify` method) |
+| `toHaveKey`          | Asserts that the record has the specified key                                                    |
+| `toHaveAllKeys`      | Asserts that the record has all of the specified keys                                            |
+| `toHaveKeyWithValue` | Asserts that the record has the specified key with the specified value                           |
 
 Usage:
 
@@ -325,18 +388,18 @@ Unknown assertion is a set of statements that were designed for values of unknow
 
 Unknown assertion also inherits the statements of the basic assertion.
 
-| Assertion        | Description                                                                               |
-| ---------------- | ----------------------------------------------------------------------------------------- |
-| `toEquals`       | Asserts that the value is deeply equal to the expected value (with JSON.stringify method) |
-| `toBeString`     | Asserts that the value is of type string                                                  |
-| `toBeNuber`      | Asserts that the value is of type number                                                  |
-| `toBeNan`        | Asserts that the value is NaN (Not a Number)                                              |
-| `toBeBoolean`    | Asserts that the value is of type boolean                                                 |
-| `toBeBigInt`     | Asserts that the value is of type bigint                                                  |
-| `toBeObject`     | Asserts that the value is of type object                                                  |
-| `toBeRecord`     | Asserts that the value is of type object (excluding null and arrays)                      |
-| `toBeArray`      | Asserts that the value is an array                                                        |
-| `toBeInstanceOf` | Asserts that the value is an instance of the specified class                              |
+| Assertion        | Description                                                                                     |
+| ---------------- | ----------------------------------------------------------------------------------------------- |
+| `toEquals`       | Asserts that the value is deeply equal to the expected value (by using `JSON.stringify` method) |
+| `toBeString`     | Asserts that the value is of type string                                                        |
+| `toBeNuber`      | Asserts that the value is of type number                                                        |
+| `toBeNan`        | Asserts that the value is NaN (Not a Number)                                                    |
+| `toBeBoolean`    | Asserts that the value is of type boolean                                                       |
+| `toBeBigInt`     | Asserts that the value is of type bigint                                                        |
+| `toBeObject`     | Asserts that the value is of type object                                                        |
+| `toBeRecord`     | Asserts that the value is of type object (excluding null and arrays)                            |
+| `toBeArray`      | Asserts that the value is an array                                                              |
+| `toBeInstanceOf` | Asserts that the value is an instance of the specified class                                    |
 
 Usage:
 
