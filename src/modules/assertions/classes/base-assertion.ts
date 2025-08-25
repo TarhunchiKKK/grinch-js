@@ -42,7 +42,7 @@ export class BaseAssertion<T> {
     }
 
     /**
-     * User to compare values using === operator.
+     * Used to compare values using === operator.
      *
      * @param value T - Value to compare with.
      * @returns The current instance for chaining.
