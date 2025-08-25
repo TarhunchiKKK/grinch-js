@@ -1,7 +1,9 @@
+import { ReporterTypes } from "../../reporting";
+
 export type ConfigOptions = {
     entryFile: string;
 
-    reporter: "file" | "console";
+    reporter: ReporterTypes;
 
     resultsDirectory?: string;
 };
