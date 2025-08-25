@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://nestjs.com/" target="blank">
-    <img src="./assets/logo.svg" width="120" alt="Nest Logo" />
+    <img src="./assets/logo.svg" width="140" alt="Nest Logo" />
   </a>
 </p>
 
@@ -26,8 +26,8 @@ npx grinch init
 
 After running this command you can see some new files:
 
-- <i>grinch.config.ts</i> file in root of your project - configuration file
-- <i>tests/main.grinch.ts</i> - entry file for Grinch scenarios
+- _grinch.config.ts_ file in root of your project - configuration file
+- _tests/main.grinch.ts_ - entry file for Grinch scenarios
 
 ### Manualy
 
@@ -41,7 +41,7 @@ yarn add --dev grinch
 pnpm i --save-dev grinch
 ```
 
-2. Create <i>grinch.config.ts</i> file in the root of your project:
+2. Create _grinch.config.ts_ file in the root of your project:
 
 ```typescript
 import { defineConfig } from "grinch";
@@ -54,15 +54,113 @@ export default defineConfig({
 3. Create entry file for your scenarios:
 
 ```typescript
-import { mapScenarios  } from "grinch
+import { mapScenarios } from "grinch";
 
 export default mapScenarios({
-  "command_1": [
-    // Scenarios for "command_1"
-  ],
-  "command_2": [
-    // Scenarios for "command_2"
-  ],
-  // Other commands
+    command_1: [
+        // Scenarios for "command_1"
+    ],
+    command_2: [
+        // Scenarios for "command_2"
+    ]
+    // Other commands
 });
 ```
+
+## Basic Usage
+
+## Configuration
+
+The Grinch configuration has a minimal set of fields. All of them are not required.
+
+| Field            | Description                                                         | Default              |
+| ---------------- | ------------------------------------------------------------------- | -------------------- |
+| entryFile        | The input file in which Grinch will search for scenarios to execute | tests/main.grinch.ts |
+| reporter         | Defines how the results of the command execution will be displayed  | "console"            |
+| resultsDirectory | Defines where Grinch will store the results of the test scenarios   | test-results         |
+
+## Test Types
+
+When writing tests, Grinch saves them as a tree object, allowing you to group certain logic.
+
+You can combine different ways to group tests.
+
+### Scenario
+
+Scenario is a specific sequence of actions, allowing you to simulate the actions of a real user.
+
+Each scenario can have a shared state that can be accessed by all child tests of that scenario. The state can be any value of the object type or null.
+
+```typescript
+import { scenarios } from "grinch";
+
+const state = {
+    // Fields of your state
+};
+
+const someScenario = scenario("Scenario title", state, ({ test }) => {
+    test.serial("Test title", ({ test }) => {
+        // Children tests
+    });
+});
+```
+
+It is assumed that the scenario contains within itself one root test, which is the parent for many other tests. If you declare several tests at the root of the scenario, they will all be executed **sequentially**.
+
+### Parallel
+
+All tests declared in the root of the parallel test will be executed in parallel.
+
+```typescript
+// ...
+test.parallel("Test title", ({ test }) => {
+    // Children tests
+});
+// ...
+```
+
+**Note**: _It is very dangerous to change the general state of the scenario in parallel tests. Be careful with this_.
+
+### Serial
+
+All tests declared in the root of the serial test will be executed sequentially.
+
+```typescript
+// ...
+test.serial("Test title", ({ test }) => {
+    // Children tests
+});
+// ...
+```
+
+### Sample
+
+Sample test represents the leaf element of the scenario test tree. It can access the scenario state and perform various testing logic of your application.
+
+This type of test cannot have child tests.
+
+```typescript
+// ...
+test.sample("Test title", async ({ state }) => {
+    // Testing code
+});
+// ...
+```
+
+## Reusable Tests
+
+## Assertions
+
+### Basic Assertions
+
+### Iterable Values Assertions
+
+### Number Assertions
+
+### String Assertions
+
+### Record Assertions
+
+### Array Assertions
+
+### Unknown Assertions
