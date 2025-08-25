@@ -13,25 +13,25 @@
 - [Table of Contents](#table-of-contents)
 - [Philosophy](#philosophy)
 - [Installation](#installation)
-  - [With CLI](#with-cli)
-  - [Manually](#manually)
+    - [With CLI](#with-cli)
+    - [Manually](#manually)
 - [Basic Usage](#basic-usage)
 - [Configuration](#configuration)
 - [Test Types](#test-types)
-  - [Scenario](#scenario)
-  - [Parallel](#parallel)
-  - [Serial](#serial)
-  - [Sample](#sample)
+    - [Scenario](#scenario)
+    - [Parallel](#parallel)
+    - [Serial](#serial)
+    - [Sample](#sample)
 - [Lifecycle Hooks](#lifecycle-hooks)
 - [Reusable Tests](#reusable-tests)
 - [Assertions](#assertions)
-  - [Basic Assertions](#basic-assertions)
-  - [Iterable Values Assertions](#iterable-values-assertions)
-  - [Number Assertions](#number-assertions)
-  - [String Assertions](#string-assertions)
-  - [Record Assertions](#record-assertions)
-  - [Array Assertions](#array-assertions)
-  - [Unknown Assertions](#unknown-assertions)
+    - [Basic Assertions](#basic-assertions)
+    - [Iterable Values Assertions](#iterable-values-assertions)
+    - [Number Assertions](#number-assertions)
+    - [String Assertions](#string-assertions)
+    - [Record Assertions](#record-assertions)
+    - [Array Assertions](#array-assertions)
+    - [Unknown Assertions](#unknown-assertions)
 
 ## Philosophy
 
@@ -94,6 +94,119 @@ export default mapScenarios({
 
 ## Basic Usage
 
+Let's imagine that we have the following task:
+
+1. An authorized user creates a post.
+2. After creation, you need to receive this post to confirm that it was actually created.
+
+Let's implement this scenario using Grinch.
+
+First, let's import neccessary members:
+
+```typescript
+import { assert, scenario } from "grinch";
+```
+
+Now let's create a state for the senario:
+
+```typescript
+type State = {
+    jwt: string | null;
+    postId: string | null;
+};
+
+const state: State = {
+    jwt: null,
+    postId: null
+};
+```
+
+Now let's write tests for user login, post creating and post getting.
+
+```typescript
+export const createPostScenario = scenario("Create post", state, ({ test }) => {
+    test.serial("should create post", ({ test }) => {
+        // login user and get JWT token
+        test.sample("should login user", async ({ state }) => {
+            const response = await fetch("login_url", {
+                method: "POST",
+                body: JSON.stringify({
+                    login: "test_login",
+                    password: "test_password"
+                })
+            });
+
+            // getting JWT token from response
+            const { jwt } = (await response.json()) as { jwt: string };
+
+            assert.string(jwt).toBeDefined();
+
+            // save JWT token for next tests
+            state.jwt = jwt;
+        });
+
+        // create post using JWT token
+        test.sample("should create new post", async ({ state }) => {
+            const response = await fetch("create_post_url", {
+                method: "POST",
+                body: JSON.stringify({
+                    title: "post_title",
+                    content: "post_content"
+                }),
+                headers: {
+                    // adding JWT token to headers
+                    Authorization: `Bearer ${state.jwt}`
+                }
+            });
+
+            assert.number(response.status).toBe(200);
+
+            const { id: postId } = (await response.json()) as { id: string };
+
+            assert.string(postId).toBeUUID();
+
+            // saving post id for further post getting
+            state.postId = postId;
+        });
+
+        // verify post creation
+        test.sample("should find new post", async ({ state }) => {
+            const response = await fetch(`find_post_url/${state.postId}`, {
+                method: "GET",
+                headers: {
+                    // adding JWT token to headers
+                    Authorization: `Bearer ${state.jwt}`
+                }
+            });
+
+            const { id: postId } = (await response.json()) as { id: string };
+
+            // checking validity of new post
+            assert.string(postId).toBe(state.postId as string);
+        });
+    });
+});
+```
+
+Now let's update our entry file:
+
+```typescript
+import { mapScenarios } from "grinch";
+import { createPostScenario } from "./create-post.grinch.ts";
+
+export default mapScenarios({
+    posts: [createPostScenario]
+});
+```
+
+Now you can run this command to test post creating:
+
+```bash
+grinch run posts
+```
+
+Grinch will search for command provided in CLI and run corresponding scenarios in parallel.
+
 ## Configuration
 
 The Grinch configuration has a minimal set of fields. All of them are not required.
@@ -136,6 +249,8 @@ It is assumed that the scenario contains within itself one root test, which is t
 
 All tests declared in the root of the parallel test will be executed in parallel.
 
+If one of the tests fails, the other tests will continue to run.
+
 ```typescript
 // ...
 test.parallel("Test title", ({ test }) => {
@@ -149,6 +264,8 @@ test.parallel("Test title", ({ test }) => {
 ### Serial
 
 All tests declared in the root of the serial test will be executed sequentially.
+
+If one of the tests fails, the entire sequence will also fail.
 
 ```typescript
 // ...
