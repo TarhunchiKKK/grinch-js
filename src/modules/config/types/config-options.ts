@@ -1,5 +1,5 @@
 export type ConfigOptions = {
-    entryPoint: string;
+    entryFile: string;
 
     reporter: "file" | "console";
 
