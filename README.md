@@ -26,8 +26,8 @@ npx grinch init
 
 After running this command you can see some new files:
 
-- _grinch.config.ts_ file in root of your project - configuration file
-- _tests/main.grinch.ts_ - entry file for Grinch scenarios
+- `grinch.config.ts` file in root of your project - configuration file
+- `tests/main.grinch.ts` - entry file for Grinch scenarios
 
 ### Manualy
 
@@ -41,7 +41,7 @@ yarn add --dev grinch
 pnpm i --save-dev grinch
 ```
 
-2. Create _grinch.config.ts_ file in the root of your project:
+2. Create `grinch.config.ts` file in the root of your project:
 
 ```typescript
 import { defineConfig } from "grinch";
@@ -73,11 +73,11 @@ export default mapScenarios({
 
 The Grinch configuration has a minimal set of fields. All of them are not required.
 
-| Field            | Description                                                         | Default              |
-| ---------------- | ------------------------------------------------------------------- | -------------------- |
-| entryFile        | The input file in which Grinch will search for scenarios to execute | tests/main.grinch.ts |
-| reporter         | Defines how the results of the command execution will be displayed  | "console"            |
-| resultsDirectory | Defines where Grinch will store the results of the test scenarios   | test-results         |
+| Field              | Description                                                         | Default                |
+| ------------------ | ------------------------------------------------------------------- | ---------------------- |
+| `entryFile`        | The input file in which Grinch will search for scenarios to execute | `tests/main.grinch.ts` |
+| `reporter`         | Defines how the results of the command execution will be displayed  | `"console"`            |
+| `resultsDirectory` | Defines where Grinch will store the results of the test scenarios   | `test-results`         |
 
 ## Test Types
 
@@ -151,16 +151,201 @@ test.sample("Test title", async ({ state }) => {
 
 ## Assertions
 
+Grinch offers a number of built-in statements that have a chained interface.
+
+All statements are created using the `assert` object.
+
 ### Basic Assertions
+
+Basic assertion is a set of statements that are inherited by all other statements.
+
+| Assertion          | Description                                                                        |
+| ------------------ | ---------------------------------------------------------------------------------- |
+| `toBe`             | Used to compare values using `===` operator                                        |
+| `toBeDefined`      | Asserts that the value is not undefined                                            |
+| `toBeNull`         | Asserts that the value is null                                                     |
+| `tobeEmpty`        | Asserts that the value is null or undefined                                        |
+| `toBeTruthy`       | Asserts that the value is truthy                                                   |
+| `toBeFalsy`        | Asserts that the value is falsy ("", 0, etc.)                                      |
+| `toBeIn`           | Asserts that the value is present in the provided array                            |
+| `toMatchZodSchema` | Asserts that the value matches the given <a href="https://zod.dev/">Zod</a> schema |
+| `toSatisfy`        | Asserts that the value satisfies the provided condition function                   |
+
+Usage:
+
+```typescript
+import { assert } from "grinch";
+
+assert
+    .basic(1)
+    .toBe(1)
+    .toBeTruthy()
+    .toBeIn([1, 2, 3])
+    .toSatisfy(value => value > 0);
+```
 
 ### Iterable Values Assertions
 
+Iterable values assertion is a set of statements that are inherited by values that represents iterable data structures (arrays and string).
+
+!!! You cannot use these assertions directly, only through array and string assertions.
+
+| Assertion                 | Description                                                                  |
+| ------------------------- | ---------------------------------------------------------------------------- |
+| `toHaveLength`            | Asserts that the iterable has the expected length                            |
+| `toBeShorterThan`         | Asserts that the iterable is shorter than the specified length               |
+| `toBeShorterThanOrEquals` | Asserts that the iterable is shorter than or equal to the specified length   |
+| `toBeLongerThan`          | Asserts that the iterable is longer than the specified length                |
+| `toBeLongerThanOrEquals`  | Asserts that the iterable is longer than or equal to the specified length    |
+| `toHaveLengthBetween`     | Asserts that the iterable's length is within the specified range (inclusive) |
+| `toIncludes`              | Asserts that the iterable includes the specified item                        |
+| `toHaveValueAtIndex`      | Asserts that the iterable has the expected value at the specified index      |
+
 ### Number Assertions
+
+Number assertion is a set of statements that were designed for numeric values (including NaN).
+
+Number assertion also inherits the statements of the basic assertion.
+
+| Assertion                | Description                                                            |
+| ------------------------ | ---------------------------------------------------------------------- |
+| `toBePositive`           | Asserts that the number is positive (greater than or equal to 0)       |
+| `toBeNegative`           | Asserts that the number is negative (less than 0)                      |
+| `toBeInteger`            | Asserts that the number is integer                                     |
+| `toBeFloat`              | Asserts that the number is a floating-point number (not an integer)    |
+| `toBeNaN`                | Asserts that the number is NaN (Not a Number)                          |
+| `toBeLessThan`           | Asserts that the number is less than to provided value                 |
+| `toBeLessThanOrEquals`   | Asserts that the number is less than or equal to provided value        |
+| `toBeGraterThan`         | Asserts that the number is greater than to the provided value          |
+| `toBeGraterThanOrEquals` | Asserts that the number is greater than or equal to the provided value |
+| `toHaveValueBetween`     | Asserts that the number is within the specified range (inclusive)      |
+
+Usage:
+
+```typescript
+import { assert } from "grinch";
+
+assert
+    .number(1)
+    .toBePositive()
+    .toBeLessThan(5)
+    .toHaveValueBetween(0, 5)
+    .toSatisfy(value => value > 0); // statement from basic assertion
+```
 
 ### String Assertions
 
+String assertion is a set of statements that were designed for string values.
+
+String assertion also inherits the statements of the basic assertion and iterable assertion.
+
+| Assertion           | Description                                                        |
+| ------------------- | ------------------------------------------------------------------ |
+| `toBeUpperCase`     | Asserts that the string is in uppercase                            |
+| `toBeLowerCase`     | Asserts that the string is in lowercase                            |
+| `toStartsWith`      | Asserts that the string starts with the specified value            |
+| `toEndsWith`        | Asserts that the string ends with the specified value              |
+| `toBeNumericString` | Asserts that the string is a numeric string (contains only digits) |
+| `toBeBooleanString` | Asserts that the string is either "true" or "false"                |
+| `toMatchRegex`      | Asserts that the string matches the given regular expression       |
+| `toBeUUID`          | Asserts that the string is a valid UUID                            |
+
+Usage:
+
+```typescript
+import { assert } from "grinch";
+
+assert
+    .string("Alpha Centauri")
+    .toStartsWith("Alpha")
+    .toEndsWith("Centauri")
+    .toBeTruthy() // statement from basic assertion
+    .toBeLongerThan(5); // statement from iterable assertion
+```
+
 ### Record Assertions
+
+Record assertion is a set of statements that were designer for object values (satisfies Record<string, unknown> type).
+
+Record assertion also inherits the statements of the basic assertion.
+
+| Assertion            | Description                                                                                    |
+| -------------------- | ---------------------------------------------------------------------------------------------- |
+| `toEquals`           | Asserts that the record is deeply equal to the expected value (by using JSON.stringify method) |
+| `toHaveKey`          | Asserts that the record has the specified key                                                  |
+| `toHaveAllKeys`      | Asserts that the record has all of the specified keys                                          |
+| `toHaveKeyWithValue` | Asserts that the record has the specified key with the specified value                         |
+
+Usage:
+
+```typescript
+import { assert } from "grinch";
+
+const person = {
+    name: "Julia",
+    age: 42
+};
+
+assert
+    .record(person)
+    .toBeDefined() // statement from basic assertion
+    .toHaveKey("name")
+    .toHaveKeyWithValue("age", 42);
+```
 
 ### Array Assertions
 
+Array assertion is a set of statements that were designed for array values.
+
+Array assertion also inherits the statements of the basic assertion and iterable assertion.
+
+| Assertion          | Description                                                                              |
+| ------------------ | ---------------------------------------------------------------------------------------- |
+| `toHaveEveryMatch` | Asserts that every element in the array satisfies the provided predicate function        |
+| `toHaveSomeMatch`  | Asserts that at least one element in the array satisfies the provided predicate function |
+| `toBeSorted`       | Asserts that the array is sorted according to the provided comparator function           |
+
+Usage:
+
+```typescript
+import { assert } from "grinch";
+
+const numbers = [1, 2, 3, 4, 5];
+
+assert
+    .array(number)
+    .toBeDefined() // statement from basic assertion
+    .toHaveLength(5) // statement from iterable assertion
+    .toHaveEveryMatch(num => num > 0);
+```
+
 ### Unknown Assertions
+
+Unknown assertion is a set of statements that were designed for values of unknown type.
+
+Unknown assertion also inherits the statements of the basic assertion.
+
+| Assertion        | Description                                                                               |
+| ---------------- | ----------------------------------------------------------------------------------------- |
+| `toEquals`       | Asserts that the value is deeply equal to the expected value (with JSON.stringify method) |
+| `toBeString`     | Asserts that the value is of type string                                                  |
+| `toBeNuber`      | Asserts that the value is of type number                                                  |
+| `toBeNan`        | Asserts that the value is NaN (Not a Number)                                              |
+| `toBeBoolean`    | Asserts that the value is of type boolean                                                 |
+| `toBeBigInt`     | Asserts that the value is of type bigint                                                  |
+| `toBeObject`     | Asserts that the value is of type object                                                  |
+| `toBeRecord`     | Asserts that the value is of type object (excluding null and arrays)                      |
+| `toBeArray`      | Asserts that the value is an array                                                        |
+| `toBeInstanceOf` | Asserts that the value is an instance of the specified class                              |
+
+Usage:
+
+```typescript
+import { assert } from "grinch";
+import { unknownValue } from "./data.ts
+
+assert
+    .unknown(unknownValue)
+    .toBeDefined() // statement from basic assertion
+    .toBeRecord();
+```
