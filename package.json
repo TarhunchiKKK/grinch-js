@@ -6,6 +6,9 @@
     "author": "Konstantin Barilo",
     "license": "ISC",
     "main": "./dist/index.umd.cjs",
+    "bin": {
+        "grinch": "./dist/index.js"
+    },
     "scripts": {
         "build": "webpack",
         "format": "prettier --write \"src/**/*.ts\"",
@@ -41,5 +44,8 @@
     },
     "files": [
         "dist"
-    ]
+    ],
+    "dependencies": {
+        "commander": "^14.0.0"
+    }
 }
