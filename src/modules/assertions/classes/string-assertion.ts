@@ -91,7 +91,6 @@ export class StringAssertion extends IterableAssertion<string> {
         return this;
     }
 
-    // ! Test Not Works.
     /**
      * Asserts that the string is a JSON Web Token (JWT).
      *

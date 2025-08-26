@@ -1,4 +1,4 @@
-import { LyfecycleHookPayload } from "../types/payloads";
+import { LifecycleHookPayload } from "../types/payloads";
 import { Test, TestsStore } from "../types/test";
 
 export class TestsGroup<State> {
@@ -8,7 +8,7 @@ export class TestsGroup<State> {
         afterEach: []
     };
 
-    public constructor(private payload: LyfecycleHookPayload<State>) {}
+    public constructor(private payload: LifecycleHookPayload<State>) {}
 
     protected async runOne(test: Test) {
         for (const callback of this.testsStore.beforeEach) {

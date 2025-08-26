@@ -8,6 +8,6 @@ export type {
     SampleTestCallback,
     SerialTestCallback,
     ParallelTestCallback,
-    LyfecycleHookCallback
+    LifecycleHookCallback
 } from "./types/callbacks";
-export type { SampleTestPayload, SerialTestPayload, ParallelTestPayload, LyfecycleHookPayload } from "./types/payloads";
+export type { SampleTestPayload, SerialTestPayload, ParallelTestPayload, LifecycleHookPayload } from "./types/payloads";

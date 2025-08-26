@@ -2,7 +2,7 @@ import { ParallelTest } from "../classes/parallel-test";
 import { SampleTest } from "../classes/sample-test";
 import { SerialTest } from "../classes/serial-test";
 import {
-    LyfecycleHookCallback,
+    LifecycleHookCallback,
     ParallelTestCallback,
     SampleTestCallback,
     SerialTestCallback
@@ -57,7 +57,7 @@ export class TestFactory<State> extends BaseTestFactory<State, TestsStore<State>
      * @param callback The callback function to be executed before each test. It receives the current state.
      * @returns void
      */
-    public beforeEach(callback: LyfecycleHookCallback<State>) {
+    public beforeEach(callback: LifecycleHookCallback<State>) {
         this.testsStore.beforeEach.push(callback);
     }
 
@@ -67,7 +67,7 @@ export class TestFactory<State> extends BaseTestFactory<State, TestsStore<State>
      * @param callback The callback function to be executed after each test. It receives the current state.
      * @returns void
      */
-    public afterEach(callback: LyfecycleHookCallback<State>) {
+    public afterEach(callback: LifecycleHookCallback<State>) {
         this.testsStore.afterEach.push(callback);
     }
 }
