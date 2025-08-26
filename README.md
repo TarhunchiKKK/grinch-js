@@ -13,25 +13,25 @@
 - [Table of Contents](#table-of-contents)
 - [Philosophy](#philosophy)
 - [Installation](#installation)
-    - [With CLI](#with-cli)
-    - [Manually](#manually)
+  - [With CLI](#with-cli)
+  - [Manually](#manually)
 - [Basic Usage](#basic-usage)
 - [Configuration](#configuration)
 - [Test Types](#test-types)
-    - [Scenario](#scenario)
-    - [Parallel](#parallel)
-    - [Serial](#serial)
-    - [Sample](#sample)
+  - [Scenario](#scenario)
+  - [Parallel](#parallel)
+  - [Serial](#serial)
+  - [Sample](#sample)
 - [Lifecycle Hooks](#lifecycle-hooks)
 - [Reusable Tests](#reusable-tests)
 - [Assertions](#assertions)
-    - [Basic Assertions](#basic-assertions)
-    - [Iterable Values Assertions](#iterable-values-assertions)
-    - [Number Assertions](#number-assertions)
-    - [String Assertions](#string-assertions)
-    - [Record Assertions](#record-assertions)
-    - [Array Assertions](#array-assertions)
-    - [Unknown Assertions](#unknown-assertions)
+  - [Basic Assertions](#basic-assertions)
+  - [Iterable Values Assertions](#iterable-values-assertions)
+  - [Number Assertions](#number-assertions)
+  - [String Assertions](#string-assertions)
+  - [Record Assertions](#record-assertions)
+  - [Array Assertions](#array-assertions)
+  - [Unknown Assertions](#unknown-assertions)
 
 ## Philosophy
 
@@ -483,16 +483,17 @@ String assertion is a set of statements that were designed for string values.
 
 String assertion also inherits the statements of the basic assertion and iterable assertion.
 
-| Assertion           | Description                                                        |
-| ------------------- | ------------------------------------------------------------------ |
-| `toBeUpperCase`     | Asserts that the string is in uppercase                            |
-| `toBeLowerCase`     | Asserts that the string is in lowercase                            |
-| `toStartsWith`      | Asserts that the string starts with the specified value            |
-| `toEndsWith`        | Asserts that the string ends with the specified value              |
-| `toBeNumericString` | Asserts that the string is a numeric string (contains only digits) |
-| `toBeBooleanString` | Asserts that the string is either `"true"` or `"false"`            |
-| `toMatchRegex`      | Asserts that the string matches the given regular expression       |
-| `toBeUUID`          | Asserts that the string is a valid UUID                            |
+| Assertion           | Description                                                                                    |
+| ------------------- | ---------------------------------------------------------------------------------------------- |
+| `toBeUpperCase`     | Asserts that the string is in uppercase                                                        |
+| `toBeLowerCase`     | Asserts that the string is in lowercase                                                        |
+| `toStartsWith`      | Asserts that the string starts with the specified value                                        |
+| `toEndsWith`        | Asserts that the string ends with the specified value                                          |
+| `toBeNumericString` | Asserts that the string is a numeric string (contains only digits)                             |
+| `toBeBooleanString` | Asserts that the string is either `"true"` or `"false"`                                        |
+| `toMatchRegex`      | Asserts that the string matches the given regular expression                                   |
+| toBeJWT             | Asserts that the string is a <a href="https://www.jwt.io/">JWT</a> (checks only string format) |
+| `toBeUUID`          | Asserts that the string is a valid UUID                                                        |
 
 Usage:
 
