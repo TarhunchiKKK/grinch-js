@@ -1,4 +1,4 @@
-import { LyfecycleHookCallback } from "./callbacks";
+import { LifecycleHookCallback } from "./callbacks";
 
 export type Test = {
     run: () => Promise<void>;
@@ -7,7 +7,7 @@ export type Test = {
 export type TestsStore<State> = {
     childrenTests: Test[];
 
-    beforeEach: LyfecycleHookCallback<State>[];
+    beforeEach: LifecycleHookCallback<State>[];
 
-    afterEach: LyfecycleHookCallback<State>[];
+    afterEach: LifecycleHookCallback<State>[];
 };
