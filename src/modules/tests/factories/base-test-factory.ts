@@ -2,6 +2,7 @@ import { SampleTestCallback, TestGroupCallback } from "../types/callbacks";
 import { SampleTest } from "../classes/sample-test";
 import { TestGroup } from "../classes/test-group";
 import { GroupNode } from "../../testing-tree";
+import { abort } from "../../aborting";
 
 export class BaseTestFactory<State> {
     public constructor(
@@ -18,8 +19,13 @@ export class BaseTestFactory<State> {
      * @returns void
      */
     public sample(title: string, callback: SampleTestCallback<State>) {
-        const test = new SampleTest(title, callback, this.state);
-        
+        const payload = {
+            state: this.state,
+            abort: abort
+        };
+
+        const test = new SampleTest(title, () => callback(payload));
+
         this.testsStore.addLeaf(test);
     }
 

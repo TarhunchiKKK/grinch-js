@@ -1,28 +1,20 @@
-import { TestAborter, abort } from "../../aborting";
-import { SampleTestCallback, SampleTestPayload } from "../types/callbacks";
+import { TestAborter } from "../../aborting";
 import { Test } from "../types/test";
 
-export class SampleTest<State> implements Test {
-    private payload: SampleTestPayload<State>;
+type Callback = () => void | Promise<void>;
 
+export class SampleTest implements Test {
     public success: boolean | null = null;
 
     public constructor(
         public title: string,
 
-        private callback: SampleTestCallback<State>,
-
-        state: State
-    ) {
-        this.payload = {
-            state: state,
-            abort: abort
-        };
-    }
+        private callback: Callback
+    ) {}
 
     public async run() {
         try {
-            await this.callback(this.payload);
+            await this.callback();
 
             this.success = true;
         } catch (error) {

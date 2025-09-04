@@ -10,7 +10,7 @@ export abstract class GroupNode implements TestNode {
 
     public constructor(public test: TestGroup) {}
 
-    public addLeaf<State>(test: SampleTest<State>) {
+    public addLeaf(test: SampleTest) {
         const node = new LeafNode(test);
         this.children.push(node);
         return node;
