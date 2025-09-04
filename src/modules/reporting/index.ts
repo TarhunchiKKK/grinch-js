@@ -1,3 +1,2 @@
-export { TestingResults } from "./utils/testing-results";
-export { report } from "./utils/report";
-export type { ReporterTypes } from "./types/reporter-types";
+export { TestingResults } from "./model/testing-results";
+export { report, ReporterTypes } from "./model/report";
