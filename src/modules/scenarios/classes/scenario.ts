@@ -11,7 +11,7 @@ export class Scenario<State> implements Test {
     ) {}
 
     public createTestFactory() {
-        return new ScenarioTestFactory(this.childrenTests, this.state, [this.title]);
+        return new ScenarioTestFactory(this.childrenTests, this.state);
     }
 
     public async run() {

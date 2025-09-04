@@ -3,7 +3,7 @@ import { ForEachFn, ITreeNode } from "./types";
 
 type Node<T> = LeafNode<T> | SerialNode<T> | ParallelNode<T>;
 
-abstract class MultipleNode<T> {
+export abstract class MultipleNode<T> {
     public children: Node<T>[] = [];
 
     public addLeaf(value: T) {
