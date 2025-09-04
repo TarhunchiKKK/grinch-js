@@ -1,9 +1,9 @@
-import { ArrayAssertion } from "../classes/array-assertion";
-import { BaseAssertion } from "../classes/base-assertion";
-import { NumberAssertion } from "../classes/number-assertion";
-import { RecordAssertion } from "../classes/record-assertion";
-import { StringAssertion } from "../classes/string-assertion";
-import { UnknownAssertion } from "../classes/unknown-assertion";
+import { ArrayAssertion } from "./classes/array-assertion";
+import { BaseAssertion } from "./classes/base-assertion";
+import { NumberAssertion } from "./classes/number-assertion";
+import { RecordAssertion } from "./classes/record-assertion";
+import { StringAssertion } from "./classes/string-assertion";
+import { UnknownAssertion } from "./classes/unknown-assertion";
 
 export class AssertionFactory {
     public constructor() {}
