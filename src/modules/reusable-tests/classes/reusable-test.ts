@@ -1,7 +1,6 @@
-import { Test } from "../../tests";
-import { TestsGroup } from "../../tests/classes/tests-group";
+import { Test, TestGroup } from "../../tests";
 
-export class ReusableTest<State> extends TestsGroup<State> implements Test {
+export class ReusableTest extends TestGroup implements Test {
     public title: string = "";
 
     // public constructor(

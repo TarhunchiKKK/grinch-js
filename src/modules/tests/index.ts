@@ -1,8 +1,5 @@
 export { SampleTest } from "./classes/sample-test";
-export { SerialTest } from "./classes/test-group";
-export { ParallelTest } from "./classes/parallel-test";
-export { BaseTestFactory } from "./factories/base-test-factory";
+export { TestGroup } from "./classes/test-group";
 export { TestFactory } from "./factories/test-factory";
 export type { Test } from "./types/test";
-export type { SampleTestCallback, SerialTestCallback, ParallelTestCallback } from "./types/callbacks";
-export type { SampleTestPayload, SerialTestPayload, ParallelTestPayload } from "./types/payloads";
+export type { SampleTestCallback, SampleTestPayload, TestGroupCallback, TestGroupPayload } from "./types/callbacks";

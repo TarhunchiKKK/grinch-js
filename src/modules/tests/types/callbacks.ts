@@ -7,10 +7,10 @@ export type SampleTestPayload<State> = {
     abort: TestAborter;
 };
 
-export type TestGroup<State> = {
+export type TestGroupPayload<State> = {
     test: TestFactory<State>;
 };
 
 export type SampleTestCallback<State> = (_: SampleTestPayload<State>) => void | Promise<void>;
 
-export type TestGroupCallback<State> = (_: TestGroup<State>) => void;
+export type TestGroupCallback<State> = (_: TestGroupPayload<State>) => void;
