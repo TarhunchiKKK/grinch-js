@@ -14,7 +14,6 @@
         "format": "prettier --write \"src/**/*.ts\"",
         "lint": "eslint \"src/**/*.ts\" --fix",
         "knip": "knip",
-        "prepare": "husky",
         "test:unit": "jest"
     },
     "devDependencies": {
@@ -28,7 +27,6 @@
         "babel-jest": "^30.0.5",
         "eslint": "^9.33.0",
         "globals": "^16.3.0",
-        "husky": "^9.1.7",
         "jest": "^30.0.5",
         "jiti": "^2.5.1",
         "knip": "^5.62.0",
