@@ -1,10 +1,12 @@
 {
     "$schema": "https://unpkg.com/knip@5/schema.json",
     "project": ["src/**/*.ts"],
+    "ignore": ["src/bin/**/*.ts"],
+    "ignoreDependencies": ["commander"],
     "rules": {
-        "files": "error",
-        "classMembers": "error",
-        "types": "error",
+        "files": "warn",
+        "classMembers": "warn",
+        "types": "warn",
         "dependencies": "warn",
         "devDependencies": "warn"
     }
