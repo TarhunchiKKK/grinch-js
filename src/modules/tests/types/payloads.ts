@@ -15,8 +15,4 @@ export type ParallelTestPayload<State> = {
     test: TestFactory<State>;
 };
 
-export type LifecycleHookPayload<State> = {
-    state: State;
 
-    abort: TestAborter;
-};

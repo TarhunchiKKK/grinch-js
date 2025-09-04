@@ -2,11 +2,12 @@ import { SampleTestCallback, SerialTestCallback, ParallelTestCallback } from "..
 import { ParallelTest } from "../classes/parallel-test";
 import { SampleTest } from "../classes/sample-test";
 import { SerialTest } from "../classes/serial-test";
-import { TestsStore } from "../types/test";
+import { Test } from "../types/test";
+import { MultipleNode } from "../../../shared/collections/tree/model/multiple-node";
 
 export abstract class BaseTestFactory<State> {
     public constructor(
-        protected testsStore: TestsStore<State>,
+        protected testsStore: MultipleNode<Test>,
 
         protected state: State
     ) {}
@@ -20,7 +21,8 @@ export abstract class BaseTestFactory<State> {
      */
     public sample(title: string, callback: SampleTestCallback<State>) {
         const test = new SampleTest(title, callback, this.state);
-        this.testsStore.childrenTests.push(test);
+
+        this.testsStore.addLeaf(test);
     }
 
     /**
@@ -31,8 +33,9 @@ export abstract class BaseTestFactory<State> {
      * @returns void
      */
     public serial(title: string, callback: SerialTestCallback<State>) {
-        const test = new SerialTest(title, callback, this.state);
-        this.testsStore.childrenTests.push(test);
+        new SerialTest(title, callback, this.state);
+
+        this.testsStore.addSerial();
     }
 
     /**
@@ -43,7 +46,8 @@ export abstract class BaseTestFactory<State> {
      * @returns void
      */
     public parallel(title: string, callback: ParallelTestCallback<State>) {
-        const test = new ParallelTest(title, callback, this.state);
-        this.testsStore.childrenTests.push(test);
+        new ParallelTest(title, callback, this.state);
+
+        this.testsStore.addParallel();
     }
 }
