@@ -3,3 +3,5 @@ export type Test = {
 
     success: boolean | null;
 };
+
+export type AvailableTestStates = Record<string, unknown> | null;

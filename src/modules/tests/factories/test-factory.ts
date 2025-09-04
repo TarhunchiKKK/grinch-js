@@ -62,4 +62,20 @@ export class TestFactory<State> {
 
         callback({ test: testFactory });
     }
+
+    // ! Necessarily Check
+    // public reuse<ReusableState>(
+    //     title: string,
+    //     test: State extends ReusableState ? ReusableTest<ReusableState> : never
+    // ) {
+    //     const testGroup = new TestGroup(title);
+
+    //     const testNode = this.testsStore.addSerial(testGroup);
+
+    //     const testFactory = new TestFactory(testNode, this.state);
+
+    //     (test as ReusableTest<ReusableState>).callback({
+    //         test: testFactory as unknown as TestFactory<ReusableState>
+    //     });
+    // }
 }
