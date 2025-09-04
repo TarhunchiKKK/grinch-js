@@ -33,8 +33,9 @@ export class FileReporter extends BaseReporter {
         return `${date}.${time}.json`;
     }
 
+    // ! Need Fix
     private writeTestingResults(pathToFile: string) {
-        const data = JSON.stringify(this.testingResults, null, 4);
+        const data = JSON.stringify({}, null, 4);
 
         writeFile(pathToFile, data, err => {
             if (err) {

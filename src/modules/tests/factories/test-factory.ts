@@ -1,20 +1,16 @@
-import { ParallelTest } from "../classes/parallel-test";
+import { SampleTestCallback, TestGroupCallback } from "../types/callbacks";
 import { SampleTest } from "../classes/sample-test";
-import { SerialTest } from "../classes/serial-test";
-import {
-    LifecycleHookCallback,
-    ParallelTestCallback,
-    SampleTestCallback,
-    SerialTestCallback
-} from "../types/callbacks";
-import { TestsStore } from "../types/test";
-import { BaseTestFactory } from "./base-test-factory";
+import { TestGroup } from "../classes/test-group";
+import { GroupNode } from "../../testing-tree";
+import { abort } from "../../aborting";
 
-/**
- * A concrete implementation of BaseTestFactory, providing methods for creating
- * sample, serial, and parallel tests, as well as lifecycle hooks.
- */
-export class TestFactory<State> extends BaseTestFactory<State, TestsStore<State>> {
+export class TestFactory<State> {
+    public constructor(
+        protected testsStore: GroupNode,
+
+        protected state: State
+    ) {}
+
     /**
      * Creates a sample test within the current test factory. Sample tests are typically used for individual test cases.
      *
@@ -23,8 +19,14 @@ export class TestFactory<State> extends BaseTestFactory<State, TestsStore<State>
      * @returns void
      */
     public sample(title: string, callback: SampleTestCallback<State>) {
-        const test = new SampleTest(this.getNextTestResultPath(title), callback, this.state);
-        this.testsStore.childrenTests.push(test);
+        const payload = {
+            state: this.state,
+            abort: abort
+        };
+
+        const test = new SampleTest(title, () => callback(payload));
+
+        this.testsStore.addLeaf(test);
     }
 
     /**
@@ -34,9 +36,14 @@ export class TestFactory<State> extends BaseTestFactory<State, TestsStore<State>
      * @param callback The callback function that defines the logic of the serial test. It receives the current state.
      * @returns void
      */
-    public serial(title: string, callback: SerialTestCallback<State>) {
-        const test = new SerialTest(this.getNextTestResultPath(title), callback, this.state);
-        this.testsStore.childrenTests.push(test);
+    public serial(title: string, callback: TestGroupCallback<State>) {
+        const test = new TestGroup(title);
+
+        const testNode = this.testsStore.addSerial(test);
+
+        const testFactory = new TestFactory(testNode, this.state);
+
+        callback({ test: testFactory });
     }
 
     /**
@@ -46,28 +53,29 @@ export class TestFactory<State> extends BaseTestFactory<State, TestsStore<State>
      * @param callback The callback function that defines the logic of the parallel test. It receives the current state.
      * @returns void
      */
-    public parallel(title: string, callback: ParallelTestCallback<State>) {
-        const test = new ParallelTest(this.getNextTestResultPath(title), callback, this.state);
-        this.testsStore.childrenTests.push(test);
+    public parallel(title: string, callback: TestGroupCallback<State>) {
+        const test = new TestGroup(title);
+
+        const testNode = this.testsStore.addSerial(test);
+
+        const testFactory = new TestFactory(testNode, this.state);
+
+        callback({ test: testFactory });
     }
 
-    /**
-     * Defines a lifecycle hook to be executed before each test within this factory.
-     *
-     * @param callback The callback function to be executed before each test. It receives the current state.
-     * @returns void
-     */
-    public beforeEach(callback: LifecycleHookCallback<State>) {
-        this.testsStore.beforeEach.push(callback);
-    }
+    // ! Necessarily Check
+    // public reuse<ReusableState>(
+    //     title: string,
+    //     test: State extends ReusableState ? ReusableTest<ReusableState> : never
+    // ) {
+    //     const testGroup = new TestGroup(title);
 
-    /**
-     * Defines a lifecycle hook to be executed after each test within this factory.
-     *
-     * @param callback The callback function to be executed after each test. It receives the current state.
-     * @returns void
-     */
-    public afterEach(callback: LifecycleHookCallback<State>) {
-        this.testsStore.afterEach.push(callback);
-    }
+    //     const testNode = this.testsStore.addSerial(testGroup);
+
+    //     const testFactory = new TestFactory(testNode, this.state);
+
+    //     (test as ReusableTest<ReusableState>).callback({
+    //         test: testFactory as unknown as TestFactory<ReusableState>
+    //     });
+    // }
 }

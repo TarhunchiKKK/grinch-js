@@ -1,37 +1,27 @@
-import { TestingResults } from "../../reporting";
-import { TestAborter, abort } from "../../aborting";
-import { SampleTestCallback } from "../types/callbacks";
-import { SampleTestPayload } from "../types/payloads";
+import { TestAborter } from "../../aborting";
 import { Test } from "../types/test";
 
-export class SampleTest<State> implements Test {
-    private payload: SampleTestPayload<State>;
+type Callback = () => void | Promise<void>;
 
-    private testingResults = TestingResults.getInstance();
+export class SampleTest implements Test {
+    public success: boolean | null = null;
 
     public constructor(
-        private testResultPath: string[],
+        public title: string,
 
-        private callback: SampleTestCallback<State>,
-
-        state: State
-    ) {
-        this.payload = {
-            state: state,
-            abort: abort
-        };
-
-        this.testingResults.add(this.testResultPath, false);
-    }
+        private callback: Callback
+    ) {}
 
     public async run() {
         try {
-            await this.callback(this.payload);
+            await this.callback();
 
-            this.testingResults.add(this.testResultPath, true);
+            this.success = true;
         } catch (error) {
             if (TestAborter.isFail(error)) {
-                this.testingResults.add(this.testResultPath, true);
+                this.success = true;
+            } else {
+                this.success = false;
             }
         }
     }

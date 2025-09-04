@@ -1,4 +1,4 @@
-export { createScenario as scenario, mapScenarios } from "./modules/scenarios";
+export { createScenario as scenario } from "./modules/scenarios";
 export { assert } from "./modules/assertions";
 export { createReusableTest as reusableTest, reuseTest } from "./modules/reusable-tests";
 export { defineConfig } from "./modules/config";

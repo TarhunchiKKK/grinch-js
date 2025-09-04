@@ -1,13 +1,7 @@
-import { LifecycleHookCallback } from "./callbacks";
-
 export type Test = {
-    run: () => Promise<void>;
+    title: string;
+
+    success: boolean | null;
 };
 
-export type TestsStore<State> = {
-    childrenTests: Test[];
-
-    beforeEach: LifecycleHookCallback<State>[];
-
-    afterEach: LifecycleHookCallback<State>[];
-};
+export type AvailableTestStates = Record<string, unknown> | null;

@@ -1,10 +1,7 @@
+import { TestingResults } from "../../reporting";
+import { AvailableTestStates, TestFactory } from "../../tests";
 import { Scenario } from "../classes/scenario";
-import { ScenarioTestFactory } from "../factories/scenario-test-factory";
-import { AvailableScenarioStates } from "../types/state";
-
-type ScenarioCallbackArgument<State> = {
-    test: ScenarioTestFactory<State>;
-};
+import { ScenarioCallback } from "../types/callbacks";
 
 /**
  * Creates a new scenario and its associated test factory, then executes a callback function
@@ -14,14 +11,16 @@ type ScenarioCallbackArgument<State> = {
  * @param state The initial state of the scenario.
  * @param callback A function that receives the test factory and defines the scenario's tests.
  */
-export function createScenario<State extends AvailableScenarioStates>(
+export function createScenario<State extends AvailableTestStates>(
     title: string,
     state: State,
-    callback: (arg: ScenarioCallbackArgument<State>) => void
+    callback: ScenarioCallback<State>
 ) {
-    const scenario = new Scenario(title, state);
+    const scenario = new Scenario(title);
 
-    const testFactory = scenario.createTestFactory();
+    const testingTree = TestingResults.getInstance().tree;
+
+    const testFactory = new TestFactory(testingTree.add(scenario), state);
 
     callback({ test: testFactory });
 
