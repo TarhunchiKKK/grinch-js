@@ -14,8 +14,7 @@ export async function report(type: ReporterTypes) {
             reporter = new ConsoleReporter();
             break;
         default:
-            reporter = new ConsoleReporter();
-            break;
+            throw new Error("Reporter not selected");
     }
 
     await reporter.report();

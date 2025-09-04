@@ -1,4 +1,4 @@
-import { TestingTree } from "../../testing-tree";
+import { TestingResults } from "../../reporting";
 import { AvailableTestStates, TestFactory } from "../../tests";
 import { Scenario } from "../classes/scenario";
 import { ScenarioCallback } from "../types/callbacks";
@@ -16,9 +16,9 @@ export function createScenario<State extends AvailableTestStates>(
     state: State,
     callback: ScenarioCallback<State>
 ) {
-    const testingTree = new TestingTree();
-
     const scenario = new Scenario(title);
+
+    const testingTree = TestingResults.getInstance().tree;
 
     const testFactory = new TestFactory(testingTree.add(scenario), state);
 

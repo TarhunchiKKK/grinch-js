@@ -1,14 +1,12 @@
-import { DynamicObject } from "../../../shared";
+import { TestingTree } from "../../testing-tree";
 
 export class TestingResults {
-    public results = new DynamicObject<boolean>();
+    public tree: TestingTree;
 
     private static instance: TestingResults | null = null;
 
-    private constructor() {}
-
-    public add(path: string[], value: boolean) {
-        this.results.addProperty(path, value);
+    private constructor() {
+        this.tree = new TestingTree();
     }
 
     public static getInstance() {
@@ -17,13 +15,5 @@ export class TestingResults {
         }
 
         return TestingResults.instance;
-    }
-
-    public static getResults() {
-        if (!TestingResults.instance) {
-            TestingResults.instance = new TestingResults();
-        }
-
-        return TestingResults.instance.results.data;
     }
 }
