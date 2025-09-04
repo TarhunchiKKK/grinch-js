@@ -22,7 +22,7 @@ export class ScenarioTestFactory<State> extends BaseTestFactory<State, Test[]> {
      * @param callback The callback function containing the test logic.
      */
     public sample(title: string, callback: SampleTestCallback<State>) {
-        const test = new SampleTest(this.getNextTestResultPath(title), callback, this.state);
+        const test = new SampleTest(title, callback, this.state);
 
         this.testsStore.push(test);
     }
@@ -34,7 +34,7 @@ export class ScenarioTestFactory<State> extends BaseTestFactory<State, Test[]> {
      * @param callback The callback function containing the test logic.
      */
     public serial(title: string, callback: SerialTestCallback<State>) {
-        const test = new SerialTest(this.getNextTestResultPath(title), callback, this.state);
+        const test = new SerialTest(title, callback, this.state);
         this.testsStore.push(test);
     }
 
@@ -45,7 +45,7 @@ export class ScenarioTestFactory<State> extends BaseTestFactory<State, Test[]> {
      * @param callback The callback function containing the test logic.
      */
     public parallel(title: string, callback: ParallelTestCallback<State>) {
-        const test = new ParallelTest(this.getNextTestResultPath(title), callback, this.state);
+        const test = new ParallelTest(title, callback, this.state);
         this.testsStore.push(test);
     }
 }

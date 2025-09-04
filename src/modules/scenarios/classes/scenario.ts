@@ -5,7 +5,7 @@ export class Scenario<State> implements Test {
     private childrenTests: Test[] = [];
 
     public constructor(
-        private title: string,
+        public title: string,
 
         private state: State
     ) {}

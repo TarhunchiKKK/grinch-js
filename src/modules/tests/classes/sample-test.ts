@@ -1,4 +1,3 @@
-import { TestingResults } from "../../reporting";
 import { TestAborter, abort } from "../../aborting";
 import { SampleTestCallback } from "../types/callbacks";
 import { SampleTestPayload } from "../types/payloads";
@@ -7,10 +6,10 @@ import { Test } from "../types/test";
 export class SampleTest<State> implements Test {
     private payload: SampleTestPayload<State>;
 
-    private testingResults = TestingResults.getInstance();
+    public success: boolean | null = null;
 
     public constructor(
-        private testResultPath: string[],
+        public title: string,
 
         private callback: SampleTestCallback<State>,
 
@@ -20,18 +19,18 @@ export class SampleTest<State> implements Test {
             state: state,
             abort: abort
         };
-
-        this.testingResults.add(this.testResultPath, false);
     }
 
     public async run() {
         try {
             await this.callback(this.payload);
 
-            this.testingResults.add(this.testResultPath, true);
+            this.success = true;
         } catch (error) {
             if (TestAborter.isFail(error)) {
-                this.testingResults.add(this.testResultPath, true);
+                this.success = true;
+            } else {
+                this.success = false;
             }
         }
     }

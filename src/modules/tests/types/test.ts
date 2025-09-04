@@ -1,6 +1,8 @@
 import { LifecycleHookCallback } from "./callbacks";
 
 export type Test = {
+    title: string;
+
     run: () => Promise<void>;
 };
 

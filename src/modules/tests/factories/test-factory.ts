@@ -23,7 +23,7 @@ export class TestFactory<State> extends BaseTestFactory<State, TestsStore<State>
      * @returns void
      */
     public sample(title: string, callback: SampleTestCallback<State>) {
-        const test = new SampleTest(this.getNextTestResultPath(title), callback, this.state);
+        const test = new SampleTest(title, callback, this.state);
         this.testsStore.childrenTests.push(test);
     }
 
@@ -35,7 +35,7 @@ export class TestFactory<State> extends BaseTestFactory<State, TestsStore<State>
      * @returns void
      */
     public serial(title: string, callback: SerialTestCallback<State>) {
-        const test = new SerialTest(this.getNextTestResultPath(title), callback, this.state);
+        const test = new SerialTest(title, callback, this.state);
         this.testsStore.childrenTests.push(test);
     }
 
@@ -47,7 +47,7 @@ export class TestFactory<State> extends BaseTestFactory<State, TestsStore<State>
      * @returns void
      */
     public parallel(title: string, callback: ParallelTestCallback<State>) {
-        const test = new ParallelTest(this.getNextTestResultPath(title), callback, this.state);
+        const test = new ParallelTest(title, callback, this.state);
         this.testsStore.childrenTests.push(test);
     }
 
