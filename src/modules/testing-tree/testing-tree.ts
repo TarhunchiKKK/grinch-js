@@ -1,10 +1,12 @@
-import { TestNode } from "./model/types";
+import { Test } from "../tests";
+import { GroupNode } from "./model/group-node";
+import { SerialNode } from "./model/serial-node";
 
 export class TestingTree {
-    public root: TestNode[] = [];
+    public root: GroupNode[] = [];
 
-    public add(test: TestNode) {
-        this.root.push(test);
+    public add(test: Test) {
+        this.root.push(new SerialNode(test));
         return this.root[this.root.length - 1];
     }
 
