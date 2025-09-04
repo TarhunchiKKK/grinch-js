@@ -15,7 +15,7 @@
         "lint": "eslint \"src/**/*.ts\" --fix",
         "knip": "knip",
         "prepare": "husky",
-        "test": "jest"
+        "test:unit": "jest"
     },
     "devDependencies": {
         "@babel/core": "^7.28.3",
