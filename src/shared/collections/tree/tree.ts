@@ -1,10 +1,11 @@
-import { ForEachFn, IntermediateNode, Node } from "./domain";
+import { ParallelNode } from "./model/multiple-node";
+import { ForEachFn } from "./model/types";
 
 export class BinaryTree<T> {
-    public root = new IntermediateNode<T>();
+    public root = new ParallelNode<T>();
 
-    public add(child: Node<T>) {
-        return this.root.add(child);
+    public add() {
+        return this.root.addSerial();
     }
 
     public async forEach(fn: ForEachFn<T>) {
