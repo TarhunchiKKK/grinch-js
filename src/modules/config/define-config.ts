@@ -1,6 +1,6 @@
 import { ReporterTypes } from "../reporting";
 
-type ConfigOptions = {
+export type ConfigOptions = {
     entryFile: string;
 
     reporter: ReporterTypes;

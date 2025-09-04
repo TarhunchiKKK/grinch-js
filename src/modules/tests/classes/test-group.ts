@@ -1,4 +1,4 @@
-import { Test } from "../types/test";
+import { Test } from "../types";
 
 export class TestGroup implements Test {
     public success: boolean | null = null;

@@ -1,5 +1,5 @@
 import { TestAborter } from "../../aborting";
-import { Test } from "../types/test";
+import { Test } from "../types";
 
 type Callback = () => void | Promise<void>;
 
