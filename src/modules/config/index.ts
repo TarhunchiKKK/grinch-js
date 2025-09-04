@@ -1,1 +1,1 @@
-export { defineConfig } from "./utils/define-config";
+export { defineConfig, ConfigOptions } from "./define-config";

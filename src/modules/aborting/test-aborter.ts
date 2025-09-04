@@ -1,5 +1,4 @@
-import { FailTestError } from "../utils/fail-test-error";
-import { SkipTestError } from "../utils/skip-test-error";
+import { SkipTestError, FailTestError } from "./errors";
 
 /**
  * Provides utility methods for prematurely aborting or failing tests

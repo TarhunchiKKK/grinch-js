@@ -1,2 +1,2 @@
 export { TestingTree } from "./testing-tree";
-export { GroupNode } from "./model/group-node";
+export { GroupNode } from "./classes/group-node";

@@ -1,8 +1,8 @@
-import { SampleTestCallback, TestGroupCallback } from "../types/callbacks";
-import { SampleTest } from "../classes/sample-test";
-import { TestGroup } from "../classes/test-group";
-import { GroupNode } from "../../testing-tree";
-import { abort } from "../../aborting";
+import { SampleTestCallback, TestGroupCallback } from "./types";
+import { SampleTest } from "./classes/sample-test";
+import { TestGroup } from "./classes/test-group";
+import { GroupNode } from "../testing-tree";
+import { abort } from "../aborting";
 
 export class TestFactory<State> {
     public constructor(

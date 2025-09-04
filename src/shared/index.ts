@@ -1,4 +1,5 @@
-export { deepCompare } from "./helpers/objects";
-export type { ClassConstructor, TypeofResponse, ElementType } from "./types/core";
-export { Logger } from "./utils/logger";
-export * from "./utils/dynamic-object";
+export { deepCompare } from "./lib/objects";
+export { Logger } from "./lib/logger";
+export { TypeofResponse } from "./types/core";
+export { ClassConstructor } from "./types/objects";
+export { ElementType } from "./types/arrays";

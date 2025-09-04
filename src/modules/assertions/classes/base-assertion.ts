@@ -1,6 +1,5 @@
-import { FALSY_VALUES } from "../constants/core";
-import { Condition } from "../types/conditions";
-import { ZodSchema } from "../types/zod";
+import { FALSY_VALUES } from "../constants";
+import { Condition, ZodSchema } from "../types";
 
 /**
  * Base class for all assertions.

@@ -1,7 +1,8 @@
 import { BaseReporter } from "../classes/base-reporter";
 import { ConsoleReporter } from "../classes/console-reporter";
 import { FileReporter } from "../classes/file-reporter";
-import { ReporterTypes } from "../types/reporter-types";
+
+export type ReporterTypes = "file" | "console";
 
 export async function report(type: ReporterTypes) {
     let reporter: BaseReporter;

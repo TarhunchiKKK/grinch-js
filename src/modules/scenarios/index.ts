@@ -1,2 +1,2 @@
-export { createScenario } from "./utils/create-scenario";
-export { Scenario } from "./classes/scenario";
+export { createScenario } from "./create-scenario";
+export { Scenario } from "./scenario";

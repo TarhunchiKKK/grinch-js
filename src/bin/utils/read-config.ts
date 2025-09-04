@@ -1,7 +1,7 @@
 import * as path from "path";
 import * as fs from "fs";
+import { ConfigOptions } from "../../modules/config";
 import { Logger } from "../../shared";
-import { ConfigOptions } from "../../modules/config/types/config-options";
 
 export async function readConfig() {
     try {

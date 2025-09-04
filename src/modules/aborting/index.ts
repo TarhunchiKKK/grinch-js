@@ -1,5 +1,5 @@
-import { TestAborter } from "./classes/test-aborter";
+import { TestAborter } from "./test-aborter";
 
-export { TestAborter } from "./classes/test-aborter";
+export { TestAborter } from "./test-aborter";
 
 export const abort = new TestAborter();

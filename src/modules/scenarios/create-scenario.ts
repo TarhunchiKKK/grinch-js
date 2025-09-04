@@ -1,7 +1,7 @@
-import { TestingResults } from "../../reporting";
-import { AvailableTestStates, TestFactory } from "../../tests";
-import { Scenario } from "../classes/scenario";
-import { ScenarioCallback } from "../types/callbacks";
+import { TestingResults } from "../reporting";
+import { AvailableTestStates, TestFactory } from "../tests";
+import { Scenario } from "./scenario";
+import { ScenarioCallback } from "./types";
 
 /**
  * Creates a new scenario and its associated test factory, then executes a callback function

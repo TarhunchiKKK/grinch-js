@@ -157,7 +157,12 @@ const config: Config = {
     // testLocationInResults: false,
 
     // The glob patterns Jest uses to detect test files
-    testMatch: ["**/?(*.)+(spec).?([mc])[jt]s?(x)"]
+    testMatch: ["**/?(*.)+(spec).?([mc])[jt]s?(x)"],
+
+    // A map from regular expressions to paths to transformers
+    transform: {
+        "^.+\\.[tj]sx?$": "babel-jest"
+    }
 
     // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
     // testPathIgnorePatterns: [

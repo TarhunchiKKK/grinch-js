@@ -1,6 +1,6 @@
 import { Test } from "../tests";
-import { GroupNode } from "./model/group-node";
-import { SerialNode } from "./model/serial-node";
+import { GroupNode } from "./classes/group-node";
+import { SerialNode } from "./classes/serial-node";
 
 export class TestingTree {
     public root: GroupNode[] = [];
