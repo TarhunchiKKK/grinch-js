@@ -1,4 +1,4 @@
-import { TestFactory } from "../../tests";
+import { TestFactory } from "../tests";
 
 type ScenarioCallbackPayload<State> = {
     test: TestFactory<State>;
