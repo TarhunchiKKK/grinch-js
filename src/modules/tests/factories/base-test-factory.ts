@@ -1,13 +1,11 @@
-import { SampleTestCallback, SerialTestCallback, ParallelTestCallback } from "../types/callbacks";
-import { ParallelTest } from "../classes/parallel-test";
+import { SampleTestCallback, TestGroupCallback } from "../types/callbacks";
 import { SampleTest } from "../classes/sample-test";
-import { SerialTest } from "../classes/serial-test";
-import { Test } from "../types/test";
-import { MultipleNode } from "../../../shared/collections/tree/model/multiple-node";
+import { TestGroup } from "../classes/test-group";
+import { GroupNode } from "../../testing-tree";
 
-export abstract class BaseTestFactory<State> {
+export class BaseTestFactory<State> {
     public constructor(
-        protected testsStore: MultipleNode<Test>,
+        protected testsStore: GroupNode,
 
         protected state: State
     ) {}
@@ -21,7 +19,7 @@ export abstract class BaseTestFactory<State> {
      */
     public sample(title: string, callback: SampleTestCallback<State>) {
         const test = new SampleTest(title, callback, this.state);
-
+        
         this.testsStore.addLeaf(test);
     }
 
@@ -32,10 +30,14 @@ export abstract class BaseTestFactory<State> {
      * @param callback The callback function that defines the logic of the serial test. It receives the current state.
      * @returns void
      */
-    public serial(title: string, callback: SerialTestCallback<State>) {
-        new SerialTest(title, callback, this.state);
+    public serial(title: string, callback: TestGroupCallback<State>) {
+        const test = new TestGroup(title);
 
-        this.testsStore.addSerial();
+        const testNode = this.testsStore.addSerial(test);
+
+        const testFactory = new BaseTestFactory(testNode, this.state);
+
+        callback({ test: testFactory });
     }
 
     /**
@@ -45,9 +47,13 @@ export abstract class BaseTestFactory<State> {
      * @param callback The callback function that defines the logic of the parallel test. It receives the current state.
      * @returns void
      */
-    public parallel(title: string, callback: ParallelTestCallback<State>) {
-        new ParallelTest(title, callback, this.state);
+    public parallel(title: string, callback: TestGroupCallback<State>) {
+        const test = new TestGroup(title);
 
-        this.testsStore.addParallel();
+        const testNode = this.testsStore.addSerial(test);
+
+        const testFactory = new BaseTestFactory(testNode, this.state);
+
+        callback({ test: testFactory });
     }
 }

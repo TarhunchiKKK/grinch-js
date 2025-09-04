@@ -7,7 +7,8 @@ export async function runScenarios(scenariosMap: Record<string, Scenario<unknown
         process.exit(1);
     }
 
-    const scenarios = scenariosMap[commandName];
+    await Promise.resolve(null);
+    // const scenarios = scenariosMap[commandName];
 
-    await Promise.all(scenarios.map(scenario => scenario.run()));
+    // await Promise.all(scenarios.map(scenario => scenario.run()));
 }

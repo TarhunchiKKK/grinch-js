@@ -1,6 +1,5 @@
 import { TestAborter, abort } from "../../aborting";
-import { SampleTestCallback } from "../types/callbacks";
-import { SampleTestPayload } from "../types/payloads";
+import { SampleTestCallback, SampleTestPayload } from "../types/callbacks";
 import { Test } from "../types/test";
 
 export class SampleTest<State> implements Test {

@@ -1,8 +1,9 @@
-import { ScenarioTestFactory } from "../factories/scenario-test-factory";
 import { Test } from "../../tests";
 
 export class Scenario<State> implements Test {
     private childrenTests: Test[] = [];
+
+    public success: boolean | null = null;
 
     public constructor(
         public title: string,
@@ -11,12 +12,6 @@ export class Scenario<State> implements Test {
     ) {}
 
     public createTestFactory() {
-        return new ScenarioTestFactory(this.childrenTests, this.state);
-    }
-
-    public async run() {
-        for (const test of this.childrenTests) {
-            await test.run();
-        }
+        // return new ScenarioTestFactory(this.childrenTests, this.state);
     }
 }

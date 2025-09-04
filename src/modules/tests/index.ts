@@ -1,5 +1,5 @@
 export { SampleTest } from "./classes/sample-test";
-export { SerialTest } from "./classes/serial-test";
+export { SerialTest } from "./classes/test-group";
 export { ParallelTest } from "./classes/parallel-test";
 export { BaseTestFactory } from "./factories/base-test-factory";
 export { TestFactory } from "./factories/test-factory";

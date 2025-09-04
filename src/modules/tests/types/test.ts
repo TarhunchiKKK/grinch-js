@@ -1,5 +1,5 @@
 export type Test = {
     title: string;
 
-    run: () => Promise<void>;
+    success: boolean | null;
 };
