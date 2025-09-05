@@ -11,7 +11,7 @@ export const toHaveLengthGenerator = {
             return { value, length };
         });
     },
-    invaid() {
+    invalid() {
         return Array.from({ length: VALUES_COUNT })
             .map(() => {
                 const length = faker.number.int(ARRAY_LENGTH);

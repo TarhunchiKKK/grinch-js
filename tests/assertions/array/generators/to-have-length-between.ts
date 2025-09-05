@@ -7,19 +7,30 @@ export const toHaveLengthBetweenGenerator = {
     valid() {
         return Array.from({ length: VALUES_COUNT }).map(() => {
             const value = faker.helpers.uniqueArray(faker.number.int, faker.number.int(ARRAY_LENGTH));
-            const index = faker.number.int({ min: 0, max: value.length - 1 });
-            const item = value[index];
-            return { value, index, item };
+            const start = faker.number.int({ min: 0, max: value.length });
+            const end = faker.number.int({ min: value.length });
+            return { value, start, end };
         });
     },
-    invaid() {
-        return Array.from({ length: VALUES_COUNT })
-            .map(() => {
-                const value = faker.helpers.uniqueArray(faker.number.int, faker.number.int(ARRAY_LENGTH));
-                const index = faker.number.int({ min: 0, max: value.length - 1 });
-                const item = faker.number.int();
-                return { value, index, item };
-            })
-            .filter(({ value, index, item }) => value[index] !== item);
+    invalid() {
+        return Array.from({ length: VALUES_COUNT }).map(() => {
+            let value = faker.helpers.uniqueArray(faker.number.int, faker.number.int(ARRAY_LENGTH));
+            const start = faker.number.int({ min: 0, max: value.length });
+            const end = faker.number.int({ min: value.length, max: value.length + 100 });
+
+            if (faker.datatype.boolean()) {
+                value = faker.helpers.uniqueArray(
+                    faker.number.int,
+                    Math.max(start - faker.number.int({ min: 1, max: 100 }), 1)
+                );
+            } else {
+                value = value = faker.helpers.uniqueArray(
+                    faker.number.int,
+                    end + faker.number.int({ min: 1, max: 100 })
+                );
+            }
+
+            return { value, start, end };
+        });
     }
 };

@@ -22,9 +22,9 @@ export const toBeSortedGenerator = {
                     .sort((a, b) => a - b),
                 comparator: (a: number, b: number) => a - b
             }
-        ];
+        ] as { value: Value; comparator: Comparator }[];
     },
-    invaid() {
+    invalid() {
         return [
             {
                 value: Array.from({ length: ARRAY_LENGTH }).map(() =>
@@ -36,6 +36,6 @@ export const toBeSortedGenerator = {
                 value: Array.from({ length: ARRAY_LENGTH }).map(() => faker.number.int()),
                 comparator: (a: number, b: number) => a - b
             }
-        ];
+        ] as { value: Value; comparator: Comparator }[];
     }
 };

@@ -18,9 +18,9 @@ export const toHaveSomeMatchGenerator = {
                 value: Array.from({ length: ARRAY_LENGTH }).map(() => faker.number.int({ min: 10 })),
                 condition: (value: number) => value >= 10
             }
-        ];
+        ] as { value: Value; condition: Condition }[];
     },
-    invaid() {
+    invalid() {
         return [
             {
                 value: Array.from({ length: ARRAY_LENGTH }).map(() =>
@@ -32,6 +32,6 @@ export const toHaveSomeMatchGenerator = {
                 value: Array.from({ length: ARRAY_LENGTH }).map(() => faker.number.int({ min: 10 })),
                 condition: (value: number) => value < 10
             }
-        ];
+        ] as { value: Value; condition: Condition }[];
     }
 };

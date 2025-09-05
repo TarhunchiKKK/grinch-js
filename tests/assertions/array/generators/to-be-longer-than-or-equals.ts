@@ -11,7 +11,7 @@ export const toBeLongerThanOrEqualsGenerator = {
             return { value, length };
         });
     },
-    invaid() {
+    invalid() {
         return Array.from({ length: VALUES_COUNT }).map(() => {
             const value = faker.helpers.uniqueArray(faker.number.int, faker.number.int(ARRAY_LENGTH));
             const length = value.length + faker.number.int({ min: 1 });

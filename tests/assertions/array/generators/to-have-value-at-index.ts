@@ -12,7 +12,7 @@ export const toHaveValueAtIndexGenerator = {
             return { value, index, item };
         });
     },
-    invaid() {
+    invalid() {
         return Array.from({ length: VALUES_COUNT })
             .map(() => {
                 const value = faker.helpers.uniqueArray(faker.number.int, faker.number.int(ARRAY_LENGTH));
