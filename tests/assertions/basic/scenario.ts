@@ -1,7 +1,7 @@
 import { assert, scenario } from "../../../src";
 import { basicAssertionGenerators } from "./generators";
 
-export const BasicAssertionsScenario = scenario("Basic Assertions", null, ({ test }) => {
+export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test }) => {
     test.parallel("assertions", ({ test }) => {
         test.serial("toBe()", ({ test }) => {
             test.sample("valid", () => {

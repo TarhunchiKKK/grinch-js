@@ -14,7 +14,7 @@ import { toHaveLengthBetweenGenerator } from "./to-have-length-between.generator
 import { toIncludesGenerator } from "./to-includes.generator";
 import { toHaveValueAtIndexGenerator } from "./to-have-value-at-index.generator";
 
-export const GENERATORS = {
+export const stringAssertionGenerators = {
     toBeUpperCase: toBeUpperCaseGenerator,
     toBeLowerCase: toBeLowerCaseGenerator,
     toStartsWith: toStartsWithGenerator,
