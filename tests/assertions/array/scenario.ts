@@ -16,7 +16,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 const values = arrayAssertionGenerators.toHaveLength.invalid();
 
                 for (const { value, length } of values) {
-                    assert.array(value).toHaveLength(length);
+                    assert.array(value).not.toHaveLength(length);
                 }
             });
         });
@@ -34,7 +34,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 const values = arrayAssertionGenerators.toBeShorterThan.invalid();
 
                 for (const { value, length } of values) {
-                    assert.array(value).toBeShorterThan(length);
+                    assert.array(value).not.toBeShorterThan(length);
                 }
             });
         });
@@ -52,7 +52,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 const values = arrayAssertionGenerators.toBeShorterThanOrEquals.invalid();
 
                 for (const { value, length } of values) {
-                    assert.array(value).toBeShorterThanOrEquals(length);
+                    assert.array(value).not.toBeShorterThanOrEquals(length);
                 }
             });
         });
@@ -62,7 +62,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 const values = arrayAssertionGenerators.toBeLongerThan.valid();
 
                 for (const { value, length } of values) {
-                    assert.array(value).toBeLongerThan(length);
+                    assert.array(value).not.toBeLongerThan(length);
                 }
             });
 
@@ -70,7 +70,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 const values = arrayAssertionGenerators.toBeLongerThan.invalid();
 
                 for (const { value, length } of values) {
-                    assert.array(value).toBeLongerThan(length);
+                    assert.array(value).not.toBeLongerThan(length);
                 }
             });
         });
@@ -88,7 +88,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 const values = arrayAssertionGenerators.toBeLongerThanOrEquals.invalid();
 
                 for (const { value, length } of values) {
-                    assert.array(value).toBeLongerThanOrEquals(length);
+                    assert.array(value).not.toBeLongerThanOrEquals(length);
                 }
             });
         });
@@ -106,7 +106,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 const values = arrayAssertionGenerators.toHaveLengthBetween.invalid();
 
                 for (const { value, start, end } of values) {
-                    assert.array(value).toHaveLengthBetween(start, end);
+                    assert.array(value).not.toHaveLengthBetween(start, end);
                 }
             });
         });
@@ -116,7 +116,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 const values = arrayAssertionGenerators.toIncludes.valid();
 
                 for (const { value, item } of values) {
-                    assert.array(value).toIncludes(item);
+                    assert.array(value).not.toIncludes(item);
                 }
             });
 
@@ -124,7 +124,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 const values = arrayAssertionGenerators.toIncludes.invalid();
 
                 for (const { value, item } of values) {
-                    assert.array(value).toIncludes(item);
+                    assert.array(value).not.toIncludes(item);
                 }
             });
         });
@@ -134,7 +134,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 const values = arrayAssertionGenerators.toHaveValueAtIndex.valid();
 
                 for (const { value, index, item } of values) {
-                    assert.array(value).toHaveValueAtIndex(index, item);
+                    assert.array(value).not.toHaveValueAtIndex(index, item);
                 }
             });
 
@@ -142,7 +142,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 const values = arrayAssertionGenerators.toHaveValueAtIndex.invalid();
 
                 for (const { value, index, item } of values) {
-                    assert.array(value).toHaveValueAtIndex(index, item);
+                    assert.array(value).not.toHaveValueAtIndex(index, item);
                 }
             });
         });
@@ -160,7 +160,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 const values = arrayAssertionGenerators.toHaveSomeMatch.invalid();
 
                 for (const { value, condition } of values) {
-                    assert.array(value).toHaveSomeMatch(condition);
+                    assert.array(value).not.toHaveSomeMatch(condition);
                 }
             });
         });
@@ -178,7 +178,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 const values = arrayAssertionGenerators.toHaveEveryMatch.invalid();
 
                 for (const { value, condition } of values) {
-                    assert.array(value).toHaveEveryMatch(condition);
+                    assert.array(value).not.toHaveEveryMatch(condition);
                 }
             });
         });
@@ -196,7 +196,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 const values = arrayAssertionGenerators.toBeSorted.invalid();
 
                 for (const { value, comparator } of values) {
-                    assert.array(value).toBeSorted(comparator);
+                    assert.array(value).not.toBeSorted(comparator);
                 }
             });
         });

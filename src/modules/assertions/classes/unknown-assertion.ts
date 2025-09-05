@@ -42,7 +42,7 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
      *
      * @returns The current instance for chaining.
      */
-    public toBeNuber(): this {
+    public toBeNumber(): this {
         return this.checkType("number");
     }
 
@@ -51,7 +51,7 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
      *
      * @returns The current instance for chaining.
      */
-    public toBeNan(): this {
+    public toBeNaN(): this {
         this.runCondition(() => this.value !== this.value, `Value is not NaN. Receive: ${JSON.stringify(this.value)}`);
         return this;
     }
