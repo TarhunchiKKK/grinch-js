@@ -9,7 +9,7 @@ import { toBeGrateThanGenerator } from "./to-be-grater-than.generator";
 import { toBeGraterThanOrEqualsGenerator } from "./to-be-grater-than-or-equals.generator";
 import { toHaveValueBetweenGenerator } from "./to-have-value-between.generator";
 
-export const GENERATORS = {
+export const numberAssertionGenertors = {
     toBePositive: toBePositiveGenerator,
     toBeNegative: toBeNegativeGenerator,
     toBeInteger: toBeIntegerGenerator,
@@ -17,7 +17,7 @@ export const GENERATORS = {
     toBeNaN: toBeNaNGenerator,
     toBeLessThan: toBeLessThanGenerator,
     toBeLessThanOrEquals: toBeLessThanOrEqualsGenerator,
-    toBeGrater: toBeGrateThanGenerator,
-    toBeGraterOrEquals: toBeGraterThanOrEqualsGenerator,
+    toBeGraterThan: toBeGrateThanGenerator,
+    toBeGraterThanOrEquals: toBeGraterThanOrEqualsGenerator,
     toHaveValueBetween: toHaveValueBetweenGenerator
 };
