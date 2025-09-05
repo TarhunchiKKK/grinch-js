@@ -6,8 +6,20 @@ import { CommonModule } from "./common/common.module";
 import { BasicAssertionsModule } from "./modules/assertions/basic/basic-assertions.module";
 import { NumberAssertionsModule } from "./modules/assertions/number/number-assertions.module";
 import { StringAssertionsModule } from "./modules/assertions/string/string-assertions.module";
+import { RecordAssertionsModule } from "./modules/assertions/record/record-assertions.module";
 
 @Module({
-    imports: [AuthModule, UsersModule, PostsModule, CommonModule, BasicAssertionsModule, NumberAssertionsModule, StringAssertionsModule]
+    imports: [
+        AuthModule, 
+        UsersModule, 
+        PostsModule, 
+        CommonModule, 
+        
+        // Assertions
+        BasicAssertionsModule, 
+        NumberAssertionsModule, 
+        StringAssertionsModule, 
+        RecordAssertionsModule
+    ]
 })
 export class AppModule {}
