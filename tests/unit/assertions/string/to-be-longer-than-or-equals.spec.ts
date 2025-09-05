@@ -24,6 +24,7 @@ describe("StringAssertion.toBeLongerThanOrEquals()", () => {
             const length = value.length + faker.number.int({ min: 1 });
             return { value, length };
         });
+        
         for (const { value, length } of values) {
             expect(() => assert.string(value).toBeLongerThanOrEquals(length)).toThrow();
         }
