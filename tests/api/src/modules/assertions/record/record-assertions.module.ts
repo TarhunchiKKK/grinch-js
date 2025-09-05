@@ -4,4 +4,4 @@ import { RecordAssertionsController } from "./record-assertions.controller";
 @Module({
     controllers: [RecordAssertionsController]
 })
-export class RecordAssertionsModule{}
+export class RecordAssertionsModule {}

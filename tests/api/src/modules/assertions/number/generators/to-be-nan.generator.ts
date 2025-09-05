@@ -5,7 +5,6 @@ export const toBeNaNGenerator = {
         return [NaN];
     },
     invalid() {
-        return  [faker.number.float(), faker.number.int(), 0];
-
+        return [faker.number.float(), faker.number.int(), 0];
     }
 };

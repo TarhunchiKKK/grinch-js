@@ -5,7 +5,7 @@ const STRING_LENGTH = 100;
 
 export const toIncludesGenerator = {
     valid() {
-        return  Array.from({ length: VALUES_COUNT }).map(() => {
+        return Array.from({ length: VALUES_COUNT }).map(() => {
             const value = faker.string.alphanumeric({ length: STRING_LENGTH });
             const start = faker.number.int({ min: 0, max: value.length - STRING_LENGTH / 4 });
             const end = start + faker.number.int({ min: start + 1, max: value.length - 1 });

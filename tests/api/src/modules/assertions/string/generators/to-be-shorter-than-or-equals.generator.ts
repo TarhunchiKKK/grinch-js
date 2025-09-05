@@ -12,7 +12,7 @@ export const toBeShorterThanOrEqualsGenerator = {
         });
     },
     invalid() {
-        return  Array.from({ length: VALUES_COUNT }).map(() => {
+        return Array.from({ length: VALUES_COUNT }).map(() => {
             const value = faker.string.alphanumeric({ length: STRING_LENGTH });
             const length = value.length - faker.number.int({ min: 1 });
             return { value, length };

@@ -10,8 +10,8 @@ export const toBeUpperCaseGenerator = {
         );
     },
     invalid() {
-        return Array.from({ length: VALUES_COUNT }).map(() =>
-            faker.string.alphanumeric({ casing: "mixed", length: STRING_LENGTH })
-        ).filter(value => value !== value.toUpperCase());
+        return Array.from({ length: VALUES_COUNT })
+            .map(() => faker.string.alphanumeric({ casing: "mixed", length: STRING_LENGTH }))
+            .filter(value => value !== value.toUpperCase());
     }
 };

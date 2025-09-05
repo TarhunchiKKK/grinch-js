@@ -10,15 +10,15 @@ import { RecordAssertionsModule } from "./modules/assertions/record/record-asser
 
 @Module({
     imports: [
-        AuthModule, 
-        UsersModule, 
-        PostsModule, 
-        CommonModule, 
-        
+        AuthModule,
+        UsersModule,
+        PostsModule,
+        CommonModule,
+
         // Assertions
-        BasicAssertionsModule, 
-        NumberAssertionsModule, 
-        StringAssertionsModule, 
+        BasicAssertionsModule,
+        NumberAssertionsModule,
+        StringAssertionsModule,
         RecordAssertionsModule
     ]
 })

@@ -22,6 +22,6 @@ export const toHaveKeyGenerator = {
                 },
                 key: "gener"
             }
-        ];   
+        ];
     }
 };

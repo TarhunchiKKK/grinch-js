@@ -58,7 +58,7 @@ export class StringAssertionsController {
         return valid ? GENERATORS.toBeLongerThan.valid() : GENERATORS.toBeLongerThan.invalid();
     }
 
-    @Get("to-be-longer-than-or-equals/:valid")   
+    @Get("to-be-longer-than-or-equals/:valid")
     public toBeLongerThanOrEquals(@Param("valid", ParseBoolPipe) valid: boolean) {
         return valid ? GENERATORS.toBeLongerThanOrEquals.valid() : GENERATORS.toBeLongerThanOrEquals.invalid();
     }
@@ -77,5 +77,4 @@ export class StringAssertionsController {
     public toHaveValueAtIndex(@Param("valid", ParseBoolPipe) valid: boolean) {
         return valid ? GENERATORS.toHaveValueAtIndex.valid() : GENERATORS.toHaveValueAtIndex.invalid();
     }
-
 }

@@ -30,6 +30,5 @@ export const toHaveAllKeysGenerator = {
                 keys: ["name", "city", "job"]
             }
         ];
-
     }
 };

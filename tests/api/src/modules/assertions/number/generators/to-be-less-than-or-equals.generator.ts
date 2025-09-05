@@ -4,7 +4,7 @@ const VALUES_COUNT = 10;
 
 export const toBeLessThanOrEqualsGenerator = {
     valid() {
-        return  Array.from({ length: VALUES_COUNT }).map(() => {
+        return Array.from({ length: VALUES_COUNT }).map(() => {
             const value = faker.number.float({ min: -100, max: 100 });
 
             return {
