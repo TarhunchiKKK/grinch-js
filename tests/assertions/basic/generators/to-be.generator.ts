@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { FAKER_OPTIONS } from "../basic-assertions.constants";
+import { FAKER_OPTIONS } from "./constants";
 
 export const toBeGenerator = {
     valid() {

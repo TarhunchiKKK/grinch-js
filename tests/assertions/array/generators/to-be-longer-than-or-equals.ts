@@ -3,7 +3,7 @@ import { faker } from "@faker-js/faker";
 const VALUES_COUNT = 10;
 const ARRAY_LENGTH = { min: 10, max: 100 };
 
-export const toBeLongrThanOrEqualsGenerator = {
+export const toBeLongerThanOrEqualsGenerator = {
     valid() {
         return Array.from({ length: VALUES_COUNT }).map(() => {
             const value = faker.helpers.uniqueArray(faker.number.int, faker.number.int(ARRAY_LENGTH));

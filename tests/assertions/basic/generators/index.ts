@@ -6,7 +6,7 @@ import { toBeTruthyGenerator } from "./to-be-truthy.generator";
 import { toBeFalsyGenerator } from "./to-be-falsy.generator";
 import { toBeInGenerator } from "./to-be-in.generator";
 
-export const GENERATORS = {
+export const basicAssertionGenerators = {
     toBe: toBeGenerator,
     toBeDefined: toBeDefinedGenerator,
     toBeNull: toBeNullGenerator,
