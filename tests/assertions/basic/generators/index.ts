@@ -1,10 +1,12 @@
-import { toBeGenerator } from "./to-be.generator";
-import { toBeDefinedGenerator } from "./to-be-defined.generator";
-import { toBeNullGenerator } from "./to-be-null.generator";
-import { toBeEmptyGenerator } from "./to-be-empty.generator";
-import { toBeTruthyGenerator } from "./to-be-truthy.generator";
-import { toBeFalsyGenerator } from "./to-be-falsy.generator";
-import { toBeInGenerator } from "./to-be-in.generator";
+import { toBeGenerator } from "./to-be";
+import { toBeDefinedGenerator } from "./to-be-defined";
+import { toBeNullGenerator } from "./to-be-null";
+import { toBeEmptyGenerator } from "./to-be-empty";
+import { toBeTruthyGenerator } from "./to-be-truthy";
+import { toBeFalsyGenerator } from "./to-be-falsy";
+import { toBeInGenerator } from "./to-be-in";
+import { toMatchZodSchemaGenerator } from "./to-match-zod-schema";
+import { toSatisfyGenerator } from "./to-satisfy";
 
 export const basicAssertionGenerators = {
     toBe: toBeGenerator,
@@ -13,5 +15,7 @@ export const basicAssertionGenerators = {
     toBeEmpty: toBeEmptyGenerator,
     toBeTruthy: toBeTruthyGenerator,
     toBeFalsy: toBeFalsyGenerator,
-    toBeIn: toBeInGenerator
+    toBeIn: toBeInGenerator,
+    toMatchZodSchema: toMatchZodSchemaGenerator,
+    toSatisfy: toSatisfyGenerator
 };

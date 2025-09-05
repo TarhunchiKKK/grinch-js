@@ -111,6 +111,24 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
             });
         });
 
+        test.serial("toMatch()", ({ test }) => {
+            test.sample("valid", () => {
+                const values = stringAssertionGenerators.toMatchRegex.valid();
+
+                for (const { value, regexp } of values) {
+                    assert.string(value).toMatchRegex(regexp);
+                }
+            });
+
+            test.sample("invalid", () => {
+                const values = stringAssertionGenerators.toMatchRegex.invalid();
+
+                for (const { value, regexp } of values) {
+                    assert.string(value).not.toMatchRegex(regexp);
+                }
+            });
+        });
+
         test.serial("toBeUUID()", ({ test }) => {
             test.sample("valid", () => {
                 const values = stringAssertionGenerators.toBeUUID.valid();

@@ -1,7 +1,7 @@
-import { toEqualsGenerator } from "./to-equals.generator";
-import { toHaveKeyGenerator } from "./to-have-key.generator";
-import { toHaveAllKeysGenerator } from "./to-have-all-keys.generator";
-import { toHaveKeyWithValueGenerator } from "./to-have-key-with-value.generator";
+import { toEqualsGenerator } from "./to-equals";
+import { toHaveKeyGenerator } from "./to-have-key";
+import { toHaveAllKeysGenerator } from "./to-have-all-keys";
+import { toHaveKeyWithValueGenerator } from "./to-have-key-with-value";
 
 export const recordAssertionGenerators = {
     toEquals: toEqualsGenerator,

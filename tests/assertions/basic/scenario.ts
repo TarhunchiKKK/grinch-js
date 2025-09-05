@@ -128,5 +128,41 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 }
             });
         });
+
+        test.serial("tomatchZodSchema()", ({ test }) => {
+            test.sample("valid", () => {
+                const values = basicAssertionGenerators.toMatchZodSchema.valid();
+
+                for (const { value, schema } of values) {
+                    assert.basic(value).toMatchZodSchema(schema);
+                }
+            });
+
+            test.sample("invalid", () => {
+                const values = basicAssertionGenerators.toMatchZodSchema.invalid();
+
+                for (const { value, schema } of values) {
+                    assert.basic(value).not.toMatchZodSchema(schema);
+                }
+            });
+        });
+
+        test.serial("toSatisfy()", ({ test }) => {
+            test.sample("valid", () => {
+                const values = basicAssertionGenerators.toSatisfy.valid();
+
+                for (const { value, condition } of values) {
+                    assert.basic(value).toSatisfy(condition);
+                }
+            });
+
+            test.sample("invalid", () => {
+                const values = basicAssertionGenerators.toSatisfy.invalid();
+
+                for (const { value, condition } of values) {
+                    assert.basic(value).not.toSatisfy(condition);
+                }
+            });
+        });
     });
 });
