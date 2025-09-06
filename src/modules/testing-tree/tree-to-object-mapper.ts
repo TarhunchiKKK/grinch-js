@@ -59,13 +59,4 @@ export class TreeToObjectMapper {
             result.children!.push(childResult);
         }
     }
-
-    private getResultString(result: TestResult) {
-        switch (result) {
-            case TestResult.SUCCEED:
-                return "succeed";
-            case TestResult.FAILED:
-                return;
-        }
-    }
 }

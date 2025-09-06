@@ -1,1 +1,1 @@
-export { defineConfig, ConfigOptions } from "./define-config";
+export { defineConfig, type ConfigOptions } from "./define-config";

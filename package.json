@@ -5,15 +5,20 @@
     "keywords": [],
     "author": "Konstantin Barilo",
     "license": "ISC",
-    "main": "./dist/index.umd.cjs",
     "files": [
         "dist"
     ],
-    "bin": {
-        "grinch": "./dist/index.js"
+    "main": "./dist/grinch.umd.js",
+    "module": "./dist/grinch.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/grinch.js",
+            "require": "./dist/grinch.umd.cjs"
+        }
     },
     "scripts": {
-        "build": "webpack",
+        "build": "vite build --config vite-config.ts",
         "format": "prettier --write \"src/**/*.ts\"",
         "lint": "eslint \"src/**/*.ts\" --fix",
         "knip": "knip"
@@ -34,8 +39,8 @@
         "ts-node": "^10.9.2",
         "typescript": "~5.8.3",
         "typescript-eslint": "^8.39.1",
-        "webpack": "^5.101.2",
-        "webpack-cli": "^6.0.1",
+        "vite": "^7.1.4",
+        "vite-plugin-dts": "^4.5.4",
         "zod": "^4.0.17"
     }
 }

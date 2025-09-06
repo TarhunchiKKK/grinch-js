@@ -1,1 +1,1 @@
-export { LifecycleHookCallback } from "./types";
+export { type LifecycleHookCallback } from "./types";
