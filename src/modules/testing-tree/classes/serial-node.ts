@@ -29,7 +29,7 @@ export class SerialNode extends GroupNode {
 
     public async run() {
         for (const child of this.children) {
-            await child.run();
+            await this.runSingle(child);
         }
     }
 }

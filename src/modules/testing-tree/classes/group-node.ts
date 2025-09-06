@@ -7,6 +7,11 @@ import { TestNode } from "./types";
 export abstract class GroupNode implements TestNode {
     public children: TestNode[] = [];
 
+    public hooks = {
+        beforeEach: [] as (() => void | Promise<void>)[],
+        afterEach: [] as (() => void | Promise<void>)[]
+    };
+
     public hasChildren(): this is GroupNode {
         return true;
     }
@@ -29,6 +34,18 @@ export abstract class GroupNode implements TestNode {
         const node = new ParallelNode(test);
         this.children.push(node);
         return node;
+    }
+
+    protected async runSingle(node: TestNode) {
+        for (const hook of this.hooks.beforeEach) {
+            await hook();
+        }
+
+        await node.run();
+
+        for (const hook of this.hooks.afterEach) {
+            await hook();
+        }
     }
 
     public abstract getInfo(): TestInfo;

@@ -47,6 +47,6 @@ export class ParallelNode extends GroupNode {
     }
 
     public async run() {
-        await Promise.allSettled([this.children.map(child => child.run())]);
+        await Promise.allSettled([this.children.map(child => this.runSingle(child))]);
     }
 }
