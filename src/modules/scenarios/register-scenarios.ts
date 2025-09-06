@@ -1,5 +1,3 @@
-import { exit } from "process";
-import { Logger } from "../../shared";
 import { Scenario } from "./scenario";
 import { TestingResults } from "../reporting";
 
@@ -12,8 +10,7 @@ export async function registerScenarios(map: Record<string, Scenario[]>) {
     const commandName = process.argv[2];
 
     if (!commandName) {
-        Logger.red("Command name not provided");
-        exit(1);
+        throw new Error("Command name not provided");
     }
 
     const testingTree = TestingResults.getInstance().tree;
@@ -21,8 +18,7 @@ export async function registerScenarios(map: Record<string, Scenario[]>) {
     const scenarios = map[commandName];
 
     if (!scenarios) {
-        Logger.red(`Command with name ${commandName} not found.`);
-        exit(1);
+        throw new Error(`Command with name ${commandName} not found.`);
     }
 
     for (const scenario of scenarios) {
