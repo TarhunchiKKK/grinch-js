@@ -1,10 +1,10 @@
-import { TestAborter } from "../../aborting";
+import { TestAborter } from "../../test-aborting";
 import { Test } from "../types";
 
 type Callback = () => void | Promise<void>;
 
 export class SampleTest implements Test {
-    public success: boolean | null = null;
+    public result: boolean | null = null;
 
     public constructor(
         public title: string,
@@ -16,13 +16,9 @@ export class SampleTest implements Test {
         try {
             await this.callback();
 
-            this.success = true;
+            this.result = true;
         } catch (error) {
-            if (TestAborter.isFail(error)) {
-                this.success = true;
-            } else {
-                this.success = false;
-            }
+            this.result = TestAborter.handleError(error);
         }
     }
 }

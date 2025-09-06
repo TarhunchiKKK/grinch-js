@@ -2,7 +2,7 @@ import { SampleTestCallback, TestGroupCallback } from "./types";
 import { SampleTest } from "./classes/sample-test";
 import { TestGroup } from "./classes/test-group";
 import { GroupNode } from "../testing-tree";
-import { abort } from "../aborting";
+import { abort } from "../test-aborting";
 
 export class TestFactory<State> {
     public constructor(

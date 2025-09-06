@@ -1,5 +1,11 @@
+export class SucceedTestError extends Error {
+    public constructor() {
+        super("Test forcibly succeeded");
+    }
+}
+
 export class FailTestError extends Error {
-    constructor() {
+    public constructor() {
         super("Test forcibly failed");
     }
 }
