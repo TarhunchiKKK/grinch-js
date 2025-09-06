@@ -10,7 +10,7 @@ on:
 
 jobs:
     build:
-        name: Lint, Knip & Test
+        name: Lint, Knip & TestInfo
         runs-on: ubuntu-latest
 
         steps:
@@ -23,8 +23,8 @@ jobs:
             - name: Run linter
               run: npm run lint
 
-            # - name: Run Knip
-            #   run: npm run knip
+            - name: Run Knip
+              run: npm run knip
 
             - name: Build library
               run: npm run build

@@ -20,8 +20,8 @@ program
 
             createEntryFile();
         } catch (error) {
-            Logger.failure("Error initializing Grinch project:");
-            console.error(error);
+            Logger.red("Error initializing Grinch project:");
+            Logger.red(error);
             process.exit(1);
         }
     });
@@ -31,16 +31,16 @@ program
     .description("Run e2e tests")
     .action(async (command_name: string) => {
         try {
-            const { config, entryFile } = await readConfig();
+            const { entryFile } = await readConfig();
 
             const scenariosMap = await readScenariosMap(entryFile);
 
             await runScenarios(scenariosMap, command_name);
 
-            await report(config.reporter);
+            await report();
         } catch (error) {
-            Logger.failure("Error running tests:");
-            console.error(error);
+            Logger.red("Error running tests:");
+            Logger.red(error);
             process.exit(1);
         }
     });

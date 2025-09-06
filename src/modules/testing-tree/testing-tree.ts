@@ -1,16 +1,28 @@
-import { Test } from "../tests";
+import { TestInfo } from "../tests";
 import { GroupNode } from "./classes/group-node";
 import { SerialNode } from "./classes/serial-node";
+import { MappingResult, TreeToObjectMapper } from "./tree-to-object-mapper";
 
 export class TestingTree {
-    public root: GroupNode[] = [];
+    public children: GroupNode[] = [];
 
-    public add(test: Test) {
-        this.root.push(new SerialNode(test));
-        return this.root[this.root.length - 1];
+    public add(test: TestInfo) {
+        this.children.push(new SerialNode(test));
+        return this.children[this.children.length - 1];
+    }
+
+    public calculateResults() {
+        for (const child of this.children) {
+            child.getInfo();
+        }
     }
 
     public async run() {
-        await Promise.allSettled([this.root.map(child => child.run())]);
+        await Promise.allSettled([this.children.map(child => child.run())]);
+    }
+
+    public toObject(): MappingResult[] {
+        const mapper = new TreeToObjectMapper(this);
+        return mapper.map();
     }
 }

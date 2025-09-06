@@ -1,2 +1,2 @@
 export { TestingResults } from "./model/testing-results";
-export { report, ReporterTypes } from "./model/report";
+export { report } from "./model/report";

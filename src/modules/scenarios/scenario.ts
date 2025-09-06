@@ -1,7 +1,7 @@
-import { Test } from "../tests";
+import { TestInfo, TestResult } from "../tests";
 
-export class Scenario implements Test {
-    public result: boolean | null = null;
+export class Scenario implements TestInfo {
+    public result = TestResult.NOT_RUNED;
 
     public constructor(public title: string) {}
 }

@@ -11,11 +11,11 @@ export function createEntryFile() {
 
     if (!fs.existsSync(testsDir)) {
         fs.mkdirSync(testsDir);
-        console.log(`Created directory: ${testsDir}`);
+        Logger.info(`Created directory: ${testsDir}`);
     }
 
     if (fs.existsSync(entryFilePath)) {
-        Logger.success(`${entryFileName} already exists in ${testsDir}. Skipping creation.`);
+        Logger.green(`${entryFileName} already exists in ${testsDir}. Skipping creation.`);
         return;
     }
 
@@ -26,5 +26,5 @@ export default mapScenarios({
 });
 `;
     fs.writeFileSync(entryFilePath, entryFileContent);
-    Logger.success(`Created ${entryFileName} in ${testsDir}`);
+    Logger.green(`Created ${entryFileName} in ${testsDir}`);
 }

@@ -1,22 +1,13 @@
 import { BaseReporter } from "../classes/base-reporter";
 import { ConsoleReporter } from "../classes/console-reporter";
-import { FileReporter } from "../classes/file-reporter";
+import { TestingResults } from "./testing-results";
 
-export type ReporterTypes = "file" | "console";
+// export type ReporterTypes = "file" | "console";
 
-export async function report(type: ReporterTypes) {
-    let reporter: BaseReporter;
-
-    switch (type) {
-        case "file":
-            reporter = new FileReporter();
-            break;
-        case "console":
-            reporter = new ConsoleReporter();
-            break;
-        default:
-            throw new Error("Reporter not selected");
-    }
+export async function report() {
+    const reporter: BaseReporter = new ConsoleReporter();
 
     await reporter.report();
+
+    return TestingResults.getInstance().tree.toObject();
 }

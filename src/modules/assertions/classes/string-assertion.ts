@@ -1,4 +1,4 @@
-import { JWT_REGEX, NUMERIC_STRING_REGEX, UUID_REGEX } from "../constants";
+import { JWT_REGEX, NUMERIC_STRING_REGEX, UUID_REGEX } from "../lib/constants";
 import { IterableAssertion } from "./iterable-assertion";
 
 /**

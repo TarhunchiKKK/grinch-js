@@ -1,8 +1,7 @@
 {
     "$schema": "https://unpkg.com/knip@5/schema.json",
-    "project": ["src/**/*.ts"],
-    "ignore": ["src/bin/**/*.ts", "src/polyfills.ts"],
-    "ignoreDependencies": ["commander", "ts-node"],
+    "entry": ["tests/assertions/main.grinch.ts", "src/bin/grinch.ts"],
+    "ignoreDependencies": ["ts-node"],
     "rules": {
         "files": "warn",
         "classMembers": "warn",
