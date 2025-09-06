@@ -1,10 +1,12 @@
-import { TestAborter } from "../aborting";
+import { TestAborter } from "../test-aborting";
 import { TestFactory } from "./test-factory";
+
+export type TestResult = true | false | null;
 
 export type Test = {
     title: string;
 
-    success: boolean | null;
+    result: TestResult;
 };
 
 export type AvailableTestStates = Record<string, unknown> | null;
