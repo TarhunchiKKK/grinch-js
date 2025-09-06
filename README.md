@@ -13,11 +13,8 @@
 - [Table of Contents](#table-of-contents)
 - [Philosophy](#philosophy)
 - [Installation](#installation)
-    - [With CLI](#with-cli)
-    - [Manually](#manually)
 - [Basic Usage](#basic-usage)
-- [Configuration](#configuration)
-- [TestInfo Types](#test-types)
+- [Test Types](#test-types)
     - [Scenario](#scenario)
     - [Parallel](#parallel)
     - [Serial](#serial)
@@ -41,21 +38,6 @@ Grinch aims to provide a ready-made foundation that allows you to effortlessly c
 
 ## Installation
 
-### With CLI
-
-Run this command:
-
-```bash
-npx grinch init
-```
-
-After running this command you can see some new files:
-
-- `grinch.config.ts` file in root of your project - configuration file
-- `tests/main.grinch.ts` - entry file for Grinch scenarios
-
-### Manually
-
 1. Install Grinch with your package manager:
 
 ```bash
@@ -66,22 +48,12 @@ yarn add --dev grinch
 pnpm i --save-dev grinch
 ```
 
-2. Create `grinch.config.ts` file in the root of your project:
+2. Create entry file for your scenarios:
 
 ```typescript
-import { defineConfig } from "grinch";
+import { register } from "grinch";
 
-export default defineConfig({
-    // Configuration properties
-});
-```
-
-3. Create entry file for your scenarios:
-
-```typescript
-import { mapScenarios } from "grinch";
-
-export default mapScenarios({
+export default register({
     command_1: [
         // Scenarios for "command_1"
     ],
@@ -90,6 +62,16 @@ export default mapScenarios({
     ]
     // Other commands
 });
+```
+
+3. Add script to you package.json:
+
+```json
+{
+    "scripts: {
+        "test": "npx your-file.ts command_name"
+    }
+}
 ```
 
 ## Basic Usage
@@ -191,10 +173,10 @@ export const createPostScenario = scenario("Create post", state, ({ test }) => {
 Now let's update our entry file:
 
 ```typescript
-import { mapScenarios } from "grinch";
+import { register } from "grinch";
 import { createPostScenario } from "./create-post.grinch.ts";
 
-export default mapScenarios({
+export default register({
     posts: [createPostScenario]
 });
 ```
@@ -202,22 +184,12 @@ export default mapScenarios({
 Now you can run this command to test post creating:
 
 ```bash
-grinch run posts
+npx ts-node your-file.ts posts
 ```
 
 Grinch will search for command provided in CLI and run corresponding scenarios in parallel.
 
-## Configuration
-
-The Grinch configuration has a minimal set of fields. All of them are not required.
-
-| Field              | Description                                                         | Default                |
-| ------------------ | ------------------------------------------------------------------- | ---------------------- |
-| `entryFile`        | The input file in which Grinch will search for scenarios to execute | `tests/main.grinch.ts` |
-| `reporter`         | Defines how the results of the command execution will be displayed  | `"console"`            |
-| `resultsDirectory` | Defines where Grinch will store the results of the test scenarios   | `test-results`         |
-
-## TestInfo Types
+## Test Types
 
 When writing tests, Grinch saves them as a tree object, allowing you to group certain logic.
 
