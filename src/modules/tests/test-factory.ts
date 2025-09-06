@@ -3,6 +3,7 @@ import { SampleTest } from "./classes/sample-test";
 import { TestGroup } from "./classes/test-group";
 import { GroupNode } from "../testing-tree";
 import { abort } from "../test-aborting";
+import { LifecycleHookCallback } from "../lifecycle-hooks";
 
 export class TestFactory<State> {
     public constructor(
@@ -78,4 +79,22 @@ export class TestFactory<State> {
     //         test: testFactory as unknown as TestFactory<ReusableState>
     //     });
     // }
+
+    public beforeEach(callback: LifecycleHookCallback<State>) {
+        this.testsStore.hooks.beforeEach.push(() =>
+            callback({
+                state: this.state,
+                abort: abort
+            })
+        );
+    }
+
+    public afterEach(callback: LifecycleHookCallback<State>) {
+        this.testsStore.hooks.afterEach.push(() =>
+            callback({
+                state: this.state,
+                abort: abort
+            })
+        );
+    }
 }
