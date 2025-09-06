@@ -18,7 +18,7 @@
         }
     },
     "scripts": {
-        "build": "vite build --config vite-config.ts",
+        "build": "vite build",
         "format": "prettier --write \"src/**/*.ts\"",
         "lint": "eslint \"src/**/*.ts\" --fix",
         "knip": "knip"
@@ -35,7 +35,6 @@
         "jiti": "^2.5.1",
         "knip": "^5.62.0",
         "prettier": "^3.6.2",
-        "ts-loader": "^9.5.2",
         "ts-node": "^10.9.2",
         "typescript": "~5.8.3",
         "typescript-eslint": "^8.39.1",

@@ -3,10 +3,10 @@
     "entry": ["tests/assertions/main.grinch.ts", "src/bin/grinch.ts"],
     "ignoreDependencies": ["ts-node"],
     "rules": {
-        "files": "warn",
-        "classMembers": "warn",
-        "types": "warn",
-        "dependencies": "warn",
-        "devDependencies": "warn"
+        "files": "error",
+        "classMembers": "error",
+        "types": "error",
+        "dependencies": "error",
+        "devDependencies": "error"
     }
 }
