@@ -3,14 +3,20 @@ import { GroupNode } from "./classes/group-node";
 import { SerialNode } from "./classes/serial-node";
 
 export class TestingTree {
-    public scenarios: GroupNode[] = [];
+    public children: GroupNode[] = [];
 
     public add(test: TestInfo) {
-        this.scenarios.push(new SerialNode(test));
-        return this.scenarios[this.scenarios.length - 1];
+        this.children.push(new SerialNode(test));
+        return this.children[this.children.length - 1];
+    }
+
+    public calculateResults() {
+        for (const child of this.children) {
+            child.getInfo();
+        }
     }
 
     public async run() {
-        await Promise.allSettled([this.scenarios.map(child => child.run())]);
+        await Promise.allSettled([this.children.map(child => child.run())]);
     }
 }

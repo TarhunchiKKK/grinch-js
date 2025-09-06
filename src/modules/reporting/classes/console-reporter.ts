@@ -1,12 +1,17 @@
 import { Logger } from "../../../shared";
 import { TestNode } from "../../testing-tree/classes/types";
+import { TestResult } from "../../tests";
 import { BaseReporter } from "./base-reporter";
+
+const tab = "  ";
 
 export class ConsoleReporter extends BaseReporter {
     private currentDepth = 0;
 
     public report() {
-        for (const scenario of this.scenarios) {
+        this.testingTree.calculateResults();
+
+        for (const scenario of this.testingTree.children) {
             this.reportNode(scenario);
         }
     }
@@ -14,27 +19,62 @@ export class ConsoleReporter extends BaseReporter {
     private reportNode(node: TestNode) {
         if (node.hasChildren()) {
             for (const child of node.children) {
+                this.printGroupNode(child);
+
                 this.currentDepth++;
-
                 this.reportNode(child);
-
                 this.currentDepth--;
             }
         } else {
-            const line = "  ".repeat(this.currentDepth) + node.test.title;
+            this.printLeafNode(node);
+        }
+    }
 
-            switch (
-                node.test.result
-                // case true:
-                //     Logger.green(line);
-                //     break;
-                // case false:
-                //     Logger.red(line);
-                //     break;
-                // case null:
-                //     Logger.yellow(line);
-            ) {
-            }
+    private printGroupNode(node: TestNode) {
+        const line = tab.repeat(this.currentDepth) + node.test.title;
+
+        switch (node.test.result) {
+            case TestResult.SUCCEED:
+                Logger.green(line);
+                break;
+            case TestResult.PARTIAL_SUCCEED:
+                Logger.yellow(line);
+                break;
+            case TestResult.FAILED:
+                Logger.red(line);
+                break;
+            default:
+                throw new Error("Group test cannot have such result");
+        }
+    }
+
+    private printLeafNode(node: TestNode) {
+        const line = tab.repeat(this.currentDepth) + node.test.title;
+
+        switch (node.test.result) {
+            case TestResult.SUCCEED:
+                Logger.green(line);
+                break;
+            case TestResult.FORCIBLY_SUCCEED:
+                Logger.green(line + " (aborted)");
+                break;
+            case TestResult.FAILED:
+                Logger.red(line);
+                break;
+            case TestResult.FORCIBLY_FAILED:
+                Logger.red(line + " (aborted)");
+                break;
+            case TestResult.ERROR_DURING_TEST:
+                Logger.red(line + " (error)");
+                break;
+            case TestResult.FORCIBLY_SKIPED:
+                Logger.blur(line + " (aborted)");
+                break;
+            case TestResult.NOT_RUNED:
+                Logger.blur(line + " (not run)");
+                break;
+            default:
+                throw new Error("Sample test cannot have such result");
         }
     }
 }

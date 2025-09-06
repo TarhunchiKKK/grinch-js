@@ -21,7 +21,7 @@ program
             createEntryFile();
         } catch (error) {
             Logger.red("Error initializing Grinch project:");
-            console.error(error);
+            Logger.red(error);
             process.exit(1);
         }
     });
@@ -40,7 +40,7 @@ program
             await report(config.reporter);
         } catch (error) {
             Logger.red("Error running tests:");
-            console.error(error);
+            Logger.red(error);
             process.exit(1);
         }
     });

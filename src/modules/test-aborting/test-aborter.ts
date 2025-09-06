@@ -1,3 +1,4 @@
+import { Logger } from "../../shared";
 import { AssertionError } from "../assertions";
 import { TestResult } from "../tests";
 import { SkipTestError, FailTestError, SucceedTestError } from "./errors";
@@ -38,7 +39,7 @@ export class TestAborter {
         } else if (error instanceof AssertionError) {
             return TestResult.FAILED;
         } else {
-            console.error(error);
+            Logger.red(error);
             return TestResult.ERROR_DURING_TEST;
         }
     }

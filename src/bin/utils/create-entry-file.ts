@@ -11,7 +11,7 @@ export function createEntryFile() {
 
     if (!fs.existsSync(testsDir)) {
         fs.mkdirSync(testsDir);
-        console.log(`Created directory: ${testsDir}`);
+        Logger.info(`Created directory: ${testsDir}`);
     }
 
     if (fs.existsSync(entryFilePath)) {

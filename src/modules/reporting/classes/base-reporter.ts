@@ -1,7 +1,7 @@
 import { TestingResults } from "../model/testing-results";
 
 export abstract class BaseReporter {
-    protected scenarios = TestingResults.getInstance().tree.scenarios;
+    protected testingTree = TestingResults.getInstance().tree;
 
     public abstract report(): void | Promise<void>;
 }
