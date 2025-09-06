@@ -1,9 +1,9 @@
 import { TestInfo } from "../tests";
+import { GroupNode } from "./classes/group-node";
 import { SerialNode } from "./classes/serial-node";
-import { TestNode } from "./classes/types";
 
 export class TestingTree {
-    public scenarios: TestNode[] = [];
+    public scenarios: GroupNode[] = [];
 
     public add(test: TestInfo) {
         this.scenarios.push(new SerialNode(test));

@@ -7,25 +7,25 @@ export async function readConfig() {
     try {
         const configPath = path.resolve(process.cwd(), "grinch.config.ts");
         if (!fs.existsSync(configPath)) {
-            Logger.failure(`Configuration file not found at ${configPath}`);
+            Logger.red(`Configuration file not found at ${configPath}`);
             process.exit(1);
         }
 
         const config = (await import(configPath)) as { default: ConfigOptions };
         if (!config.default) {
-            Logger.failure("Invalid configuration file. Provided file has no default exported member");
+            Logger.red("Invalid configuration file. Provided file has no default exported member");
             process.exit(1);
         }
 
         const entryFile = path.resolve(process.cwd(), config.default.entryFile);
         if (!fs.existsSync(entryFile)) {
-            Logger.failure(`Entry file not found at ${entryFile}`);
+            Logger.red(`Entry file not found at ${entryFile}`);
             process.exit(1);
         }
 
         return { config: config.default, entryFile };
     } catch (error) {
-        Logger.failure("Error occured during reading configuration");
+        Logger.red("Error occured during reading configuration");
         console.error(error);
 
         process.exit(1);

@@ -39,10 +39,10 @@ export class FileReporter extends BaseReporter {
 
         writeFile(pathToFile, data, err => {
             if (err) {
-                Logger.failure("Error during writing report to file.");
+                Logger.red("Error during writing report to file.");
                 console.log(err);
             } else {
-                Logger.success("Report successfully written to file.");
+                Logger.green("Report successfully written to file.");
             }
         });
     }

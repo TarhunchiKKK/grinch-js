@@ -23,16 +23,18 @@ export class ConsoleReporter extends BaseReporter {
         } else {
             const line = "  ".repeat(this.currentDepth) + node.test.title;
 
-            // switch (node.test.result) {
-            //     case true:
-            //         Logger.success(line);
-            //         break;
-            //     case false:
-            //         Logger.failure(line);
-            //         break;
-            //     case null:
-            //         Logger.warning(line);
-            // }
+            switch (
+                node.test.result
+                // case true:
+                //     Logger.green(line);
+                //     break;
+                // case false:
+                //     Logger.red(line);
+                //     break;
+                // case null:
+                //     Logger.yellow(line);
+            ) {
+            }
         }
     }
 }

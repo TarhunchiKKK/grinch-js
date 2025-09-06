@@ -10,7 +10,7 @@ export function createConfigFile() {
     const configFilePath = path.resolve(cwd, configFileName);
 
     if (fs.existsSync(configFilePath)) {
-        Logger.success(`${configFileName} already exists. Skipping creation`);
+        Logger.green(`${configFileName} already exists. Skipping creation`);
         return;
     }
 
@@ -23,5 +23,5 @@ export function createConfigFile() {
   });
   `;
     fs.writeFileSync(configFilePath, configContent);
-    Logger.success(`Created ${configFileName}`);
+    Logger.green(`Created ${configFileName}`);
 }
