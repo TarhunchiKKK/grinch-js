@@ -1,5 +1,4 @@
-import { SampleTest, TestInfo } from "../../tests";
-import { TestGroup } from "../../tests/classes/test-group";
+import { SampleTest, TestInfo, TestGroup } from "../../tests";
 import { LeafNode } from "./leaf-node";
 import { ParallelNode } from "./parallel-node";
 import { SerialNode } from "./serial-node";

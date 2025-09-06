@@ -1,5 +1,4 @@
-import { TestResult } from "../../tests";
-import { TestGroup } from "../../tests/classes/test-group";
+import { TestResult, TestGroup } from "../../tests";
 import { GroupNode } from "./group-node";
 
 export class SerialNode extends GroupNode {

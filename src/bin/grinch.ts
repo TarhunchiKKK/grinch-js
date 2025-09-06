@@ -31,13 +31,13 @@ program
     .description("Run e2e tests")
     .action(async (command_name: string) => {
         try {
-            const { config, entryFile } = await readConfig();
+            const { entryFile } = await readConfig();
 
             const scenariosMap = await readScenariosMap(entryFile);
 
             await runScenarios(scenariosMap, command_name);
 
-            await report(config.reporter);
+            await report();
         } catch (error) {
             Logger.red("Error running tests:");
             Logger.red(error);

@@ -1,5 +1,4 @@
-import { TestInfo, TestResult } from "../../tests";
-import { TestGroup } from "../../tests/classes/test-group";
+import { TestInfo, TestResult, TestGroup } from "../../tests";
 import { GroupNode } from "./group-node";
 
 export class ParallelNode extends GroupNode {

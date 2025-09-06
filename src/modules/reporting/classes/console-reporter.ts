@@ -1,5 +1,5 @@
 import { Logger } from "../../../shared";
-import { TestNode } from "../../testing-tree/classes/types";
+import { TestNode } from "../../testing-tree";
 import { TestResult } from "../../tests";
 import { BaseReporter } from "./base-reporter";
 

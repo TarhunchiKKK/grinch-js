@@ -23,7 +23,7 @@ export async function readConfig() {
             process.exit(1);
         }
 
-        return { config: config.default, entryFile };
+        return { entryFile };
     } catch (error) {
         Logger.red("Error occured during reading configuration");
         Logger.red(error);
