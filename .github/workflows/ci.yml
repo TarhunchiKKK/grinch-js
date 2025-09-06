@@ -10,7 +10,7 @@ on:
 
 jobs:
     build:
-        name: Lint, Knip & Test
+        name: Lint, Knip & TestInfo
         runs-on: ubuntu-latest
 
         steps:

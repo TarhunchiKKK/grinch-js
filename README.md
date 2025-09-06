@@ -13,25 +13,25 @@
 - [Table of Contents](#table-of-contents)
 - [Philosophy](#philosophy)
 - [Installation](#installation)
-  - [With CLI](#with-cli)
-  - [Manually](#manually)
+    - [With CLI](#with-cli)
+    - [Manually](#manually)
 - [Basic Usage](#basic-usage)
 - [Configuration](#configuration)
-- [Test Types](#test-types)
-  - [Scenario](#scenario)
-  - [Parallel](#parallel)
-  - [Serial](#serial)
-  - [Sample](#sample)
+- [TestInfo Types](#test-types)
+    - [Scenario](#scenario)
+    - [Parallel](#parallel)
+    - [Serial](#serial)
+    - [Sample](#sample)
 - [Lifecycle Hooks](#lifecycle-hooks)
 - [Reusable Tests](#reusable-tests)
 - [Assertions](#assertions)
-  - [Basic Assertions](#basic-assertions)
-  - [Iterable Values Assertions](#iterable-values-assertions)
-  - [Number Assertions](#number-assertions)
-  - [String Assertions](#string-assertions)
-  - [Record Assertions](#record-assertions)
-  - [Array Assertions](#array-assertions)
-  - [Unknown Assertions](#unknown-assertions)
+    - [Basic Assertions](#basic-assertions)
+    - [Iterable Values Assertions](#iterable-values-assertions)
+    - [Number Assertions](#number-assertions)
+    - [String Assertions](#string-assertions)
+    - [Record Assertions](#record-assertions)
+    - [Array Assertions](#array-assertions)
+    - [Unknown Assertions](#unknown-assertions)
 
 ## Philosophy
 
@@ -217,7 +217,7 @@ The Grinch configuration has a minimal set of fields. All of them are not requir
 | `reporter`         | Defines how the results of the command execution will be displayed  | `"console"`            |
 | `resultsDirectory` | Defines where Grinch will store the results of the test scenarios   | `test-results`         |
 
-## Test Types
+## TestInfo Types
 
 When writing tests, Grinch saves them as a tree object, allowing you to group certain logic.
 
@@ -237,7 +237,7 @@ const state = {
 };
 
 const someScenario = scenario("Scenario title", state, ({ test }) => {
-    test.serial("Test title", ({ test }) => {
+    test.serial("TestInfo title", ({ test }) => {
         // Children tests
     });
 });
@@ -253,7 +253,7 @@ If one of the tests fails, the other tests will continue to run.
 
 ```typescript
 // ...
-test.parallel("Test title", ({ test }) => {
+test.parallel("TestInfo title", ({ test }) => {
     // Children tests
 });
 // ...
@@ -269,7 +269,7 @@ If one of the tests fails, the entire sequence will also fail.
 
 ```typescript
 // ...
-test.serial("Test title", ({ test }) => {
+test.serial("TestInfo title", ({ test }) => {
     // Children tests
 });
 // ...
@@ -283,7 +283,7 @@ This type of test cannot have child tests.
 
 ```typescript
 // ...
-test.sample("Test title", async ({ state }) => {
+test.sample("TestInfo title", async ({ state }) => {
     // Testing code
 });
 // ...
@@ -299,7 +299,7 @@ Example:
 
 ```typescript
 // ...
-test.parallel("Test title", ({ test }) => {
+test.parallel("TestInfo title", ({ test }) => {
     test.beforeEach(async () => {
         // Any logic here
     });
@@ -315,7 +315,7 @@ Example of the `beforeAll` hook implementation:
 
 ```typescript
 // ...
-test.serial("Test title", ({ test }) => {
+test.serial("TestInfo title", ({ test }) => {
     test.sample("This test will run before all next tests", async () => {
         // Any logic
     });
@@ -343,7 +343,7 @@ type ScenarioState = {
 };
 
 scenario("Scenario title", state, ({ test }) => {
-    test.serial("Test title", ({ test }) => {
+    test.serial("TestInfo title", ({ test }) => {
         // Here we will use reusable test
     });
 });
@@ -377,7 +377,7 @@ type ScenarioState = {
 };
 
 scenario("Scenario title", state, ({ test }) => {
-    test.serial("Test title", ({ test }) => {
+    test.serial("TestInfo title", ({ test }) => {
         reuseTest("Edit country", test, editCountryTest);
     });
 });

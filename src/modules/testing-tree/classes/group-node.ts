@@ -1,4 +1,4 @@
-import { SampleTest } from "../../tests";
+import { SampleTest, TestInfo } from "../../tests";
 import { TestGroup } from "../../tests/classes/test-group";
 import { LeafNode } from "./leaf-node";
 import { ParallelNode } from "./parallel-node";
@@ -7,6 +7,10 @@ import { TestNode } from "./types";
 
 export abstract class GroupNode implements TestNode {
     public children: TestNode[] = [];
+
+    public hasChildren(): this is GroupNode {
+        return true;
+    }
 
     public constructor(public test: TestGroup) {}
 
@@ -27,6 +31,8 @@ export abstract class GroupNode implements TestNode {
         this.children.push(node);
         return node;
     }
+
+    public abstract getInfo(): TestInfo;
 
     public abstract run(): Promise<void>;
 }

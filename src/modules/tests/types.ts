@@ -1,9 +1,23 @@
 import { TestAborter } from "../test-aborting";
 import { TestFactory } from "./test-factory";
 
-export type TestResult = true | false | null;
+export enum TestResult {
+    // basic
+    SUCCEED,
+    FAILED,
+    NOT_RUNED,
+    ERROR_DURING_TEST,
 
-export type Test = {
+    // for serial and parallel tests
+    PARTIAL_SUCCEED,
+
+    // for aborted tests
+    FORCIBLY_SUCCEED,
+    FORCIBLY_SKIPED,
+    FORCIBLY_FAILED
+}
+
+export type TestInfo = {
     title: string;
 
     result: TestResult;

@@ -1,16 +1,16 @@
-import { Test } from "../tests";
-import { GroupNode } from "./classes/group-node";
+import { TestInfo } from "../tests";
 import { SerialNode } from "./classes/serial-node";
+import { TestNode } from "./classes/types";
 
 export class TestingTree {
-    public root: GroupNode[] = [];
+    public scenarios: TestNode[] = [];
 
-    public add(test: Test) {
-        this.root.push(new SerialNode(test));
-        return this.root[this.root.length - 1];
+    public add(test: TestInfo) {
+        this.scenarios.push(new SerialNode(test));
+        return this.scenarios[this.scenarios.length - 1];
     }
 
     public async run() {
-        await Promise.allSettled([this.root.map(child => child.run())]);
+        await Promise.allSettled([this.scenarios.map(child => child.run())]);
     }
 }

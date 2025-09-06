@@ -1,5 +1,6 @@
-import { FALSY_VALUES } from "../constants";
-import { Condition, ZodSchema } from "../types";
+import { FALSY_VALUES } from "../lib/constants";
+import { AssertionError } from "../lib/errors";
+import { Condition, ZodSchema } from "../lib/types";
 
 /**
  * Base class for all assertions.
@@ -36,7 +37,7 @@ export class BaseAssertion<T> {
 
         const result = conditionToExecute();
         if (!result) {
-            throw new Error(errorMessage);
+            throw new AssertionError(errorMessage);
         }
     }
 

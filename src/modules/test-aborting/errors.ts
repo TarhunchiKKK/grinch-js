@@ -1,17 +1,17 @@
 export class SucceedTestError extends Error {
-    public constructor() {
-        super("Test forcibly succeeded");
+    public constructor(message: string) {
+        super(message);
     }
 }
 
 export class FailTestError extends Error {
-    public constructor() {
-        super("Test forcibly failed");
+    public constructor(message: string) {
+        super(message);
     }
 }
 
 export class SkipTestError extends Error {
-    public constructor() {
-        super("Test forcibly skipped");
+    public constructor(message: string) {
+        super(message);
     }
 }
