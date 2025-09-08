@@ -1,7 +1,7 @@
-import { TestInfo } from "../tests";
+import { TestInfo } from "@modules/tests";
 import { GroupNode } from "./classes/group-node";
 import { SerialNode } from "./classes/serial-node";
-import { TestingNodeReesult, TreeToObjectMapper } from "./tree-to-object-mapper";
+import { TreeToObjectMapper } from "./tree-to-object-mapper";
 
 export class TestingTree {
     public children: GroupNode[] = [];
@@ -21,7 +21,7 @@ export class TestingTree {
         await Promise.allSettled([this.children.map(child => child.run())]);
     }
 
-    public toObject(): TestingNodeReesult[] {
+    public toObject() {
         const mapper = new TreeToObjectMapper(this);
         return mapper.map();
     }

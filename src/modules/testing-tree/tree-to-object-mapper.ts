@@ -2,10 +2,10 @@ import { TestResult } from "../tests";
 import { TestNode } from "./classes/types";
 import { TestingTree } from "./testing-tree";
 
-export type TestingNodeReesult = {
+export type TestingNodeResult = {
     title: string;
     result: string;
-    children?: TestingNodeReesult[];
+    children?: TestingNodeResult[];
 };
 
 const resultDescriptionsMap: Record<TestResult, string> = {
@@ -20,7 +20,7 @@ export class TreeToObjectMapper {
     public constructor(private readonly tree: TestingTree) {}
 
     public map() {
-        const results: TestingNodeReesult[] = [];
+        const results: TestingNodeResult[] = [];
 
         for (const child of this.tree.children) {
             results.push({
@@ -34,10 +34,10 @@ export class TreeToObjectMapper {
         return results;
     }
 
-    private mapNode(node: TestNode, result: TestingNodeReesult) {
+    private mapNode(node: TestNode, result: TestingNodeResult) {
         if (node.hasChildren()) {
             for (const child of node.children) {
-                const childResult: TestingNodeReesult = {
+                const childResult: TestingNodeResult = {
                     title: child.test.title,
                     result: resultDescriptionsMap[child.test.result],
                     children: []

@@ -15,20 +15,21 @@
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
 - [Test Types](#test-types)
-    - [Scenario](#scenario)
-    - [Parallel](#parallel)
-    - [Serial](#serial)
-    - [Sample](#sample)
+  - [Scenario](#scenario)
+  - [Parallel](#parallel)
+  - [Serial](#serial)
+  - [Sample](#sample)
 - [Lifecycle Hooks](#lifecycle-hooks)
 - [Reusable Tests](#reusable-tests)
+- [Reporting](#reporting)
 - [Assertions](#assertions)
-    - [Basic Assertions](#basic-assertions)
-    - [Iterable Values Assertions](#iterable-values-assertions)
-    - [Number Assertions](#number-assertions)
-    - [String Assertions](#string-assertions)
-    - [Record Assertions](#record-assertions)
-    - [Array Assertions](#array-assertions)
-    - [Unknown Assertions](#unknown-assertions)
+  - [Basic Assertions](#basic-assertions)
+  - [Iterable Values Assertions](#iterable-values-assertions)
+  - [Number Assertions](#number-assertions)
+  - [String Assertions](#string-assertions)
+  - [Record Assertions](#record-assertions)
+  - [Array Assertions](#array-assertions)
+  - [Unknown Assertions](#unknown-assertions)
 
 ## Philosophy
 
@@ -51,9 +52,9 @@ pnpm i --save-dev grinch
 2. Create entry file for your scenarios:
 
 ```typescript
-import { register } from "grinch";
+import { mapScenarios } from "grinch";
 
-export default register({
+export default mapScenarios({
     command_1: [
         // Scenarios for "command_1"
     ],
@@ -69,7 +70,17 @@ export default register({
 ```json
 {
     "scripts: {
-        "test": "npx your-file.ts command_name"
+        "test": "npx your-file.ts command_name",
+    }
+}
+```
+
+Or if you use JavaScript:
+
+```json
+{
+    "scripts: {
+        "test": "node your-file.js command_name",
     }
 }
 ```
@@ -173,10 +184,10 @@ export const createPostScenario = scenario("Create post", state, ({ test }) => {
 Now let's update our entry file:
 
 ```typescript
-import { register } from "grinch";
+import { mapScenarios } from "grinch";
 import { createPostScenario } from "./create-post.grinch.ts";
 
-export default register({
+export default mapScenarios({
     posts: [createPostScenario]
 });
 ```
@@ -276,7 +287,7 @@ test.parallel("TestInfo title", ({ test }) => {
         // Any logic here
     });
 
-    // Children tests
+    // Other tests
 });
 // ...
 ```
@@ -292,7 +303,7 @@ test.serial("TestInfo title", ({ test }) => {
         // Any logic
     });
 
-    // Children tests
+    // Other tests
 });
 // ...
 ```
@@ -350,6 +361,7 @@ type ScenarioState = {
 
 scenario("Scenario title", state, ({ test }) => {
     test.serial("TestInfo title", ({ test }) => {
+        // Here we are reusing editContryTest
         reuseTest("Edit country", test, editCountryTest);
     });
 });
@@ -364,6 +376,26 @@ Note that the `LocalState` type is a supertype of `ScenarioState`.
 _The type of test being reused should be a supertype of the scenario state type._
 
 This condition is necessary for type safety.
+
+## Reporting
+
+Сalling the ```mapScenarios``` function returns an array of type ```TestingNodeResult```. You can implement your own result processing logic:
+
+```typescript
+import { mapScenarios, TestingNodeResult  } from "grinch";
+
+const results = mapScenarios({
+    // Here are your scenarios
+});
+
+function processResults(results: TestingNodeResult[]) {
+    // Your login for results processing
+}
+
+// Results processing
+results.then(processResults);
+
+```
 
 ## Assertions
 
@@ -530,7 +562,7 @@ import { assert } from "grinch";
 const numbers = [1, 2, 3, 4, 5];
 
 assert
-    .array(number)
+    .array(numbers)
     .toBeDefined() // statement from basic assertion
     .toHaveLength(5) // statement from iterable assertion
     .toHaveEveryMatch(num => num > 0);
@@ -559,7 +591,7 @@ Usage:
 
 ```typescript
 import { assert } from "grinch";
-import { unknownValue } from "./data.ts
+import { unknownValue } from "./data.ts"
 
 assert
     .unknown(unknownValue)

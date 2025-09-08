@@ -90,6 +90,6 @@ export class ConsoleReporter {
         Logger.yellow(`Not runed: ${this.summary[TestResult.NOT_RUNED]}`);
 
         const total = Object.values(this.summary).reduce((acc, item) => acc + item, 0);
-        Logger.info(`Total: ${total}`)
+        Logger.info(`Total: ${total}`);
     }
 }
