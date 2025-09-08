@@ -14,7 +14,7 @@ export class ConsoleReporter {
         [TestResult.FAILED]: 0,
         [TestResult.ERROR]: 0,
         [TestResult.NOT_RUNED]: 0
-    }
+    };
 
     private currentDepth = 0;
 
@@ -62,17 +62,17 @@ export class ConsoleReporter {
             case TestResult.SUCCEED:
                 Logger.green(line);
                 break;
+            case TestResult.SKIPED:
+                Logger.green(line + " (skiped)");
+                break;
             case TestResult.FAILED:
                 Logger.red(line);
                 break;
             case TestResult.ERROR:
                 Logger.red(line + " (error)");
                 break;
-            case TestResult.SKIPED:
-                Logger.blur(line + " (skiped)");
-                break;
             case TestResult.NOT_RUNED:
-                Logger.blur(line + " (not run)");
+                Logger.yellow(line + " (not run)");
                 break;
             default:
                 throw new Error("Sample test cannot have such result");
@@ -83,10 +83,13 @@ export class ConsoleReporter {
 
     private reportSummary() {
         Logger.info("\n\n\nSummary:");
-        Logger.info(`✔ Succeed: ${this.summary[TestResult.SUCCEED]}`);
-        Logger.info(`❌ Failed: ${this.summary[TestResult.FAILED]}`)
-        Logger.info(`❌ Error occured: ${this.summary[TestResult.ERROR]}`);
-        Logger.info(`⏭ Skiped: ${this.summary[TestResult.SKIPED]}`);
-        Logger.info(`↩ Not runed: ${this.summary[TestResult.NOT_RUNED]}`);
+        Logger.green(`Succeed: ${this.summary[TestResult.SUCCEED]}`);
+        Logger.green(`Skiped: ${this.summary[TestResult.SKIPED]}`);
+        Logger.red(`Failed: ${this.summary[TestResult.FAILED]}`);
+        Logger.red(`Error occured: ${this.summary[TestResult.ERROR]}`);
+        Logger.yellow(`Not runed: ${this.summary[TestResult.NOT_RUNED]}`);
+
+        const total = Object.values(this.summary).reduce((acc, item) => acc + item, 0);
+        Logger.info(`Total: ${total}`)
     }
 }

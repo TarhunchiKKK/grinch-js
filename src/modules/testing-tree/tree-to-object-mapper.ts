@@ -13,7 +13,7 @@ const resultDescriptionsMap: Record<TestResult, string> = {
     [TestResult.FAILED]: "failed",
     [TestResult.ERROR]: "error",
     [TestResult.NOT_RUNED]: "not runed",
-    [TestResult.SKIPED]: "skiped",
+    [TestResult.SKIPED]: "skiped"
 };
 
 export class TreeToObjectMapper {

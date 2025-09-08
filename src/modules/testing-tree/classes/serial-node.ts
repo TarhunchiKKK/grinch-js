@@ -1,4 +1,4 @@
-import {  TestGroup } from "@modules/tests";
+import { TestGroup } from "@modules/tests";
 import { GroupNode } from "./group-node";
 
 export class SerialNode extends GroupNode {
