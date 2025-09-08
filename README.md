@@ -67,7 +67,7 @@ export default mapScenarios({
 
 3. Add script to you package.json:
 
-```json
+```
 {
     "scripts: {
         "test": "npx your-file.ts command_name",
@@ -77,7 +77,7 @@ export default mapScenarios({
 
 Or if you use JavaScript:
 
-```json
+```
 {
     "scripts: {
         "test": "node your-file.js command_name",
@@ -129,12 +129,9 @@ export const createPostScenario = scenario("Create post", state, ({ test }) => {
                 })
             });
 
-            // getting JWT token from response
+            // getting JWT token from response and saving it to state
             const { jwt } = (await response.json()) as { jwt: string };
-
             assert.string(jwt).toBeDefined();
-
-            // save JWT token for next tests
             state.jwt = jwt;
         });
 
@@ -151,14 +148,11 @@ export const createPostScenario = scenario("Create post", state, ({ test }) => {
                     Authorization: `Bearer ${state.jwt}`
                 }
             });
-
             assert.number(response.status).toBe(200);
 
-            const { id: postId } = (await response.json()) as { id: string };
-
-            assert.string(postId).toBeUUID();
-
             // saving post id for further post getting
+            const { id: postId } = (await response.json()) as { id: string };
+            assert.string(postId).toBeUUID();
             state.postId = postId;
         });
 
@@ -172,9 +166,8 @@ export const createPostScenario = scenario("Create post", state, ({ test }) => {
                 }
             });
 
-            const { id: postId } = (await response.json()) as { id: string };
-
             // checking validity of new post
+            const { id: postId } = (await response.json()) as { id: string };
             assert.string(postId).toBe(state.postId as string);
         });
     });
