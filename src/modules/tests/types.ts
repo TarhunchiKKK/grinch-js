@@ -1,4 +1,4 @@
-import { TestAborter } from "../test-aborting";
+import { TestAborter } from "@modules/test-aborting";
 import { TestFactory } from "./test-factory";
 
 export enum TestResult {
