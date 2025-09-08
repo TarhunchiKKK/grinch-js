@@ -1,16 +1,16 @@
 import { TestResult } from "@modules/tests";
 import { TestNode } from "@modules/testing-tree";
 import { Logger } from "@shared/lib";
-import { BaseReporter } from "./base-reporter";
+import { TestingTreeSingleton } from "./testing-tree-singleton";
 
 const tab = "  ";
 
-export class ConsoleReporter extends BaseReporter {
+export class ConsoleReporter {
+    private testingTree = TestingTreeSingleton.getInstance().tree;
+
     private currentDepth = 0;
 
     public report() {
-        this.testingTree.calculateResults();
-
         for (const scenario of this.testingTree.children) {
             this.reportNode(scenario);
         }
