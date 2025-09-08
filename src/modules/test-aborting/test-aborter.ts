@@ -1,6 +1,6 @@
-import { Logger } from "../../shared";
-import { AssertionError } from "../assertions";
-import { TestResult } from "../tests";
+import { TestResult } from "@modules/tests";
+import { AssertionError } from "@modules/assertions";
+import { Logger } from "@shared/lib";
 import { SkipTestError, FailTestError, SucceedTestError } from "./errors";
 
 /**

@@ -1,5 +1,5 @@
+import { TestingResults } from "@modules/reporting";
 import { Scenario } from "./scenario";
-import { TestingResults } from "../reporting";
 
 /**
  * Registers a map of command names to their corresponding scenarios.

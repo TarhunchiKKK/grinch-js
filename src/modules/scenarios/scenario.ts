@@ -1,4 +1,4 @@
-import { TestInfo, TestResult } from "../tests";
+import { TestInfo, TestResult } from "@modules/tests";
 
 export class Scenario implements TestInfo {
     public result = TestResult.NOT_RUNED;

@@ -1,4 +1,4 @@
-import { SampleTest, TestInfo, TestGroup } from "../../tests";
+import { SampleTest, TestInfo, TestGroup } from "@modules/tests";
 import { LeafNode } from "./leaf-node";
 import { ParallelNode } from "./parallel-node";
 import { SerialNode } from "./serial-node";
