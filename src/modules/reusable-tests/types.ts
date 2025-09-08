@@ -1,4 +1,4 @@
-import { TestFactory } from "../tests";
+import { TestFactory } from "@modules/tests";
 
 type ReusableTestPayload<State> = {
     test: TestFactory<State>;

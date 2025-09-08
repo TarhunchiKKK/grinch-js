@@ -1,4 +1,4 @@
-import { deepCompare } from "../../../shared";
+import { deepCompare } from "@shared/lib";
 import { BaseAssertion } from "./base-assertion";
 
 /**

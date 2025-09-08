@@ -1,4 +1,4 @@
-import { TestingTree } from "../../testing-tree";
+import { TestingTree } from "@modules/testing-tree";
 
 export class TestingResults {
     public tree: TestingTree;

@@ -17,6 +17,9 @@
             "require": "./dist/grinch.umd.cjs"
         }
     },
+    "engines": {
+        "node": ">=20.19.0"
+    },
     "scripts": {
         "build": "vite build",
         "format": "prettier --write \"src/**/*.ts\"",
