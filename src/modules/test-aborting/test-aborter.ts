@@ -31,16 +31,16 @@ export class TestAborter {
 
     public static handleError(error: unknown): TestResult {
         if (error instanceof SucceedTestError) {
-            return TestResult.FORCIBLY_SUCCEED;
+            return TestResult.SUCCEED;
         } else if (error instanceof SkipTestError) {
-            return TestResult.FORCIBLY_SKIPED;
+            return TestResult.SKIPED;
         } else if (error instanceof FailTestError) {
-            return TestResult.FORCIBLY_FAILED;
+            return TestResult.FAILED;
         } else if (error instanceof AssertionError) {
             return TestResult.FAILED;
         } else {
             Logger.red(error);
-            return TestResult.ERROR_DURING_TEST;
+            return TestResult.ERROR;
         }
     }
 }
