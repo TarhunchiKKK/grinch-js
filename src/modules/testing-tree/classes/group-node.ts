@@ -1,4 +1,4 @@
-import { SampleTest, TestInfo, TestGroup } from "@modules/tests";
+import { SampleTest, TestGroup, TestResult } from "@modules/tests";
 import { LeafNode } from "./leaf-node";
 import { ParallelNode } from "./parallel-node";
 import { SerialNode } from "./serial-node";
@@ -12,11 +12,25 @@ export abstract class GroupNode implements TestNode {
         afterEach: [] as (() => void | Promise<void>)[]
     };
 
+    public constructor(public test: TestGroup) {}
+
     public hasChildren(): this is GroupNode {
         return true;
     }
 
-    public constructor(public test: TestGroup) {}
+    public getInfo() {
+        const childrenInfos = this.children.map(child => child.getInfo());
+
+        for (const info of childrenInfos) {
+            if (info.result === TestResult.FAILED || info.result === TestResult.ERROR) {
+                this.test.result = TestResult.FAILED;
+                return this.test;
+            }
+        }
+
+        this.test.result = TestResult.SUCCEED;
+        return this.test;
+    }
 
     public addLeaf(test: SampleTest) {
         const node = new LeafNode(test);
@@ -47,8 +61,6 @@ export abstract class GroupNode implements TestNode {
             await hook();
         }
     }
-
-    public abstract getInfo(): TestInfo;
 
     public abstract run(): Promise<void>;
 }

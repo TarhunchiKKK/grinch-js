@@ -1,5 +1,5 @@
 import { deepCompare } from "@shared/lib";
-import { ClassConstructor, TypeofResponse,  } from "@shared/types";
+import { ClassConstructor, TypeofResponse } from "@shared/types";
 import { BaseAssertion } from "./base-assertion";
 
 /**

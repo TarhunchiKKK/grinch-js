@@ -1,19 +1,29 @@
 import { TestResult } from "@modules/tests";
 import { TestNode } from "@modules/testing-tree";
 import { Logger } from "@shared/lib";
-import { BaseReporter } from "./base-reporter";
+import { TestingTreeSingleton } from "./testing-tree-singleton";
 
 const tab = "  ";
 
-export class ConsoleReporter extends BaseReporter {
+export class ConsoleReporter {
+    private testingTree = TestingTreeSingleton.getInstance().tree;
+
+    private summary = {
+        [TestResult.SUCCEED]: 0,
+        [TestResult.SKIPED]: 0,
+        [TestResult.FAILED]: 0,
+        [TestResult.ERROR]: 0,
+        [TestResult.NOT_RUNED]: 0
+    };
+
     private currentDepth = 0;
 
     public report() {
-        this.testingTree.calculateResults();
-
         for (const scenario of this.testingTree.children) {
             this.reportNode(scenario);
         }
+
+        this.reportSummary();
     }
 
     private reportNode(node: TestNode) {
@@ -37,9 +47,6 @@ export class ConsoleReporter extends BaseReporter {
             case TestResult.SUCCEED:
                 Logger.green(line);
                 break;
-            case TestResult.PARTIAL_SUCCEED:
-                Logger.yellow(line);
-                break;
             case TestResult.FAILED:
                 Logger.red(line);
                 break;
@@ -55,26 +62,34 @@ export class ConsoleReporter extends BaseReporter {
             case TestResult.SUCCEED:
                 Logger.green(line);
                 break;
-            case TestResult.FORCIBLY_SUCCEED:
-                Logger.green(line + " (aborted)");
+            case TestResult.SKIPED:
+                Logger.green(line + " (skiped)");
                 break;
             case TestResult.FAILED:
                 Logger.red(line);
                 break;
-            case TestResult.FORCIBLY_FAILED:
-                Logger.red(line + " (aborted)");
-                break;
-            case TestResult.ERROR_DURING_TEST:
+            case TestResult.ERROR:
                 Logger.red(line + " (error)");
                 break;
-            case TestResult.FORCIBLY_SKIPED:
-                Logger.blur(line + " (aborted)");
-                break;
             case TestResult.NOT_RUNED:
-                Logger.blur(line + " (not run)");
+                Logger.yellow(line + " (not run)");
                 break;
             default:
                 throw new Error("Sample test cannot have such result");
         }
+
+        this.summary[node.test.result]++;
+    }
+
+    private reportSummary() {
+        Logger.info("\n\n\nSummary:");
+        Logger.green(`Succeed: ${this.summary[TestResult.SUCCEED]}`);
+        Logger.green(`Skiped: ${this.summary[TestResult.SKIPED]}`);
+        Logger.red(`Failed: ${this.summary[TestResult.FAILED]}`);
+        Logger.red(`Error occured: ${this.summary[TestResult.ERROR]}`);
+        Logger.yellow(`Not runed: ${this.summary[TestResult.NOT_RUNED]}`);
+
+        const total = Object.values(this.summary).reduce((acc, item) => acc + item, 0);
+        Logger.info(`Total: ${total}`);
     }
 }

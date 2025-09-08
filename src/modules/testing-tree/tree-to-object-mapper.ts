@@ -2,33 +2,30 @@ import { TestResult } from "../tests";
 import { TestNode } from "./classes/types";
 import { TestingTree } from "./testing-tree";
 
-export type MappingResult = {
+export type TestingNodeResult = {
     title: string;
     result: string;
-    children?: MappingResult[];
+    children?: TestingNodeResult[];
 };
 
-const resultsMap: Record<TestResult, string> = {
+const resultDescriptionsMap: Record<TestResult, string> = {
     [TestResult.SUCCEED]: "succeed",
     [TestResult.FAILED]: "failed",
-    [TestResult.ERROR_DURING_TEST]: "error",
+    [TestResult.ERROR]: "error",
     [TestResult.NOT_RUNED]: "not runed",
-    [TestResult.PARTIAL_SUCCEED]: "partial succeed",
-    [TestResult.FORCIBLY_SUCCEED]: "forcibly succeed",
-    [TestResult.FORCIBLY_SKIPED]: "forcibly_skiped",
-    [TestResult.FORCIBLY_FAILED]: "forcibly failed"
+    [TestResult.SKIPED]: "skiped"
 };
 
 export class TreeToObjectMapper {
     public constructor(private readonly tree: TestingTree) {}
 
     public map() {
-        const results: MappingResult[] = [];
+        const results: TestingNodeResult[] = [];
 
         for (const child of this.tree.children) {
             results.push({
                 title: child.test.title,
-                result: resultsMap[child.test.result],
+                result: resultDescriptionsMap[child.test.result],
                 children: []
             });
             this.mapNode(child, results[results.length - 1]);
@@ -37,12 +34,12 @@ export class TreeToObjectMapper {
         return results;
     }
 
-    private mapNode(node: TestNode, result: MappingResult) {
+    private mapNode(node: TestNode, result: TestingNodeResult) {
         if (node.hasChildren()) {
             for (const child of node.children) {
-                const childResult: MappingResult = {
+                const childResult: TestingNodeResult = {
                     title: child.test.title,
-                    result: resultsMap[child.test.result],
+                    result: resultDescriptionsMap[child.test.result],
                     children: []
                 };
 
@@ -53,7 +50,7 @@ export class TreeToObjectMapper {
         } else {
             const childResult = {
                 title: node.test.title,
-                result: resultsMap[node.test.result]
+                result: resultDescriptionsMap[node.test.result]
             };
 
             result.children!.push(childResult);

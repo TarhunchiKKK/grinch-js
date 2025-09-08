@@ -2,19 +2,11 @@ import { TestAborter } from "@modules/test-aborting";
 import { TestFactory } from "./test-factory";
 
 export enum TestResult {
-    // basic
     SUCCEED,
     FAILED,
+    SKIPED,
     NOT_RUNED,
-    ERROR_DURING_TEST,
-
-    // for serial and parallel tests
-    PARTIAL_SUCCEED,
-
-    // for aborted tests
-    FORCIBLY_SUCCEED,
-    FORCIBLY_SKIPED,
-    FORCIBLY_FAILED
+    ERROR
 }
 
 export type TestInfo = {
