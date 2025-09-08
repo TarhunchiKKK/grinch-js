@@ -1,5 +1,5 @@
-import { TestingResults } from "../reporting";
-import { AvailableTestStates, TestFactory } from "../tests";
+import { AvailableTestStates, TestFactory } from "@modules/tests";
+import { TestingResults } from "@modules/reporting";
 import { Scenario } from "./scenario";
 import { ScenarioCallback } from "./types";
 

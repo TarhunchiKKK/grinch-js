@@ -1,4 +1,4 @@
-import { SampleTest } from "../../tests";
+import { SampleTest } from "@modules/tests";
 import { GroupNode } from "./group-node";
 import { TestNode } from "./types";
 

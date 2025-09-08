@@ -1,4 +1,4 @@
-import { ElementType } from "../../../shared";
+import { ElementType } from "@shared/types";
 import { BaseAssertion } from "./base-assertion";
 
 /**

@@ -1,4 +1,4 @@
-import { TestAborter } from "../../test-aborting";
+import { TestAborter } from "@modules/test-aborting";
 import { TestInfo, TestResult } from "../types";
 
 type Callback = () => void | Promise<void>;

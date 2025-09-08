@@ -1,9 +1,9 @@
+import { LifecycleHookCallback } from "@modules/lifecycle-hooks";
+import { GroupNode } from "@modules/testing-tree";
+import { abort } from "@modules/test-aborting";
 import { SampleTestCallback, TestGroupCallback } from "./types";
 import { SampleTest } from "./classes/sample-test";
 import { TestGroup } from "./classes/test-group";
-import { GroupNode } from "../testing-tree";
-import { abort } from "../test-aborting";
-import { LifecycleHookCallback } from "../lifecycle-hooks";
 
 export class TestFactory<State> {
     public constructor(

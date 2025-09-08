@@ -1,4 +1,4 @@
-import { AvailableTestStates, TestFactory } from "../tests";
+import { AvailableTestStates, TestFactory } from "@modules/tests";
 import { ReusableTestCallback } from "./types";
 
 /**

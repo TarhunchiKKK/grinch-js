@@ -1,6 +1,6 @@
-import { Logger } from "../../../shared";
-import { TestNode } from "../../testing-tree";
-import { TestResult } from "../../tests";
+import { TestResult } from "@modules/tests";
+import { TestNode } from "@modules/testing-tree";
+import { Logger } from "@shared/lib";
 import { BaseReporter } from "./base-reporter";
 
 const tab = "  ";
