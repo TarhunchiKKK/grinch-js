@@ -377,9 +377,9 @@ Grinch provides the ability to skip tests, groups, and hooks. You can easily rep
 
 |Method|Associations|Description
 |-|-|-|
-|```skip```|```sample```, ```beforeEach```, ```afterEach```| Skip sample test or lifecycle hook|
-|```skipGroup```|```serial```, ```parallel```| Skip test group. All children tests will not be executed |
-|```skipHook```|```sample```, ```beforeEach```, ```afterEach```| Skip sample test or lifecycle hook|
+|```skip```|```sample```| Skip sample test|
+|```skipGroup```|```serial```, ```parallel```| Skip test group. All children tests and hooks will not be executed |
+|```skipHook```|```beforeEach```, ```afterEach```| Skip lifecycle hook|
 
 You may notice that the ```skip``` and ```skipHook``` methods can be used interchangeably. This duplication is done for greater clarity in the code.
 
