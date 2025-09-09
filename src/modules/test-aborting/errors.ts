@@ -9,9 +9,3 @@ export class FailTestError extends Error {
         super(message);
     }
 }
-
-export class SkipTestError extends Error {
-    public constructor(message: string) {
-        super(message);
-    }
-}

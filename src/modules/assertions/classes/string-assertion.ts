@@ -13,10 +13,7 @@ export class StringAssertion extends IterableAssertion<string> {
      * @returns The current instance for chaining.
      */
     public toBeUpperCase(): this {
-        this.runCondition(
-            () => this.value === this.value.toUpperCase(),
-            `Value is not upper case string. Receive: ${this.value}`
-        );
+        this.runCondition(() => this.value === this.value.toUpperCase(), `Value is not upper case string. Receive: ${this.value}`);
         return this;
     }
 
@@ -26,10 +23,7 @@ export class StringAssertion extends IterableAssertion<string> {
      * @returns The current instance for chaining.
      */
     public toBeLowerCase(): this {
-        this.runCondition(
-            () => this.value === this.value.toLowerCase(),
-            `Value is not lower case string. Receive: ${this.value}`
-        );
+        this.runCondition(() => this.value === this.value.toLowerCase(), `Value is not lower case string. Receive: ${this.value}`);
         return this;
     }
 
@@ -40,10 +34,7 @@ export class StringAssertion extends IterableAssertion<string> {
      * @returns The current instance for chaining.
      */
     public toStartsWith(value: string): this {
-        this.runCondition(
-            () => this.value.startsWith(value),
-            `Value is not starts with ${value}. Receive: ${this.value}`
-        );
+        this.runCondition(() => this.value.startsWith(value), `Value is not starts with ${value}. Receive: ${this.value}`);
         return this;
     }
 
@@ -73,10 +64,7 @@ export class StringAssertion extends IterableAssertion<string> {
      * @returns The current instance for chaining.
      */
     public toBeBooleanString(): this {
-        this.runCondition(
-            () => this.value === "true" || this.value === "false",
-            `Value is not boolean string. Receive: ${this.value}`
-        );
+        this.runCondition(() => this.value === "true" || this.value === "false", `Value is not boolean string. Receive: ${this.value}`);
         return this;
     }
 
