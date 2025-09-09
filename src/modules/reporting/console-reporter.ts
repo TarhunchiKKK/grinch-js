@@ -10,7 +10,6 @@ export class ConsoleReporter {
 
     private summary = {
         [TestResult.SUCCEED]: 0,
-        [TestResult.SKIPED]: 0,
         [TestResult.FAILED]: 0,
         [TestResult.ERROR]: 0,
         [TestResult.NOT_RUNED]: 0
@@ -62,9 +61,6 @@ export class ConsoleReporter {
             case TestResult.SUCCEED:
                 Logger.green(line);
                 break;
-            case TestResult.SKIPED:
-                Logger.green(line + " (skiped)");
-                break;
             case TestResult.FAILED:
                 Logger.red(line);
                 break;
@@ -84,7 +80,6 @@ export class ConsoleReporter {
     private reportSummary() {
         Logger.info("\n\n\nSummary:");
         Logger.green(`Succeed: ${this.summary[TestResult.SUCCEED]}`);
-        Logger.green(`Skiped: ${this.summary[TestResult.SKIPED]}`);
         Logger.red(`Failed: ${this.summary[TestResult.FAILED]}`);
         Logger.red(`Error occured: ${this.summary[TestResult.ERROR]}`);
         Logger.yellow(`Not runed: ${this.summary[TestResult.NOT_RUNED]}`);

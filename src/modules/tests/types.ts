@@ -4,7 +4,6 @@ import { TestFactory } from "./test-factory";
 export enum TestResult {
     SUCCEED,
     FAILED,
-    SKIPED,
     NOT_RUNED,
     ERROR
 }
