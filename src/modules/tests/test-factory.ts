@@ -31,7 +31,17 @@ export class TestFactory<State> {
     }
 
     /**
-     * Creates a serial test within the current test factory. Serial tests are executed one after another.
+     * Creates a sample test which will not be executed. Sample tests are typically used for individual test cases.
+     *
+     * @param _title The title of the sample test.
+     * @param _callback The callback function that defines the logic of the sample test. It receives the current state.
+     * @returns void
+     */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    public skip(_title: string, _callback: SampleTestCallback<State>) {}
+
+    /**
+     * Creates a tests group in which all children tests will be executed one after another.
      *
      * @param title The title of the serial test.
      * @param callback The callback function that defines the logic of the serial test. It receives the current state.
@@ -48,7 +58,7 @@ export class TestFactory<State> {
     }
 
     /**
-     * Creates a parallel test within the current test factory. Parallel tests are executed concurrently.
+     * Creates a tests group in which all children tests will be executed concurrently.
      *
      * @param title The title of the parallel test.
      * @param callback The callback function that defines the logic of the parallel test. It receives the current state.
@@ -63,6 +73,56 @@ export class TestFactory<State> {
 
         callback({ test: testFactory });
     }
+
+    /**
+     * Creates a tests group within the current test factory. This tests group will not be executed.
+     *
+     * @param title The title of the parallel test.
+     * @param callback The callback function that defines the logic of the parallel test. It receives the current state.
+     * @returns void
+     */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    public skipGroup(_title: string, _callback: TestGroupCallback<State>) {}
+
+   
+    /**
+     * Registers a hook that runs before each test in the current group.
+     *
+     * @param callback The callback function to be executed. It receives the current state.
+     * @returns void
+     */
+    public beforeEach(callback: LifecycleHookCallback<State>) {
+        this.testsStore.hooks.beforeEach.push(() =>
+            callback({
+                state: this.state,
+                abort: abort
+            })
+        );
+    }
+
+    /**
+     * Registers a hook that runs after each test in the current group.
+     *
+     * @param callback The callback function to be executed. It receives the current state.
+     * @returns void
+     */
+    public afterEach(callback: LifecycleHookCallback<State>) {
+        this.testsStore.hooks.afterEach.push(() =>
+            callback({
+                state: this.state,
+                abort: abort
+            })
+        );
+    }
+
+    /**
+     * A no-op function that can be used to skip a lifecycle hook.
+     *
+     * @param _callback The callback function to be skipped.
+     * @returns void
+     */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    public skipHook(_callback: LifecycleHookCallback<State>) {}
 
     // ! Necessarily Check
     // public reuse<ReusableState>(
@@ -79,22 +139,4 @@ export class TestFactory<State> {
     //         test: testFactory as unknown as TestFactory<ReusableState>
     //     });
     // }
-
-    public beforeEach(callback: LifecycleHookCallback<State>) {
-        this.testsStore.hooks.beforeEach.push(() =>
-            callback({
-                state: this.state,
-                abort: abort
-            })
-        );
-    }
-
-    public afterEach(callback: LifecycleHookCallback<State>) {
-        this.testsStore.hooks.afterEach.push(() =>
-            callback({
-                state: this.state,
-                abort: abort
-            })
-        );
-    }
 }
