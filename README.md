@@ -21,6 +21,7 @@
   - [Sample](#sample)
 - [Lifecycle Hooks](#lifecycle-hooks)
 - [Reusable Tests](#reusable-tests)
+- [Tests Skiping](#tests-skiping)
 - [Reporting](#reporting)
 - [Assertions](#assertions)
   - [Basic Assertions](#basic-assertions)
@@ -369,6 +370,18 @@ Note that the `LocalState` type is a supertype of `ScenarioState`.
 _The type of test being reused should be a supertype of the scenario state type._
 
 This condition is necessary for type safety.
+
+## Tests Skiping
+
+Grinch provides the ability to skip tests, groups, and hooks. You can easily replace the names of missing methods with the methods you need. Methods for skipping tests:
+
+|Method|Associations|Description
+|-|-|-|
+|```skip```|```sample```, ```beforeEach```, ```afterEach```| Skip sample test or lifecycle hook|
+|```skipGroup```|```serial```, ```parallel```| Skip test group. All children tests will not be executed |
+|```skipHook```|```sample```, ```beforeEach```, ```afterEach```| Skip sample test or lifecycle hook|
+
+You may notice that the ```skip``` and ```skipHook``` methods can be used interchangeably. This duplication is done for greater clarity in the code.
 
 ## Reporting
 

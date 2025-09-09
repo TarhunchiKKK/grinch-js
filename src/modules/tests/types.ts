@@ -1,5 +1,5 @@
 import { TestAborter } from "@modules/test-aborting";
-import { TestFactory } from "./test-factory";
+import { BaseTestFactory } from "./model/base-test-factory";
 
 export enum TestResult {
     SUCCEED,
@@ -25,7 +25,7 @@ type SampleTestPayload<State> = {
 export type SampleTestCallback<State> = (_: SampleTestPayload<State>) => void | Promise<void>;
 
 type TestGroupPayload<State> = {
-    test: TestFactory<State>;
+    test: BaseTestFactory<State>;
 };
 
 export type TestGroupCallback<State> = (_: TestGroupPayload<State>) => void;

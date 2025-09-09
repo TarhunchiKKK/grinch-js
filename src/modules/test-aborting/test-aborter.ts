@@ -1,7 +1,7 @@
 import { TestResult } from "@modules/tests";
 import { AssertionError } from "@modules/assertions";
 import { Logger } from "@shared/lib";
-import {  FailTestError, SucceedTestError } from "./errors";
+import { FailTestError, SucceedTestError } from "./errors";
 
 /**
  * Provides utility methods for prematurely aborting or failing tests

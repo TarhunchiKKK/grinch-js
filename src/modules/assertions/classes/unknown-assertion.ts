@@ -22,10 +22,7 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
     }
 
     private checkType(type: TypeofResponse): this {
-        this.runCondition(
-            () => typeof this.value === type,
-            `Value is not of type ${type}. Receive: ${JSON.stringify(this.value)}`
-        );
+        this.runCondition(() => typeof this.value === type, `Value is not of type ${type}. Receive: ${JSON.stringify(this.value)}`);
         return this;
     }
 
@@ -109,10 +106,7 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
      * @returns The current instance for chaining.
      */
     public toBeArray(): this {
-        this.runCondition(
-            () => Array.isArray(this.value),
-            `Value is not array. Receive: ${JSON.stringify(this.value)}`
-        );
+        this.runCondition(() => Array.isArray(this.value), `Value is not array. Receive: ${JSON.stringify(this.value)}`);
         return this;
     }
 
