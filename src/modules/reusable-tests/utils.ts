@@ -1,4 +1,4 @@
-import { AvailableTestStates, TestFactory } from "@modules/tests";
+import { AvailableTestStates, BaseTestFactory } from "@modules/tests";
 import { ReusableTestCallback } from "./types";
 
 /**
@@ -20,7 +20,7 @@ export function createReusableTest<State extends AvailableTestStates>(callback: 
  */
 export function reuseTest<State extends ReusableState, ReusableState>(
     title: string,
-    factory: TestFactory<State>,
+    factory: BaseTestFactory<State>,
     callback: ReusableTestCallback<ReusableState>
 ) {
     factory.serial(title, callback);

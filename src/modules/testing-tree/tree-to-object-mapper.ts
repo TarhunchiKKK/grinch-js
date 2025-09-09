@@ -2,13 +2,15 @@ import { TestResult } from "../tests";
 import { TestNode } from "./classes/types";
 import { TestingTree } from "./testing-tree";
 
+type StringTestResult = "succeed" | "failed" | "error" | "not runed"
+
 export type TestingNodeResult = {
     title: string;
-    result: string;
+    result: StringTestResult;
     children?: TestingNodeResult[];
 };
 
-const resultDescriptionsMap: Record<TestResult, string> = {
+const resultDescriptionsMap: Record<TestResult, StringTestResult> = {
     [TestResult.SUCCEED]: "succeed",
     [TestResult.FAILED]: "failed",
     [TestResult.ERROR]: "error",

@@ -403,6 +403,16 @@ results.then(processResults);
 
 ```
 
+```results``` variable represents an array of objects of type:
+
+```typescript
+type Result = {
+    title: string;
+    result: "succeed" | "failed" | "error" | "not runed";
+    children?: Result[];
+};
+```
+
 ## Assertions
 
 Grinch offers a number of built-in statements that have a chained interface.
