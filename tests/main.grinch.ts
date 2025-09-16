@@ -7,7 +7,7 @@ import {
     RecordAssertionScenario,
     UnknownAssertionScenario
 } from "./assertions";
-import { TestsGroupingScenario, StateManagementScenario, ReportingScenario } from "./behaviour";
+import { TestsGroupingScenario, StateManagementScenario, ReportingScenario, ReusableTestsScenario } from "./behaviour";
 
 mapScenarios({
     assertions: [
@@ -20,5 +20,6 @@ mapScenarios({
     ],
     grouping: [TestsGroupingScenario],
     state: [StateManagementScenario],
-    reporting: [ReportingScenario]
+    reporting: [ReportingScenario],
+    reusable_tests: [ReusableTestsScenario]
 });
