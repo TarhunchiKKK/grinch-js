@@ -3,10 +3,10 @@ import { NEW_NAME } from "./constants";
 
 type ReusableState = {
     name: string;
-}
+};
 
-export const ChangeNameTest = reusableTest<ReusableState>(({test}) => {
-    test.sample("Change name", ({state}) => {
-        state.name = NEW_NAME
-    })
-})
+export const ChangeNameTest = reusableTest<ReusableState>(({ test }) => {
+    test.sample("Change name", ({ state }) => {
+        state.name = NEW_NAME;
+    });
+});
