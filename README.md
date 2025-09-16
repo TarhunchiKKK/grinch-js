@@ -375,17 +375,17 @@ This condition is necessary for type safety.
 
 Grinch provides the ability to skip tests, groups, and hooks. You can easily replace the names of missing methods with the methods you need. Methods for skipping tests:
 
-|Method|Associations|Description
-|-|-|-|
-|```skip```|```sample```| Skip sample test|
-|```skipGroup```|```serial```, ```parallel```| Skip test group. All children tests and hooks will not be executed |
-|```skipHook```|```beforeEach```, ```afterEach```| Skip lifecycle hook|
+| Method      | Associations              | Description                                                        |
+| ----------- | ------------------------- | ------------------------------------------------------------------ |
+| `skip`      | `sample`                  | Skip sample test                                                   |
+| `skipGroup` | `serial`, `parallel`      | Skip test group. All children tests and hooks will not be executed |
+| `skipHook`  | `beforeEach`, `afterEach` | Skip lifecycle hook                                                |
 
-You may notice that the ```skip``` and ```skipHook``` methods can be used interchangeably. This duplication is done for greater clarity in the code.
+You may notice that the `skip` and `skipHook` methods can be used interchangeably. This duplication is done for greater clarity in the code.
 
 ## Reporting
 
-Сalling the ```mapScenarios``` function returns an array of objects of type:  
+Сalling the `mapScenarios` function returns an array of objects of type:
 
 ```typescript
 type Results = {
@@ -596,7 +596,6 @@ Unknown assertion also inherits the statements of the basic assertion.
 | `toBeNuber`      | Asserts that the value is of type number                                                        |
 | `toBeNan`        | Asserts that the value is NaN (Not a Number)                                                    |
 | `toBeBoolean`    | Asserts that the value is of type boolean                                                       |
-| `toBeBigInt`     | Asserts that the value is of type bigint                                                        |
 | `toBeObject`     | Asserts that the value is of type object                                                        |
 | `toBeRecord`     | Asserts that the value is of type object (excluding null and arrays)                            |
 | `toBeArray`      | Asserts that the value is an array                                                              |
@@ -606,7 +605,7 @@ Usage:
 
 ```typescript
 import { assert } from "grinch";
-import { unknownValue } from "./data.ts"
+import { unknownValue } from "./data.ts";
 
 assert
     .unknown(unknownValue)
