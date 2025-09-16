@@ -71,7 +71,7 @@ export default mapScenarios({
 ```
 {
     "scripts: {
-        "test": "npx your-file.ts command_name",
+        "test": "npx ts-node your-file.ts command_name",
     }
 }
 ```
@@ -118,7 +118,7 @@ const state: State = {
 Now let's write tests for user login, post creating and post getting.
 
 ```typescript
-export const createPostScenario = scenario("Create post", state, ({ test }) => {
+export const PostCreationScenario = scenario("Create post", state, ({ test }) => {
     test.serial("should create post", ({ test }) => {
         // login user and get JWT token
         test.sample("should login user", async ({ state }) => {
@@ -179,10 +179,10 @@ Now let's update our entry file:
 
 ```typescript
 import { mapScenarios } from "grinch";
-import { createPostScenario } from "./create-post.grinch.ts";
+import { PostCreationScenario } from "./create-post.grinch.ts";
 
 export default mapScenarios({
-    posts: [createPostScenario]
+    posts: [PostCreationScenario]
 });
 ```
 
@@ -213,7 +213,7 @@ const state = {
     // Fields of your state
 };
 
-const someScenario = scenario("Scenario title", state, ({ test }) => {
+const SomeScenario = scenario("Scenario title", state, ({ test }) => {
     test.serial("TestInfo title", ({ test }) => {
         // Children tests
     });
