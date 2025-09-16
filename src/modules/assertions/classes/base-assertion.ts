@@ -94,7 +94,10 @@ export class BaseAssertion<T> {
      * @returns The current instance for chaining.
      */
     public toBeTruthy(): this {
-        this.runCondition(() => !FALSY_VALUES.includes(this.value as null), `Value is not truthy. Receive: ${JSON.stringify(this.value)}`);
+        this.runCondition(
+            () => !FALSY_VALUES.includes(this.value as null),
+            `Value is not truthy. Receive: ${JSON.stringify(this.value)}`
+        );
         return this;
     }
 
@@ -104,7 +107,10 @@ export class BaseAssertion<T> {
      * @returns The current instance for chaining.
      */
     public toBeFalsy(): this {
-        this.runCondition(() => FALSY_VALUES.includes(this.value as null), `Value is not falsy. Receive: ${JSON.stringify(this.value)}`);
+        this.runCondition(
+            () => FALSY_VALUES.includes(this.value as null),
+            `Value is not falsy. Receive: ${JSON.stringify(this.value)}`
+        );
         return this;
     }
 
@@ -115,7 +121,10 @@ export class BaseAssertion<T> {
      * @returns The current instance for chaining.
      */
     public toBeIn(values: T[]): this {
-        this.runCondition(() => values.includes(this.value), `Value is not in array. Receive: ${JSON.stringify(this.value)} `);
+        this.runCondition(
+            () => values.includes(this.value),
+            `Value is not in array. Receive: ${JSON.stringify(this.value)} `
+        );
         return this;
     }
 

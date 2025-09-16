@@ -27,7 +27,10 @@ export class IterableAssertion<T extends string | unknown[]> extends BaseAsserti
      * @returns The current instance for chaining.
      */
     public toBeShorterThan(length: number): this {
-        this.runCondition(() => this.value.length < length, `Length is grater. Expect: ${length}, but receive: ${this.value.length}`);
+        this.runCondition(
+            () => this.value.length < length,
+            `Length is grater. Expect: ${length}, but receive: ${this.value.length}`
+        );
         return this;
     }
 
@@ -38,7 +41,10 @@ export class IterableAssertion<T extends string | unknown[]> extends BaseAsserti
      * @returns The current instance for chaining.
      */
     public toBeShorterThanOrEquals(length: number): this {
-        this.runCondition(() => this.value.length <= length, `Length is grater. Expect: ${length}, but receive: ${this.value.length}`);
+        this.runCondition(
+            () => this.value.length <= length,
+            `Length is grater. Expect: ${length}, but receive: ${this.value.length}`
+        );
         return this;
     }
 
@@ -49,7 +55,10 @@ export class IterableAssertion<T extends string | unknown[]> extends BaseAsserti
      * @returns The current instance for chaining.
      */
     public toBeLongerThan(length: number): this {
-        this.runCondition(() => this.value.length > length, `Length is less. Expect: ${length}, but receive: ${this.value.length}`);
+        this.runCondition(
+            () => this.value.length > length,
+            `Length is less. Expect: ${length}, but receive: ${this.value.length}`
+        );
         return this;
     }
 
@@ -60,7 +69,10 @@ export class IterableAssertion<T extends string | unknown[]> extends BaseAsserti
      * @returns The current instance for chaining.
      */
     public toBeLongerThanOrEquals(length: number): this {
-        this.runCondition(() => this.value.length >= length, `Length is less. Expect: ${length}, but receive: ${this.value.length}`);
+        this.runCondition(
+            () => this.value.length >= length,
+            `Length is less. Expect: ${length}, but receive: ${this.value.length}`
+        );
         return this;
     }
 

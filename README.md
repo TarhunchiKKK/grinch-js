@@ -388,31 +388,29 @@ You may notice that the ```skip``` and ```skipHook``` methods can be used interc
 Сalling the ```mapScenarios``` function returns an array of objects of type:  
 
 ```typescript
-type Result = {
+type Results = {
     title: string;
     result: "succeed" | "failed" | "error" | "not runed";
-    children?: Result[];
+    children?: Results[];
 };
 ```
 
 You can implement your own result processing logic:
 
 ```typescript
-import { mapScenarios  } from "grinch";
+import { mapScenarios, Results } from "grinch";
 
 const results = mapScenarios({
     // Here are your scenarios
 });
 
-function processResults(results: Result[]) {
+function processResults(results: Results[]) {
     // Your login for results processing
 }
 
 // Results processing
 results.then(processResults);
 ```
-
-
 
 ## Assertions
 
