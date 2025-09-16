@@ -5,7 +5,7 @@ export const toBeBooleanGenerator = {
         return [true, false];
     },
     invalid() {
-        return  [
+        return [
             faker.string.alphanumeric(),
             faker.number.int(),
             faker.number.float(),

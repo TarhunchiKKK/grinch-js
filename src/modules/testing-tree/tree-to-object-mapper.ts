@@ -2,7 +2,7 @@ import { TestResult } from "../tests";
 import { TestNode } from "./classes/types";
 import { TestingTree } from "./testing-tree";
 
-type StringTestResult = "succeed" | "failed" | "error" | "not runed"
+type StringTestResult = "succeed" | "failed" | "error" | "not runed";
 
 export type TestingNodeResult = {
     title: string;

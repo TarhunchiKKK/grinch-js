@@ -11,7 +11,11 @@ import { ScenarioCallback } from "./types";
  * @param state The initial state of the scenario.
  * @param callback A function that receives the test factory and defines the scenario's tests.
  */
-export function createScenario<State extends AvailableTestStates>(title: string, state: State, callback: ScenarioCallback<State>) {
+export function createScenario<State extends AvailableTestStates>(
+    title: string,
+    state: State,
+    callback: ScenarioCallback<State>
+) {
     const scenario = new Scenario(title);
 
     const testingTree = TestingTreeSingleton.getInstance().tree;

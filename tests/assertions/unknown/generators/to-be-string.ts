@@ -5,9 +5,7 @@ const STRING_LENGTH = { min: 10, max: 100 };
 
 export const toBeStringGenerator = {
     valid() {
-        return Array.from({ length: ARRAY_LENGTH }).map(() =>
-            faker.string.alphanumeric({ length: STRING_LENGTH })
-        );
+        return Array.from({ length: ARRAY_LENGTH }).map(() => faker.string.alphanumeric({ length: STRING_LENGTH }));
     },
     invalid() {
         return [

@@ -7,7 +7,7 @@
     "author": "Konstantin Barilo",
     "scripts": {
         "build": "vite build",
-        "format": "prettier --write \"src/**/*.ts\"",
+        "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
         "lint": "eslint \"src/**/*.ts\" --fix",
         "knip": "knip"
     },
@@ -29,7 +29,7 @@
     "devDependencies": {
         "@eslint/js": "^9.33.0",
         "@faker-js/faker": "^9.9.0",
-        "@types/node": "^24.2.1",
+        "@types/node": "^24.5.0",
         "eslint": "^9.33.0",
         "globals": "^16.3.0",
         "jiti": "^2.5.1",

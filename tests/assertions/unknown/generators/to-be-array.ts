@@ -5,7 +5,7 @@ export const toBeArrayGenerator = {
         return [[]];
     },
     invalid() {
-       return  [
+        return [
             faker.string.alphanumeric(),
             faker.number.int(),
             faker.number.float(),

@@ -7,7 +7,7 @@ on:
 
 jobs:
   setup:
-    name: Priject Setup
+    name: Project Setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

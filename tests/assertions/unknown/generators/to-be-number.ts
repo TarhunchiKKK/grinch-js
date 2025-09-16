@@ -4,7 +4,7 @@ const ARRAY_LENGTH = 10;
 
 export const toBeNumberGenerator = {
     valid() {
-        return  [
+        return [
             ...Array.from({ length: ARRAY_LENGTH }).map(() => faker.number.int()),
             ...Array.from({ length: ARRAY_LENGTH }).map(() => faker.number.float()),
             NaN
