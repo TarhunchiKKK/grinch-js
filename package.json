@@ -9,7 +9,10 @@
         "build": "vite build",
         "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
         "lint": "eslint \"src/**/*.ts\" --fix",
-        "knip": "knip"
+        "knip": "knip",
+        "test:assertions": "npx ts-node ./tests/main.grinch.ts assertions",
+        "test:grouping": "npx ts-node ./tests/main.grinch.ts grouping",
+        "test:state": "npx ts-node ./tests/main.grinch.ts state"
     },
     "main": "./dist/grinch.umd.cjs",
     "module": "./dist/grinch.mjs",

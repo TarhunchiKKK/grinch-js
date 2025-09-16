@@ -15,7 +15,7 @@ export const toHaveKeyWithValueGenerator = {
                 },
                 keys: ["name", "address"]
             }
-        ];
+        ] as { value: { [Key: string]: unknown }; keys: string[] }[];
     },
     invalid() {
         return [
