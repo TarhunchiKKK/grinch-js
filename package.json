@@ -12,7 +12,9 @@
         "knip": "knip",
         "test:assertions": "npx ts-node ./tests/main.grinch.ts assertions",
         "test:grouping": "npx ts-node ./tests/main.grinch.ts grouping",
-        "test:state": "npx ts-node ./tests/main.grinch.ts state"
+        "test:state": "npx ts-node ./tests/main.grinch.ts state",
+        "test:reporting": "npx ts-node ./tests/main.grinch.ts reporting"
+
     },
     "main": "./dist/grinch.umd.cjs",
     "module": "./dist/grinch.mjs",
