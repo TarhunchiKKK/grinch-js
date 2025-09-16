@@ -2,21 +2,21 @@ import { AvailableTestStates, BaseTestFactory } from "@modules/tests";
 import { ReusableTestCallback } from "./types";
 
 /**
- * Creates a new ReusableTestCreator instance with the provided test logic callback.
+ * Creates a new test instance with the provided test logic callback.
  *
  * @param callback The callback function containing the reusable test logic.
- * @returns A new ReusableTestCreator instance.
+ * @returns A new reusable test callback.
  */
 export function createReusableTest<State extends AvailableTestStates>(callback: ReusableTestCallback<State>) {
     return callback;
 }
 
 /**
- * Reuses a test defined by a `ReusableTestCreator` within a test factory.
+ * Reuses a test defined by a `reusableTest` within a test factory.
  *
  * @param title The title of the reused test.
  * @param factory The test factory where the test is being reused.
- * @param creator The `ReusableTestCreator` instance that defines the test.
+ * @param callback The callback that defines the test.
  */
 export function reuseTest<State extends ReusableState, ReusableState>(
     title: string,

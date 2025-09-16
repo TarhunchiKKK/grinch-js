@@ -47,8 +47,8 @@ export class NumberAssertion extends BaseAssertion<number> {
     /**
      * Asserts that the number is NaN (Not a Number).
      *
-     * Note: In JavaScript, NaN is the only value that does not equal itself.
-     * This property is used here to check for NaN.
+     * Note: In JavaScript, `NaN` is the only value that does not equal itself.
+     * This property is used here to check for `NaN`.
      *
      * @returns The current instance for chaining.
      */

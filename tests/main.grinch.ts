@@ -9,7 +9,7 @@ import {
 } from "./assertions";
 import { TestsGroupingScenario, StateManagementScenario, ReportingScenario, ReusableTestsScenario } from "./behaviour";
 
-mapScenarios({
+void mapScenarios({
     assertions: [
         BasicAssertionScenario,
         NumberAssertionScenario,

@@ -68,7 +68,7 @@ export class StringAssertion extends IterableAssertion<string> {
     }
 
     /**
-     * Asserts that the string is either "true" or "false".
+     * Asserts that the string is either `true` or `false`.
      *
      * @returns The current instance for chaining.
      */
