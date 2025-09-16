@@ -1,14 +1,14 @@
-import { toHaveLengthGenerator } from "./to-have-length.ts";
-import { toBeShorterThanGenerator } from "./to-be-shorter-than.ts";
-import { toBeShorterThanOrEqualsGenerator } from "./to-be-shorter-than-or-equals.ts";
-import { toBeLongerThanGenerator } from "./to-be-longer-than.ts";
-import { toBeLongerThanOrEqualsGenerator } from "./to-be-longer-than-or-equals.ts";
-import { toHaveLengthBetweenGenerator } from "./to-have-length-between.ts";
-import { toIncludesGenerator } from "./to-includes.ts";
-import { toHaveValueAtIndexGenerator } from "./to-have-value-at-index.ts";
-import { toHaveSomeMatchGenerator } from "./to-have-some-match.ts";
-import { toHaveEveryMatchGenerator } from "./to-have-every-match.ts";
-import { toBeSortedGenerator } from "./to-be-sorted.ts";
+import { toHaveLengthGenerator } from "./to-have-length";
+import { toBeShorterThanGenerator } from "./to-be-shorter-than";
+import { toBeShorterThanOrEqualsGenerator } from "./to-be-shorter-than-or-equals";
+import { toBeLongerThanGenerator } from "./to-be-longer-than";
+import { toBeLongerThanOrEqualsGenerator } from "./to-be-longer-than-or-equals";
+import { toHaveLengthBetweenGenerator } from "./to-have-length-between";
+import { toIncludesGenerator } from "./to-includes";
+import { toHaveValueAtIndexGenerator } from "./to-have-value-at-index";
+import { toHaveSomeMatchGenerator } from "./to-have-some-match";
+import { toHaveEveryMatchGenerator } from "./to-have-every-match";
+import { toBeSortedGenerator } from "./to-be-sorted";
 
 export const arrayAssertionGenerators = {
     toHaveLength: toHaveLengthGenerator,

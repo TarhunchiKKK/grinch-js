@@ -1,11 +1,7 @@
 import { faker } from "@faker-js/faker";
 
 class Person {
-    private name = faker.person.fullName();
-
-    protected age = faker.number.int();
-
-    public gender = faker.person.gender();
+    public name = faker.person.fullName();
 }
 
 export const toBeInstanceOfGenerator = {
