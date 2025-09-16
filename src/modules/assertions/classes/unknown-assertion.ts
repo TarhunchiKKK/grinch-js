@@ -67,15 +67,6 @@ export class UnknownAssertion extends BaseAssertion<unknown> {
     }
 
     /**
-     * Asserts that the value is of type bigint.
-     *
-     * @returns The current instance for chaining.
-     */
-    public toBeBigInt(): this {
-        return this.checkType("bigint");
-    }
-
-    /**
      * Asserts that the value is of type object.
      *
      * @returns The current instance for chaining.

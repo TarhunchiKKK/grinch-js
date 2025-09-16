@@ -93,24 +93,6 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
             });
         });
 
-        test.serial("toBeBigInt()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = unknownAssertionGenerators.toBeBigInt.valid();
-
-                for (const value of values) {
-                    assert.unknown(value).toBeBigInt();
-                }
-            });
-
-            test.sample("invalid", () => {
-                const values = unknownAssertionGenerators.toBeBigInt.invalid();
-
-                for (const value of values) {
-                    assert.unknown(value).not.toBeBigInt();
-                }
-            });
-        });
-
         test.serial("toBeRecord()", ({ test }) => {
             test.sample("valid", () => {
                 const values = unknownAssertionGenerators.toBeRecord.valid();
