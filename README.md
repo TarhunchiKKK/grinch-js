@@ -14,15 +14,16 @@
 - [Philosophy](#philosophy)
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
-- [Test Types](#test-types)
-  - [Scenario](#scenario)
-  - [Parallel](#parallel)
-  - [Serial](#serial)
-  - [Sample](#sample)
-- [Lifecycle Hooks](#lifecycle-hooks)
-- [Reusable Tests](#reusable-tests)
-- [Tests Skiping](#tests-skiping)
-- [Reporting](#reporting)
+- [Features](#features)
+  - [Grouping Tests](#grouping-tests)
+    - [Scenario](#scenario)
+    - [Parallel](#parallel)
+    - [Serial](#serial)
+    - [Sample](#sample)
+  - [Lifecycle Hooks](#lifecycle-hooks)
+  - [Reusable Tests](#reusable-tests)
+  - [Skipping Tests](#skipping-tests)
+  - [Reporting](#reporting)
 - [Assertions](#assertions)
   - [Basic Assertions](#basic-assertions)
   - [Iterable Values Assertions](#iterable-values-assertions)
@@ -194,13 +195,17 @@ npx ts-node your-file.ts posts
 
 Grinch will search for command provided in CLI and run corresponding scenarios in parallel.
 
-## Test Types
+
+
+## Features
+
+### Grouping Tests
 
 When writing tests, Grinch saves them as a tree object, allowing you to group certain logic.
 
 You can combine different ways to group tests.
 
-### Scenario
+#### Scenario
 
 Scenario is a specific sequence of actions, allowing you to simulate the actions of a real user.
 
@@ -222,7 +227,7 @@ const SomeScenario = scenario("Scenario title", state, ({ test }) => {
 
 It is assumed that the scenario contains within itself one root test, which is the parent for many other tests. If you declare several tests at the root of the scenario, they will all be executed **sequentially**.
 
-### Parallel
+#### Parallel
 
 All tests declared in the root of the parallel test will be executed in parallel.
 
@@ -238,7 +243,7 @@ test.parallel("TestInfo title", ({ test }) => {
 
 **Note**: _It is very dangerous to change the general state of the scenario in parallel tests. Be careful with this_.
 
-### Serial
+#### Serial
 
 All tests declared in the root of the serial test will be executed sequentially.
 
@@ -252,7 +257,7 @@ test.serial("TestInfo title", ({ test }) => {
 // ...
 ```
 
-### Sample
+#### Sample
 
 Sample test represents the leaf element of the scenario test tree. It can access the scenario state and perform various testing logic of your application.
 
@@ -266,7 +271,7 @@ test.sample("TestInfo title", async ({ state }) => {
 // ...
 ```
 
-## Lifecycle Hooks
+### Lifecycle Hooks
 
 Grinch provides the ability to create `beforeEach` and `afterEach` hooks.
 
@@ -304,7 +309,7 @@ test.serial("TestInfo title", ({ test }) => {
 
 In the example above, the test is the first in the sequence. Therefore, the behavior of this test will be similar to the behavior of the `beforeAll` hook. The `afterAll` hook can be implemented in a similar way.
 
-## Reusable Tests
+### Reusable Tests
 
 One of the key features of Grinch is reusable tests. This feature can greatly reduce the number of duplicates in the code.
 
@@ -371,19 +376,28 @@ _The type of test being reused should be a supertype of the scenario state type.
 
 This condition is necessary for type safety.
 
-## Tests Skiping
+### Skipping Tests 
 
 Grinch provides the ability to skip tests, groups, and hooks. You can easily replace the names of missing methods with the methods you need. Methods for skipping tests:
 
-| Method      | Associations              | Description                                                        |
-| ----------- | ------------------------- | ------------------------------------------------------------------ |
-| `skip`      | `sample`                  | Skip sample test                                                   |
-| `skipGroup` | `serial`, `parallel`      | Skip test group. All children tests and hooks will not be executed |
-| `skipHook`  | `beforeEach`, `afterEach` | Skip lifecycle hook                                                |
+Example:
 
-You may notice that the `skip` and `skipHook` methods can be used interchangeably. This duplication is done for greater clarity in the code.
+```typescript
+// skipping sample test execution
+test.skip.sample(/* ... */);
 
-## Reporting
+// skipping group execution (children tests will not be executed)
+test.skip.serial(/* ... */);
+test.skip.parallel(/* ... */);
+
+// skipping hooks execution
+test.skip.beforeEach(/* ... */);
+test.skip.afterEach(/* ... */);
+```
+
+**Note**: _If you are skipping tests group execution (`serial` or `parallel`) all children tests will also be skipped_.
+
+### Reporting
 
 Сalling the `mapScenarios` function returns an array of objects of type:
 

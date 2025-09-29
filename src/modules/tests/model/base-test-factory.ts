@@ -18,7 +18,7 @@ export abstract class BaseTestFactory<State> {
      * @param _callback The callback function that defines the logic of the sample test. It receives the current state.
      * @returns void
      */
-    public abstract skip(_title: string, _callback: SampleTestCallback<State>): void;
+    //public abstract skip(_title: string, _callback: SampleTestCallback<State>): void;
 
     /**
      * Creates a tests group in which all children tests will be executed one after another.
@@ -39,15 +39,6 @@ export abstract class BaseTestFactory<State> {
     public abstract parallel(title: string, callback: TestGroupCallback<State>): void;
 
     /**
-     * Creates a tests group within the current test factory. This tests group will not be executed.
-     *
-     * @param title The title of the parallel test.
-     * @param callback The callback function that defines the logic of the parallel test. It receives the current state.
-     * @returns void
-     */
-    public abstract skipGroup(_title: string, _callback: TestGroupCallback<State>): void;
-
-    /**
      * Registers a hook that runs before each test in the current group.
      *
      * @param _callback The callback function to be executed. It receives the current state.
@@ -62,14 +53,6 @@ export abstract class BaseTestFactory<State> {
      * @returns void
      */
     public abstract afterEach(callback: LifecycleHookCallback<State>): void;
-
-    /**
-     * A no-op function that can be used to skip a lifecycle hook.
-     *
-     * @param _callback The callback function to be skipped.
-     * @returns void
-     */
-    public abstract skipHook(_callback: LifecycleHookCallback<State>): void;
 
     // ! Necessarily Check
     // public reuse<ReusableState>(
