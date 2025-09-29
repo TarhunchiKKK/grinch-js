@@ -1,5 +1,5 @@
 import { TestAborter } from "@modules/test-aborting";
-import { BaseTestFactory } from "./model/base-test-factory";
+import { BaseTestFactory } from "./factories/base-test-factory";
 
 export enum TestStatus {
     SUCCEED,

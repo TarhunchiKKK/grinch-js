@@ -1,3 +1,3 @@
-export { TestingTree } from "./testing-tree";
+export { TestingTree } from "./model/testing-tree";
 export { GroupNode } from "./classes/group-node";
-export { type TestNode } from "./classes/types";
+export { type TestNode } from "./types";

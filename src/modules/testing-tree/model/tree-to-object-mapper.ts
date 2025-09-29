@@ -1,6 +1,6 @@
 import { TestResult } from "@shared/types";
-import { TestStatus } from "../tests";
-import { TestNode } from "./classes/types";
+import { TestStatus } from "../../tests";
+import { TestNode } from "../types";
 import { TestingTree } from "./testing-tree";
 
 const resultDescriptionsMap: Record<TestStatus, TestResult["status"]> = {

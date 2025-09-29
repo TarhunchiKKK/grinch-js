@@ -1,2 +1,2 @@
-export { createScenario } from "./create-scenario";
-export { mapScenarios } from "./map-scenarios";
+export { createScenario } from "./model/create-scenario";
+export { mapScenarios } from "./model/map-scenarios";

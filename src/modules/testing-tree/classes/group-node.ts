@@ -2,7 +2,7 @@ import { SampleTest, TestsGroup, TestStatus } from "@modules/tests";
 import { LeafNode } from "./leaf-node";
 import { ParallelNode } from "./parallel-node";
 import { SerialNode } from "./serial-node";
-import { TestNode } from "./types";
+import { TestNode } from "../types";
 
 export abstract class GroupNode implements TestNode {
     public children: TestNode[] = [];
