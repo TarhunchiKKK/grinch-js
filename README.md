@@ -22,7 +22,7 @@
     - [Sample](#sample)
   - [Lifecycle Hooks](#lifecycle-hooks)
   - [Reusable Tests](#reusable-tests)
-  - [Skiping Tests](#skiping-tests)
+  - [Skipping Tests](#skipping-tests)
   - [Reporting](#reporting)
 - [Assertions](#assertions)
   - [Basic Assertions](#basic-assertions)
@@ -376,26 +376,26 @@ _The type of test being reused should be a supertype of the scenario state type.
 
 This condition is necessary for type safety.
 
-### Skiping Tests 
+### Skipping Tests 
 
 Grinch provides the ability to skip tests, groups, and hooks. You can easily replace the names of missing methods with the methods you need. Methods for skipping tests:
 
 Example:
 
 ```typescript
-// skiping sample test execution
+// skipping sample test execution
 test.skip.sample(/* ... */);
 
-// skiping group execution (children tests will not be executed)
+// skipping group execution (children tests will not be executed)
 test.skip.serial(/* ... */);
 test.skip.parallel(/* ... */);
 
-// skiping hooks execution
+// skipping hooks execution
 test.skip.beforeEach(/* ... */);
 test.skip.afterEach(/* ... */);
 ```
 
-**Note**: _If you are skiping tests group execution (`serial` or `parallel`) all children tests will also be skiped_.
+**Note**: _If you are skipping tests group execution (`serial` or `parallel`) all children tests will also be skipped_.
 
 ### Reporting
 
