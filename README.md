@@ -22,6 +22,7 @@
         - [Sample](#sample)
     - [Lifecycle Hooks](#lifecycle-hooks)
     - [Reusable Tests](#reusable-tests)
+        - [Reusable Tests Limitations](#reusable-tests-limitations)
     - [Skipping Tests](#skipping-tests)
     - [Reporting](#reporting)
 - [Assertions](#assertions)
@@ -311,6 +312,8 @@ In the example above, the test is the first in the sequence. Therefore, the beha
 
 One of the key features of Grinch is reusable tests. This feature can greatly reduce the number of duplicates in the code.
 
+Reusable tests also may accept parameters. This makes this feature even more flexible.
+
 Let's create a simple scenario:
 
 ```typescript
@@ -338,12 +341,16 @@ type PartialState = {
     country: string;
 };
 
-const EditCountryTest = reusableTest<PartialState>(({ test }) => {
+const EditCountryTest = reusableTest<PartialState, string>(({ test, params }) => {
     test.sample("Edit country", ({ state }) => {
-        state.country = "UK";
+        state.country = params;
     });
 });
 ```
+
+You may also notice that our reusable test callback accept object with `params` field. This field contains a value that we will pass to our reusable test later.
+
+All children tests will be executed serially (like with `test.serial()`).
 
 Now let's reuse our test in scenario:
 
@@ -358,15 +365,19 @@ type ScenarioState = {
 
 scenario("Scenario title", state, ({ test }) => {
     test.serial("TestInfo title", ({ test }) => {
-        // Here we are reusing editContryTest
-        EditCountryTest.use("Edit country", test);
+        // Here we are reusing EditContryTest
+        EditCountryTest.use("Edit country", test, "UK");
     });
 });
 ```
 
 Our reusable test now can get access to scenario state.
 
-Note that the `LocalState` type is a supertype of `ScenarioState`.
+The last parameter of `EditCountryTest.use` will be passed to `params` field which we talked about above.
+
+#### Reusable Tests Limitations
+
+Note that the `PartialState` type is a supertype of `ScenarioState`.
 
 **Only one condition is necessary to use the reusable tests:**
 
