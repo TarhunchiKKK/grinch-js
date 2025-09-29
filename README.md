@@ -15,23 +15,23 @@
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
 - [Features](#features)
-  - [Grouping Tests](#grouping-tests)
-    - [Scenario](#scenario)
-    - [Parallel](#parallel)
-    - [Serial](#serial)
-    - [Sample](#sample)
-  - [Lifecycle Hooks](#lifecycle-hooks)
-  - [Reusable Tests](#reusable-tests)
-  - [Skipping Tests](#skipping-tests)
-  - [Reporting](#reporting)
+    - [Grouping Tests](#grouping-tests)
+        - [Scenario](#scenario)
+        - [Parallel](#parallel)
+        - [Serial](#serial)
+        - [Sample](#sample)
+    - [Lifecycle Hooks](#lifecycle-hooks)
+    - [Reusable Tests](#reusable-tests)
+    - [Skipping Tests](#skipping-tests)
+    - [Reporting](#reporting)
 - [Assertions](#assertions)
-  - [Basic Assertions](#basic-assertions)
-  - [Iterable Values Assertions](#iterable-values-assertions)
-  - [Number Assertions](#number-assertions)
-  - [String Assertions](#string-assertions)
-  - [Record Assertions](#record-assertions)
-  - [Array Assertions](#array-assertions)
-  - [Unknown Assertions](#unknown-assertions)
+    - [Basic Assertions](#basic-assertions)
+    - [Iterable Values Assertions](#iterable-values-assertions)
+    - [Number Assertions](#number-assertions)
+    - [String Assertions](#string-assertions)
+    - [Record Assertions](#record-assertions)
+    - [Array Assertions](#array-assertions)
+    - [Unknown Assertions](#unknown-assertions)
 
 ## Philosophy
 
@@ -195,8 +195,6 @@ npx ts-node your-file.ts posts
 
 Grinch will search for command provided in CLI and run corresponding scenarios in parallel.
 
-
-
 ## Features
 
 ### Grouping Tests
@@ -340,7 +338,7 @@ type PartialState = {
     country: string;
 };
 
-const editCountryTest = reusableTest<PartialState>(({ test }) => {
+const EditCountryTest = reusableTest<PartialState>(({ test }) => {
     test.sample("Edit country", ({ state }) => {
         state.country = "UK";
     });
@@ -361,7 +359,7 @@ type ScenarioState = {
 scenario("Scenario title", state, ({ test }) => {
     test.serial("TestInfo title", ({ test }) => {
         // Here we are reusing editContryTest
-        reuseTest("Edit country", test, editCountryTest);
+        EditCountryTest.use("Edit country", test);
     });
 });
 ```
@@ -376,7 +374,7 @@ _The type of test being reused should be a supertype of the scenario state type.
 
 This condition is necessary for type safety.
 
-### Skipping Tests 
+### Skipping Tests
 
 Grinch provides the ability to skip tests, groups, and hooks. You can easily replace the names of missing methods with the methods you need. Methods for skipping tests:
 
