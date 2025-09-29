@@ -24,8 +24,8 @@ type SampleTestPayload<State> = {
 
 export type SampleTestCallback<State> = (_: SampleTestPayload<State>) => void | Promise<void>;
 
-type TestGroupPayload<State> = {
+type TestsGroupPayload<State> = {
     test: BaseTestFactory<State>;
 };
 
-export type TestGroupCallback<State> = (_: TestGroupPayload<State>) => void;
+export type TestsGroupCallback<State> = (_: TestsGroupPayload<State>) => void;

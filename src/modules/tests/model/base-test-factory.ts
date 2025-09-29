@@ -1,5 +1,5 @@
 import { LifecycleHookCallback } from "@modules/lifecycle-hooks";
-import { SampleTestCallback, TestGroupCallback } from "../types";
+import { SampleTestCallback, TestsGroupCallback } from "../types";
 
 export abstract class BaseTestFactory<State> {
     /**
@@ -27,7 +27,7 @@ export abstract class BaseTestFactory<State> {
      * @param callback The callback function that defines the logic of the serial test. It receives the current state.
      * @returns void
      */
-    public abstract serial(title: string, callback: TestGroupCallback<State>): void;
+    public abstract serial(title: string, callback: TestsGroupCallback<State>): void;
 
     /**
      * Creates a tests group in which all children tests will be executed concurrently.
@@ -36,7 +36,7 @@ export abstract class BaseTestFactory<State> {
      * @param _callback The callback function that defines the logic of the parallel test. It receives the current state.
      * @returns void
      */
-    public abstract parallel(title: string, callback: TestGroupCallback<State>): void;
+    public abstract parallel(title: string, callback: TestsGroupCallback<State>): void;
 
     /**
      * Registers a hook that runs before each test in the current group.
@@ -59,9 +59,9 @@ export abstract class BaseTestFactory<State> {
     //     title: string,
     //     test: State extends ReusableState ? ReusableTest<ReusableState> : never
     // ) {
-    //     const testGroup = new TestGroup(title);
+    //     const TestsGroup = new TestsGroup(title);
 
-    //     const testNode = this.testsStore.addSerial(testGroup);
+    //     const testNode = this.testsStore.addSerial(TestsGroup);
 
     //     const testFactory = new TestFactory(testNode, this.state);
 

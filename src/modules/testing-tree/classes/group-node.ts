@@ -1,4 +1,4 @@
-import { SampleTest, TestGroup, TestResult } from "@modules/tests";
+import { SampleTest, TestsGroup, TestResult } from "@modules/tests";
 import { LeafNode } from "./leaf-node";
 import { ParallelNode } from "./parallel-node";
 import { SerialNode } from "./serial-node";
@@ -12,7 +12,7 @@ export abstract class GroupNode implements TestNode {
         afterEach: [] as (() => void | Promise<void>)[]
     };
 
-    public constructor(public test: TestGroup) {}
+    public constructor(public test: TestsGroup) {}
 
     public hasChildren(): this is GroupNode {
         return true;
@@ -38,13 +38,13 @@ export abstract class GroupNode implements TestNode {
         return node;
     }
 
-    public addSerial(test: TestGroup) {
+    public addSerial(test: TestsGroup) {
         const node = new SerialNode(test);
         this.children.push(node);
         return node;
     }
 
-    public addParallel(test: TestGroup) {
+    public addParallel(test: TestsGroup) {
         const node = new ParallelNode(test);
         this.children.push(node);
         return node;

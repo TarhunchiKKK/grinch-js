@@ -1,9 +1,9 @@
 import { LifecycleHookCallback } from "@modules/lifecycle-hooks";
 import { GroupNode } from "@modules/testing-tree";
 import { abort } from "@modules/test-aborting";
-import { SampleTestCallback, TestGroupCallback } from "../types";
+import { SampleTestCallback, TestsGroupCallback } from "../types";
 import { SampleTest } from "../classes/sample-test";
-import { TestGroup } from "../classes/test-group";
+import { TestsGroup } from "../classes/test-group";
 import { BaseTestFactory } from "./base-test-factory";
 import { SkipTestFactory } from "./skip-test-factory";
 
@@ -30,8 +30,8 @@ export class TestFactory<State> extends BaseTestFactory<State> {
         this.testsStore.addLeaf(test);
     }
 
-    public serial(title: string, callback: TestGroupCallback<State>) {
-        const test = new TestGroup(title);
+    public serial(title: string, callback: TestsGroupCallback<State>) {
+        const test = new TestsGroup(title);
 
         const testNode = this.testsStore.addSerial(test);
 
@@ -40,8 +40,8 @@ export class TestFactory<State> extends BaseTestFactory<State> {
         callback({ test: testFactory });
     }
 
-    public parallel(title: string, callback: TestGroupCallback<State>) {
-        const test = new TestGroup(title);
+    public parallel(title: string, callback: TestsGroupCallback<State>) {
+        const test = new TestsGroup(title);
 
         const testNode = this.testsStore.addSerial(test);
 
@@ -73,9 +73,9 @@ export class TestFactory<State> extends BaseTestFactory<State> {
     //     title: string,
     //     test: State extends ReusableState ? ReusableTest<ReusableState> : never
     // ) {
-    //     const testGroup = new TestGroup(title);
+    //     const TestsGroup = new TestsGroup(title);
 
-    //     const testNode = this.testsStore.addSerial(testGroup);
+    //     const testNode = this.testsStore.addSerial(TestsGroup);
 
     //     const testFactory = new TestFactory(testNode, this.state);
 
