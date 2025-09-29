@@ -1,4 +1,4 @@
-import { assert, scenario } from "../../../src";
+import { expect, scenario } from "../../../src";
 import { basicAssertionGenerators } from "./generators";
 
 export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test }) => {
@@ -8,7 +8,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toBe.valid();
 
                 for (const value of values) {
-                    assert.basic(value).toBe(value);
+                    expect.basic(value).toBe(value);
                 }
             });
 
@@ -16,7 +16,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toBe.invalid();
 
                 for (const value of values) {
-                    assert.basic(value.value1).not.toBe(value.value2);
+                    expect.basic(value.value1).not.toBe(value.value2);
                 }
             });
         });
@@ -26,7 +26,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toBeDefined.valid();
 
                 for (const value of values) {
-                    assert.basic(value).toBeDefined();
+                    expect.basic(value).toBeDefined();
                 }
             });
 
@@ -34,7 +34,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toBeDefined.invalid();
 
                 for (const value of values) {
-                    assert.basic(value).not.toBeDefined();
+                    expect.basic(value).not.toBeDefined();
                 }
             });
         });
@@ -44,7 +44,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toBeNull.valid();
 
                 for (const value of values) {
-                    assert.basic(value).toBeNull();
+                    expect.basic(value).toBeNull();
                 }
             });
 
@@ -52,7 +52,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toBeNull.invalid();
 
                 for (const value of values) {
-                    assert.basic(value).not.toBeNull();
+                    expect.basic(value).not.toBeNull();
                 }
             });
         });
@@ -62,7 +62,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toBeEmpty.valid();
 
                 for (const value of values) {
-                    assert.basic(value).toBeEmpty();
+                    expect.basic(value).toBeEmpty();
                 }
             });
 
@@ -70,7 +70,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toBeEmpty.invalid();
 
                 for (const value of values) {
-                    assert.basic(value).not.toBeEmpty();
+                    expect.basic(value).not.toBeEmpty();
                 }
             });
         });
@@ -80,7 +80,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toBeTruthy.valid();
 
                 for (const value of values) {
-                    assert.basic(value).toBeTruthy();
+                    expect.basic(value).toBeTruthy();
                 }
             });
 
@@ -88,7 +88,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toBeTruthy.invalid();
 
                 for (const value of values) {
-                    assert.basic(value).not.toBeTruthy();
+                    expect.basic(value).not.toBeTruthy();
                 }
             });
         });
@@ -98,7 +98,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toBeFalsy.valid();
 
                 for (const value of values) {
-                    assert.basic(value).toBeFalsy();
+                    expect.basic(value).toBeFalsy();
                 }
             });
 
@@ -106,7 +106,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toBeFalsy.invalid();
 
                 for (const value of values) {
-                    assert.basic(value).not.toBeFalsy();
+                    expect.basic(value).not.toBeFalsy();
                 }
             });
         });
@@ -116,7 +116,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toBeNull.valid();
 
                 for (const value of values) {
-                    assert.basic(value).toBeNull();
+                    expect.basic(value).toBeNull();
                 }
             });
 
@@ -124,7 +124,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toBeNull.valid();
 
                 for (const value of values) {
-                    assert.basic(value).not.toBeNull();
+                    expect.basic(value).not.toBeNull();
                 }
             });
         });
@@ -134,7 +134,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toMatchZodSchema.valid();
 
                 for (const { value, schema } of values) {
-                    assert.basic(value).toMatchZodSchema(schema);
+                    expect.basic(value).toMatchZodSchema(schema);
                 }
             });
 
@@ -142,7 +142,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toMatchZodSchema.invalid();
 
                 for (const { value, schema } of values) {
-                    assert.basic(value).not.toMatchZodSchema(schema);
+                    expect.basic(value).not.toMatchZodSchema(schema);
                 }
             });
         });
@@ -152,7 +152,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toSatisfy.valid();
 
                 for (const { value, condition } of values) {
-                    assert.basic(value).toSatisfy(condition);
+                    expect.basic(value).toSatisfy(condition);
                 }
             });
 
@@ -160,7 +160,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 const values = basicAssertionGenerators.toSatisfy.invalid();
 
                 for (const { value, condition } of values) {
-                    assert.basic(value).not.toSatisfy(condition);
+                    expect.basic(value).not.toSatisfy(condition);
                 }
             });
         });

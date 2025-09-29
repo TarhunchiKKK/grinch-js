@@ -1,4 +1,4 @@
-import { assert, scenario } from "../../../src";
+import { expect, scenario } from "../../../src";
 import { recordAssertionGenerators } from "./generators";
 
 export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test }) => {
@@ -8,7 +8,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
                 const values = recordAssertionGenerators.toEquals.valid();
 
                 for (const value of values) {
-                    assert.record(value).toEquals(value);
+                    expect.record(value).toEquals(value);
                 }
             });
 
@@ -16,7 +16,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
                 const values = recordAssertionGenerators.toEquals.invalid();
 
                 for (const value of values) {
-                    assert.record(value).not.toEquals(value);
+                    expect.record(value).not.toEquals(value);
                 }
             });
         });
@@ -26,7 +26,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
                 const values = recordAssertionGenerators.toHaveKey.valid();
 
                 for (const { value, key } of values) {
-                    assert.record(value).toHaveKey(key);
+                    expect.record(value).toHaveKey(key);
                 }
             });
 
@@ -34,7 +34,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
                 const values = recordAssertionGenerators.toHaveKey.invalid();
 
                 for (const { value, key } of values) {
-                    assert.record(value).not.toHaveKey(key);
+                    expect.record(value).not.toHaveKey(key);
                 }
             });
         });
@@ -44,7 +44,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
                 const values = recordAssertionGenerators.toHaveAllKeys.valid();
 
                 for (const { value, keys } of values) {
-                    assert.record(value).toHaveAllKeys(keys);
+                    expect.record(value).toHaveAllKeys(keys);
                 }
             });
 
@@ -52,7 +52,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
                 const values = recordAssertionGenerators.toHaveAllKeys.invalid();
 
                 for (const { value, keys } of values) {
-                    assert.record(value).not.toHaveAllKeys(keys);
+                    expect.record(value).not.toHaveAllKeys(keys);
                 }
             });
         });
@@ -63,7 +63,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
 
                 for (const { value, keys } of values) {
                     for (const key of keys) {
-                        assert.record(value).toHaveKeyWithValue(key, value[key]);
+                        expect.record(value).toHaveKeyWithValue(key, value[key]);
                     }
                 }
             });
@@ -73,7 +73,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
 
                 for (const { record, keys } of values) {
                     for (const { key, value } of keys) {
-                        assert.record(record).not.toHaveKeyWithValue(key, value);
+                        expect.record(record).not.toHaveKeyWithValue(key, value);
                     }
                 }
             });

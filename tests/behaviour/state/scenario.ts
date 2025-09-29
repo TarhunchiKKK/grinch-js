@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker/.";
-import { scenario, assert } from "src";
+import { scenario, expect } from "src";
 
 const scenarioState = {
     value: 0
@@ -12,7 +12,7 @@ export const StateManagementScenario = scenario("State management", scenarioStat
         for (let i = 0; i < values.length; i++) {
             test.sample(`Set value to ${values[i]}`, ({ state }) => {
                 if (i !== 0) {
-                    assert.number(state.value).toBe(values[i - 1]);
+                    expect.number(state.value).toBe(values[i - 1]);
                 }
 
                 state.value = values[i];
