@@ -7,28 +7,20 @@ on:
 
 jobs:
   setup:
-    name: Project Setup
+    name: Linting and building
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      
       - name: Install dependencies
         run: npm install
-  
-  lint:
-    name: Linting
-    runs-on: ubuntu-latest
-    needs: setup
-    steps:
+      
       - name: Lint
         run: npm run lint
+      
       - name: Knip
         run: npm run knip
-
-  build:
-    name: Building
-    runs-on: ubuntu-latest
-    needs: setup
-    steps:
+      
       - name: Build
         run: npm run build
