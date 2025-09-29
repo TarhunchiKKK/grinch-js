@@ -15,6 +15,10 @@ export class TestFactory<State> extends BaseTestFactory<State> {
         super();
     }
 
+    public get skip() {
+        return new SkipTestFactory();
+    }
+
     public sample(title: string, callback: SampleTestCallback<State>) {
         const payload = {
             state: this.state,
@@ -25,9 +29,6 @@ export class TestFactory<State> extends BaseTestFactory<State> {
 
         this.testsStore.addLeaf(test);
     }
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    public skip(_title: string, _callback: SampleTestCallback<State>) {}
 
     public serial(title: string, callback: TestGroupCallback<State>) {
         const test = new TestGroup(title);
@@ -49,10 +50,6 @@ export class TestFactory<State> extends BaseTestFactory<State> {
         callback({ test: testFactory });
     }
 
-    public skipGroup(_title: string, callback: TestGroupCallback<State>) {
-        callback({ test: new SkipTestFactory() });
-    }
-
     public beforeEach(callback: LifecycleHookCallback<State>) {
         this.testsStore.hooks.beforeEach.push(() =>
             callback({
@@ -70,9 +67,6 @@ export class TestFactory<State> extends BaseTestFactory<State> {
             })
         );
     }
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    public skipHook(_callback: LifecycleHookCallback<State>) {}
 
     // ! Necessarily Check
     // public reuse<ReusableState>(
