@@ -1,4 +1,4 @@
-import { assert, scenario } from "../../../src";
+import { expect, scenario } from "../../../src";
 import { numberAssertionGenertors } from "./generators";
 
 export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test }) => {
@@ -8,7 +8,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBePositive.valid();
 
                 for (const value of values) {
-                    assert.number(value).toBePositive();
+                    expect.number(value).toBePositive();
                 }
             });
 
@@ -16,7 +16,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBePositive.invalid();
 
                 for (const value of values) {
-                    assert.number(value).not.toBePositive();
+                    expect.number(value).not.toBePositive();
                 }
             });
         });
@@ -26,7 +26,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBeNegative.valid();
 
                 for (const value of values) {
-                    assert.number(value).toBeNegative();
+                    expect.number(value).toBeNegative();
                 }
             });
 
@@ -34,7 +34,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBeNegative.invalid();
 
                 for (const value of values) {
-                    assert.number(value).not.toBeNegative();
+                    expect.number(value).not.toBeNegative();
                 }
             });
         });
@@ -44,7 +44,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBeInteger.valid();
 
                 for (const value of values) {
-                    assert.number(value).toBeInteger();
+                    expect.number(value).toBeInteger();
                 }
             });
 
@@ -52,7 +52,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBeInteger.invalid();
 
                 for (const value of values) {
-                    assert.number(value).not.toBeInteger();
+                    expect.number(value).not.toBeInteger();
                 }
             });
         });
@@ -62,7 +62,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBeFloat.valid();
 
                 for (const value of values) {
-                    assert.number(value).toBeFloat();
+                    expect.number(value).toBeFloat();
                 }
             });
 
@@ -70,7 +70,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBeFloat.invalid();
 
                 for (const value of values) {
-                    assert.number(value).not.toBeFloat();
+                    expect.number(value).not.toBeFloat();
                 }
             });
         });
@@ -80,7 +80,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBeNaN.valid();
 
                 for (const value of values) {
-                    assert.number(value).toBeNaN();
+                    expect.number(value).toBeNaN();
                 }
             });
 
@@ -88,7 +88,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBeNaN.invalid();
 
                 for (const value of values) {
-                    assert.number(value).not.toBeNaN();
+                    expect.number(value).not.toBeNaN();
                 }
             });
         });
@@ -98,7 +98,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBeLessThan.valid();
 
                 for (const value of values) {
-                    assert.number(value.value).toBeLessThan(value.argument);
+                    expect.number(value.value).toBeLessThan(value.argument);
                 }
             });
 
@@ -106,7 +106,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBeLessThan.invalid();
 
                 for (const value of values) {
-                    assert.number(value.value).not.toBeLessThan(value.argument);
+                    expect.number(value.value).not.toBeLessThan(value.argument);
                 }
             });
         });
@@ -116,7 +116,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBeLessThanOrEquals.valid();
 
                 for (const value of values) {
-                    assert.number(value.value).toBeLessThanOrEquals(value.argument);
+                    expect.number(value.value).toBeLessThanOrEquals(value.argument);
                 }
             });
 
@@ -124,7 +124,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBeLessThanOrEquals.invalid();
 
                 for (const value of values) {
-                    assert.number(value.value).not.toBeLessThanOrEquals(value.argument);
+                    expect.number(value.value).not.toBeLessThanOrEquals(value.argument);
                 }
             });
         });
@@ -134,7 +134,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBeGraterThan.valid();
 
                 for (const value of values) {
-                    assert.number(value.value).toBeGraterThan(value.argument);
+                    expect.number(value.value).toBeGraterThan(value.argument);
                 }
             });
 
@@ -142,7 +142,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBeGraterThan.invalid();
 
                 for (const value of values) {
-                    assert.number(value.value).not.toBeGraterThan(value.argument);
+                    expect.number(value.value).not.toBeGraterThan(value.argument);
                 }
             });
         });
@@ -152,7 +152,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBeGraterThanOrEquals.valid();
 
                 for (const value of values) {
-                    assert.number(value.value).toBeGraterThanOrEquals(value.argument);
+                    expect.number(value.value).toBeGraterThanOrEquals(value.argument);
                 }
             });
 
@@ -160,7 +160,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toBeGraterThanOrEquals.invalid();
 
                 for (const value of values) {
-                    assert.number(value.value).not.toBeGraterThanOrEquals(value.argument);
+                    expect.number(value.value).not.toBeGraterThanOrEquals(value.argument);
                 }
             });
         });
@@ -170,7 +170,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toHaveValueBetween.valid();
 
                 for (const { value, start, end } of values) {
-                    assert.number(value).toHaveValueBetween(start, end);
+                    expect.number(value).toHaveValueBetween(start, end);
                 }
             });
 
@@ -178,7 +178,7 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
                 const values = numberAssertionGenertors.toHaveValueBetween.invalid();
 
                 for (const { value, start, end } of values) {
-                    assert.number(value).not.toHaveValueBetween(start, end);
+                    expect.number(value).not.toHaveValueBetween(start, end);
                 }
             });
         });

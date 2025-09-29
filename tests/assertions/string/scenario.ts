@@ -1,4 +1,4 @@
-import { assert, scenario } from "../../../src";
+import { expect, scenario } from "../../../src";
 import { stringAssertionGenerators } from "./generators";
 
 export const StringAssertionScenario = scenario("StringAssertion", null, ({ test }) => {
@@ -8,7 +8,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeUpperCase.valid();
 
                 for (const value of values) {
-                    assert.string(value).toBeUpperCase();
+                    expect.string(value).toBeUpperCase();
                 }
             });
 
@@ -16,7 +16,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeUpperCase.invalid();
 
                 for (const value of values) {
-                    assert.string(value).not.toBeUpperCase();
+                    expect.string(value).not.toBeUpperCase();
                 }
             });
         });
@@ -26,7 +26,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeLowerCase.valid();
 
                 for (const value of values) {
-                    assert.string(value).toBeLowerCase();
+                    expect.string(value).toBeLowerCase();
                 }
             });
 
@@ -34,7 +34,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeLowerCase.invalid();
 
                 for (const value of values) {
-                    assert.string(value).not.toBeLowerCase();
+                    expect.string(value).not.toBeLowerCase();
                 }
             });
         });
@@ -44,7 +44,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toStartsWith.valid();
 
                 for (const { value, substr } of values) {
-                    assert.string(value).toStartsWith(substr);
+                    expect.string(value).toStartsWith(substr);
                 }
             });
 
@@ -52,7 +52,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toStartsWith.invalid();
 
                 for (const { value, substr } of values) {
-                    assert.string(value).not.toStartsWith(substr);
+                    expect.string(value).not.toStartsWith(substr);
                 }
             });
         });
@@ -62,7 +62,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toEndsWith.valid();
 
                 for (const { value, substr } of values) {
-                    assert.string(value).toEndsWith(substr);
+                    expect.string(value).toEndsWith(substr);
                 }
             });
 
@@ -70,7 +70,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toEndsWith.invalid();
 
                 for (const { value, substr } of values) {
-                    assert.string(value).not.toEndsWith(substr);
+                    expect.string(value).not.toEndsWith(substr);
                 }
             });
         });
@@ -80,7 +80,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeNumericString.valid();
 
                 for (const value of values) {
-                    assert.string(value).toBeNumericString();
+                    expect.string(value).toBeNumericString();
                 }
             });
 
@@ -88,7 +88,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeNumericString.invalid();
 
                 for (const value of values) {
-                    assert.string(value).not.toBeNumericString();
+                    expect.string(value).not.toBeNumericString();
                 }
             });
         });
@@ -98,7 +98,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeBooleanString.valid();
 
                 for (const value of values) {
-                    assert.string(value).toBeBooleanString();
+                    expect.string(value).toBeBooleanString();
                 }
             });
 
@@ -106,7 +106,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeBooleanString.invalid();
 
                 for (const value of values) {
-                    assert.string(value).not.toBeBooleanString();
+                    expect.string(value).not.toBeBooleanString();
                 }
             });
         });
@@ -116,7 +116,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toMatchRegex.valid();
 
                 for (const { value, regexp } of values) {
-                    assert.string(value).toMatchRegex(regexp);
+                    expect.string(value).toMatchRegex(regexp);
                 }
             });
 
@@ -124,7 +124,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toMatchRegex.invalid();
 
                 for (const { value, regexp } of values) {
-                    assert.string(value).not.toMatchRegex(regexp);
+                    expect.string(value).not.toMatchRegex(regexp);
                 }
             });
         });
@@ -134,7 +134,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeUUID.valid();
 
                 for (const value of values) {
-                    assert.string(value).toBeUUID();
+                    expect.string(value).toBeUUID();
                 }
             });
 
@@ -142,7 +142,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeUUID.invalid();
 
                 for (const value of values) {
-                    assert.string(value).not.toBeUUID();
+                    expect.string(value).not.toBeUUID();
                 }
             });
         });
@@ -152,7 +152,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toHaveLength.valid();
 
                 for (const { value, length } of values) {
-                    assert.string(value).toHaveLength(length);
+                    expect.string(value).toHaveLength(length);
                 }
             });
 
@@ -160,7 +160,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toHaveLength.invalid();
 
                 for (const { value, length } of values) {
-                    assert.string(value).not.toHaveLength(length);
+                    expect.string(value).not.toHaveLength(length);
                 }
             });
         });
@@ -170,7 +170,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeShorterThan.valid();
 
                 for (const { value, length } of values) {
-                    assert.string(value).toBeShorterThan(length);
+                    expect.string(value).toBeShorterThan(length);
                 }
             });
 
@@ -178,7 +178,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeShorterThan.invalid();
 
                 for (const { value, length } of values) {
-                    assert.string(value).not.toBeShorterThan(length);
+                    expect.string(value).not.toBeShorterThan(length);
                 }
             });
         });
@@ -188,7 +188,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeShorterThanOrEquals.valid();
 
                 for (const { value, length } of values) {
-                    assert.string(value).toBeShorterThanOrEquals(length);
+                    expect.string(value).toBeShorterThanOrEquals(length);
                 }
             });
 
@@ -196,7 +196,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeShorterThanOrEquals.invalid();
 
                 for (const { value, length } of values) {
-                    assert.string(value).not.toBeShorterThanOrEquals(length);
+                    expect.string(value).not.toBeShorterThanOrEquals(length);
                 }
             });
         });
@@ -206,7 +206,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeLongerThan.valid();
 
                 for (const { value, length } of values) {
-                    assert.string(value).toBeLongerThan(length);
+                    expect.string(value).toBeLongerThan(length);
                 }
             });
 
@@ -214,7 +214,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeLongerThan.invalid();
 
                 for (const { value, length } of values) {
-                    assert.string(value).not.toBeLongerThan(length);
+                    expect.string(value).not.toBeLongerThan(length);
                 }
             });
         });
@@ -224,7 +224,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeLongerThanOrEquals.valid();
 
                 for (const { value, length } of values) {
-                    assert.string(value).toBeLongerThanOrEquals(length);
+                    expect.string(value).toBeLongerThanOrEquals(length);
                 }
             });
 
@@ -232,7 +232,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toBeLongerThanOrEquals.invalid();
 
                 for (const { value, length } of values) {
-                    assert.string(value).not.toBeLongerThanOrEquals(length);
+                    expect.string(value).not.toBeLongerThanOrEquals(length);
                 }
             });
         });
@@ -242,7 +242,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toHaveLengthBetween.valid();
 
                 for (const { value, start, end } of values) {
-                    assert.string(value).toHaveLengthBetween(start, end);
+                    expect.string(value).toHaveLengthBetween(start, end);
                 }
             });
 
@@ -250,7 +250,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toHaveLengthBetween.invalid();
 
                 for (const { value, start, end } of values) {
-                    assert.string(value).not.toHaveLengthBetween(start, end);
+                    expect.string(value).not.toHaveLengthBetween(start, end);
                 }
             });
         });
@@ -260,7 +260,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toIncludes.valid();
 
                 for (const { value, substr } of values) {
-                    assert.string(value).toIncludes(substr);
+                    expect.string(value).toIncludes(substr);
                 }
             });
 
@@ -268,7 +268,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toIncludes.invalid();
 
                 for (const { value, substr } of values) {
-                    assert.string(value).not.toIncludes(substr);
+                    expect.string(value).not.toIncludes(substr);
                 }
             });
         });
@@ -278,7 +278,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toHaveValueAtIndex.valid();
 
                 for (const { value, index, item } of values) {
-                    assert.string(value).toHaveValueAtIndex(index, item);
+                    expect.string(value).toHaveValueAtIndex(index, item);
                 }
             });
 
@@ -286,7 +286,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 const values = stringAssertionGenerators.toHaveValueAtIndex.invalid();
 
                 for (const { value, index, item } of values) {
-                    assert.string(value).not.toHaveValueAtIndex(index, item);
+                    expect.string(value).not.toHaveValueAtIndex(index, item);
                 }
             });
         });

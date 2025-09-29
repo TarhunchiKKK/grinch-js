@@ -98,7 +98,7 @@ Let's implement this scenario using Grinch.
 First, let's import neccessary members:
 
 ```typescript
-import { assert, scenario } from "grinch";
+import { expect, scenario } from "grinch";
 ```
 
 Now let's create a state for the senario:
@@ -132,7 +132,7 @@ export const PostCreationScenario = scenario("Create post", state, ({ test }) =>
 
             // getting JWT token from response and saving it to state
             const { jwt } = (await response.json()) as { jwt: string };
-            assert.string(jwt).toBeDefined();
+            expect.string(jwt).toBeDefined();
             state.jwt = jwt;
         });
 
@@ -149,11 +149,11 @@ export const PostCreationScenario = scenario("Create post", state, ({ test }) =>
                     Authorization: `Bearer ${state.jwt}`
                 }
             });
-            assert.number(response.status).toBe(200);
+            expect.number(response.status).toBe(200);
 
             // saving post id for further post getting
             const { id: postId } = (await response.json()) as { id: string };
-            assert.string(postId).toBeUUID();
+            expect.string(postId).toBeUUID();
             state.postId = postId;
         });
 
@@ -169,7 +169,7 @@ export const PostCreationScenario = scenario("Create post", state, ({ test }) =>
 
             // checking validity of new post
             const { id: postId } = (await response.json()) as { id: string };
-            assert.string(postId).toBe(state.postId as string);
+            expect.string(postId).toBe(state.postId as string);
         });
     });
 });
@@ -416,7 +416,7 @@ results.then(processResults);
 
 Grinch offers a number of built-in statements that have a chained interface.
 
-All statements are created using the `assert` object.
+All statements are created using the `expect` object.
 
 ### Basic Assertions
 
@@ -437,9 +437,9 @@ Basic assertion is a set of statements that are inherited by all other statement
 Usage:
 
 ```typescript
-import { assert } from "grinch";
+import { expect } from "grinch";
 
-assert
+expect
     .basic(1)
     .toBe(1)
     .toBeTruthy()
@@ -486,9 +486,9 @@ Number assertion also inherits the statements of the basic assertion.
 Usage:
 
 ```typescript
-import { assert } from "grinch";
+import { expect } from "grinch";
 
-assert
+expect
     .number(1)
     .toBePositive()
     .toBeLessThan(5)
@@ -517,9 +517,9 @@ String assertion also inherits the statements of the basic assertion and iterabl
 Usage:
 
 ```typescript
-import { assert } from "grinch";
+import { expect } from "grinch";
 
-assert
+expect
     .string("Alpha Centauri")
     .toStartsWith("Alpha")
     .toEndsWith("Centauri")
@@ -543,14 +543,14 @@ Record assertion also inherits the statements of the basic assertion.
 Usage:
 
 ```typescript
-import { assert } from "grinch";
+import { expect } from "grinch";
 
 const person = {
     name: "Julia",
     age: 42
 };
 
-assert
+expect
     .record(person)
     .toBeDefined() // statement from basic assertion
     .toHaveKey("name")
@@ -572,11 +572,11 @@ Array assertion also inherits the statements of the basic assertion and iterable
 Usage:
 
 ```typescript
-import { assert } from "grinch";
+import { expect } from "grinch";
 
 const numbers = [1, 2, 3, 4, 5];
 
-assert
+expect
     .array(numbers)
     .toBeDefined() // statement from basic assertion
     .toHaveLength(5) // statement from iterable assertion
@@ -604,10 +604,10 @@ Unknown assertion also inherits the statements of the basic assertion.
 Usage:
 
 ```typescript
-import { assert } from "grinch";
+import { expect } from "grinch";
 import { unknownValue } from "./data.ts";
 
-assert
+expect
     .unknown(unknownValue)
     .toBeDefined() // statement from basic assertion
     .toBeRecord();

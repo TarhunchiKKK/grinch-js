@@ -1,4 +1,4 @@
-import { assert, scenario } from "../../../src";
+import { expect, scenario } from "../../../src";
 import { unknownAssertionGenerators } from "./generators";
 
 export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ test }) => {
@@ -8,7 +8,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toEquals.valid();
 
                 for (const value of values) {
-                    assert.unknown(value).toEquals(value);
+                    expect.unknown(value).toEquals(value);
                 }
             });
 
@@ -16,7 +16,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toEquals.invalid();
 
                 for (const value of values) {
-                    assert.unknown(value).not.toEquals(value);
+                    expect.unknown(value).not.toEquals(value);
                 }
             });
         });
@@ -26,7 +26,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toBeString.valid();
 
                 for (const value of values) {
-                    assert.unknown(value).toBeString();
+                    expect.unknown(value).toBeString();
                 }
             });
 
@@ -34,7 +34,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toBeString.invalid();
 
                 for (const value of values) {
-                    assert.unknown(value).not.toBeString();
+                    expect.unknown(value).not.toBeString();
                 }
             });
         });
@@ -44,7 +44,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toBeNumber.valid();
 
                 for (const value of values) {
-                    assert.unknown(value).toBeNumber();
+                    expect.unknown(value).toBeNumber();
                 }
             });
 
@@ -52,7 +52,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toBeNumber.invalid();
 
                 for (const value of values) {
-                    assert.unknown(value).not.toBeNumber();
+                    expect.unknown(value).not.toBeNumber();
                 }
             });
         });
@@ -62,7 +62,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toBeNaN.valid();
 
                 for (const value of values) {
-                    assert.unknown(value).toBeNaN();
+                    expect.unknown(value).toBeNaN();
                 }
             });
 
@@ -70,7 +70,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toBeNaN.invalid();
 
                 for (const value of values) {
-                    assert.unknown(value).not.toBeNaN();
+                    expect.unknown(value).not.toBeNaN();
                 }
             });
         });
@@ -80,7 +80,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toBeBoolean.valid();
 
                 for (const value of values) {
-                    assert.unknown(value).toBeBoolean();
+                    expect.unknown(value).toBeBoolean();
                 }
             });
 
@@ -88,7 +88,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toBeBoolean.invalid();
 
                 for (const value of values) {
-                    assert.unknown(value).not.toBeBoolean();
+                    expect.unknown(value).not.toBeBoolean();
                 }
             });
         });
@@ -98,7 +98,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toBeRecord.valid();
 
                 for (const value of values) {
-                    assert.unknown(value).toBeRecord();
+                    expect.unknown(value).toBeRecord();
                 }
             });
 
@@ -106,7 +106,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toBeRecord.invalid();
 
                 for (const value of values) {
-                    assert.unknown(value).not.toBeRecord();
+                    expect.unknown(value).not.toBeRecord();
                 }
             });
         });
@@ -116,7 +116,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toBeObject.valid();
 
                 for (const value of values) {
-                    assert.unknown(value).toBeObject();
+                    expect.unknown(value).toBeObject();
                 }
             });
 
@@ -124,7 +124,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toBeObject.invalid();
 
                 for (const value of values) {
-                    assert.unknown(value).not.toBeObject();
+                    expect.unknown(value).not.toBeObject();
                 }
             });
         });
@@ -134,7 +134,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toBeArray.valid();
 
                 for (const value of values) {
-                    assert.unknown(value).toBeArray();
+                    expect.unknown(value).toBeArray();
                 }
             });
 
@@ -142,7 +142,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toBeArray.invalid();
 
                 for (const value of values) {
-                    assert.unknown(value).not.toBeArray();
+                    expect.unknown(value).not.toBeArray();
                 }
             });
         });
@@ -152,7 +152,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 const values = unknownAssertionGenerators.toBeInstanceOf.valid();
 
                 for (const { value, className } of values) {
-                    assert.unknown(value).toBeInstanceOf(className);
+                    expect.unknown(value).toBeInstanceOf(className);
                 }
             });
 
@@ -165,7 +165,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                             continue;
                         }
 
-                        assert.unknown(value).not.toBeInstanceOf(className);
+                        expect.unknown(value).not.toBeInstanceOf(className);
                     }
                 }
             });
