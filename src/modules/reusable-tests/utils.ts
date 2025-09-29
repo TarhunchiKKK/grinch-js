@@ -8,7 +8,7 @@ import { ReusableTest } from "./reusable-test";
  * @param callback The callback function containing the reusable test logic.
  * @returns A new reusable test callback.
  */
-export function createReusableTest<State extends AvailableTestStates, Params>(
+export function createReusableTest<State extends AvailableTestStates, Params = undefined>(
     callback: ReusableTestCallback<State, Params>
 ) {
     return new ReusableTest(callback);

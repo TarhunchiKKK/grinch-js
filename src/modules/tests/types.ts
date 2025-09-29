@@ -1,7 +1,7 @@
 import { TestAborter } from "@modules/test-aborting";
 import { BaseTestFactory } from "./model/base-test-factory";
 
-export enum TestResult {
+export enum TestStatus {
     SUCCEED,
     FAILED,
     NOT_RUNED,
@@ -11,7 +11,7 @@ export enum TestResult {
 export type TestInfo = {
     title: string;
 
-    result: TestResult;
+    status: TestStatus;
 };
 
 export type AvailableTestStates = Record<string, unknown> | null;

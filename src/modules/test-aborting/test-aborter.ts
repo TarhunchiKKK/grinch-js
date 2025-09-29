@@ -1,4 +1,4 @@
-import { TestResult } from "@modules/tests";
+import { TestStatus } from "@modules/tests";
 import { AssertionError } from "@modules/assertions";
 import { Logger } from "@shared/lib";
 import { FailTestError, SucceedTestError } from "./errors";
@@ -22,16 +22,16 @@ export class TestAborter {
         throw new FailTestError(message);
     }
 
-    public static handleError(error: unknown): TestResult {
+    public static handleError(error: unknown): TestStatus {
         if (error instanceof SucceedTestError) {
-            return TestResult.SUCCEED;
+            return TestStatus.SUCCEED;
         } else if (error instanceof FailTestError) {
-            return TestResult.FAILED;
+            return TestStatus.FAILED;
         } else if (error instanceof AssertionError) {
-            return TestResult.FAILED;
+            return TestStatus.FAILED;
         } else {
             Logger.red(error);
-            return TestResult.ERROR;
+            return TestStatus.ERROR;
         }
     }
 }
