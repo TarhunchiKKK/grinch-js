@@ -1,7 +1,9 @@
 import { BaseTestFactory } from "@modules/tests";
 
-type ReusableTestPayload<State> = {
+type ReusableTestPayload<State, Params> = {
     test: BaseTestFactory<State>;
+
+    params?: Params;
 };
 
-export type ReusableTestCallback<State> = (_: ReusableTestPayload<State>) => void;
+export type ReusableTestCallback<State, Params> = (_: ReusableTestPayload<State, Params>) => void;
