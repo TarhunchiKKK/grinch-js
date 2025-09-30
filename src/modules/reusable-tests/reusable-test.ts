@@ -11,7 +11,7 @@ export class ReusableTest<State, Params> {
      * @param factory The test factory where the test is being reused.
      * @param params The value, contained parameters you pass to the test. Default to `undefined`.
      */
-    public use<ScenarioState extends State>(title: string, factory: BaseTestFactory<ScenarioState>, params?: Params) {
+    public apply<ScenarioState extends State>(title: string, factory: BaseTestFactory<ScenarioState>, params?: Params) {
         factory.serial(title, ({ test }) => this.callback({ test, params }));
     }
 }

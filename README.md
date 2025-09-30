@@ -15,24 +15,24 @@
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
 - [Features](#features)
-    - [Grouping Tests](#grouping-tests)
-        - [Scenario](#scenario)
-        - [Parallel](#parallel)
-        - [Serial](#serial)
-        - [Sample](#sample)
-    - [Lifecycle Hooks](#lifecycle-hooks)
-    - [Reusable Tests](#reusable-tests)
-        - [Reusable Tests Limitations](#reusable-tests-limitations)
-    - [Skipping Tests](#skipping-tests)
-    - [Reporting](#reporting)
+  - [Grouping Tests](#grouping-tests)
+    - [Scenario](#scenario)
+    - [Parallel](#parallel)
+    - [Serial](#serial)
+    - [Sample](#sample)
+  - [Lifecycle Hooks](#lifecycle-hooks)
+  - [Reusable Tests](#reusable-tests)
+    - [Reusable Tests Limitations](#reusable-tests-limitations)
+  - [Skipping Tests](#skipping-tests)
+  - [Reporting](#reporting)
 - [Assertions](#assertions)
-    - [Basic Assertions](#basic-assertions)
-    - [Iterable Values Assertions](#iterable-values-assertions)
-    - [Number Assertions](#number-assertions)
-    - [String Assertions](#string-assertions)
-    - [Record Assertions](#record-assertions)
-    - [Array Assertions](#array-assertions)
-    - [Unknown Assertions](#unknown-assertions)
+  - [Basic Assertions](#basic-assertions)
+  - [Iterable Values Assertions](#iterable-values-assertions)
+  - [Number Assertions](#number-assertions)
+  - [String Assertions](#string-assertions)
+  - [Record Assertions](#record-assertions)
+  - [Array Assertions](#array-assertions)
+  - [Unknown Assertions](#unknown-assertions)
 
 ## Philosophy
 
@@ -366,7 +366,7 @@ type ScenarioState = {
 scenario("Scenario title", state, ({ test }) => {
     test.serial("TestInfo title", ({ test }) => {
         // Here we are reusing EditContryTest
-        EditCountryTest.use("Edit country", test, "UK");
+        EditCountryTest.apply("Edit country", test, "UK");
     });
 });
 ```
