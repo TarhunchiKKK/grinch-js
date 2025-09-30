@@ -1,7 +1,7 @@
 export class ListenersArray {
     private listeners: unknown[] = [];
 
-    public add(listener: unknown) {
+    public push(listener: unknown) {
         this.listeners.push(listener);
     }
 

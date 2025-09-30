@@ -1,2 +1,2 @@
 export { ConsoleReporter } from "./console-reporter";
-export {report} from "./report"
+export { report } from "./report";
