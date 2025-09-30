@@ -92,8 +92,9 @@ Or if you use JavaScript:
 
 Let's imagine that we have the following task:
 
-1. An authorized user creates a post.
-2. After creation, you need to receive this post to confirm that it was actually created.
+1. The user logs in to the system.
+2. Authorized user creates a post.
+3. Authorized user gets his own post.
 
 Let's implement this scenario using Grinch.
 
@@ -120,57 +121,48 @@ const state: State = {
 Now let's write tests for user login, post creating and post getting.
 
 ```typescript
+import { api } from "./api";
+
 export const PostCreationScenario = scenario("Create post", state, ({ test }) => {
     test.serial("should create post", ({ test }) => {
         // login user and get JWT token
         test.sample("should login user", async ({ state }) => {
-            const response = await fetch("login_url", {
-                method: "POST",
-                body: JSON.stringify({
-                    login: "test_login",
-                    password: "test_password"
-                })
+            // extracting JWT token from api response
+            const { jwt } = await api.signIn({
+                email: "test@gmail.com",
+                password: "Pa$$word"
             });
 
-            // getting JWT token from response and saving it to state
-            const { jwt } = (await response.json()) as { jwt: string };
+            // validating JWT token
             expect.string(jwt).toBeDefined();
+            
+            // saving JWT token to state
             state.jwt = jwt;
         });
 
         // create post using JWT token
         test.sample("should create new post", async ({ state }) => {
-            const response = await fetch("create_post_url", {
-                method: "POST",
-                body: JSON.stringify({
-                    title: "post_title",
-                    content: "post_content"
-                }),
-                headers: {
-                    // adding JWT token to headers
-                    Authorization: `Bearer ${state.jwt}`
-                }
+            // extracting post id from response
+            const { id: postId } = await api.createPost({
+                title: "New post",
+                content: "Let's talk about...",
+                // adding JWT token to headers
+                auth: state.jwt
             });
-            expect.number(response.status).toBe(200);
+
+            // validating post id
+            expect.string(postId).toBeUUID();
 
             // saving post id for further post getting
-            const { id: postId } = (await response.json()) as { id: string };
-            expect.string(postId).toBeUUID();
             state.postId = postId;
         });
 
         // verify post creation
         test.sample("should find new post", async ({ state }) => {
-            const response = await fetch(`find_post_url/${state.postId}`, {
-                method: "GET",
-                headers: {
-                    // adding JWT token to headers
-                    Authorization: `Bearer ${state.jwt}`
-                }
-            });
+            // extracting post id from response
+            const { id: postId } = await api.findPostById(state.postId);
 
-            // checking validity of new post
-            const { id: postId } = (await response.json()) as { id: string };
+            // validating post id
             expect.string(postId).toBe(state.postId as string);
         });
     });
