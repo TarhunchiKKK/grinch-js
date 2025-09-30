@@ -1,4 +1,4 @@
-import { ListenerCallback } from "./types";
+import { ListenerCallback } from "../types";
 
 export class ListenersFactory<Params> {
     public constructor(private readonly callback: ListenerCallback<Params>) {}

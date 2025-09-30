@@ -1,3 +1,3 @@
 import { BaseListener } from "./base-listener";
 
-export class WaitingListener<Params> extends BaseListener<Params> {}
+export class WaitingListener extends BaseListener {}
