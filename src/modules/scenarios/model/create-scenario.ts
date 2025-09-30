@@ -18,7 +18,6 @@ export function createScenario<State extends AvailableTestStates>(
 ) {
     const scenario = new Scenario(title);
 
-
     const testFactory = new TestFactory(TestingTree.add(scenario), state);
 
     callback({ test: testFactory });

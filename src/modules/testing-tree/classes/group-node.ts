@@ -3,16 +3,14 @@ import { LeafNode } from "./leaf-node";
 import { ParallelNode } from "./parallel-node";
 import { SerialNode } from "./serial-node";
 import { TestNode } from "../types";
+import { HookableTest } from "@modules/lifecycle-hooks";
 
-export abstract class GroupNode implements TestNode {
+export abstract class GroupNode extends HookableTest {
     public children: TestNode[] = [];
 
-    public hooks = {
-        beforeEach: [] as (() => void | Promise<void>)[],
-        afterEach: [] as (() => void | Promise<void>)[]
-    };
-
-    public constructor(public test: TestsGroup) {}
+    public constructor(public test: TestsGroup) {
+        super();
+    }
 
     public hasChildren(): this is GroupNode {
         return true;
@@ -51,15 +49,11 @@ export abstract class GroupNode implements TestNode {
     }
 
     protected async runSingle(node: TestNode) {
-        for (const hook of this.hooks.beforeEach) {
-            await hook();
-        }
+        await this.runBeforeEaches();
 
         await node.run();
 
-        for (const hook of this.hooks.afterEach) {
-            await hook();
-        }
+        await this.runAfterEaches();
     }
 
     public abstract run(): Promise<void>;

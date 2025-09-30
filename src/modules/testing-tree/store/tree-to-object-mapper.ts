@@ -1,7 +1,7 @@
 import { TestResult } from "@modules/tests";
 import { TestStatus } from "../../tests";
 import { TestNode } from "../types";
-import {  TestingTree } from "./testing-tree";
+import { TestingTree } from "./testing-tree";
 
 const resultDescriptionsMap: Record<TestStatus, TestResult["status"]> = {
     [TestStatus.SUCCEED]: "succeed",
