@@ -1,13 +1,10 @@
 import { TestStatus } from "@modules/tests";
-import { TestNode } from "@modules/testing-tree";
+import { TestNode, TestingTree } from "@modules/testing-tree";
 import { Logger } from "@shared/lib";
-import { TestingTreeSingleton } from "../testing-tree/store/testing-tree-singleton";
 
 const tab = "  ";
 
 export class ConsoleReporter {
-    private testingTree = TestingTreeSingleton.getInstance().tree;
-
     private summary = {
         [TestStatus.SUCCEED]: 0,
         [TestStatus.FAILED]: 0,
@@ -18,7 +15,7 @@ export class ConsoleReporter {
     private currentDepth = 0;
 
     public report() {
-        for (const scenario of this.testingTree.children) {
+        for (const scenario of TestingTree.children) {
             this.reportNode(scenario);
         }
 
