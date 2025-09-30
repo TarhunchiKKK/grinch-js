@@ -1,2 +1,2 @@
-export { TestingTreeSingleton } from "./testing-tree-singleton";
 export { ConsoleReporter } from "./console-reporter";
+export {report} from "./report"

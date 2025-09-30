@@ -1,4 +1,4 @@
-import { TestingTreeSingleton } from "@modules/reporting";
+import { TestingTreeSingleton } from "@modules/testing-tree";
 import { Scenario } from "../scenario";
 
 export function getCommandName() {

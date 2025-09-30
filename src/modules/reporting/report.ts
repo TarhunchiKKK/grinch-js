@@ -1,4 +1,5 @@
-import { TestingTreeSingleton, ConsoleReporter } from "@modules/reporting";
+import {  ConsoleReporter } from "@modules/reporting";
+import { TestingTreeSingleton } from "@modules/testing-tree";
 
 export function report() {
     const testingTree = TestingTreeSingleton.getInstance().tree;

@@ -1,7 +1,7 @@
 import { TestStatus } from "@modules/tests";
 import { TestNode } from "@modules/testing-tree";
 import { Logger } from "@shared/lib";
-import { TestingTreeSingleton } from "./testing-tree-singleton";
+import { TestingTreeSingleton } from "../testing-tree/store/testing-tree-singleton";
 
 const tab = "  ";
 
