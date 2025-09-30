@@ -68,9 +68,9 @@ export default mapScenarios({
 });
 ```
 
-3. Add script to you package.json:
+3. Add script to you `package.json`:
 
-```
+```json
 {
     "scripts: {
         "test": "npx ts-node your-file.ts command_name",
@@ -80,7 +80,7 @@ export default mapScenarios({
 
 Or if you use JavaScript:
 
-```
+```json
 {
     "scripts: {
         "test": "node your-file.js command_name",
@@ -108,13 +108,13 @@ Now let's create a state for the senario:
 
 ```typescript
 type State = {
-    jwt: string | null;
-    postId: string | null;
+    jwt: string;
+    postId: string;
 };
 
 const state: State = {
-    jwt: null,
-    postId: null
+    jwt: "",
+    postId: ""
 };
 ```
 
@@ -125,44 +125,44 @@ import { api } from "./api";
 
 export const PostCreationScenario = scenario("Create post", state, ({ test }) => {
     test.serial("should create post", ({ test }) => {
-        // login user and get JWT token
+        // Login user and get JWT token
         test.sample("should login user", async ({ state }) => {
-            // extracting JWT token from api response
+            // Extracting JWT token from api response
             const { jwt } = await api.signIn({
                 email: "test@gmail.com",
                 password: "Pa$$word"
             });
 
-            // validating JWT token
+            // Validating JWT token
             expect.string(jwt).toBeDefined();
             
-            // saving JWT token to state
+            // Saving JWT token to state
             state.jwt = jwt;
         });
 
-        // create post using JWT token
+        // Create post using JWT token
         test.sample("should create new post", async ({ state }) => {
-            // extracting post id from response
+            // Extracting post id from response
             const { id: postId } = await api.createPost({
                 title: "New post",
                 content: "Let's talk about...",
-                // adding JWT token to headers
+                // Adding JWT token to headers
                 auth: state.jwt
             });
 
-            // validating post id
+            // Validating post id
             expect.string(postId).toBeUUID();
 
-            // saving post id for further post getting
+            // Saving post id for further post getting
             state.postId = postId;
         });
 
-        // verify post creation
+        // Verify post creation
         test.sample("should find new post", async ({ state }) => {
-            // extracting post id from response
+            // Extracting post id from response
             const { id: postId } = await api.findPostById(state.postId);
 
-            // validating post id
+            // Validating post id
             expect.string(postId).toBe(state.postId as string);
         });
     });
@@ -225,11 +225,9 @@ All tests declared in the root of the parallel test will be executed in parallel
 If one of the tests fails, the other tests will continue to run.
 
 ```typescript
-// ...
 test.parallel("TestInfo title", ({ test }) => {
     // Children tests
 });
-// ...
 ```
 
 **Note**: _It is very dangerous to change the general state of the scenario in parallel tests. Be careful with this_.
@@ -241,11 +239,9 @@ All tests declared in the root of the serial test will be executed sequentially.
 If one of the tests fails, the entire sequence will also fail.
 
 ```typescript
-// ...
 test.serial("TestInfo title", ({ test }) => {
     // Children tests
 });
-// ...
 ```
 
 #### Sample
@@ -266,39 +262,45 @@ test.sample("TestInfo title", async ({ state }) => {
 
 Grinch provides the ability to create `beforeEach` and `afterEach` hooks.
 
-You can use this hooks in all types of test groups (excluding sample tests) and in reusable tests.
+You can use this hooks in all types of test (excluding sample tests) and in reusable tests.
 
 Example:
 
 ```typescript
-// ...
 test.parallel("TestInfo title", ({ test }) => {
     test.beforeEach(async () => {
         // Any logic here
     });
 
     // Other tests
+
+    test.afterEach(async () => {
+        // Any logic here
+    });
 });
-// ...
 ```
 
 There is no need to implement the `beforeAll` and `afterAll` hooks. These hooks can be implemented using a sequential test.
 
-Example of the `beforeAll` hook implementation:
+Example of the `beforeAll` and `afterAll` hooks implementation:
 
 ```typescript
-// ...
 test.serial("TestInfo title", ({ test }) => {
     test.sample("This test will run before all next tests", async () => {
         // Any logic
     });
 
     // Other tests
+
+    test.sample("This test will run after all previous tests", async () => {
+        // Any logic
+    });
 });
-// ...
 ```
 
-In the example above, the test is the first in the sequence. Therefore, the behavior of this test will be similar to the behavior of the `beforeAll` hook. The `afterAll` hook can be implemented in a similar way.
+In the example above, the first test is the first in the sequence. Therefore, the behavior of this test will be similar to the behavior of the `beforeAll` hook. 
+
+Similarly, the last test is the last in the sequence. Therefore, the behavior of this test will be similar to the behavior of the `afterAll` hook. 
 
 ### Reusable Tests
 
@@ -384,14 +386,14 @@ Grinch provides the ability to skip tests, groups, and hooks. You can easily rep
 Example:
 
 ```typescript
-// skipping sample test execution
+// Skipping sample test execution
 test.skip.sample(/* ... */);
 
-// skipping group execution (children tests will not be executed)
+// Skipping group execution (children tests will not be executed)
 test.skip.serial(/* ... */);
 test.skip.parallel(/* ... */);
 
-// skipping hooks execution
+// Skipping hooks execution
 test.skip.beforeEach(/* ... */);
 test.skip.afterEach(/* ... */);
 ```
@@ -403,25 +405,26 @@ test.skip.afterEach(/* ... */);
 Сalling the `mapScenarios` function returns an array of objects of type:
 
 ```typescript
-type Results = {
+type TestResult = {
     title: string;
     result: "succeed" | "failed" | "error" | "not runed";
-    children?: Results[];
+    children?: TestResult[];
 };
 ```
 
 You can implement your own result processing logic:
 
 ```typescript
-import { mapScenarios, Results } from "grinch";
+import { mapScenarios, TestResult } from "grinch";
+
+// Your custom function to process testing results
+function processResults(results: TestResult[]) {
+    // ...
+}
 
 const results = mapScenarios({
     // Here are your scenarios
 });
-
-function processResults(results: Results[]) {
-    // Your login for results processing
-}
 
 // Results processing
 results.then(processResults);
@@ -508,7 +511,7 @@ expect
     .toBePositive()
     .toBeLessThan(5)
     .toHaveValueBetween(0, 5)
-    .toSatisfy(value => value > 0); // statement from basic assertion
+    .toSatisfy(value => value > 0); // Statement from basic assertion
 ```
 
 ### String Assertions
@@ -538,8 +541,8 @@ expect
     .string("Alpha Centauri")
     .toStartsWith("Alpha")
     .toEndsWith("Centauri")
-    .toBeTruthy() // statement from basic assertion
-    .toBeLongerThan(5); // statement from iterable assertion
+    .toBeTruthy()           // Statement from basic assertion
+    .toBeLongerThan(5);     // Statement from iterable assertion
 ```
 
 ### Record Assertions
@@ -567,7 +570,7 @@ const person = {
 
 expect
     .record(person)
-    .toBeDefined() // statement from basic assertion
+    .toBeDefined()          // Statement from basic assertion
     .toHaveKey("name")
     .toHaveKeyWithValue("age", 42);
 ```
@@ -593,8 +596,8 @@ const numbers = [1, 2, 3, 4, 5];
 
 expect
     .array(numbers)
-    .toBeDefined() // statement from basic assertion
-    .toHaveLength(5) // statement from iterable assertion
+    .toBeDefined()          // Statement from basic assertion
+    .toHaveLength(5)        // Statement from iterable assertion
     .toHaveEveryMatch(num => num > 0);
 ```
 
@@ -624,6 +627,6 @@ import { unknownValue } from "./data.ts";
 
 expect
     .unknown(unknownValue)
-    .toBeDefined() // statement from basic assertion
+    .toBeDefined()          // Statement from basic assertion
     .toBeRecord();
 ```
