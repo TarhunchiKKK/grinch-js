@@ -20,10 +20,11 @@
     - [Parallel](#parallel)
     - [Serial](#serial)
     - [Sample](#sample)
-  - [Lifecycle Hooks](#lifecycle-hooks)
   - [Reusable Tests](#reusable-tests)
     - [Reusable Tests Limitations](#reusable-tests-limitations)
+  - [Lifecycle Hooks](#lifecycle-hooks)
   - [Skipping Tests](#skipping-tests)
+  - [Aborting Tests](#aborting-tests)
   - [Reporting](#reporting)
 - [Assertions](#assertions)
   - [Basic Assertions](#basic-assertions)
@@ -258,50 +259,6 @@ test.sample("TestInfo title", async ({ state }) => {
 // ...
 ```
 
-### Lifecycle Hooks
-
-Grinch provides the ability to create `beforeEach` and `afterEach` hooks.
-
-You can use this hooks in all types of test (excluding sample tests) and in reusable tests.
-
-Example:
-
-```typescript
-test.parallel("TestInfo title", ({ test }) => {
-    test.beforeEach(async () => {
-        // Any logic here
-    });
-
-    // Other tests
-
-    test.afterEach(async () => {
-        // Any logic here
-    });
-});
-```
-
-There is no need to implement the `beforeAll` and `afterAll` hooks. These hooks can be implemented using a sequential test.
-
-Example of the `beforeAll` and `afterAll` hooks implementation:
-
-```typescript
-test.serial("TestInfo title", ({ test }) => {
-    test.sample("This test will run before all next tests", async () => {
-        // Any logic
-    });
-
-    // Other tests
-
-    test.sample("This test will run after all previous tests", async () => {
-        // Any logic
-    });
-});
-```
-
-In the example above, the first test is the first in the sequence. Therefore, the behavior of this test will be similar to the behavior of the `beforeAll` hook. 
-
-Similarly, the last test is the last in the sequence. Therefore, the behavior of this test will be similar to the behavior of the `afterAll` hook. 
-
 ### Reusable Tests
 
 One of the key features of Grinch is reusable tests. This feature can greatly reduce the number of duplicates in the code.
@@ -379,6 +336,50 @@ _The type of test being reused should be a supertype of the scenario state type.
 
 This condition is necessary for type safety.
 
+### Lifecycle Hooks
+
+Grinch provides the ability to create `beforeEach` and `afterEach` hooks.
+
+You can use this hooks in all types of test (excluding sample tests) and in reusable tests.
+
+Example:
+
+```typescript
+test.parallel("TestInfo title", ({ test }) => {
+    test.beforeEach(async () => {
+        // Any logic here
+    });
+
+    // Other tests
+
+    test.afterEach(async () => {
+        // Any logic here
+    });
+});
+```
+
+There is no need to implement the `beforeAll` and `afterAll` hooks. These hooks can be implemented using a sequential test.
+
+Example of the `beforeAll` and `afterAll` hooks implementation:
+
+```typescript
+test.serial("TestInfo title", ({ test }) => {
+    test.sample("This test will run before all next tests", async () => {
+        // Any logic
+    });
+
+    // Other tests
+
+    test.sample("This test will run after all previous tests", async () => {
+        // Any logic
+    });
+});
+```
+
+In the example above, the first test is the first in the sequence. Therefore, the behavior of this test will be similar to the behavior of the `beforeAll` hook. 
+
+Similarly, the last test is the last in the sequence. Therefore, the behavior of this test will be similar to the behavior of the `afterAll` hook. 
+
 ### Skipping Tests
 
 Grinch provides the ability to skip tests, groups, and hooks. You can easily replace the names of missing methods with the methods you need. Methods for skipping tests:
@@ -399,6 +400,38 @@ test.skip.afterEach(/* ... */);
 ```
 
 **Note**: _If you are skipping tests group execution (`serial` or `parallel`) all children tests will also be skipped_.
+
+### Aborting Tests
+
+Grinch provides the ability to interrupt tests in runtime.
+
+This feature is available only in sample tests and lifecycle hooks.
+
+Example for sample test:
+
+```typescript
+test.sample("This test will be interrupted", ({ abort }) => {
+    // This test will be succeed before finishing
+    abort.success();
+
+    // Other code
+});
+```
+
+Example for lifecycle hook:
+
+```typescript
+test.beforeEach(({ abort }) => {
+    // This test will be failed before finishing
+    abort.fail();
+
+    // Other code
+});
+```
+
+**Note**: _If `abort.success()` or `abort.fail()` was called in serial test then full test seria will succeed or fail_.
+
+**Note**: _If `abort.success()` or `abort.fail()` was called in parallel test then only one child test will succeed or fail_.
 
 ### Reporting
 
@@ -429,6 +462,8 @@ const results = mapScenarios({
 // Results processing
 results.then(processResults);
 ```
+
+
 
 ## Assertions
 
