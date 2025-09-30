@@ -1,2 +1,2 @@
-export { ListenersFactory } from "./factories/listeners-factory";
-export {} from "./factories/listeners-array-singleton";
+export { ListenersFactory } from "./model/listeners-factory";
+export {} from "./model/listeners-array-singleton";

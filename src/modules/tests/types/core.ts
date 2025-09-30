@@ -1,8 +1,9 @@
 export enum TestStatus {
-    SUCCEED,
-    FAILED,
-    NOT_RUNED,
-    ERROR
+    SUCCEED = 0,
+    FAILED = 1,
+    NOT_RUNED = 2,
+    ERROR = 3,
+    CANCELED = 4
 }
 
 export type TestInfo = {
