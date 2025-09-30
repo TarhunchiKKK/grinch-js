@@ -1,4 +1,4 @@
-import {  TestingTree } from "@modules/testing-tree";
+import { TestingTree } from "@modules/testing-tree";
 import { Scenario } from "../scenario";
 
 export function getCommandName() {

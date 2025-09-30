@@ -13,7 +13,7 @@ export const ReusableTestsScenario = scenario("Reusable tests", scenarioState, (
             expect.string(state.name).toBe(OLD_NAME);
         });
 
-        ChangeNameTest.use("should change state name", test);
+        ChangeNameTest.apply("should change state name", test);
 
         test.sample("check name after changing", ({ state }) => {
             expect.string(state.name).toBe(NEW_NAME);
