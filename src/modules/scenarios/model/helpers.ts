@@ -1,4 +1,4 @@
-import { TestingTreeSingleton } from "@modules/testing-tree";
+import {  TestingTree } from "@modules/testing-tree";
 import { Scenario } from "../scenario";
 
 export function getCommandName() {
@@ -22,11 +22,9 @@ export function getScenarios(map: Record<string, Scenario[]>, commandName: strin
 }
 
 export async function runScenarios(scenarios: Scenario[]) {
-    const testingTree = TestingTreeSingleton.getInstance().tree;
-
     for (const scenario of scenarios) {
-        testingTree.add(scenario);
+        TestingTree.add(scenario);
     }
 
-    await testingTree.run();
+    await TestingTree.run();
 }

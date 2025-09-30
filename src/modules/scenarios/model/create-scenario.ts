@@ -1,7 +1,7 @@
 import { AvailableTestStates, TestFactory } from "@modules/tests";
 import { Scenario } from "../scenario";
 import { ScenarioCallback } from "../types";
-import { TestingTreeSingleton } from "@modules/testing-tree";
+import { TestingTree } from "@modules/testing-tree";
 
 /**
  * Creates a new scenario and its associated test factory, then executes a callback function
@@ -18,9 +18,8 @@ export function createScenario<State extends AvailableTestStates>(
 ) {
     const scenario = new Scenario(title);
 
-    const testingTree = TestingTreeSingleton.getInstance().tree;
 
-    const testFactory = new TestFactory(testingTree.add(scenario), state);
+    const testFactory = new TestFactory(TestingTree.add(scenario), state);
 
     callback({ test: testFactory });
 

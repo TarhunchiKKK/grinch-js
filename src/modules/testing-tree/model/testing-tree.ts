@@ -1,9 +1,9 @@
 import { TestInfo } from "@modules/tests";
 import { GroupNode } from "../classes/group-node";
 import { SerialNode } from "../classes/serial-node";
-import { TreeToObjectMapper } from "../tree-to-object-mapper";
+import { TreeToObjectMapper } from "./tree-to-object-mapper";
 
-export class TestingTree {
+export class TestTree {
     public children: GroupNode[] = [];
 
     public add(test: TestInfo) {
@@ -22,7 +22,9 @@ export class TestingTree {
     }
 
     public toObject() {
-        const mapper = new TreeToObjectMapper(this);
+        const mapper = new TreeToObjectMapper();
         return mapper.map();
     }
 }
+
+export const TestingTree = new TestTree();

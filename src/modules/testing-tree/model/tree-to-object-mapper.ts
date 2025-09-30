@@ -1,7 +1,7 @@
 import { TestResult } from "@modules/tests";
-import { TestStatus } from "../tests";
-import { TestNode } from "./types";
-import { TestingTree } from "./store/testing-tree";
+import { TestStatus } from "../../tests";
+import { TestNode } from "../types";
+import {  TestingTree } from "./testing-tree";
 
 const resultDescriptionsMap: Record<TestStatus, TestResult["status"]> = {
     [TestStatus.SUCCEED]: "succeed",
@@ -11,12 +11,10 @@ const resultDescriptionsMap: Record<TestStatus, TestResult["status"]> = {
 };
 
 export class TreeToObjectMapper {
-    public constructor(private readonly tree: TestingTree) {}
-
     public map() {
         const results: TestResult[] = [];
 
-        for (const child of this.tree.children) {
+        for (const child of TestingTree.children) {
             results.push({
                 title: child.test.title,
                 status: resultDescriptionsMap[child.test.status],
