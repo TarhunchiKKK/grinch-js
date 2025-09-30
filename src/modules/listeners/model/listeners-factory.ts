@@ -13,7 +13,10 @@ export class ListenersFactory<Params> {
 
         ListenersStore.add(listener);
 
-        return () => listener.cancel();
+        return () => {
+            ListenersStore.remove(id);
+            listener.cancel();
+        };
     }
 
     public schedule(title: string, delay: number, params?: Params) {
@@ -23,6 +26,9 @@ export class ListenersFactory<Params> {
 
         ListenersStore.add(listener);
 
-        return () => listener.cancel();
+        return () => {
+            ListenersStore.remove(id);
+            listener.cancel();
+        };
     }
 }
