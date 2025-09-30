@@ -1,7 +1,7 @@
-import { TestInfo, TestResult } from "../types";
+import { TestInfo, TestStatus } from "../types/core";
 
 export class TestsGroup implements TestInfo {
-    public result = TestResult.NOT_RUNED;
+    public status = TestStatus.NOT_RUNED;
 
     public constructor(public title: string) {}
 }

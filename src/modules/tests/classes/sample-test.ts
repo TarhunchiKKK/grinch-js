@@ -1,10 +1,10 @@
 import { TestAborter } from "@modules/test-aborting";
-import { TestInfo, TestResult } from "../types";
+import { TestInfo, TestStatus } from "../types/core";
 
 type Callback = () => void | Promise<void>;
 
 export class SampleTest implements TestInfo {
-    public result = TestResult.NOT_RUNED;
+    public status = TestStatus.NOT_RUNED;
 
     public constructor(
         public title: string,
@@ -16,9 +16,9 @@ export class SampleTest implements TestInfo {
         try {
             await this.callback();
 
-            this.result = TestResult.SUCCEED;
+            this.status = TestStatus.SUCCEED;
         } catch (error) {
-            this.result = TestAborter.handleError(error);
+            this.status = TestAborter.handleError(error);
         }
     }
 }

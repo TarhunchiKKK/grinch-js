@@ -1,7 +1,7 @@
-import { TestResult } from "@modules/tests";
+import { TestStatus } from "@modules/tests";
 import { TestNode } from "@modules/testing-tree";
 import { Logger } from "@shared/lib";
-import { TestingTreeSingleton } from "./testing-tree-singleton";
+import { TestingTreeSingleton } from "../testing-tree/store/testing-tree-singleton";
 
 const tab = "  ";
 
@@ -9,10 +9,10 @@ export class ConsoleReporter {
     private testingTree = TestingTreeSingleton.getInstance().tree;
 
     private summary = {
-        [TestResult.SUCCEED]: 0,
-        [TestResult.FAILED]: 0,
-        [TestResult.ERROR]: 0,
-        [TestResult.NOT_RUNED]: 0
+        [TestStatus.SUCCEED]: 0,
+        [TestStatus.FAILED]: 0,
+        [TestStatus.ERROR]: 0,
+        [TestStatus.NOT_RUNED]: 0
     };
 
     private currentDepth = 0;
@@ -42,11 +42,11 @@ export class ConsoleReporter {
     private printGroupNode(node: TestNode) {
         const line = tab.repeat(this.currentDepth) + node.test.title;
 
-        switch (node.test.result) {
-            case TestResult.SUCCEED:
+        switch (node.test.status) {
+            case TestStatus.SUCCEED:
                 Logger.green(line);
                 break;
-            case TestResult.FAILED:
+            case TestStatus.FAILED:
                 Logger.red(line);
                 break;
             default:
@@ -57,32 +57,32 @@ export class ConsoleReporter {
     private printLeafNode(node: TestNode) {
         const line = tab.repeat(this.currentDepth) + node.test.title;
 
-        switch (node.test.result) {
-            case TestResult.SUCCEED:
+        switch (node.test.status) {
+            case TestStatus.SUCCEED:
                 Logger.green(line);
                 break;
-            case TestResult.FAILED:
+            case TestStatus.FAILED:
                 Logger.red(line);
                 break;
-            case TestResult.ERROR:
+            case TestStatus.ERROR:
                 Logger.red(line + " (error)");
                 break;
-            case TestResult.NOT_RUNED:
+            case TestStatus.NOT_RUNED:
                 Logger.yellow(line + " (not run)");
                 break;
             default:
                 throw new Error("Sample test cannot have such result");
         }
 
-        this.summary[node.test.result]++;
+        this.summary[node.test.status]++;
     }
 
     private reportSummary() {
         Logger.info("\n\n\nSummary:");
-        Logger.green(`Succeed: ${this.summary[TestResult.SUCCEED]}`);
-        Logger.red(`Failed: ${this.summary[TestResult.FAILED]}`);
-        Logger.red(`Error occured: ${this.summary[TestResult.ERROR]}`);
-        Logger.yellow(`Not runed: ${this.summary[TestResult.NOT_RUNED]}`);
+        Logger.green(`Succeed: ${this.summary[TestStatus.SUCCEED]}`);
+        Logger.red(`Failed: ${this.summary[TestStatus.FAILED]}`);
+        Logger.red(`Error occured: ${this.summary[TestStatus.ERROR]}`);
+        Logger.yellow(`Not runed: ${this.summary[TestStatus.NOT_RUNED]}`);
 
         const total = Object.values(this.summary).reduce((acc, item) => acc + item, 0);
         Logger.info(`Total: ${total}`);

@@ -1,7 +1,7 @@
 import { AvailableTestStates, TestFactory } from "@modules/tests";
-import { TestingTreeSingleton } from "@modules/reporting";
-import { Scenario } from "./scenario";
-import { ScenarioCallback } from "./types";
+import { Scenario } from "../scenario";
+import { ScenarioCallback } from "../types";
+import { TestingTreeSingleton } from "@modules/testing-tree";
 
 /**
  * Creates a new scenario and its associated test factory, then executes a callback function

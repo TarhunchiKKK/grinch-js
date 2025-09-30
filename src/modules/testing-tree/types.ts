@@ -1,5 +1,5 @@
 import { TestInfo } from "@modules/tests";
-import { GroupNode } from "./group-node";
+import { GroupNode } from "./classes/group-node";
 
 export type TestNode = {
     hasChildren: () => this is GroupNode;

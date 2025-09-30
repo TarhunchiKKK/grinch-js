@@ -1,5 +1,5 @@
 import { LifecycleHookCallback } from "@modules/lifecycle-hooks";
-import { SampleTestCallback, TestsGroupCallback } from "../types";
+import { SampleTestCallback, TestsGroupCallback } from "../types/callbacks";
 
 export abstract class BaseTestFactory<State> {
     /**

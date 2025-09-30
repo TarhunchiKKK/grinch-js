@@ -1,8 +1,8 @@
-import { SampleTest, TestsGroup, TestResult } from "@modules/tests";
+import { SampleTest, TestsGroup, TestStatus } from "@modules/tests";
 import { LeafNode } from "./leaf-node";
 import { ParallelNode } from "./parallel-node";
 import { SerialNode } from "./serial-node";
-import { TestNode } from "./types";
+import { TestNode } from "../types";
 
 export abstract class GroupNode implements TestNode {
     public children: TestNode[] = [];
@@ -22,13 +22,13 @@ export abstract class GroupNode implements TestNode {
         const childrenInfos = this.children.map(child => child.getInfo());
 
         for (const info of childrenInfos) {
-            if (info.result === TestResult.FAILED || info.result === TestResult.ERROR) {
-                this.test.result = TestResult.FAILED;
+            if (info.status === TestStatus.FAILED || info.status === TestStatus.ERROR) {
+                this.test.status = TestStatus.FAILED;
                 return this.test;
             }
         }
 
-        this.test.result = TestResult.SUCCEED;
+        this.test.status = TestStatus.SUCCEED;
         return this.test;
     }
 

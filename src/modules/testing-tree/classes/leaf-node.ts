@@ -1,6 +1,6 @@
 import { SampleTest } from "@modules/tests";
 import { GroupNode } from "./group-node";
-import { TestNode } from "./types";
+import { TestNode } from "../types";
 
 export class LeafNode implements TestNode {
     public constructor(public test: SampleTest) {}

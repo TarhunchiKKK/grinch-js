@@ -1,7 +1,7 @@
 import { TestInfo } from "@modules/tests";
-import { GroupNode } from "./classes/group-node";
-import { SerialNode } from "./classes/serial-node";
-import { TreeToObjectMapper } from "./tree-to-object-mapper";
+import { GroupNode } from "../classes/group-node";
+import { SerialNode } from "../classes/serial-node";
+import { TreeToObjectMapper } from "../tree-to-object-mapper";
 
 export class TestingTree {
     public children: GroupNode[] = [];

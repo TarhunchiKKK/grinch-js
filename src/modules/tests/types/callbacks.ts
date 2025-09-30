@@ -1,20 +1,5 @@
 import { TestAborter } from "@modules/test-aborting";
-import { BaseTestFactory } from "./model/base-test-factory";
-
-export enum TestResult {
-    SUCCEED,
-    FAILED,
-    NOT_RUNED,
-    ERROR
-}
-
-export type TestInfo = {
-    title: string;
-
-    result: TestResult;
-};
-
-export type AvailableTestStates = Record<string, unknown> | null;
+import { BaseTestFactory } from "../factories/base-test-factory";
 
 type SampleTestPayload<State> = {
     state: State;
