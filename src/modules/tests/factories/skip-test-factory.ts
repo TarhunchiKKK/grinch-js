@@ -1,5 +1,5 @@
 import { LifecycleHookCallback } from "@modules/lifecycle-hooks";
-import { SampleTestCallback, TestsGroupCallback } from "../types/callbacks";
+import { SampleTestCallback, TestsGroupCallback } from "../types";
 import { BaseTestFactory } from "./base-test-factory";
 
 export class SkipTestFactory<State> extends BaseTestFactory<State> {

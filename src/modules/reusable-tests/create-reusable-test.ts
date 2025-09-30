@@ -1,6 +1,6 @@
-import { AvailableTestStates } from "@modules/tests";
 import { ReusableTestCallback } from "./types";
 import { ReusableTest } from "./reusable-test";
+import { AvailableTestStates } from "@shared/types";
 
 /**
  * Creates a new test instance with the provided test logic callback.

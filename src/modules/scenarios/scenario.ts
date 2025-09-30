@@ -1,4 +1,4 @@
-import { TestInfo, TestStatus } from "@modules/tests";
+import { TestInfo, TestStatus } from "@shared/types";
 
 export class Scenario implements TestInfo {
     public status = TestStatus.NOT_RUNED;

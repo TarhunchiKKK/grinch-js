@@ -1,4 +1,4 @@
-import { TestInfo } from "@modules/tests";
+import { TestInfo } from "@shared/types";
 import { GroupNode } from "../classes/group-node";
 import { SerialNode } from "../classes/serial-node";
 import { TreeToObjectMapper } from "./tree-to-object-mapper";

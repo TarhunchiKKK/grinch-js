@@ -1,4 +1,4 @@
-import { TestInfo } from "@modules/tests";
+import { TestInfo } from "@shared/types";
 import { GroupNode } from "./classes/group-node";
 
 export type TestNode = {

@@ -1,4 +1,4 @@
-import { TestStatus } from "@modules/tests";
+import { TestStatus } from "@shared/types";
 import { BaseListener } from "./base-listener";
 import { TestAborter } from "@modules/test-aborting";
 

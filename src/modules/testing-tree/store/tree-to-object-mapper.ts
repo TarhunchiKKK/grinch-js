@@ -1,5 +1,4 @@
-import { TestResult } from "@modules/tests";
-import { TestStatus } from "../../tests";
+import { TestResult, TestStatus } from "@shared/types";
 import { TestNode } from "../types";
 import { TestingTree } from "./testing-tree";
 
@@ -40,7 +39,7 @@ export class TreeToObjectMapper {
                 this.mapNode(child, childResult);
             }
         } else {
-            const childResult = {
+            const childResult: TestResult = {
                 title: node.test.title,
                 status: resultDescriptionsMap[node.test.status]
             };

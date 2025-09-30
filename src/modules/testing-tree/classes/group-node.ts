@@ -1,9 +1,10 @@
-import { SampleTest, TestsGroup, TestStatus } from "@modules/tests";
+import { SampleTest, TestsGroup } from "@modules/tests";
 import { LeafNode } from "./leaf-node";
 import { ParallelNode } from "./parallel-node";
 import { SerialNode } from "./serial-node";
 import { TestNode } from "../types";
 import { HookableTest } from "@modules/lifecycle-hooks";
+import { TestStatus } from "@shared/types";
 
 export abstract class GroupNode extends HookableTest {
     public children: TestNode[] = [];

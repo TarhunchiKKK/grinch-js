@@ -1,4 +1,4 @@
-import { TestStatus } from "@modules/tests";
+import { TestStatus } from "@shared/types";
 import { ListenerId } from "../types";
 
 export abstract class BaseListener {

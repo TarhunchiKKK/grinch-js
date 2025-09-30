@@ -1,5 +1,5 @@
 import { TestAborter } from "@modules/test-aborting";
-import { TestInfo, TestStatus } from "../types/core";
+import { TestInfo, TestStatus } from "@shared/types";
 
 type Callback = () => void | Promise<void>;
 
