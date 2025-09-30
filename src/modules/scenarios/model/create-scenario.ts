@@ -1,4 +1,4 @@
-import {  TestFactory } from "@modules/tests";
+import { TestFactory } from "@modules/tests";
 import { Scenario } from "../scenario";
 import { ScenarioCallback } from "../types";
 import { TestingTree } from "@modules/testing-tree";

@@ -443,9 +443,9 @@ Basic assertion is a set of statements that are inherited by all other statement
 | Assertion          | Description                                                                        |
 | ------------------ | ---------------------------------------------------------------------------------- |
 | `toBe`             | Used to compare values using `===` operator                                        |
-| `toBeDefined`      | Asserts that the value is not undefined                                            |
-| `toBeNull`         | Asserts that the value is null                                                     |
-| `tobeEmpty`        | Asserts that the value is null or undefined                                        |
+| `toBeDefined`      | Asserts that the value is not `undefined`                                          |
+| `toBeNull`         | Asserts that the value is `null`                                                   |
+| `tobeEmpty`        | Asserts that the value is `null` or `undefined`                                    |
 | `toBeTruthy`       | Asserts that the value is truthy                                                   |
 | `toBeFalsy`        | Asserts that the value is falsy (`""`, `0`, etc.)                                  |
 | `toBeIn`           | Asserts that the value is present in the provided array                            |
@@ -484,14 +484,14 @@ Iterable values assertion is a set of statements that are inherited by values th
 
 ### Number Assertions
 
-Number assertion is a set of statements that were designed for numeric values (including NaN).
+Number assertion is a set of statements that were designed for numeric values (including `NaN`).
 
 Number assertion also inherits the statements of the basic assertion.
 
 | Assertion                | Description                                                            |
 | ------------------------ | ---------------------------------------------------------------------- |
-| `toBePositive`           | Asserts that the number is positive (greater than or equal to 0)       |
-| `toBeNegative`           | Asserts that the number is negative (less than 0)                      |
+| `toBePositive`           | Asserts that the number is positive (greater than or equal to `0`)     |
+| `toBeNegative`           | Asserts that the number is negative (less than `0`)                    |
 | `toBeInteger`            | Asserts that the number is integer                                     |
 | `toBeFloat`              | Asserts that the number is a floating-point number (not an integer)    |
 | `toBeNaN`                | Asserts that the number is `NaN` (Not a Number)                        |
@@ -529,8 +529,8 @@ String assertion also inherits the statements of the basic assertion and iterabl
 | `toBeNumericString` | Asserts that the string is a numeric string (contains only digits)                             |
 | `toBeBooleanString` | Asserts that the string is either `"true"` or `"false"`                                        |
 | `toMatchRegex`      | Asserts that the string matches the given regular expression                                   |
-| toBeJWT             | Asserts that the string is a <a href="https://www.jwt.io/">JWT</a> (checks only string format) |
-| `toBeUUID`          | Asserts that the string is a valid UUID                                                        |
+| `toBeJWT`           | Asserts that the string is a <a href="https://www.jwt.io/">JWT</a> (checks only string format) |
+| `toBeUUID`          | Asserts that the string is a valid `uuid`                                                      |
 
 Usage:
 
@@ -610,12 +610,12 @@ Unknown assertion also inherits the statements of the basic assertion.
 | Assertion        | Description                                                                                     |
 | ---------------- | ----------------------------------------------------------------------------------------------- |
 | `toEquals`       | Asserts that the value is deeply equal to the expected value (by using `JSON.stringify` method) |
-| `toBeString`     | Asserts that the value is of type string                                                        |
-| `toBeNuber`      | Asserts that the value is of type number                                                        |
-| `toBeNan`        | Asserts that the value is NaN (Not a Number)                                                    |
-| `toBeBoolean`    | Asserts that the value is of type boolean                                                       |
-| `toBeObject`     | Asserts that the value is of type object                                                        |
-| `toBeRecord`     | Asserts that the value is of type object (excluding null and arrays)                            |
+| `toBeString`     | Asserts that the value is of type `string`                                                      |
+| `toBeNuber`      | Asserts that the value is of type `number`                                                      |
+| `toBeNan`        | Asserts that the value is `NaN` (Not a Number)                                                  |
+| `toBeBoolean`    | Asserts that the value is of type `boolean`                                                     |
+| `toBeObject`     | Asserts that the value is of type `object`                                                      |
+| `toBeRecord`     | Asserts that the value is of type `object` (excluding `null` and arrays)                        |
 | `toBeArray`      | Asserts that the value is an array                                                              |
 | `toBeInstanceOf` | Asserts that the value is an instance of the specified class                                    |
 
