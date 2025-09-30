@@ -10,5 +10,5 @@ export enum ListenerStatus {
     SUCCEED,
     FAILED,
     ERROR,
-    NOT_RUNED,
+    NOT_RUNED
 }

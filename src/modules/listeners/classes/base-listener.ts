@@ -4,11 +4,11 @@ export abstract class BaseListener {
     public timeoutId?: NodeJS.Timeout;
 
     public resolved = false;
-    
+
     public constructor(
-        public id : ListenerId,
+        public id: ListenerId,
         public delay: number,
-        public callback: () => void | Promise<void>,
+        public callback: () => void | Promise<void>
     ) {}
 
     public abstract start(): void;
@@ -22,7 +22,7 @@ export abstract class BaseListener {
 
     public cancel() {
         if (this.timeoutId) {
-            clearTimeout(this.timeoutId)
+            clearTimeout(this.timeoutId);
         }
     }
 }
