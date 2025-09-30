@@ -13,7 +13,7 @@ export abstract class BaseListener {
         public callback: () => void | Promise<void>
     ) {}
 
-    public abstract start(): void | Promise<void>;
+    public abstract start(): void;
 
     public cancel() {
         if (this.timeoutId) {

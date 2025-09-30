@@ -5,13 +5,17 @@ import { TestStatus } from "@modules/tests";
 export class ScheduledListener extends BaseListener {
     public start() {
         this.timeoutId = setTimeout(() => {
-            try {
-                void this.callback();
-
-                this.status = TestStatus.SUCCEED;
-            } catch (error) {
-                this.status = TestAborter.handleError(error);
-            }
+            void this.execute();
         }, this.delay);
+    }
+
+    public async execute() {
+        try {
+            await this.callback();
+
+            this.status = TestStatus.SUCCEED;
+        } catch (error) {
+            this.status = TestAborter.handleError(error);
+        }
     }
 }
