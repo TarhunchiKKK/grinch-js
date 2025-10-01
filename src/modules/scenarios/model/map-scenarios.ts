@@ -1,6 +1,6 @@
 import { Scenario } from "../scenario";
 import { getCommandName, getScenarios, runScenarios } from "./helpers";
-import { report } from "../../reporting/report";
+import { report } from "@modules/reporting";
 
 /**
  * Registers a map of command names to their corresponding scenarios.

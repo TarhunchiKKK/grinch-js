@@ -3,7 +3,7 @@ import { GroupNode } from "../classes/group-node";
 import { SerialNode } from "../classes/serial-node";
 import { TreeToObjectMapper } from "./tree-to-object-mapper";
 
-export class TestTree {
+class TestTree {
     public children: GroupNode[] = [];
 
     public add(test: TestInfo) {

@@ -1,7 +1,5 @@
 {
     "$schema": "https://unpkg.com/knip@5/schema.json",
-    "entry": ["tests/assertions/main.grinch.ts"],
-    "ignoreDependencies": ["ts-node"],
     "rules": {
         "files": "error",
         "classMembers": "error",

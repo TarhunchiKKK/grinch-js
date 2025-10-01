@@ -1,8 +1,6 @@
 import { TestStatus } from "@shared/types";
 import { BaseListener } from "./base-listener";
-import { TestAborter, abort } from "@modules/test-aborting";
-import { ListenerCallback } from "../types";
-import { ListenersStore } from "../model/listeners-array";
+import { TestAborter,  } from "@modules/test-aborting";
 
 export class WaitingListener extends BaseListener {
     public start(): void {
@@ -24,19 +22,4 @@ export class WaitingListener extends BaseListener {
     }
 }
 
-export class WaitingListenersFactory<Params> {
-    public constructor(private readonly callback: ListenerCallback<Params>) {}
 
-    public apply(title: string, delay: number, params?: Params) {
-        const id = ListenersStore.id;
-
-        const listener = new WaitingListener(id, title, delay, () => this.callback({ params, abort }));
-
-        ListenersStore.add(listener);
-
-        return () => {
-            ListenersStore.remove(id);
-            listener.cancel();
-        };
-    }
-}
