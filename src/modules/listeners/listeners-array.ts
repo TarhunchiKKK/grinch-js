@@ -1,5 +1,5 @@
-import { BaseListener } from "../classes/base-listener";
-import { ListenerId } from "../types";
+import { BaseListener } from "./classes/base-listener";
+import { ListenerId } from "./types";
 
 class ListenersArray {
     private listeners: (BaseListener | null)[] = [];
