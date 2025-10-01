@@ -19,4 +19,3 @@ export class ScheduledListener extends BaseListener {
         }
     }
 }
-
