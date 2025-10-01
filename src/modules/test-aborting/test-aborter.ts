@@ -36,3 +36,5 @@ export class TestAborter {
         return TestStatus.ERROR;
     }
 }
+
+export const abort = new TestAborter();

@@ -1,5 +1,1 @@
-import { TestAborter } from "./test-aborter";
-
-export { TestAborter } from "./test-aborter";
-
-export const abort = new TestAborter();
+export { TestAborter, abort } from "./test-aborter";
