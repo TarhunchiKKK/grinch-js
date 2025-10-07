@@ -9,9 +9,6 @@ export default defineConfig({
             name: "Grinch",
             fileName: "grinch"
         },
-        rollupOptions: {
-            external: ["commander"]
-        }
     },
     plugins: [
         dts({
