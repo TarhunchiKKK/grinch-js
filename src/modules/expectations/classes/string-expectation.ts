@@ -1,12 +1,12 @@
 import { JWT_REGEX, NUMERIC_STRING_REGEX, UUID_REGEX } from "../lib/constants";
-import { IterableAssertion } from "./iterable-assertion";
+import { IterableExpectation } from "./iterable-expectation";
 
 /**
- * Assertion class for strings.
- * Extends IterableAssertion and provides methods for asserting conditions on strings,
+ * Expectation class for strings.
+ * Extends IterableExpectation and provides methods for asserting conditions on strings,
  * focusing on string-specific checks like case, prefixes, suffixes, and patterns.
  */
-export class StringAssertion extends IterableAssertion<string> {
+export class StringExpectation extends IterableExpectation<string> {
     /**
      * Asserts that the string is in uppercase.
      *

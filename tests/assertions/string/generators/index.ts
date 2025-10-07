@@ -15,7 +15,7 @@ import { toIncludesGenerator } from "./to-includes";
 import { toHaveValueAtIndexGenerator } from "./to-have-value-at-index";
 import { toMatchRegexGenerator } from "./to-match-rexex";
 
-export const stringAssertionGenerators = {
+export const stringExpectationGenerators = {
     toBeUpperCase: toBeUpperCaseGenerator,
     toBeLowerCase: toBeLowerCaseGenerator,
     toStartsWith: toStartsWithGenerator,

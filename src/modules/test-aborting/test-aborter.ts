@@ -1,4 +1,4 @@
-import { AssertionError } from "@modules/assertions";
+import { ExpectationError } from "@modules/expectations";
 import { Logger } from "@shared/lib";
 import { FailTestError, SucceedTestError } from "./errors";
 import { TestStatus } from "@shared/types";
@@ -23,7 +23,7 @@ export class TestAborter {
     }
 
     public static handleError(error: unknown): TestStatus.FAILED | TestStatus.ERROR {
-        if (error instanceof FailTestError || error instanceof AssertionError) {
+        if (error instanceof FailTestError || error instanceof ExpectationError) {
             return TestStatus.FAILED;
         }
 

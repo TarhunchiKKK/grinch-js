@@ -26,14 +26,14 @@
   - [Skipping Tests](#skipping-tests)
   - [Aborting Tests](#aborting-tests)
   - [Reporting](#reporting)
-- [Assertions](#assertions)
-  - [Basic Assertions](#basic-assertions)
-  - [Iterable Values Assertions](#iterable-values-assertions)
-  - [Number Assertions](#number-assertions)
-  - [String Assertions](#string-assertions)
-  - [Record Assertions](#record-assertions)
-  - [Array Assertions](#array-assertions)
-  - [Unknown Assertions](#unknown-assertions)
+- [Expectations](#assertions)
+  - [Basic Expectations](#basic-assertions)
+  - [Iterable Values Expectations](#iterable-values-assertions)
+  - [Number Expectations](#number-assertions)
+  - [String Expectations](#string-assertions)
+  - [Record Expectations](#record-assertions)
+  - [Array Expectations](#array-assertions)
+  - [Unknown Expectations](#unknown-assertions)
 
 ## Philosophy
 
@@ -465,17 +465,17 @@ results.then(processResults);
 
 
 
-## Assertions
+## Expectations
 
 Grinch offers a number of built-in statements that have a chained interface.
 
 All statements are created using the `expect` object.
 
-### Basic Assertions
+### Basic Expectations
 
 Basic assertion is a set of statements that are inherited by all other statements.
 
-| Assertion          | Description                                                                        |
+| Expectation          | Description                                                                        |
 | ------------------ | ---------------------------------------------------------------------------------- |
 | `toBe`             | Used to compare values using `===` operator                                        |
 | `toBeDefined`      | Asserts that the value is not `undefined`                                          |
@@ -500,13 +500,13 @@ expect
     .toSatisfy(value => value > 0);
 ```
 
-### Iterable Values Assertions
+### Iterable Values Expectations
 
 Iterable values assertion is a set of statements that are inherited by values that represents iterable data structures (arrays and string).
 
 !!! You cannot use these assertions directly, only through array and string assertions.
 
-| Assertion                 | Description                                                                  |
+| Expectation                 | Description                                                                  |
 | ------------------------- | ---------------------------------------------------------------------------- |
 | `toHaveLength`            | Asserts that the iterable has the expected length                            |
 | `toBeShorterThan`         | Asserts that the iterable is shorter than the specified length               |
@@ -517,13 +517,13 @@ Iterable values assertion is a set of statements that are inherited by values th
 | `toIncludes`              | Asserts that the iterable includes the specified item                        |
 | `toHaveValueAtIndex`      | Asserts that the iterable has the expected value at the specified index      |
 
-### Number Assertions
+### Number Expectations
 
 Number assertion is a set of statements that were designed for numeric values (including `NaN`).
 
 Number assertion also inherits the statements of the basic assertion.
 
-| Assertion                | Description                                                            |
+| Expectation                | Description                                                            |
 | ------------------------ | ---------------------------------------------------------------------- |
 | `toBePositive`           | Asserts that the number is positive (greater than or equal to `0`)     |
 | `toBeNegative`           | Asserts that the number is negative (less than `0`)                    |
@@ -549,13 +549,13 @@ expect
     .toSatisfy(value => value > 0); // Statement from basic assertion
 ```
 
-### String Assertions
+### String Expectations
 
 String assertion is a set of statements that were designed for string values.
 
 String assertion also inherits the statements of the basic assertion and iterable assertion.
 
-| Assertion           | Description                                                                                    |
+| Expectation           | Description                                                                                    |
 | ------------------- | ---------------------------------------------------------------------------------------------- |
 | `toBeUpperCase`     | Asserts that the string is in uppercase                                                        |
 | `toBeLowerCase`     | Asserts that the string is in lowercase                                                        |
@@ -580,13 +580,13 @@ expect
     .toBeLongerThan(5);     // Statement from iterable assertion
 ```
 
-### Record Assertions
+### Record Expectations
 
 Record assertion is a set of statements that were designer for object values (satisfies Record<string, unknown> type).
 
 Record assertion also inherits the statements of the basic assertion.
 
-| Assertion            | Description                                                                                      |
+| Expectation            | Description                                                                                      |
 | -------------------- | ------------------------------------------------------------------------------------------------ |
 | `toEquals`           | Asserts that the record is deeply equal to the expected value (by using `JSON.stringify` method) |
 | `toHaveKey`          | Asserts that the record has the specified key                                                    |
@@ -610,13 +610,13 @@ expect
     .toHaveKeyWithValue("age", 42);
 ```
 
-### Array Assertions
+### Array Expectations
 
 Array assertion is a set of statements that were designed for array values.
 
 Array assertion also inherits the statements of the basic assertion and iterable assertion.
 
-| Assertion          | Description                                                                              |
+| Expectation          | Description                                                                              |
 | ------------------ | ---------------------------------------------------------------------------------------- |
 | `toHaveEveryMatch` | Asserts that every element in the array satisfies the provided predicate function        |
 | `toHaveSomeMatch`  | Asserts that at least one element in the array satisfies the provided predicate function |
@@ -636,13 +636,13 @@ expect
     .toHaveEveryMatch(num => num > 0);
 ```
 
-### Unknown Assertions
+### Unknown Expectations
 
 Unknown assertion is a set of statements that were designed for values of unknown type.
 
 Unknown assertion also inherits the statements of the basic assertion.
 
-| Assertion        | Description                                                                                     |
+| Expectation        | Description                                                                                     |
 | ---------------- | ----------------------------------------------------------------------------------------------- |
 | `toEquals`       | Asserts that the value is deeply equal to the expected value (by using `JSON.stringify` method) |
 | `toBeString`     | Asserts that the value is of type `string`                                                      |

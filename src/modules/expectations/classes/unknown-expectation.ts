@@ -1,12 +1,12 @@
 import { deepCompare } from "@shared/lib";
 import { ClassConstructor, TypeofResponse } from "@shared/types";
-import { BaseAssertion } from "./base-assertion";
+import { BaseExpectation } from "./base-expectation";
 
 /**
- * Assertion class for values of unknown type.
+ * Expectation class for values of unknown type.
  * Provides methods for asserting basic type checks, instance checks, and deep equality.
  */
-export class UnknownAssertion extends BaseAssertion<unknown> {
+export class UnknownExpectation extends BaseExpectation<unknown> {
     /**
      * Asserts that the value is deeply equal to the expected value.
      *

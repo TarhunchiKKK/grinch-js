@@ -8,7 +8,7 @@ import { toBeRecordGenerator } from "./to-be-record";
 import { toBeObjectGenerator } from "./to-be-object";
 import { toBeArrayGenerator } from "./to-be-array";
 
-export const unknownAssertionGenerators = {
+export const unknownExpectationGenerators = {
     toEquals: toEqualsGenerator,
     toBeString: toBeStringGenerator,
     toBeNumber: toBeNumberGenerator,

@@ -1,10 +1,10 @@
-import { IterableAssertion } from "./iterable-assertion";
+import { IterableExpectation } from "./iterable-expectation";
 
 /**
- * Assertion class for arrays.
+ * Expectation class for arrays.
  * Provides methods for asserting conditions on array elements and their structure.
  */
-export class ArrayAssertion<T = unknown> extends IterableAssertion<T[]> {
+export class ArrayExpectation<T = unknown> extends IterableExpectation<T[]> {
     /**
      * Asserts that every element in the array satisfies the provided predicate function.
      *

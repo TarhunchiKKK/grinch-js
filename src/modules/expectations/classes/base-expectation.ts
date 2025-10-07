@@ -1,5 +1,5 @@
 import { FALSY_VALUES } from "../lib/constants";
-import { AssertionError } from "../lib/errors";
+import { ExpectationError } from "../lib/errors";
 import { Condition, ZodSchema } from "../lib/types";
 
 /**
@@ -7,11 +7,11 @@ import { Condition, ZodSchema } from "../lib/types";
  * Provides core functionality for storing the value being asserted
  * and running assertion conditions.
  */
-export class BaseAssertion<T> {
+export class BaseExpectation<T> {
     private inverseNextCondition = false;
 
     /**
-     * Constructs a new BaseAssertion instance with the value to be asserted.
+     * Constructs a new BaseExpectation instance with the value to be asserted.
      *
      * @param value The value to be asserted.
      */
@@ -37,7 +37,7 @@ export class BaseAssertion<T> {
 
         const result = conditionToExecute();
         if (!result) {
-            throw new AssertionError(errorMessage);
+            throw new ExpectationError(errorMessage);
         }
     }
 

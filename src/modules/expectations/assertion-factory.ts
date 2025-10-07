@@ -1,15 +1,13 @@
-import { ArrayAssertion } from "./classes/array-assertion";
-import { BaseAssertion } from "./classes/base-assertion";
-import { NumberAssertion } from "./classes/number-assertion";
-import { RecordAssertion } from "./classes/record-assertion";
-import { StringAssertion } from "./classes/string-assertion";
-import { UnknownAssertion } from "./classes/unknown-assertion";
+import { ArrayExpectation } from "./classes/array-expectation";
+import { BaseExpectation } from "./classes/base-expectation";
+import { NumberExpectation } from "./classes/number-expectation";
+import { RecordExpectation } from "./classes/record-expectation";
+import { StringExpectation } from "./classes/string-expectation";
+import { UnknownExpectation } from "./classes/unknown-expectation";
 
-export class AssertionFactory {
-    public constructor() {}
-
+class ExpectationFactory {
     public basic<T = unknown>(value: T) {
-        return new BaseAssertion<T>(value);
+        return new BaseExpectation<T>(value);
     }
 
     public string(value: string) {
@@ -17,7 +15,7 @@ export class AssertionFactory {
             throw new Error(`Provided value is not string. Receive: ${JSON.stringify(value)}`);
         }
 
-        return new StringAssertion(value);
+        return new StringExpectation(value);
     }
 
     public number(value: number) {
@@ -25,7 +23,7 @@ export class AssertionFactory {
             throw new Error(`Provided value is not number. Receive: ${JSON.stringify(value)}`);
         }
 
-        return new NumberAssertion(value);
+        return new NumberExpectation(value);
     }
 
     public record(value: Record<string, unknown>) {
@@ -33,7 +31,7 @@ export class AssertionFactory {
             throw new Error(`Provided value is not record. Receive: ${JSON.stringify(value)}`);
         }
 
-        return new RecordAssertion(value);
+        return new RecordExpectation(value);
     }
 
     public array<T = unknown>(value: T[]) {
@@ -41,10 +39,12 @@ export class AssertionFactory {
             throw Error(`Provided value is not array. Receive: ${JSON.stringify(value)}`);
         }
 
-        return new ArrayAssertion(value);
+        return new ArrayExpectation(value);
     }
 
     public unknown(value: unknown) {
-        return new UnknownAssertion(value);
+        return new UnknownExpectation(value);
     }
 }
+
+export const expect = new ExpectationFactory();

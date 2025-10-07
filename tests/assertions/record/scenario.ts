@@ -1,11 +1,11 @@
 import { expect, scenario } from "../../../src";
-import { recordAssertionGenerators } from "./generators";
+import { recordExpectationGenerators } from "./generators";
 
-export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test }) => {
+export const RecordExpectationScenario = scenario("RecordExpectation", null, ({ test }) => {
     test.parallel("assertions", ({ test }) => {
         test.serial("toEquals()", ({ test }) => {
             test.case("valid", () => {
-                const values = recordAssertionGenerators.toEquals.valid();
+                const values = recordExpectationGenerators.toEquals.valid();
 
                 for (const value of values) {
                     expect.record(value).toEquals(value);
@@ -13,7 +13,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
             });
 
             test.case("invalid", () => {
-                const values = recordAssertionGenerators.toEquals.invalid();
+                const values = recordExpectationGenerators.toEquals.invalid();
 
                 for (const value of values) {
                     expect.record(value).not.toEquals(value);
@@ -23,7 +23,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
 
         test.serial("toHaveKey()", ({ test }) => {
             test.case("valid", () => {
-                const values = recordAssertionGenerators.toHaveKey.valid();
+                const values = recordExpectationGenerators.toHaveKey.valid();
 
                 for (const { value, key } of values) {
                     expect.record(value).toHaveKey(key);
@@ -31,7 +31,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
             });
 
             test.case("invalid", () => {
-                const values = recordAssertionGenerators.toHaveKey.invalid();
+                const values = recordExpectationGenerators.toHaveKey.invalid();
 
                 for (const { value, key } of values) {
                     expect.record(value).not.toHaveKey(key);
@@ -41,7 +41,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
 
         test.serial("toHaveAllKeys()", ({ test }) => {
             test.case("valid", () => {
-                const values = recordAssertionGenerators.toHaveAllKeys.valid();
+                const values = recordExpectationGenerators.toHaveAllKeys.valid();
 
                 for (const { value, keys } of values) {
                     expect.record(value).toHaveAllKeys(keys);
@@ -49,7 +49,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
             });
 
             test.case("invalid", () => {
-                const values = recordAssertionGenerators.toHaveAllKeys.invalid();
+                const values = recordExpectationGenerators.toHaveAllKeys.invalid();
 
                 for (const { value, keys } of values) {
                     expect.record(value).not.toHaveAllKeys(keys);
@@ -59,7 +59,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
 
         test.serial("toHaveKeyWithValue", ({ test }) => {
             test.case("valid", () => {
-                const values = recordAssertionGenerators.toHaveKeyWithValue.valid();
+                const values = recordExpectationGenerators.toHaveKeyWithValue.valid();
 
                 for (const { value, keys } of values) {
                     for (const key of keys) {
@@ -69,7 +69,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
             });
 
             test.case("invalid", () => {
-                const values = recordAssertionGenerators.toHaveKeyWithValue.invalid();
+                const values = recordExpectationGenerators.toHaveKeyWithValue.invalid();
 
                 for (const { record, keys } of values) {
                     for (const { key, value } of keys) {

@@ -1,11 +1,11 @@
 import { deepCompare } from "@shared/lib";
-import { BaseAssertion } from "./base-assertion";
+import { BaseExpectation } from "./base-expectation";
 
 /**
- * Assertion class for Record objects.
+ * Expectation class for Record objects.
  * Provides methods for asserting conditions on the keys and values of records.
  */
-export class RecordAssertion extends BaseAssertion<Record<string, unknown>> {
+export class RecordExpectation extends BaseExpectation<Record<string, unknown>> {
     /**
      * Asserts that the record is deeply equal to the expected value.
      *

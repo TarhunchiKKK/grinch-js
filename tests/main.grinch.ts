@@ -1,22 +1,22 @@
 import { mapScenarios } from "src";
 import {
-    BasicAssertionScenario,
-    NumberAssertionScenario,
-    StringAssertionScenario,
-    ArrayAssertionScenario,
-    RecordAssertionScenario,
-    UnknownAssertionScenario
+    BasicExpectationScenario,
+    NumberExpectationScenario,
+    StringExpectationScenario,
+    ArrayExpectationScenario,
+    RecordExpectationScenario,
+    UnknownExpectationScenario
 } from "./assertions";
 import { TestsGroupingScenario, StateManagementScenario, ReportingScenario, ReusableTestsScenario } from "./behaviour";
 
 void mapScenarios({
     assertions: [
-        BasicAssertionScenario,
-        NumberAssertionScenario,
-        StringAssertionScenario,
-        ArrayAssertionScenario,
-        RecordAssertionScenario,
-        UnknownAssertionScenario
+        BasicExpectationScenario,
+        NumberExpectationScenario,
+        StringExpectationScenario,
+        ArrayExpectationScenario,
+        RecordExpectationScenario,
+        UnknownExpectationScenario
     ],
     grouping: [TestsGroupingScenario],
     state: [StateManagementScenario],
