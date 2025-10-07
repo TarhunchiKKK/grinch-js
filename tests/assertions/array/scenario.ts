@@ -4,7 +4,7 @@ import { arrayAssertionGenerators } from "./generators";
 export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }) => {
     test.parallel("assertions", ({ test }) => {
         test.serial("toHaveLength()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = arrayAssertionGenerators.toHaveLength.valid();
 
                 for (const { value, length } of values) {
@@ -12,7 +12,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = arrayAssertionGenerators.toHaveLength.invalid();
 
                 for (const { value, length } of values) {
@@ -22,7 +22,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
         });
 
         test.serial("toBeShorterThan()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = arrayAssertionGenerators.toBeShorterThan.valid();
 
                 for (const { value, length } of values) {
@@ -30,7 +30,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = arrayAssertionGenerators.toBeShorterThan.invalid();
 
                 for (const { value, length } of values) {
@@ -40,7 +40,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
         });
 
         test.serial("toBeShorterThanOrEquals()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = arrayAssertionGenerators.toBeShorterThanOrEquals.valid();
 
                 for (const { value, length } of values) {
@@ -48,7 +48,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = arrayAssertionGenerators.toBeShorterThanOrEquals.invalid();
 
                 for (const { value, length } of values) {
@@ -58,7 +58,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
         });
 
         test.serial("toBeLongerThan()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = arrayAssertionGenerators.toBeLongerThan.valid();
 
                 for (const { value, length } of values) {
@@ -66,7 +66,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = arrayAssertionGenerators.toBeLongerThan.invalid();
 
                 for (const { value, length } of values) {
@@ -76,7 +76,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
         });
 
         test.serial("toBeLongerThanOrEquals()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = arrayAssertionGenerators.toBeLongerThanOrEquals.valid();
 
                 for (const { value, length } of values) {
@@ -84,7 +84,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = arrayAssertionGenerators.toBeLongerThanOrEquals.invalid();
 
                 for (const { value, length } of values) {
@@ -94,7 +94,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
         });
 
         test.serial("toHaveLengthBetween()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = arrayAssertionGenerators.toHaveLengthBetween.valid();
 
                 for (const { value, start, end } of values) {
@@ -102,7 +102,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = arrayAssertionGenerators.toHaveLengthBetween.invalid();
 
                 for (const { value, start, end } of values) {
@@ -112,7 +112,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
         });
 
         test.serial("toIncludes()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = arrayAssertionGenerators.toIncludes.valid();
 
                 for (const { value, item } of values) {
@@ -120,7 +120,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = arrayAssertionGenerators.toIncludes.invalid();
 
                 for (const { value, item } of values) {
@@ -130,7 +130,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
         });
 
         test.serial("toHaveValueAtIndex()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = arrayAssertionGenerators.toHaveValueAtIndex.valid();
 
                 for (const { value, index, item } of values) {
@@ -138,7 +138,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = arrayAssertionGenerators.toHaveValueAtIndex.invalid();
 
                 for (const { value, index, item } of values) {
@@ -148,7 +148,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
         });
 
         test.serial("toHaveSomeMatch()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = arrayAssertionGenerators.toHaveSomeMatch.valid();
 
                 for (const { value, condition } of values) {
@@ -156,7 +156,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = arrayAssertionGenerators.toHaveSomeMatch.invalid();
 
                 for (const { value, condition } of values) {
@@ -166,7 +166,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
         });
 
         test.serial("toHaveEveryMatch()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = arrayAssertionGenerators.toHaveEveryMatch.valid();
 
                 for (const { value, condition } of values) {
@@ -174,7 +174,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = arrayAssertionGenerators.toHaveEveryMatch.invalid();
 
                 for (const { value, condition } of values) {
@@ -184,7 +184,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
         });
 
         test.serial("toBeSorted()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = arrayAssertionGenerators.toBeSorted.valid();
 
                 for (const { value, comparator } of values) {
@@ -192,7 +192,7 @@ export const ArrayAssertionScenario = scenario("ArrayAssertion", null, ({ test }
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = arrayAssertionGenerators.toBeSorted.invalid();
 
                 for (const { value, comparator } of values) {

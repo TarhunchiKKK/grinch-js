@@ -4,7 +4,7 @@ import { stringAssertionGenerators } from "./generators";
 export const StringAssertionScenario = scenario("StringAssertion", null, ({ test }) => {
     test.parallel("assertions", ({ test }) => {
         test.serial("toBeUpperCase()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = stringAssertionGenerators.toBeUpperCase.valid();
 
                 for (const value of values) {
@@ -12,7 +12,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = stringAssertionGenerators.toBeUpperCase.invalid();
 
                 for (const value of values) {
@@ -22,7 +22,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toBeLowerCase()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = stringAssertionGenerators.toBeLowerCase.valid();
 
                 for (const value of values) {
@@ -30,7 +30,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = stringAssertionGenerators.toBeLowerCase.invalid();
 
                 for (const value of values) {
@@ -40,7 +40,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toStartsWith()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = stringAssertionGenerators.toStartsWith.valid();
 
                 for (const { value, substr } of values) {
@@ -48,7 +48,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = stringAssertionGenerators.toStartsWith.invalid();
 
                 for (const { value, substr } of values) {
@@ -58,7 +58,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toEndsWith()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = stringAssertionGenerators.toEndsWith.valid();
 
                 for (const { value, substr } of values) {
@@ -66,7 +66,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = stringAssertionGenerators.toEndsWith.invalid();
 
                 for (const { value, substr } of values) {
@@ -76,7 +76,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toBeNumericString()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = stringAssertionGenerators.toBeNumericString.valid();
 
                 for (const value of values) {
@@ -84,7 +84,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = stringAssertionGenerators.toBeNumericString.invalid();
 
                 for (const value of values) {
@@ -94,7 +94,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toBeBooleanString()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = stringAssertionGenerators.toBeBooleanString.valid();
 
                 for (const value of values) {
@@ -102,7 +102,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = stringAssertionGenerators.toBeBooleanString.invalid();
 
                 for (const value of values) {
@@ -112,7 +112,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toMatch()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = stringAssertionGenerators.toMatchRegex.valid();
 
                 for (const { value, regexp } of values) {
@@ -120,7 +120,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = stringAssertionGenerators.toMatchRegex.invalid();
 
                 for (const { value, regexp } of values) {
@@ -130,7 +130,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toBeUUID()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = stringAssertionGenerators.toBeUUID.valid();
 
                 for (const value of values) {
@@ -138,7 +138,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = stringAssertionGenerators.toBeUUID.invalid();
 
                 for (const value of values) {
@@ -148,7 +148,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toHaveLength()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = stringAssertionGenerators.toHaveLength.valid();
 
                 for (const { value, length } of values) {
@@ -156,7 +156,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = stringAssertionGenerators.toHaveLength.invalid();
 
                 for (const { value, length } of values) {
@@ -166,7 +166,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toBeShorterThan()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = stringAssertionGenerators.toBeShorterThan.valid();
 
                 for (const { value, length } of values) {
@@ -174,7 +174,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = stringAssertionGenerators.toBeShorterThan.invalid();
 
                 for (const { value, length } of values) {
@@ -184,7 +184,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toBeShorterThanOrEquals()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = stringAssertionGenerators.toBeShorterThanOrEquals.valid();
 
                 for (const { value, length } of values) {
@@ -192,7 +192,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = stringAssertionGenerators.toBeShorterThanOrEquals.invalid();
 
                 for (const { value, length } of values) {
@@ -202,7 +202,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toBeLongerThan()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = stringAssertionGenerators.toBeLongerThan.valid();
 
                 for (const { value, length } of values) {
@@ -210,7 +210,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = stringAssertionGenerators.toBeLongerThan.invalid();
 
                 for (const { value, length } of values) {
@@ -220,7 +220,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toBeLongerThanOrEquals()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = stringAssertionGenerators.toBeLongerThanOrEquals.valid();
 
                 for (const { value, length } of values) {
@@ -228,7 +228,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = stringAssertionGenerators.toBeLongerThanOrEquals.invalid();
 
                 for (const { value, length } of values) {
@@ -238,7 +238,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toHaveLengthBetween()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = stringAssertionGenerators.toHaveLengthBetween.valid();
 
                 for (const { value, start, end } of values) {
@@ -246,7 +246,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = stringAssertionGenerators.toHaveLengthBetween.invalid();
 
                 for (const { value, start, end } of values) {
@@ -256,7 +256,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toIncludes()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = stringAssertionGenerators.toIncludes.valid();
 
                 for (const { value, substr } of values) {
@@ -264,7 +264,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = stringAssertionGenerators.toIncludes.invalid();
 
                 for (const { value, substr } of values) {
@@ -274,7 +274,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toHaveValueAtIndex()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = stringAssertionGenerators.toHaveValueAtIndex.valid();
 
                 for (const { value, index, item } of values) {
@@ -282,7 +282,7 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = stringAssertionGenerators.toHaveValueAtIndex.invalid();
 
                 for (const { value, index, item } of values) {

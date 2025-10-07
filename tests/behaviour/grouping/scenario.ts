@@ -8,7 +8,7 @@ export const TestsGroupingScenario = scenario("Tests grouping", null, ({ test })
                 console.log("Parallel group before each");
             });
 
-            test.sample("Parallel test 1", async () => {
+            test.case("Parallel test 1", async () => {
                 console.log("Parallel test 1 starts");
 
                 await asyncTask();
@@ -16,7 +16,7 @@ export const TestsGroupingScenario = scenario("Tests grouping", null, ({ test })
                 console.log("Parallel test 1 ends");
             });
 
-            test.sample("Parallel test 2", async () => {
+            test.case("Parallel test 2", async () => {
                 console.log("Parallel test 2 starts");
 
                 await asyncTask();
@@ -24,7 +24,7 @@ export const TestsGroupingScenario = scenario("Tests grouping", null, ({ test })
                 console.log("Parallel test 2 ends");
             });
 
-            test.sample("Parallel test 3", async () => {
+            test.case("Parallel test 3", async () => {
                 console.log("Parallel test 3 starts");
 
                 await asyncTask();
@@ -38,7 +38,7 @@ export const TestsGroupingScenario = scenario("Tests grouping", null, ({ test })
                 console.log("Serial group after each");
             });
 
-            test.sample("Serial test 1", async () => {
+            test.case("Serial test 1", async () => {
                 console.log("Serial test 1 starts");
 
                 await asyncTask();
@@ -46,7 +46,7 @@ export const TestsGroupingScenario = scenario("Tests grouping", null, ({ test })
                 console.log("Serial test 1 ends");
             });
 
-            test.sample("Serial test 1", async () => {
+            test.case("Serial test 1", async () => {
                 console.log("Serial test 2 starts");
 
                 await asyncTask();
@@ -54,7 +54,7 @@ export const TestsGroupingScenario = scenario("Tests grouping", null, ({ test })
                 console.log("Serial test 2 ends");
             });
 
-            test.sample("Serial test 1", async () => {
+            test.case("Serial test 1", async () => {
                 console.log("Serial test 3 starts");
 
                 await asyncTask();

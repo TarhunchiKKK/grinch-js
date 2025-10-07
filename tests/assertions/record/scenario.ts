@@ -4,7 +4,7 @@ import { recordAssertionGenerators } from "./generators";
 export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test }) => {
     test.parallel("assertions", ({ test }) => {
         test.serial("toEquals()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = recordAssertionGenerators.toEquals.valid();
 
                 for (const value of values) {
@@ -12,7 +12,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = recordAssertionGenerators.toEquals.invalid();
 
                 for (const value of values) {
@@ -22,7 +22,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
         });
 
         test.serial("toHaveKey()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = recordAssertionGenerators.toHaveKey.valid();
 
                 for (const { value, key } of values) {
@@ -30,7 +30,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = recordAssertionGenerators.toHaveKey.invalid();
 
                 for (const { value, key } of values) {
@@ -40,7 +40,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
         });
 
         test.serial("toHaveAllKeys()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = recordAssertionGenerators.toHaveAllKeys.valid();
 
                 for (const { value, keys } of values) {
@@ -48,7 +48,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = recordAssertionGenerators.toHaveAllKeys.invalid();
 
                 for (const { value, keys } of values) {
@@ -58,7 +58,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
         });
 
         test.serial("toHaveKeyWithValue", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = recordAssertionGenerators.toHaveKeyWithValue.valid();
 
                 for (const { value, keys } of values) {
@@ -68,7 +68,7 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = recordAssertionGenerators.toHaveKeyWithValue.invalid();
 
                 for (const { record, keys } of values) {

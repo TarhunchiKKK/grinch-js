@@ -1,4 +1,4 @@
-import { SampleTest, TestsGroup } from "@modules/tests";
+import { TestCase, TestsGroup } from "@modules/tests";
 import { LeafNode } from "./leaf-node";
 import { ParallelNode } from "./parallel-node";
 import { SerialNode } from "./serial-node";
@@ -31,7 +31,7 @@ export abstract class GroupNode extends HookableTest {
         return this.test;
     }
 
-    public addLeaf(test: SampleTest) {
+    public addLeaf(test: TestCase) {
         const node = new LeafNode(test);
         this.children.push(node);
         return node;

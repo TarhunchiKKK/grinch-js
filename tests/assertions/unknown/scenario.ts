@@ -4,7 +4,7 @@ import { unknownAssertionGenerators } from "./generators";
 export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ test }) => {
     test.parallel("assertions", ({ test }) => {
         test.serial("toEquals()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = unknownAssertionGenerators.toEquals.valid();
 
                 for (const value of values) {
@@ -12,7 +12,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = unknownAssertionGenerators.toEquals.invalid();
 
                 for (const value of values) {
@@ -22,7 +22,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
         });
 
         test.serial("toBeString()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = unknownAssertionGenerators.toBeString.valid();
 
                 for (const value of values) {
@@ -30,7 +30,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = unknownAssertionGenerators.toBeString.invalid();
 
                 for (const value of values) {
@@ -40,7 +40,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
         });
 
         test.serial("toBeNumber()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = unknownAssertionGenerators.toBeNumber.valid();
 
                 for (const value of values) {
@@ -48,7 +48,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = unknownAssertionGenerators.toBeNumber.invalid();
 
                 for (const value of values) {
@@ -58,7 +58,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
         });
 
         test.serial("toBeNaN()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = unknownAssertionGenerators.toBeNaN.valid();
 
                 for (const value of values) {
@@ -66,7 +66,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = unknownAssertionGenerators.toBeNaN.invalid();
 
                 for (const value of values) {
@@ -76,7 +76,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
         });
 
         test.serial("toBeBoolean()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = unknownAssertionGenerators.toBeBoolean.valid();
 
                 for (const value of values) {
@@ -84,7 +84,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = unknownAssertionGenerators.toBeBoolean.invalid();
 
                 for (const value of values) {
@@ -94,7 +94,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
         });
 
         test.serial("toBeRecord()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = unknownAssertionGenerators.toBeRecord.valid();
 
                 for (const value of values) {
@@ -102,7 +102,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = unknownAssertionGenerators.toBeRecord.invalid();
 
                 for (const value of values) {
@@ -112,7 +112,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
         });
 
         test.serial("toBeObject()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = unknownAssertionGenerators.toBeObject.valid();
 
                 for (const value of values) {
@@ -120,7 +120,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = unknownAssertionGenerators.toBeObject.invalid();
 
                 for (const value of values) {
@@ -130,7 +130,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
         });
 
         test.serial("toBeArray()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = unknownAssertionGenerators.toBeArray.valid();
 
                 for (const value of values) {
@@ -138,7 +138,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = unknownAssertionGenerators.toBeArray.invalid();
 
                 for (const value of values) {
@@ -148,7 +148,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
         });
 
         test.serial("toBeInstanceOf()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = unknownAssertionGenerators.toBeInstanceOf.valid();
 
                 for (const { value, className } of values) {
@@ -156,7 +156,7 @@ export const UnknownAssertionScenario = scenario("UnknownAssertion", null, ({ te
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = unknownAssertionGenerators.toBeInstanceOf.invalid();
 
                 for (const value of values.values) {

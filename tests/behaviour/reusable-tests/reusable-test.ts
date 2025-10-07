@@ -6,7 +6,7 @@ type ReusableState = {
 };
 
 export const ChangeNameTest = reusableTest<ReusableState>(({ test }) => {
-    test.sample("Change name", ({ state }) => {
+    test.case("Change name", ({ state }) => {
         state.name = NEW_NAME;
     });
 });

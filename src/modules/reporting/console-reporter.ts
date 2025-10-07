@@ -68,7 +68,7 @@ export class ConsoleReporter {
                 Logger.yellow(line + " (not run)");
                 break;
             default:
-                throw new Error("Sample test cannot have such result");
+                throw new Error("Case test cannot have such result");
         }
 
         this.summary[node.test.status]++;

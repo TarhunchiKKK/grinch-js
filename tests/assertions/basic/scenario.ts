@@ -4,7 +4,7 @@ import { basicAssertionGenerators } from "./generators";
 export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test }) => {
     test.parallel("assertions", ({ test }) => {
         test.serial("toBe()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = basicAssertionGenerators.toBe.valid();
 
                 for (const value of values) {
@@ -12,7 +12,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = basicAssertionGenerators.toBe.invalid();
 
                 for (const value of values) {
@@ -22,7 +22,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
         });
 
         test.serial("toBeDefined()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = basicAssertionGenerators.toBeDefined.valid();
 
                 for (const value of values) {
@@ -30,7 +30,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = basicAssertionGenerators.toBeDefined.invalid();
 
                 for (const value of values) {
@@ -40,7 +40,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
         });
 
         test.serial("toBeNull()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = basicAssertionGenerators.toBeNull.valid();
 
                 for (const value of values) {
@@ -48,7 +48,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = basicAssertionGenerators.toBeNull.invalid();
 
                 for (const value of values) {
@@ -58,7 +58,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
         });
 
         test.serial("toBeEmpty()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = basicAssertionGenerators.toBeEmpty.valid();
 
                 for (const value of values) {
@@ -66,7 +66,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = basicAssertionGenerators.toBeEmpty.invalid();
 
                 for (const value of values) {
@@ -76,7 +76,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
         });
 
         test.serial("toBeTruthy()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = basicAssertionGenerators.toBeTruthy.valid();
 
                 for (const value of values) {
@@ -84,7 +84,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = basicAssertionGenerators.toBeTruthy.invalid();
 
                 for (const value of values) {
@@ -94,7 +94,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
         });
 
         test.serial("toBeFalsy()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = basicAssertionGenerators.toBeFalsy.valid();
 
                 for (const value of values) {
@@ -102,7 +102,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = basicAssertionGenerators.toBeFalsy.invalid();
 
                 for (const value of values) {
@@ -112,7 +112,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
         });
 
         test.serial("toBeNull()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = basicAssertionGenerators.toBeNull.valid();
 
                 for (const value of values) {
@@ -120,7 +120,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = basicAssertionGenerators.toBeNull.valid();
 
                 for (const value of values) {
@@ -130,7 +130,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
         });
 
         test.serial("tomatchZodSchema()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = basicAssertionGenerators.toMatchZodSchema.valid();
 
                 for (const { value, schema } of values) {
@@ -138,7 +138,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = basicAssertionGenerators.toMatchZodSchema.invalid();
 
                 for (const { value, schema } of values) {
@@ -148,7 +148,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
         });
 
         test.serial("toSatisfy()", ({ test }) => {
-            test.sample("valid", () => {
+            test.case("valid", () => {
                 const values = basicAssertionGenerators.toSatisfy.valid();
 
                 for (const { value, condition } of values) {
@@ -156,7 +156,7 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
+            test.case("invalid", () => {
                 const values = basicAssertionGenerators.toSatisfy.invalid();
 
                 for (const { value, condition } of values) {

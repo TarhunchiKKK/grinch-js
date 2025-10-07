@@ -19,7 +19,7 @@
     - [Scenario](#scenario)
     - [Parallel](#parallel)
     - [Serial](#serial)
-    - [Sample](#sample)
+    - [Case](#case)
   - [Reusable Tests](#reusable-tests)
     - [Reusable Tests Limitations](#reusable-tests-limitations)
   - [Lifecycle Hooks](#lifecycle-hooks)
@@ -127,7 +127,7 @@ import { api } from "./api";
 export const PostCreationScenario = scenario("Create post", state, ({ test }) => {
     test.serial("should create post", ({ test }) => {
         // Login user and get JWT token
-        test.sample("should login user", async ({ state }) => {
+        test.case("should login user", async ({ state }) => {
             // Extracting JWT token from api response
             const { jwt } = await api.signIn({
                 email: "test@gmail.com",
@@ -142,7 +142,7 @@ export const PostCreationScenario = scenario("Create post", state, ({ test }) =>
         });
 
         // Create post using JWT token
-        test.sample("should create new post", async ({ state }) => {
+        test.case("should create new post", async ({ state }) => {
             // Extracting post id from response
             const { id: postId } = await api.createPost({
                 title: "New post",
@@ -159,7 +159,7 @@ export const PostCreationScenario = scenario("Create post", state, ({ test }) =>
         });
 
         // Verify post creation
-        test.sample("should find new post", async ({ state }) => {
+        test.case("should find new post", async ({ state }) => {
             // Extracting post id from response
             const { id: postId } = await api.findPostById(state.postId);
 
@@ -245,15 +245,15 @@ test.serial("TestInfo title", ({ test }) => {
 });
 ```
 
-#### Sample
+#### Case
 
-Sample test represents the leaf element of the scenario test tree. It can access the scenario state and perform various testing logic of your application.
+Case test represents the leaf element of the scenario test tree. It can access the scenario state and perform various testing logic of your application.
 
 This type of test cannot have child tests.
 
 ```typescript
 // ...
-test.sample("TestInfo title", async ({ state }) => {
+test.case("TestInfo title", async ({ state }) => {
     // Testing code
 });
 // ...
@@ -293,7 +293,7 @@ type PartialState = {
 };
 
 const EditCountryTest = reusableTest<PartialState, string>(({ test, params }) => {
-    test.sample("Edit country", ({ state }) => {
+    test.case("Edit country", ({ state }) => {
         state.country = params;
     });
 });
@@ -340,7 +340,7 @@ This condition is necessary for type safety.
 
 Grinch provides the ability to create `beforeEach` and `afterEach` hooks.
 
-You can use this hooks in all types of test (excluding sample tests) and in reusable tests.
+You can use this hooks in all types of test (excluding case tests) and in reusable tests.
 
 Example:
 
@@ -364,13 +364,13 @@ Example of the `beforeAll` and `afterAll` hooks implementation:
 
 ```typescript
 test.serial("TestInfo title", ({ test }) => {
-    test.sample("This test will run before all next tests", async () => {
+    test.case("This test will run before all next tests", async () => {
         // Any logic
     });
 
     // Other tests
 
-    test.sample("This test will run after all previous tests", async () => {
+    test.case("This test will run after all previous tests", async () => {
         // Any logic
     });
 });
@@ -387,8 +387,8 @@ Grinch provides the ability to skip tests, groups, and hooks. You can easily rep
 Example:
 
 ```typescript
-// Skipping sample test execution
-test.skip.sample(/* ... */);
+// Skipping case test execution
+test.skip.case(/* ... */);
 
 // Skipping group execution (children tests will not be executed)
 test.skip.serial(/* ... */);
@@ -405,12 +405,12 @@ test.skip.afterEach(/* ... */);
 
 Grinch provides the ability to interrupt tests in runtime.
 
-This feature is available only in sample tests and lifecycle hooks.
+This feature is available only in case tests and lifecycle hooks.
 
-Example for sample test:
+Example for case test:
 
 ```typescript
-test.sample("This test will be interrupted", ({ abort }) => {
+test.case("This test will be interrupted", ({ abort }) => {
     // This test will be succeed before finishing
     abort.success();
 

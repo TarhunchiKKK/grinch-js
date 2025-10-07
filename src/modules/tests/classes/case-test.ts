@@ -3,7 +3,7 @@ import { TestInfo, TestStatus } from "@shared/types";
 
 type Callback = () => void | Promise<void>;
 
-export class SampleTest implements TestInfo {
+export class TestCase implements TestInfo {
     public status = TestStatus.NOT_RUNED;
 
     public constructor(
