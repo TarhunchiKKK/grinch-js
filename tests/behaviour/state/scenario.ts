@@ -10,7 +10,7 @@ const values = Array.from({ length: 20 }).map(() => faker.number.int({ min: 0, m
 export const StateManagementScenario = scenario("State management", scenarioState, ({ test }) => {
     test.serial("Serial root group", ({ test }) => {
         for (let i = 0; i < values.length; i++) {
-            test.sample(`Set value to ${values[i]}`, ({ state }) => {
+            test.case(`Set value to ${values[i]}`, ({ state }) => {
                 if (i !== 0) {
                     expect.number(state.value).toBe(values[i - 1]);
                 }

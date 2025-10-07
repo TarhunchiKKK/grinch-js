@@ -1,6 +1,6 @@
 import { TestFactory } from "@modules/tests";
-import { Scenario } from "../scenario";
-import { ScenarioCallback } from "../types";
+import { Scenario } from "./scenario";
+import { ScenarioCallback } from "./types";
 import { TestingTree } from "@modules/testing-tree";
 import { AvailableTestStates } from "@shared/types";
 

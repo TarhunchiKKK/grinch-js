@@ -1,10 +1,10 @@
-import { BaseAssertion } from "./base-assertion";
+import { BaseExpectation } from "./base-expectation";
 
 /**
- * Assertion class for performing assertions on numbers.
- * Extends the BaseAssertion class.
+ * Expectation class for performing assertions on numbers.
+ * Extends the BaseExpectation class.
  */
-export class NumberAssertion extends BaseAssertion<number> {
+export class NumberExpectation extends BaseExpectation<number> {
     /**
      * Asserts that the number is positive (greater than or equal to 0).
      *

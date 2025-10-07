@@ -1,19 +1,19 @@
 import { expect, scenario } from "../../../src";
-import { numberAssertionGenertors } from "./generators";
+import { numberExpectationGenertors } from "./generators";
 
-export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test }) => {
+export const NumberExpectationScenario = scenario("NumberExpectation", null, ({ test }) => {
     test.parallel("assertions", ({ test }) => {
         test.serial("toBePositive()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = numberAssertionGenertors.toBePositive.valid();
+            test.case("valid", () => {
+                const values = numberExpectationGenertors.toBePositive.valid();
 
                 for (const value of values) {
                     expect.number(value).toBePositive();
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = numberAssertionGenertors.toBePositive.invalid();
+            test.case("invalid", () => {
+                const values = numberExpectationGenertors.toBePositive.invalid();
 
                 for (const value of values) {
                     expect.number(value).not.toBePositive();
@@ -22,16 +22,16 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
         });
 
         test.serial("toBeNegative()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = numberAssertionGenertors.toBeNegative.valid();
+            test.case("valid", () => {
+                const values = numberExpectationGenertors.toBeNegative.valid();
 
                 for (const value of values) {
                     expect.number(value).toBeNegative();
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = numberAssertionGenertors.toBeNegative.invalid();
+            test.case("invalid", () => {
+                const values = numberExpectationGenertors.toBeNegative.invalid();
 
                 for (const value of values) {
                     expect.number(value).not.toBeNegative();
@@ -40,16 +40,16 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
         });
 
         test.serial("toBeInteger()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = numberAssertionGenertors.toBeInteger.valid();
+            test.case("valid", () => {
+                const values = numberExpectationGenertors.toBeInteger.valid();
 
                 for (const value of values) {
                     expect.number(value).toBeInteger();
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = numberAssertionGenertors.toBeInteger.invalid();
+            test.case("invalid", () => {
+                const values = numberExpectationGenertors.toBeInteger.invalid();
 
                 for (const value of values) {
                     expect.number(value).not.toBeInteger();
@@ -58,16 +58,16 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
         });
 
         test.serial("toBeFloat()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = numberAssertionGenertors.toBeFloat.valid();
+            test.case("valid", () => {
+                const values = numberExpectationGenertors.toBeFloat.valid();
 
                 for (const value of values) {
                     expect.number(value).toBeFloat();
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = numberAssertionGenertors.toBeFloat.invalid();
+            test.case("invalid", () => {
+                const values = numberExpectationGenertors.toBeFloat.invalid();
 
                 for (const value of values) {
                     expect.number(value).not.toBeFloat();
@@ -76,16 +76,16 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
         });
 
         test.serial("toBeNaN()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = numberAssertionGenertors.toBeNaN.valid();
+            test.case("valid", () => {
+                const values = numberExpectationGenertors.toBeNaN.valid();
 
                 for (const value of values) {
                     expect.number(value).toBeNaN();
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = numberAssertionGenertors.toBeNaN.invalid();
+            test.case("invalid", () => {
+                const values = numberExpectationGenertors.toBeNaN.invalid();
 
                 for (const value of values) {
                     expect.number(value).not.toBeNaN();
@@ -94,16 +94,16 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
         });
 
         test.serial("toBeLessThan()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = numberAssertionGenertors.toBeLessThan.valid();
+            test.case("valid", () => {
+                const values = numberExpectationGenertors.toBeLessThan.valid();
 
                 for (const value of values) {
                     expect.number(value.value).toBeLessThan(value.argument);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = numberAssertionGenertors.toBeLessThan.invalid();
+            test.case("invalid", () => {
+                const values = numberExpectationGenertors.toBeLessThan.invalid();
 
                 for (const value of values) {
                     expect.number(value.value).not.toBeLessThan(value.argument);
@@ -112,16 +112,16 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
         });
 
         test.serial("toBeLessThanOrEquals()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = numberAssertionGenertors.toBeLessThanOrEquals.valid();
+            test.case("valid", () => {
+                const values = numberExpectationGenertors.toBeLessThanOrEquals.valid();
 
                 for (const value of values) {
                     expect.number(value.value).toBeLessThanOrEquals(value.argument);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = numberAssertionGenertors.toBeLessThanOrEquals.invalid();
+            test.case("invalid", () => {
+                const values = numberExpectationGenertors.toBeLessThanOrEquals.invalid();
 
                 for (const value of values) {
                     expect.number(value.value).not.toBeLessThanOrEquals(value.argument);
@@ -130,16 +130,16 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
         });
 
         test.serial("toBeGraterThan()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = numberAssertionGenertors.toBeGraterThan.valid();
+            test.case("valid", () => {
+                const values = numberExpectationGenertors.toBeGraterThan.valid();
 
                 for (const value of values) {
                     expect.number(value.value).toBeGraterThan(value.argument);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = numberAssertionGenertors.toBeGraterThan.invalid();
+            test.case("invalid", () => {
+                const values = numberExpectationGenertors.toBeGraterThan.invalid();
 
                 for (const value of values) {
                     expect.number(value.value).not.toBeGraterThan(value.argument);
@@ -148,16 +148,16 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
         });
 
         test.serial("toBeGraterThanOrEquals()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = numberAssertionGenertors.toBeGraterThanOrEquals.valid();
+            test.case("valid", () => {
+                const values = numberExpectationGenertors.toBeGraterThanOrEquals.valid();
 
                 for (const value of values) {
                     expect.number(value.value).toBeGraterThanOrEquals(value.argument);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = numberAssertionGenertors.toBeGraterThanOrEquals.invalid();
+            test.case("invalid", () => {
+                const values = numberExpectationGenertors.toBeGraterThanOrEquals.invalid();
 
                 for (const value of values) {
                     expect.number(value.value).not.toBeGraterThanOrEquals(value.argument);
@@ -166,16 +166,16 @@ export const NumberAssertionScenario = scenario("NumberAssertion", null, ({ test
         });
 
         test.serial("toHaveValueBetween()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = numberAssertionGenertors.toHaveValueBetween.valid();
+            test.case("valid", () => {
+                const values = numberExpectationGenertors.toHaveValueBetween.valid();
 
                 for (const { value, start, end } of values) {
                     expect.number(value).toHaveValueBetween(start, end);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = numberAssertionGenertors.toHaveValueBetween.invalid();
+            test.case("invalid", () => {
+                const values = numberExpectationGenertors.toHaveValueBetween.invalid();
 
                 for (const { value, start, end } of values) {
                     expect.number(value).not.toHaveValueBetween(start, end);

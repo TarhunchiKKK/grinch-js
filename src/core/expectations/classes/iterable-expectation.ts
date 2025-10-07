@@ -1,11 +1,11 @@
 import { ElementType } from "@shared/types";
-import { BaseAssertion } from "./base-assertion";
+import { BaseExpectation } from "./base-expectation";
 
 /**
- * Assertion class for iterable values (strings and arrays).
+ * Expectation class for iterable values (strings and arrays).
  * Provides methods for asserting conditions on the length and content of iterables.
  */
-export class IterableAssertion<T extends string | unknown[]> extends BaseAssertion<T> {
+export class IterableExpectation<T extends string | unknown[]> extends BaseExpectation<T> {
     /**
      * Asserts that the iterable has the expected length.
      *

@@ -10,7 +10,7 @@ import { toHaveSomeMatchGenerator } from "./to-have-some-match";
 import { toHaveEveryMatchGenerator } from "./to-have-every-match";
 import { toBeSortedGenerator } from "./to-be-sorted";
 
-export const arrayAssertionGenerators = {
+export const arrayExpectationGenerators = {
     toHaveLength: toHaveLengthGenerator,
     toBeShorterThan: toBeShorterThanGenerator,
     toBeShorterThanOrEquals: toBeShorterThanOrEqualsGenerator,

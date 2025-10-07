@@ -1,8 +1,8 @@
 import { TestingTree } from "@modules/testing-tree";
-import { Scenario } from "../scenario";
-import { report } from "@modules/reporting";
+import { Scenario } from "@modules/scenarios";
+import { ScenariosReporter } from "../reporters/scenarios-reporter";
 
-class ScenarioMapper {
+export class ScenariosRunner {
     public constructor(private readonly map: Record<string, Scenario[]>) {}
 
     private getCommandName() {
@@ -39,18 +39,15 @@ class ScenarioMapper {
         const scenarios = this.getScenarios(commandName);
 
         await this.runScenarios(scenarios);
-
-        return report();
     }
-}
 
-/**
- * Registers a map of command names to their corresponding scenarios.
- * This function is intended to be called from the user's entry file.
- * @param map A record where keys are command names and values are arrays of Scenarios.
- */
-export async function mapScenarios(map: Record<string, Scenario[]>) {
-    const mapper = new ScenarioMapper(map);
+    public report() {
+        TestingTree.calculateResults();
 
-    return await mapper.run();
+        const reporter = new ScenariosReporter();
+
+        reporter.report();
+
+        return TestingTree.toObject();
+    }
 }

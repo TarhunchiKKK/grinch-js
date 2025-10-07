@@ -1,19 +1,19 @@
 import { expect, scenario } from "../../../src";
-import { recordAssertionGenerators } from "./generators";
+import { recordExpectationGenerators } from "./generators";
 
-export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test }) => {
+export const RecordExpectationScenario = scenario("RecordExpectation", null, ({ test }) => {
     test.parallel("assertions", ({ test }) => {
         test.serial("toEquals()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = recordAssertionGenerators.toEquals.valid();
+            test.case("valid", () => {
+                const values = recordExpectationGenerators.toEquals.valid();
 
                 for (const value of values) {
                     expect.record(value).toEquals(value);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = recordAssertionGenerators.toEquals.invalid();
+            test.case("invalid", () => {
+                const values = recordExpectationGenerators.toEquals.invalid();
 
                 for (const value of values) {
                     expect.record(value).not.toEquals(value);
@@ -22,16 +22,16 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
         });
 
         test.serial("toHaveKey()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = recordAssertionGenerators.toHaveKey.valid();
+            test.case("valid", () => {
+                const values = recordExpectationGenerators.toHaveKey.valid();
 
                 for (const { value, key } of values) {
                     expect.record(value).toHaveKey(key);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = recordAssertionGenerators.toHaveKey.invalid();
+            test.case("invalid", () => {
+                const values = recordExpectationGenerators.toHaveKey.invalid();
 
                 for (const { value, key } of values) {
                     expect.record(value).not.toHaveKey(key);
@@ -40,16 +40,16 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
         });
 
         test.serial("toHaveAllKeys()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = recordAssertionGenerators.toHaveAllKeys.valid();
+            test.case("valid", () => {
+                const values = recordExpectationGenerators.toHaveAllKeys.valid();
 
                 for (const { value, keys } of values) {
                     expect.record(value).toHaveAllKeys(keys);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = recordAssertionGenerators.toHaveAllKeys.invalid();
+            test.case("invalid", () => {
+                const values = recordExpectationGenerators.toHaveAllKeys.invalid();
 
                 for (const { value, keys } of values) {
                     expect.record(value).not.toHaveAllKeys(keys);
@@ -58,8 +58,8 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
         });
 
         test.serial("toHaveKeyWithValue", ({ test }) => {
-            test.sample("valid", () => {
-                const values = recordAssertionGenerators.toHaveKeyWithValue.valid();
+            test.case("valid", () => {
+                const values = recordExpectationGenerators.toHaveKeyWithValue.valid();
 
                 for (const { value, keys } of values) {
                     for (const key of keys) {
@@ -68,8 +68,8 @@ export const RecordAssertionScenario = scenario("RecordAssertion", null, ({ test
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = recordAssertionGenerators.toHaveKeyWithValue.invalid();
+            test.case("invalid", () => {
+                const values = recordExpectationGenerators.toHaveKeyWithValue.invalid();
 
                 for (const { record, keys } of values) {
                     for (const { key, value } of keys) {

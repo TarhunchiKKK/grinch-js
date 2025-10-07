@@ -9,13 +9,13 @@ const scenarioState = {
 
 export const ReusableTestsScenario = scenario("Reusable tests", scenarioState, ({ test }) => {
     test.serial("Serial root group", ({ test }) => {
-        test.sample("check name before changing", ({ state }) => {
+        test.case("check name before changing", ({ state }) => {
             expect.string(state.name).toBe(OLD_NAME);
         });
 
         ChangeNameTest.apply("should change state name", test);
 
-        test.sample("check name after changing", ({ state }) => {
+        test.case("check name after changing", ({ state }) => {
             expect.string(state.name).toBe(NEW_NAME);
         });
     });

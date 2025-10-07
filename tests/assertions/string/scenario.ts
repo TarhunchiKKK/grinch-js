@@ -1,19 +1,19 @@
 import { expect, scenario } from "../../../src";
-import { stringAssertionGenerators } from "./generators";
+import { stringExpectationGenerators } from "./generators";
 
-export const StringAssertionScenario = scenario("StringAssertion", null, ({ test }) => {
+export const StringExpectationScenario = scenario("StringExpectation", null, ({ test }) => {
     test.parallel("assertions", ({ test }) => {
         test.serial("toBeUpperCase()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = stringAssertionGenerators.toBeUpperCase.valid();
+            test.case("valid", () => {
+                const values = stringExpectationGenerators.toBeUpperCase.valid();
 
                 for (const value of values) {
                     expect.string(value).toBeUpperCase();
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = stringAssertionGenerators.toBeUpperCase.invalid();
+            test.case("invalid", () => {
+                const values = stringExpectationGenerators.toBeUpperCase.invalid();
 
                 for (const value of values) {
                     expect.string(value).not.toBeUpperCase();
@@ -22,16 +22,16 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toBeLowerCase()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = stringAssertionGenerators.toBeLowerCase.valid();
+            test.case("valid", () => {
+                const values = stringExpectationGenerators.toBeLowerCase.valid();
 
                 for (const value of values) {
                     expect.string(value).toBeLowerCase();
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = stringAssertionGenerators.toBeLowerCase.invalid();
+            test.case("invalid", () => {
+                const values = stringExpectationGenerators.toBeLowerCase.invalid();
 
                 for (const value of values) {
                     expect.string(value).not.toBeLowerCase();
@@ -40,16 +40,16 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toStartsWith()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = stringAssertionGenerators.toStartsWith.valid();
+            test.case("valid", () => {
+                const values = stringExpectationGenerators.toStartsWith.valid();
 
                 for (const { value, substr } of values) {
                     expect.string(value).toStartsWith(substr);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = stringAssertionGenerators.toStartsWith.invalid();
+            test.case("invalid", () => {
+                const values = stringExpectationGenerators.toStartsWith.invalid();
 
                 for (const { value, substr } of values) {
                     expect.string(value).not.toStartsWith(substr);
@@ -58,16 +58,16 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toEndsWith()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = stringAssertionGenerators.toEndsWith.valid();
+            test.case("valid", () => {
+                const values = stringExpectationGenerators.toEndsWith.valid();
 
                 for (const { value, substr } of values) {
                     expect.string(value).toEndsWith(substr);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = stringAssertionGenerators.toEndsWith.invalid();
+            test.case("invalid", () => {
+                const values = stringExpectationGenerators.toEndsWith.invalid();
 
                 for (const { value, substr } of values) {
                     expect.string(value).not.toEndsWith(substr);
@@ -76,16 +76,16 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toBeNumericString()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = stringAssertionGenerators.toBeNumericString.valid();
+            test.case("valid", () => {
+                const values = stringExpectationGenerators.toBeNumericString.valid();
 
                 for (const value of values) {
                     expect.string(value).toBeNumericString();
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = stringAssertionGenerators.toBeNumericString.invalid();
+            test.case("invalid", () => {
+                const values = stringExpectationGenerators.toBeNumericString.invalid();
 
                 for (const value of values) {
                     expect.string(value).not.toBeNumericString();
@@ -94,16 +94,16 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toBeBooleanString()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = stringAssertionGenerators.toBeBooleanString.valid();
+            test.case("valid", () => {
+                const values = stringExpectationGenerators.toBeBooleanString.valid();
 
                 for (const value of values) {
                     expect.string(value).toBeBooleanString();
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = stringAssertionGenerators.toBeBooleanString.invalid();
+            test.case("invalid", () => {
+                const values = stringExpectationGenerators.toBeBooleanString.invalid();
 
                 for (const value of values) {
                     expect.string(value).not.toBeBooleanString();
@@ -112,16 +112,16 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toMatch()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = stringAssertionGenerators.toMatchRegex.valid();
+            test.case("valid", () => {
+                const values = stringExpectationGenerators.toMatchRegex.valid();
 
                 for (const { value, regexp } of values) {
                     expect.string(value).toMatchRegex(regexp);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = stringAssertionGenerators.toMatchRegex.invalid();
+            test.case("invalid", () => {
+                const values = stringExpectationGenerators.toMatchRegex.invalid();
 
                 for (const { value, regexp } of values) {
                     expect.string(value).not.toMatchRegex(regexp);
@@ -130,16 +130,16 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toBeUUID()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = stringAssertionGenerators.toBeUUID.valid();
+            test.case("valid", () => {
+                const values = stringExpectationGenerators.toBeUUID.valid();
 
                 for (const value of values) {
                     expect.string(value).toBeUUID();
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = stringAssertionGenerators.toBeUUID.invalid();
+            test.case("invalid", () => {
+                const values = stringExpectationGenerators.toBeUUID.invalid();
 
                 for (const value of values) {
                     expect.string(value).not.toBeUUID();
@@ -148,16 +148,16 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toHaveLength()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = stringAssertionGenerators.toHaveLength.valid();
+            test.case("valid", () => {
+                const values = stringExpectationGenerators.toHaveLength.valid();
 
                 for (const { value, length } of values) {
                     expect.string(value).toHaveLength(length);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = stringAssertionGenerators.toHaveLength.invalid();
+            test.case("invalid", () => {
+                const values = stringExpectationGenerators.toHaveLength.invalid();
 
                 for (const { value, length } of values) {
                     expect.string(value).not.toHaveLength(length);
@@ -166,16 +166,16 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toBeShorterThan()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = stringAssertionGenerators.toBeShorterThan.valid();
+            test.case("valid", () => {
+                const values = stringExpectationGenerators.toBeShorterThan.valid();
 
                 for (const { value, length } of values) {
                     expect.string(value).toBeShorterThan(length);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = stringAssertionGenerators.toBeShorterThan.invalid();
+            test.case("invalid", () => {
+                const values = stringExpectationGenerators.toBeShorterThan.invalid();
 
                 for (const { value, length } of values) {
                     expect.string(value).not.toBeShorterThan(length);
@@ -184,16 +184,16 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toBeShorterThanOrEquals()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = stringAssertionGenerators.toBeShorterThanOrEquals.valid();
+            test.case("valid", () => {
+                const values = stringExpectationGenerators.toBeShorterThanOrEquals.valid();
 
                 for (const { value, length } of values) {
                     expect.string(value).toBeShorterThanOrEquals(length);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = stringAssertionGenerators.toBeShorterThanOrEquals.invalid();
+            test.case("invalid", () => {
+                const values = stringExpectationGenerators.toBeShorterThanOrEquals.invalid();
 
                 for (const { value, length } of values) {
                     expect.string(value).not.toBeShorterThanOrEquals(length);
@@ -202,16 +202,16 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toBeLongerThan()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = stringAssertionGenerators.toBeLongerThan.valid();
+            test.case("valid", () => {
+                const values = stringExpectationGenerators.toBeLongerThan.valid();
 
                 for (const { value, length } of values) {
                     expect.string(value).toBeLongerThan(length);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = stringAssertionGenerators.toBeLongerThan.invalid();
+            test.case("invalid", () => {
+                const values = stringExpectationGenerators.toBeLongerThan.invalid();
 
                 for (const { value, length } of values) {
                     expect.string(value).not.toBeLongerThan(length);
@@ -220,16 +220,16 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toBeLongerThanOrEquals()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = stringAssertionGenerators.toBeLongerThanOrEquals.valid();
+            test.case("valid", () => {
+                const values = stringExpectationGenerators.toBeLongerThanOrEquals.valid();
 
                 for (const { value, length } of values) {
                     expect.string(value).toBeLongerThanOrEquals(length);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = stringAssertionGenerators.toBeLongerThanOrEquals.invalid();
+            test.case("invalid", () => {
+                const values = stringExpectationGenerators.toBeLongerThanOrEquals.invalid();
 
                 for (const { value, length } of values) {
                     expect.string(value).not.toBeLongerThanOrEquals(length);
@@ -238,16 +238,16 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toHaveLengthBetween()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = stringAssertionGenerators.toHaveLengthBetween.valid();
+            test.case("valid", () => {
+                const values = stringExpectationGenerators.toHaveLengthBetween.valid();
 
                 for (const { value, start, end } of values) {
                     expect.string(value).toHaveLengthBetween(start, end);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = stringAssertionGenerators.toHaveLengthBetween.invalid();
+            test.case("invalid", () => {
+                const values = stringExpectationGenerators.toHaveLengthBetween.invalid();
 
                 for (const { value, start, end } of values) {
                     expect.string(value).not.toHaveLengthBetween(start, end);
@@ -256,16 +256,16 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toIncludes()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = stringAssertionGenerators.toIncludes.valid();
+            test.case("valid", () => {
+                const values = stringExpectationGenerators.toIncludes.valid();
 
                 for (const { value, substr } of values) {
                     expect.string(value).toIncludes(substr);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = stringAssertionGenerators.toIncludes.invalid();
+            test.case("invalid", () => {
+                const values = stringExpectationGenerators.toIncludes.invalid();
 
                 for (const { value, substr } of values) {
                     expect.string(value).not.toIncludes(substr);
@@ -274,16 +274,16 @@ export const StringAssertionScenario = scenario("StringAssertion", null, ({ test
         });
 
         test.serial("toHaveValueAtIndex()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = stringAssertionGenerators.toHaveValueAtIndex.valid();
+            test.case("valid", () => {
+                const values = stringExpectationGenerators.toHaveValueAtIndex.valid();
 
                 for (const { value, index, item } of values) {
                     expect.string(value).toHaveValueAtIndex(index, item);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = stringAssertionGenerators.toHaveValueAtIndex.invalid();
+            test.case("invalid", () => {
+                const values = stringExpectationGenerators.toHaveValueAtIndex.invalid();
 
                 for (const { value, index, item } of values) {
                     expect.string(value).not.toHaveValueAtIndex(index, item);

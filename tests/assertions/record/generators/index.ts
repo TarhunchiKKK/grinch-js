@@ -3,7 +3,7 @@ import { toHaveKeyGenerator } from "./to-have-key";
 import { toHaveAllKeysGenerator } from "./to-have-all-keys";
 import { toHaveKeyWithValueGenerator } from "./to-have-key-with-value";
 
-export const recordAssertionGenerators = {
+export const recordExpectationGenerators = {
     toEquals: toEqualsGenerator,
     toHaveKey: toHaveKeyGenerator,
     toHaveAllKeys: toHaveAllKeysGenerator,

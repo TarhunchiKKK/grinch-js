@@ -1,8 +1,8 @@
 import { LifecycleHookCallback } from "@modules/lifecycle-hooks";
 import { GroupNode } from "@modules/testing-tree";
-import { abort } from "@modules/test-aborting";
+import { abort } from "@core/aborting";
 import { SampleTestCallback, TestsGroupCallback } from "../types";
-import { SampleTest } from "../classes/sample-test";
+import { TestCase } from "../classes/case-test";
 import { TestsGroup } from "../classes/test-group";
 import { BaseTestFactory } from "./base-test-factory";
 import { SkipTestFactory } from "./skip-test-factory";
@@ -19,13 +19,13 @@ export class TestFactory<State> extends BaseTestFactory<State> {
         return new SkipTestFactory();
     }
 
-    public sample(title: string, callback: SampleTestCallback<State>) {
+    public case(title: string, callback: SampleTestCallback<State>) {
         const payload = {
             state: this.state,
             abort: abort
         };
 
-        const test = new SampleTest(title, () => callback(payload));
+        const test = new TestCase(title, () => callback(payload));
 
         this.testsStore.addLeaf(test);
     }

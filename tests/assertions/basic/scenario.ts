@@ -1,19 +1,19 @@
 import { expect, scenario } from "../../../src";
-import { basicAssertionGenerators } from "./generators";
+import { basicExpectationGenerators } from "./generators";
 
-export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test }) => {
+export const BasicExpectationScenario = scenario("Basic Expectations", null, ({ test }) => {
     test.parallel("assertions", ({ test }) => {
         test.serial("toBe()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = basicAssertionGenerators.toBe.valid();
+            test.case("valid", () => {
+                const values = basicExpectationGenerators.toBe.valid();
 
                 for (const value of values) {
                     expect.basic(value).toBe(value);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = basicAssertionGenerators.toBe.invalid();
+            test.case("invalid", () => {
+                const values = basicExpectationGenerators.toBe.invalid();
 
                 for (const value of values) {
                     expect.basic(value.value1).not.toBe(value.value2);
@@ -22,16 +22,16 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
         });
 
         test.serial("toBeDefined()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = basicAssertionGenerators.toBeDefined.valid();
+            test.case("valid", () => {
+                const values = basicExpectationGenerators.toBeDefined.valid();
 
                 for (const value of values) {
                     expect.basic(value).toBeDefined();
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = basicAssertionGenerators.toBeDefined.invalid();
+            test.case("invalid", () => {
+                const values = basicExpectationGenerators.toBeDefined.invalid();
 
                 for (const value of values) {
                     expect.basic(value).not.toBeDefined();
@@ -40,16 +40,16 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
         });
 
         test.serial("toBeNull()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = basicAssertionGenerators.toBeNull.valid();
+            test.case("valid", () => {
+                const values = basicExpectationGenerators.toBeNull.valid();
 
                 for (const value of values) {
                     expect.basic(value).toBeNull();
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = basicAssertionGenerators.toBeNull.invalid();
+            test.case("invalid", () => {
+                const values = basicExpectationGenerators.toBeNull.invalid();
 
                 for (const value of values) {
                     expect.basic(value).not.toBeNull();
@@ -58,16 +58,16 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
         });
 
         test.serial("toBeEmpty()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = basicAssertionGenerators.toBeEmpty.valid();
+            test.case("valid", () => {
+                const values = basicExpectationGenerators.toBeEmpty.valid();
 
                 for (const value of values) {
                     expect.basic(value).toBeEmpty();
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = basicAssertionGenerators.toBeEmpty.invalid();
+            test.case("invalid", () => {
+                const values = basicExpectationGenerators.toBeEmpty.invalid();
 
                 for (const value of values) {
                     expect.basic(value).not.toBeEmpty();
@@ -76,16 +76,16 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
         });
 
         test.serial("toBeTruthy()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = basicAssertionGenerators.toBeTruthy.valid();
+            test.case("valid", () => {
+                const values = basicExpectationGenerators.toBeTruthy.valid();
 
                 for (const value of values) {
                     expect.basic(value).toBeTruthy();
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = basicAssertionGenerators.toBeTruthy.invalid();
+            test.case("invalid", () => {
+                const values = basicExpectationGenerators.toBeTruthy.invalid();
 
                 for (const value of values) {
                     expect.basic(value).not.toBeTruthy();
@@ -94,16 +94,16 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
         });
 
         test.serial("toBeFalsy()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = basicAssertionGenerators.toBeFalsy.valid();
+            test.case("valid", () => {
+                const values = basicExpectationGenerators.toBeFalsy.valid();
 
                 for (const value of values) {
                     expect.basic(value).toBeFalsy();
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = basicAssertionGenerators.toBeFalsy.invalid();
+            test.case("invalid", () => {
+                const values = basicExpectationGenerators.toBeFalsy.invalid();
 
                 for (const value of values) {
                     expect.basic(value).not.toBeFalsy();
@@ -112,16 +112,16 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
         });
 
         test.serial("toBeNull()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = basicAssertionGenerators.toBeNull.valid();
+            test.case("valid", () => {
+                const values = basicExpectationGenerators.toBeNull.valid();
 
                 for (const value of values) {
                     expect.basic(value).toBeNull();
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = basicAssertionGenerators.toBeNull.valid();
+            test.case("invalid", () => {
+                const values = basicExpectationGenerators.toBeNull.valid();
 
                 for (const value of values) {
                     expect.basic(value).not.toBeNull();
@@ -130,16 +130,16 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
         });
 
         test.serial("tomatchZodSchema()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = basicAssertionGenerators.toMatchZodSchema.valid();
+            test.case("valid", () => {
+                const values = basicExpectationGenerators.toMatchZodSchema.valid();
 
                 for (const { value, schema } of values) {
                     expect.basic(value).toMatchZodSchema(schema);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = basicAssertionGenerators.toMatchZodSchema.invalid();
+            test.case("invalid", () => {
+                const values = basicExpectationGenerators.toMatchZodSchema.invalid();
 
                 for (const { value, schema } of values) {
                     expect.basic(value).not.toMatchZodSchema(schema);
@@ -148,16 +148,16 @@ export const BasicAssertionScenario = scenario("Basic Assertions", null, ({ test
         });
 
         test.serial("toSatisfy()", ({ test }) => {
-            test.sample("valid", () => {
-                const values = basicAssertionGenerators.toSatisfy.valid();
+            test.case("valid", () => {
+                const values = basicExpectationGenerators.toSatisfy.valid();
 
                 for (const { value, condition } of values) {
                     expect.basic(value).toSatisfy(condition);
                 }
             });
 
-            test.sample("invalid", () => {
-                const values = basicAssertionGenerators.toSatisfy.invalid();
+            test.case("invalid", () => {
+                const values = basicExpectationGenerators.toSatisfy.invalid();
 
                 for (const { value, condition } of values) {
                     expect.basic(value).not.toSatisfy(condition);

@@ -3,19 +3,19 @@ import { SampleTestCallback, TestsGroupCallback } from "../types";
 
 export abstract class BaseTestFactory<State> {
     /**
-     * Creates a sample test within the current test factory. Sample tests are typically used for individual test cases.
+     * Creates a case test within the current test factory. Case tests are typically used for individual test cases.
      *
-     * @param title The title of the sample test.
-     * @param callback The callback function that defines the logic of the sample test. It receives the current state.
+     * @param title The title of the case test.
+     * @param callback The callback function that defines the logic of the case test. It receives the current state.
      * @returns void
      */
-    public abstract sample(title: string, callback: SampleTestCallback<State>): void;
+    public abstract case(title: string, callback: SampleTestCallback<State>): void;
 
     /**
-     * Creates a sample test which will not be executed. Sample tests are typically used for individual test cases.
+     * Creates a case test which will not be executed. Case tests are typically used for individual test cases.
      *
-     * @param _title The title of the sample test.
-     * @param _callback The callback function that defines the logic of the sample test. It receives the current state.
+     * @param _title The title of the case test.
+     * @param _callback The callback function that defines the logic of the case test. It receives the current state.
      * @returns void
      */
     //public abstract skip(_title: string, _callback: SampleTestCallback<State>): void;

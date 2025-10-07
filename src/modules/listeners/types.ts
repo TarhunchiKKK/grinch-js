@@ -1,4 +1,4 @@
-import { TestAborter } from "@modules/test-aborting";
+import { TestAborter } from "@core/aborting";
 
 type ListenerCallbackPayload<Params> = {
     params?: Params;

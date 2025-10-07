@@ -4,7 +4,7 @@ import { TestStatus } from "@shared/types";
 
 const tab = "  ";
 
-export class ConsoleReporter {
+export class ScenariosReporter {
     private summary = {
         [TestStatus.SUCCEED]: 0,
         [TestStatus.FAILED]: 0,
@@ -68,7 +68,7 @@ export class ConsoleReporter {
                 Logger.yellow(line + " (not run)");
                 break;
             default:
-                throw new Error("Sample test cannot have such result");
+                throw new Error("Case test cannot have such result");
         }
 
         this.summary[node.test.status]++;
