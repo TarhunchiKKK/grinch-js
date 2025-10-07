@@ -21,6 +21,7 @@ export default defineConfig({
     resolve: {
         alias: {
             "@modules": resolve(__dirname, "src/modules"),
+            "@core": resolve(__dirname, "src/core"),
             "@shared": resolve(__dirname, "src/shared")
         }
     }
