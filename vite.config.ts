@@ -9,13 +9,11 @@ export default defineConfig({
             name: "Grinch",
             fileName: "grinch"
         },
-        rollupOptions: {
-            external: ["commander"]
-        }
     },
     plugins: [
         dts({
-            insertTypesEntry: true
+            insertTypesEntry: true,
+            tsconfigPath: "./tsconfig.build.json"
         })
     ],
     resolve: {

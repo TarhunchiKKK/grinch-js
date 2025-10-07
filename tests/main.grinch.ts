@@ -1,4 +1,4 @@
-import { mapScenarios } from "src";
+import { mapScenarios } from "../src/";
 import {
     BasicExpectationScenario,
     NumberExpectationScenario,
@@ -6,11 +6,12 @@ import {
     ArrayExpectationScenario,
     RecordExpectationScenario,
     UnknownExpectationScenario
-} from "./assertions";
+} from "./expectations";
 import { TestsGroupingScenario, StateManagementScenario, ReportingScenario, ReusableTestsScenario } from "./behaviour";
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 void mapScenarios({
-    assertions: [
+    expectations: [
         BasicExpectationScenario,
         NumberExpectationScenario,
         StringExpectationScenario,
