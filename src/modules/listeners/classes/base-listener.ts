@@ -1,4 +1,4 @@
-import { TestStatus } from "@shared/types";
+import { TestStatus } from "@shared/lib";
 import { ListenerId } from "../types";
 
 export abstract class BaseListener {
@@ -19,5 +19,7 @@ export abstract class BaseListener {
         if (this.timeoutId) {
             clearTimeout(this.timeoutId);
         }
+
+        this.status = TestStatus.CANCELED;
     }
 }

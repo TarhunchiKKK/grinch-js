@@ -20,7 +20,7 @@
         "outDir": "dist",
         "baseUrl": ".",
         "paths": {
-            "@compose/*": ["src/compose/*"],
+            "@compose": ["src/compose"],
             "@modules/*": ["src/modules/*"],
             "@core/*": ["src/core/*"],
             "@shared/*": ["src/shared/*"]

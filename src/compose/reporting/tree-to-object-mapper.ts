@@ -1,13 +1,5 @@
-import { TestResult, TestStatus } from "@shared/types";
-import { TestNode } from "../types";
-import { TestingTree } from "./testing-tree";
-
-const resultDescriptionsMap: Record<TestStatus, TestResult["status"]> = {
-    [TestStatus.SUCCEED]: "succeed",
-    [TestStatus.FAILED]: "failed",
-    [TestStatus.ERROR]: "error",
-    [TestStatus.NOT_RUNED]: "not runed"
-};
+import { TestNode, TestingTree } from "@modules/testing-tree";
+import { TestResult, TestStatusesMap } from "@shared/lib";
 
 export class TreeToObjectMapper {
     public map() {
@@ -16,7 +8,7 @@ export class TreeToObjectMapper {
         for (const child of TestingTree.children) {
             results.push({
                 title: child.test.title,
-                status: resultDescriptionsMap[child.test.status],
+                status: TestStatusesMap[child.test.status],
                 children: []
             });
             this.mapNode(child, results[results.length - 1]);
@@ -30,7 +22,7 @@ export class TreeToObjectMapper {
             for (const child of node.children) {
                 const childResult: TestResult = {
                     title: child.test.title,
-                    status: resultDescriptionsMap[child.test.status],
+                    status: TestStatusesMap[child.test.status],
                     children: []
                 };
 
@@ -41,7 +33,7 @@ export class TreeToObjectMapper {
         } else {
             const childResult: TestResult = {
                 title: node.test.title,
-                status: resultDescriptionsMap[node.test.status]
+                status: TestStatusesMap[node.test.status]
             };
 
             result.children!.push(childResult);

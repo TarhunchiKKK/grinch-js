@@ -4,7 +4,7 @@ import { ParallelNode } from "./parallel-node";
 import { SerialNode } from "./serial-node";
 import { TestNode } from "../types";
 import { HookableTest } from "@modules/lifecycle-hooks";
-import { TestStatus } from "@shared/types";
+import { TestStatus } from "@shared/lib";
 
 export abstract class GroupNode extends HookableTest {
     public children: TestNode[] = [];

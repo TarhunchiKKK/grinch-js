@@ -1,6 +1,5 @@
 import { TestNode, TestingTree } from "@modules/testing-tree";
-import { Logger } from "@shared/lib";
-import { TestStatus } from "@shared/types";
+import { Logger, TestStatus } from "@shared/lib";
 
 const tab = "  ";
 
