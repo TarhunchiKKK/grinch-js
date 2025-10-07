@@ -1,7 +1,7 @@
 import { ExpectationError } from "@core/expectations";
 import { Logger } from "@shared/lib";
 import { FailTestError, SucceedTestError } from "./errors";
-import { TestStatus } from "@shared/types";
+import { TestStatus } from "@shared/lib";
 
 /**
  * Provides utility methods for prematurely aborting or failing tests
