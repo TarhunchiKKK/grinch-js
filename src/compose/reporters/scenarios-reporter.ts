@@ -4,7 +4,7 @@ import { TestStatus } from "@shared/types";
 
 const tab = "  ";
 
-export class ConsoleReporter {
+export class ScenariosReporter {
     private summary = {
         [TestStatus.SUCCEED]: 0,
         [TestStatus.FAILED]: 0,
