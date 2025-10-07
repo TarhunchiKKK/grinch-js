@@ -1,31 +1,28 @@
 {
     "name": "grinch",
     "description": "Flexible end-to-end API testing library.",
-    "keywords": [],
     "license": "ISC",
     "version": "1.0.0",
-    "author": "Konstantin Barilo",
+    "author": "TarhunchiKKK",
     "scripts": {
         "build": "vite build",
         "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
         "lint": "eslint \"src/**/*.ts\" --fix",
         "knip": "knip",
-        "test:assertions": "npx ts-node ./tests/main.grinch.ts assertions",
+        "test:expectations": "npx ts-node ./tests/main.grinch.ts expectations",
         "test:grouping": "npx ts-node ./tests/main.grinch.ts grouping",
         "test:state": "npx ts-node ./tests/main.grinch.ts state",
         "test:reporting": "npx ts-node ./tests/main.grinch.ts reporting",
         "test:reusable": "npx ts-node ./tests/main.grinch.ts  reusable_tests"
     },
-    "main": "./dist/grinch.umd.cjs",
+    "main": "./dist/grinch.umd.js",
     "module": "./dist/grinch.mjs",
     "types": "./dist/index.d.ts",
-    "files": [
-        "dist"
-    ],
+    "files": ["dist"],
     "exports": {
         ".": {
             "import": "./dist/grinch.mjs",
-            "require": "./dist/grinch.umd.cjs"
+            "require": "./dist/grinch.umd.js"
         }
     },
     "engines": {
