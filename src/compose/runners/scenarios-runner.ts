@@ -1,7 +1,7 @@
 import { TestingTree } from "@modules/testing-tree";
 import { Scenario } from "@modules/scenarios";
-import { ScenariosReporter } from "../reporters/scenarios-reporter";
-import { TreeToObjectMapper } from "@compose/utils/tree-to-object-mapper";
+import { ScenariosReporter } from "../reporting/scenarios-reporter";
+import { TreeToObjectMapper } from "../reporting/tree-to-object-mapper";
 
 export class ScenariosRunner {
     public constructor(private readonly map: Record<string, Scenario[]>) {}

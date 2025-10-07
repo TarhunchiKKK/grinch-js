@@ -12,9 +12,3 @@ export type TestInfo = {
 };
 
 export type AvailableTestStates = Record<string, unknown> | null;
-
-export type TestResult = {
-    title: string;
-    status: "succeed" | "failed" | "error" | "not runed" | "canceled";
-    children?: TestResult[];
-};
