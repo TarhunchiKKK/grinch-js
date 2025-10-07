@@ -4,11 +4,3 @@ export enum TestStatus {
     NOT_RUNED = 2,
     ERROR = 3
 }
-
-export type TestInfo = {
-    title: string;
-
-    status: TestStatus;
-};
-
-export type AvailableTestStates = Record<string, unknown> | null;

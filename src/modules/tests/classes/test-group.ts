@@ -1,4 +1,5 @@
-import { TestInfo, TestStatus } from "@shared/types";
+import { TestStatus } from "@shared/types";
+import { TestInfo } from "../types";
 
 export class TestsGroup implements TestInfo {
     public status = TestStatus.NOT_RUNED;

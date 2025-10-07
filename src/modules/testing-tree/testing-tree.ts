@@ -1,4 +1,4 @@
-import { TestInfo } from "@shared/types";
+import { TestInfo } from "@modules/tests";
 import { GroupNode } from "./classes/group-node";
 import { SerialNode } from "./classes/serial-node";
 

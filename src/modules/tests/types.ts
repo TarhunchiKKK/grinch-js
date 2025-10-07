@@ -1,5 +1,12 @@
 import { TestAborter } from "@core/aborting";
-import { BaseTestFactory } from "../factories/base-test-factory";
+import { BaseTestFactory } from "./factories/base-test-factory";
+import { TestStatus } from "@shared/types";
+
+export type TestInfo = {
+    title: string;
+
+    status: TestStatus;
+};
 
 type SampleTestPayload<State> = {
     state: State;

@@ -1,8 +1,7 @@
 import { TestFactory } from "@modules/tests";
 import { Scenario } from "./scenario";
-import { ScenarioCallback } from "./types";
+import { AvailableScenraioStates, ScenarioCallback } from "./types";
 import { TestingTree } from "@modules/testing-tree";
-import { AvailableTestStates } from "@shared/types";
 
 /**
  * Creates a new scenario and its associated test factory, then executes a callback function
@@ -12,7 +11,7 @@ import { AvailableTestStates } from "@shared/types";
  * @param state The initial state of the scenario.
  * @param callback A function that receives the test factory and defines the scenario's tests.
  */
-export function createScenario<State extends AvailableTestStates>(
+export function createScenario<State extends AvailableScenraioStates>(
     title: string,
     state: State,
     callback: ScenarioCallback<State>
