@@ -1,6 +1,6 @@
 import { TestResult, TestStatus } from "@shared/types";
-import { TestNode } from "../types";
-import { TestingTree } from "./testing-tree";
+import { TestNode } from "../../modules/testing-tree/types";
+import { TestingTree } from "../../modules/testing-tree/testing-tree";
 
 const resultDescriptionsMap: Record<TestStatus, TestResult["status"]> = {
     [TestStatus.SUCCEED]: "succeed",

@@ -1,5 +1,5 @@
 import { TestAborter } from "@core/aborting";
-import { BaseTestFactory } from "./factories/base-test-factory";
+import { BaseTestFactory } from "../factories/base-test-factory";
 
 type SampleTestPayload<State> = {
     state: State;

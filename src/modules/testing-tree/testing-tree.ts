@@ -1,7 +1,6 @@
 import { TestInfo } from "@shared/types";
-import { GroupNode } from "../classes/group-node";
-import { SerialNode } from "../classes/serial-node";
-import { TreeToObjectMapper } from "./tree-to-object-mapper";
+import { GroupNode } from "./classes/group-node";
+import { SerialNode } from "./classes/serial-node";
 
 class TestTree {
     public children: GroupNode[] = [];
@@ -19,11 +18,6 @@ class TestTree {
 
     public async run() {
         await Promise.allSettled([this.children.map(child => child.run())]);
-    }
-
-    public toObject() {
-        const mapper = new TreeToObjectMapper();
-        return mapper.map();
     }
 }
 
