@@ -1,4 +1,4 @@
-import { TestAborter } from "@modules/test-aborting";
+import { TestAborter } from "@core/aborting";
 import { BaseTestFactory } from "./factories/base-test-factory";
 
 type SampleTestPayload<State> = {

@@ -1,4 +1,4 @@
-import { abort } from "@modules/test-aborting";
+import { abort } from "@core/aborting";
 import { ScheduledListener } from "../classes/scheduled-listener";
 import { ListenersStore } from "../listeners-array";
 import { ListenerCallback } from "../types";

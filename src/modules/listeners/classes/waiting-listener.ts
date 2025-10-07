@@ -1,6 +1,6 @@
 import { TestStatus } from "@shared/types";
 import { BaseListener } from "./base-listener";
-import { TestAborter } from "@modules/test-aborting";
+import { TestAborter } from "@core/aborting";
 
 export class WaitingListener extends BaseListener {
     public start(): void {

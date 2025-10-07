@@ -5,7 +5,7 @@ import { RecordExpectation } from "./classes/record-expectation";
 import { StringExpectation } from "./classes/string-expectation";
 import { UnknownExpectation } from "./classes/unknown-expectation";
 
-class ExpectationFactory {
+class ExpectationsFactory {
     public basic<T = unknown>(value: T) {
         return new BaseExpectation<T>(value);
     }
@@ -47,4 +47,4 @@ class ExpectationFactory {
     }
 }
 
-export const expect = new ExpectationFactory();
+export const expect = new ExpectationsFactory();

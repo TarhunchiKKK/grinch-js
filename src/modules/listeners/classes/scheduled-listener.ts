@@ -1,4 +1,4 @@
-import { TestAborter } from "@modules/test-aborting";
+import { TestAborter } from "@core/aborting";
 import { BaseListener } from "./base-listener";
 import { TestStatus } from "@shared/types";
 

@@ -1,6 +1,6 @@
 import { LifecycleHookCallback } from "@modules/lifecycle-hooks";
 import { GroupNode } from "@modules/testing-tree";
-import { abort } from "@modules/test-aborting";
+import { abort } from "@core/aborting";
 import { SampleTestCallback, TestsGroupCallback } from "../types";
 import { TestCase } from "../classes/case-test";
 import { TestsGroup } from "../classes/test-group";

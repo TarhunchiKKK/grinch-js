@@ -1,4 +1,4 @@
-import { ExpectationError } from "@modules/expectations";
+import { ExpectationError } from "@core/expectations";
 import { Logger } from "@shared/lib";
 import { FailTestError, SucceedTestError } from "./errors";
 import { TestStatus } from "@shared/types";

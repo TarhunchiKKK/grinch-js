@@ -1,2 +1,2 @@
-export { expect } from "./assertion-factory";
+export { expect } from "./expectations-factory";
 export { ExpectationError } from "./lib/errors";
