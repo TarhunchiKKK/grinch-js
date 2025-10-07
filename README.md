@@ -26,14 +26,14 @@
   - [Skipping Tests](#skipping-tests)
   - [Aborting Tests](#aborting-tests)
   - [Reporting](#reporting)
-- [Expectations](#assertions)
-  - [Basic Expectations](#basic-assertions)
-  - [Iterable Values Expectations](#iterable-values-assertions)
-  - [Number Expectations](#number-assertions)
-  - [String Expectations](#string-assertions)
-  - [Record Expectations](#record-assertions)
-  - [Array Expectations](#array-assertions)
-  - [Unknown Expectations](#unknown-assertions)
+- [Expectations](#expectations)
+  - [Basic Expectations](#basic-expectations)
+  - [Iterable Values Expectations](#iterable-values-expectations)
+  - [Number Expectations](#number-expectations)
+  - [String Expectations](#string-expectations)
+  - [Record Expectations](#record-expectations)
+  - [Array Expectations](#array-expectations)
+  - [Unknown Expectations](#unknown-expectations)
 
 ## Philosophy
 
@@ -211,7 +211,7 @@ const state = {
 };
 
 const SomeScenario = scenario("Scenario title", state, ({ test }) => {
-    test.serial("TestInfo title", ({ test }) => {
+    test.serial("title", ({ test }) => {
         // Children tests
     });
 });
@@ -226,7 +226,7 @@ All tests declared in the root of the parallel test will be executed in parallel
 If one of the tests fails, the other tests will continue to run.
 
 ```typescript
-test.parallel("TestInfo title", ({ test }) => {
+test.parallel("title", ({ test }) => {
     // Children tests
 });
 ```
@@ -240,7 +240,7 @@ All tests declared in the root of the serial test will be executed sequentially.
 If one of the tests fails, the entire sequence will also fail.
 
 ```typescript
-test.serial("TestInfo title", ({ test }) => {
+test.serial("title", ({ test }) => {
     // Children tests
 });
 ```
@@ -253,7 +253,7 @@ This type of test cannot have child tests.
 
 ```typescript
 // ...
-test.case("TestInfo title", async ({ state }) => {
+test.case("title", async ({ state }) => {
     // Testing code
 });
 // ...
@@ -277,7 +277,7 @@ type ScenarioState = {
 };
 
 scenario("Scenario title", state, ({ test }) => {
-    test.serial("TestInfo title", ({ test }) => {
+    test.serial("title", ({ test }) => {
         // Here we will use reusable test
     });
 });
@@ -315,7 +315,7 @@ type ScenarioState = {
 };
 
 scenario("Scenario title", state, ({ test }) => {
-    test.serial("TestInfo title", ({ test }) => {
+    test.serial("title", ({ test }) => {
         // Here we are reusing EditContryTest
         EditCountryTest.apply("Edit country", test, "UK");
     });
@@ -345,7 +345,7 @@ You can use this hooks in all types of test (excluding case tests) and in reusab
 Example:
 
 ```typescript
-test.parallel("TestInfo title", ({ test }) => {
+test.parallel("title", ({ test }) => {
     test.beforeEach(async () => {
         // Any logic here
     });
@@ -363,7 +363,7 @@ There is no need to implement the `beforeAll` and `afterAll` hooks. These hooks 
 Example of the `beforeAll` and `afterAll` hooks implementation:
 
 ```typescript
-test.serial("TestInfo title", ({ test }) => {
+test.serial("title", ({ test }) => {
     test.case("This test will run before all next tests", async () => {
         // Any logic
     });
