@@ -27,7 +27,7 @@ export class BaseExpectation<T> {
         return this;
     }
 
-    protected runCondition(condition: Condition, errorMessage: string) {
+    protected runCondition(condition: Condition, errorMessage: string | (() => string)) {
         let conditionToExecute = condition;
 
         if (this.inverseNextCondition) {
@@ -37,7 +37,8 @@ export class BaseExpectation<T> {
 
         const result = conditionToExecute();
         if (!result) {
-            throw new ExpectationError(errorMessage);
+            const message = typeof errorMessage === "function" ? errorMessage() : errorMessage;
+            throw new ExpectationError(message);
         }
     }
 
@@ -50,7 +51,7 @@ export class BaseExpectation<T> {
     public toBe(value: T): this {
         this.runCondition(
             () => this.value === value,
-            `Values are not equal. Expect: ${JSON.stringify(value)}, but receive: ${JSON.stringify(this.value)}`
+            () => `Values are not equal. Expect: ${JSON.stringify(value)}, but receive: ${JSON.stringify(this.value)}`
         );
         return this;
     }
@@ -71,7 +72,10 @@ export class BaseExpectation<T> {
      * @returns The current instance for chaining.
      */
     public toBeNull(): this {
-        this.runCondition(() => this.value === null, `Value is not null. Receive: ${JSON.stringify(this.value)}`);
+        this.runCondition(
+            () => this.value === null,
+            () => `Value is not null. Receive: ${JSON.stringify(this.value)}`
+        );
         return this;
     }
 
@@ -83,7 +87,7 @@ export class BaseExpectation<T> {
     public toBeEmpty(): this {
         this.runCondition(
             () => this.value === null || this.value === undefined,
-            `Value is not empty. Receive: ${JSON.stringify(this.value)}`
+            () => `Value is not empty. Receive: ${JSON.stringify(this.value)}`
         );
         return this;
     }
@@ -96,7 +100,7 @@ export class BaseExpectation<T> {
     public toBeTruthy(): this {
         this.runCondition(
             () => !FALSY_VALUES.includes(this.value as null),
-            `Value is not truthy. Receive: ${JSON.stringify(this.value)}`
+            () => `Value is not truthy. Receive: ${JSON.stringify(this.value)}`
         );
         return this;
     }
@@ -109,7 +113,7 @@ export class BaseExpectation<T> {
     public toBeFalsy(): this {
         this.runCondition(
             () => FALSY_VALUES.includes(this.value as null),
-            `Value is not falsy. Receive: ${JSON.stringify(this.value)}`
+            () => `Value is not falsy. Receive: ${JSON.stringify(this.value)}`
         );
         return this;
     }
@@ -123,7 +127,7 @@ export class BaseExpectation<T> {
     public toBeIn(values: T[]): this {
         this.runCondition(
             () => values.includes(this.value),
-            `Value is not in array. Receive: ${JSON.stringify(this.value)} `
+            () => `Value is not in array. Receive: ${JSON.stringify(this.value)} `
         );
         return this;
     }
@@ -135,7 +139,7 @@ export class BaseExpectation<T> {
      * @returns The current instance for chaining.
      */
     public toMatchZodSchema(schema: ZodSchema): this {
-        this.runCondition(() => schema.safeParse(this.value).success, "Value don't ,atch schema");
+        this.runCondition(() => schema.safeParse(this.value).success, "Value don't ,match schema");
         return this;
     }
 

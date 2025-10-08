@@ -15,7 +15,7 @@ export class StringExpectation extends IterableExpectation<string> {
     public toBeUpperCase(): this {
         this.runCondition(
             () => this.value === this.value.toUpperCase(),
-            `Value is not upper case string. Receive: ${this.value}`
+            `Value is not upper case string. Receive: "${this.value}"`
         );
         return this;
     }
@@ -28,7 +28,7 @@ export class StringExpectation extends IterableExpectation<string> {
     public toBeLowerCase(): this {
         this.runCondition(
             () => this.value === this.value.toLowerCase(),
-            `Value is not lower case string. Receive: ${this.value}`
+            `Value is not lower case string. Receive: "${this.value}"`
         );
         return this;
     }
@@ -42,7 +42,7 @@ export class StringExpectation extends IterableExpectation<string> {
     public toStartsWith(value: string): this {
         this.runCondition(
             () => this.value.startsWith(value),
-            `Value is not starts with ${value}. Receive: ${this.value}`
+            `Value is not starts with "${value}". Receive: "${this.value}"`
         );
         return this;
     }
@@ -54,7 +54,10 @@ export class StringExpectation extends IterableExpectation<string> {
      * @returns The current instance for chaining.
      */
     public toEndsWith(value: string): this {
-        this.runCondition(() => this.value.endsWith(value), `Value is not ends with ${value}. Receive: ${this.value}`);
+        this.runCondition(
+            () => this.value.endsWith(value),
+            `Value is not ends with "${value}". Receive: "${this.value}"`
+        );
         return this;
     }
 
@@ -75,7 +78,7 @@ export class StringExpectation extends IterableExpectation<string> {
     public toBeBooleanString(): this {
         this.runCondition(
             () => this.value === "true" || this.value === "false",
-            `Value is not boolean string. Receive: ${this.value}`
+            `Value is not boolean string. Receive: "${this.value}"`
         );
         return this;
     }
@@ -87,7 +90,10 @@ export class StringExpectation extends IterableExpectation<string> {
      * @returns The current instance for chaining.
      */
     public toMatchRegex(regexp: RegExp): this {
-        this.runCondition(() => regexp.test(this.value), `Value is not match regex ${regexp}. Receive: ${this.value}`);
+        this.runCondition(
+            () => regexp.test(this.value),
+            () => `Value is not match regex /${regexp.source}/${regexp.flags}. Receive: ${this.value}`
+        );
         return this;
     }
 

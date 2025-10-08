@@ -15,7 +15,7 @@ export class RecordExpectation extends BaseExpectation<Record<string, unknown>> 
     public toEquals(value: unknown): this {
         this.runCondition(
             () => deepCompare(this.value, value),
-            `Values are not equal. Expect: ${JSON.stringify(value)}, but receive: ${JSON.stringify(this.value)}`
+            () => `Values are not equal. Expect: ${JSON.stringify(value)}, but receive: ${JSON.stringify(this.value)}`
         );
         return this;
     }
@@ -27,7 +27,10 @@ export class RecordExpectation extends BaseExpectation<Record<string, unknown>> 
      * @returns The current instance for chaining.
      */
     public toHaveKey(key: string): this {
-        this.runCondition(() => !!this.value[key], `Value don't have key '${key}'`);
+        this.runCondition(
+            () => !!this.value[key],
+            () => `Value don't have key '${key}'`
+        );
         return this;
     }
 
@@ -67,7 +70,7 @@ export class RecordExpectation extends BaseExpectation<Record<string, unknown>> 
                 }
                 return deepCompare(this.value[key], value);
             },
-            `Value don't have key '${key}' with value '${JSON.stringify(value)}'`
+            () => `Value don't have key '${key}' with value '${JSON.stringify(value)}'`
         );
         return this;
     }

@@ -98,7 +98,10 @@ export class IterableExpectation<T extends string | unknown[]> extends BaseExpec
      * @returns The current instance for chaining.
      */
     public toIncludes(item: T extends string ? string : ElementType<T>): this {
-        this.runCondition(() => this.value.includes(item as string), `Value don't include ${JSON.stringify(item)}`);
+        this.runCondition(
+            () => this.value.includes(item as string),
+            () => `Value don't include ${JSON.stringify(item)}`
+        );
         return this;
     }
 
@@ -112,7 +115,8 @@ export class IterableExpectation<T extends string | unknown[]> extends BaseExpec
     public toHaveValueAtIndex(index: number, item: T extends string ? string : ElementType<T>): this {
         this.runCondition(
             () => this.value[index] === item,
-            `Value don't have such value at index ${index}. Expect: ${JSON.stringify(item)}, but receive: ${JSON.stringify(this.value[index])}`
+            () =>
+                `Value don't have such value at index ${index}. Expect: ${JSON.stringify(item)}, but receive: ${JSON.stringify(this.value[index])}`
         );
         return this;
     }
