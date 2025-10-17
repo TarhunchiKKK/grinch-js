@@ -1,9 +1,13 @@
 {
     "name": "grinch",
-    "description": "Flexible end-to-end API testing library.",
-    "license": "ISC",
+    "description": "Flexible end-to-end testing library.",
+    "license": "MIT",
     "version": "1.0.0",
-    "author": "TarhunchiKKK",
+    "author": {
+        "name": "Konstantin Barilo",
+        "email": "kostabarilo12@gmail.com",
+        "url": "https://github.com/TarhunchiKKK"
+    },
     "main": "./dist/grinch.umd.js",
     "module": "./dist/grinch.mjs",
     "types": "./dist/index.d.ts",
@@ -15,18 +19,20 @@
         }
     },
     "engines": {
-        "node": ">=20.19.0"
+        "node": ">=14.0.0"
     },
     "scripts": {
         "build": "vite build",
         "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
         "lint": "eslint \"src/**/*.ts\" --fix",
         "knip": "knip",
-        "test:expectations": "npx ts-node ./tests/main.grinch.ts expectations",
-        "test:grouping": "npx ts-node ./tests/main.grinch.ts grouping",
-        "test:state": "npx ts-node ./tests/main.grinch.ts state",
-        "test:reporting": "npx ts-node ./tests/main.grinch.ts reporting",
-        "test:reusable": "npx ts-node ./tests/main.grinch.ts  reusable_tests"
+        "test": "npm run test:expectations && npm run test:grouping && npm run test:state && npm run test:reporting && npm run test:reusable && npm run test:listeners",
+        "test:expectations": "ts-node ./tests/main.grinch.ts expectations",
+        "test:grouping": "ts-node ./tests/main.grinch.ts grouping",
+        "test:state": "ts-node ./tests/main.grinch.ts state",
+        "test:reporting": "ts-node ./tests/main.grinch.ts reporting",
+        "test:reusable": "ts-node ./tests/main.grinch.ts reusable_tests",
+        "test:listeners": "ts-node ./tests/main.grinch.ts listeners"
     },
     "devDependencies": {
         "@eslint/js": "^9.33.0",
