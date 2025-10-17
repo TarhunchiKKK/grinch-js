@@ -1,9 +1,13 @@
 {
     "name": "grinch",
-    "description": "Flexible end-to-end API testing library.",
-    "license": "ISC",
+    "description": "Flexible end-to-end testing library.",
+    "license": "MIT",
     "version": "1.0.0",
-    "author": "TarhunchiKKK",
+    "author": {
+        "name": "Konstantin Barilo",
+        "email": "kostabarilo12@gmail.com",
+        "url": "https://github.com/TarhunchiKKK"
+    },
     "main": "./dist/grinch.umd.js",
     "module": "./dist/grinch.mjs",
     "types": "./dist/index.d.ts",
