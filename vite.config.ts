@@ -9,6 +9,7 @@ export default defineConfig({
             name: "Grinch",
             fileName: "grinch"
         },
+        target: "node14"
     },
     plugins: [
         dts({

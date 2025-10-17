@@ -15,10 +15,9 @@
         }
     },
     "engines": {
-        "node": ">=18.0.0"
+        "node": ">=14.0.0"
     },
     "scripts": {
-        "prepare-node": "unset NPM_CONFIG_PREFIX && nvm use 20.19.0",
         "build": "vite build",
         "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
         "lint": "eslint \"src/**/*.ts\" --fix",
