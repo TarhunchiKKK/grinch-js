@@ -436,14 +436,22 @@ test.beforeEach(({ abort }) => {
 Сalling the `mapScenarios` function returns an array of objects of type:
 
 ```typescript
+enum TestStatus {
+    SUCCEED,
+    FAILED,
+    NOT_RUNED,
+    ERROR,
+    CANCELED
+};
+
 type TestResult = {
     title: string;
-    result: "succeed" | "failed" | "error" | "not runed";
+    result: TestStatus;
     children?: TestResult[];
 };
 ```
 
-You can implement your own result processing logic:
+This types can also be exported from `grinch`. You can implement your own result processing logic:
 
 ```typescript
 import { mapScenarios, TestResult } from "grinch";
