@@ -4,7 +4,7 @@ export enum TestStatus {
     NOT_RUNED,
     ERROR,
     CANCELED
-}
+};
 
 export type TestResult = {
     title: string;
