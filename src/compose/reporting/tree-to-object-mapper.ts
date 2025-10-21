@@ -1,5 +1,5 @@
 import { TestNode, TestingTree } from "@modules/testing-tree";
-import { TestResult, TestStatusesMap } from "@shared/lib";
+import { TestResult } from "@shared/lib";
 
 export class TreeToObjectMapper {
     public map() {
@@ -8,7 +8,7 @@ export class TreeToObjectMapper {
         for (const child of TestingTree.children) {
             results.push({
                 title: child.test.title,
-                status: TestStatusesMap[child.test.status],
+                status: child.test.status,
                 children: []
             });
             this.mapNode(child, results[results.length - 1]);
@@ -22,7 +22,7 @@ export class TreeToObjectMapper {
             for (const child of node.children) {
                 const childResult: TestResult = {
                     title: child.test.title,
-                    status: TestStatusesMap[child.test.status],
+                    status: child.test.status,
                     children: []
                 };
 
@@ -33,7 +33,7 @@ export class TreeToObjectMapper {
         } else {
             const childResult: TestResult = {
                 title: node.test.title,
-                status: TestStatusesMap[node.test.status]
+                status: node.test.status
             };
 
             result.children!.push(childResult);
